@@ -89,10 +89,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="source\css\GestionCarta.css" />
+    <Content Include="source\css\GestionEmpleado.css" />
+    <Content Include="source\css\GestionInventario.css" />
+    <Content Include="source\css\login.css" />
+    <Content Include="source\css\menu.css" />
+    <Content Include="source\css\pedido.css" />
     <Content Include="source\css\pedidos.css" />
     <Content Include="source\css\style.css" />
     <Content Include="source\css\bootstrap.css" />
     <Content Include="source\css\bootstrap.min.css" />
+    <Content Include="source\img\font.mp4" />
+    <Content Include="source\img\logo.png" />
+    <Content Include="source\js\login.js" />
     <Content Include="source\js\pedidos.js" />
     <Content Include="source\js\script.js" />
     <Content Include="source\js\bootstrap.bundle.min.js" />
@@ -103,7 +112,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AutenticacionController.cs" />
+    <Compile Include="Controllers\GestionCartaController.cs" />
+    <Compile Include="Controllers\GestionEmpleadosController.cs" />
+    <Compile Include="Controllers\GestionInventarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PedidosController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -115,6 +130,15 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Autenticacion\Index.cshtml" />
+    <Content Include="Views\GestionEmpleados\Index.cshtml" />
+    <Content Include="Views\Reportes\ReporteInventario.cshtml" />
+    <Content Include="Views\Reportes\ReporteEmpleado.cshtml" />
+    <Content Include="Views\Reportes\ReporteVentas.cshtml" />
+    <Content Include="Views\GestionCarta\Index.cshtml" />
+    <Content Include="Views\GestionInventario\Index.cshtml" />
+    <Content Include="Views\Pedidos\Index.cshtml" />
+    <Content Include="Views\Pedidos\PedidoUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -34,41 +34,84 @@
                 </button>
                 @* Nombre *@
                 <div class="sidebar-logo">
-                    <a href="#">Buenísimo</a>
+                    <a href="@Url.Action("Index", "Home")">Buenísimo</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
-                @* Tomar Pedido *@
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-user"></i>
-                        <span>Tomar Pedido</span>
-                    </a>
-                </li>
-                @* Pedidos Actuales *@
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-agenda"></i>
-                        <span>Pedidos Actuales</span>
-                    </a>
-                </li>
-                @* Inventario *@
+                @* Sucursal *@
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="lni lni-protection"></i>
-                        <span>Inventario</span>
+                        <i class="lni lni-network"></i>
+                        <span>Sucursales</span>
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Actualizar Inventario</a>
+                            <a href="#" class="sidebar-link">Sucursal A</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Registrar Compras</a>
+                            <a href="#" class="sidebar-link">Sucursal B</a>
                         </li>
                     </ul>
                 </li>
 
+                @* Gestion*@
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                       data-bs-target="#Gestion" aria-expanded="false" aria-controls="Gestion">
+                        <i class="lni lni-protection"></i>
+                        <span>Gestion</span>
+                    </a>
+                    <ul id="Gestion" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index", "GestionEmpleados")" class="sidebar-link">Cuentas</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index", "GestionInventario")" class="sidebar-link">Inventario</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("Index", "GestionCarta")" class="sidebar-link">Carta</a>
+                        </li>
+                    </ul>
+                </li>
+
+                @* Generar Reportes *@
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                       data-bs-target="#inventarioMenu" aria-expanded="false" aria-controls="inventarioMenu">
+                        <i class="lni lni-protection"></i>
+                        <span>Generar Reportes</span>
+                    </a>
+                    <ul id="inventarioMenu" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("ReporteInventario", "Reportes")" class="sidebar-link">Inventario</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("ReporteEmpleado", "Reportes")" class="sidebar-link">Empleados</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="@Url.Action("ReporteVentas", "Reportes")" class="sidebar-link">Ventas</a>
+                        </li>
+                    </ul>
+                </li>
+
+                @* Pedidos *@
+                <li class="sidebar-item">
+                    <a href="@Url.Action("Index", "Pedidos")" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Pedidos</span>
+                    </a>
+                </li>
+
+                @* Pedidos Usuario *@
+                <li class="sidebar-item">
+                    <a href="@Url.Action("PedidoUsuario", "Pedidos")" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Pedidos Usuario</span>
+                    </a>
+                </li>
+
+                @*
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
@@ -103,11 +146,11 @@
                         <i class="lni lni-cog"></i>
                         <span>Setting</span>
                     </a>
-                </li>
+                </li>*@
             </ul>
             <div class="sidebar-footer">
-                @* Boton de Logout *@
-                <a href="#" class="sidebar-link">
+                @* Botón de Logout *@
+                <a href="@Url.Action("Logout", "Autenticacion")" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
                 </a>
@@ -116,7 +159,7 @@
         <div class="main p-3">
             <div class="text-center container">
                 <h1>
-                    Sidebar Bootstrap 5
+                    
                     @RenderBody()
                 </h1>
             </div>

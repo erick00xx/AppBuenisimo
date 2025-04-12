@@ -1,0 +1,290 @@
+﻿
+@{
+    ViewBag.Title = "PedidoUsuario";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realiza tu Pedido - Café Aroma</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/source/css/pedido.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="cafe-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1>Café Aroma</h1>
+                    <p>Realiza tu pedido - Mesa 4</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="session-timer">
+                        <i class="fas fa-clock"></i>
+                        Tiempo restante: <span id="timer">10:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mb-5 pb-5">
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <input type="text" class="form-control" placeholder="Buscar en el menú...">
+            <span class="search-icon">
+                <i class="fas fa-search"></i>
+            </span>
+        </div>
+
+        <div class="row">
+            <!-- Menú principal (columna izquierda) -->
+            <div class="col-lg-8">
+                <!-- Categoría: Café -->
+                <div class="menu-category" id="cafe">
+                    <h2 class="menu-category-title">
+                        <i class="fas fa-coffee me-2"></i> Cafés
+                    </h2>
+
+                    <div class="row">
+                        <!-- Item: Espresso -->
+                        <div class="col-md-6">
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="/api/placeholder/600/400" alt="Espresso">
+                                </div>
+                                <div class="menu-item-body">
+                                    <h3 class="menu-item-title">Espresso</h3>
+                                    <p class="menu-item-description">Café concentrado servido en shot, intenso y aromático.</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">$25.00</span>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn decrease-btn">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" min="0" value="0" class="quantity-input">
+                                            <button class="quantity-btn increase-btn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item: Americano -->
+                        <div class="col-md-6">
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="/api/placeholder/600/400" alt="Americano">
+                                </div>
+                                <div class="menu-item-body">
+                                    <h3 class="menu-item-title">Americano</h3>
+                                    <p class="menu-item-description">Espresso con agua caliente, suave y equilibrado.</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">$35.00</span>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn decrease-btn">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" min="0" value="0" class="quantity-input">
+                                            <button class="quantity-btn increase-btn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item: Capuccino -->
+                        <div class="col-md-6">
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="/api/placeholder/600/400" alt="Capuccino">
+                                </div>
+                                <div class="menu-item-body">
+                                    <h3 class="menu-item-title">Capuccino</h3>
+                                    <p class="menu-item-description">Espresso con leche espumada, cremoso y reconfortante.</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">$45.00</span>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn decrease-btn">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" min="0" value="0" class="quantity-input">
+                                            <button class="quantity-btn increase-btn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item: Latte -->
+                        <div class="col-md-6">
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="/api/placeholder/600/400" alt="Latte">
+                                </div>
+                                <div class="menu-item-body">
+                                    <h3 class="menu-item-title">Latte</h3>
+                                    <p class="menu-item-description">Espresso con leche al vapor, suave y sedoso.</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">$48.00</span>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn decrease-btn">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" min="0" value="0" class="quantity-input">
+                                            <button class="quantity-btn increase-btn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría: Postres -->
+                <div class="menu-category" id="postres">
+                    <h2 class="menu-category-title">
+                        <i class="fas fa-cookie me-2"></i> Postres
+                    </h2>
+
+                    <div class="row">
+                        <!-- Item: Cheesecake -->
+                        <div class="col-md-6">
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="/api/placeholder/600/400" alt="Cheesecake">
+                                </div>
+                                <div class="menu-item-body">
+                                    <h3 class="menu-item-title">Cheesecake</h3>
+                                    <p class="menu-item-description">Tarta de queso con frutos rojos, cremosa y deliciosa.</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">$65.00</span>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn decrease-btn">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" min="0" value="0" class="quantity-input">
+                                            <button class="quantity-btn increase-btn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item: Tiramisú -->
+                        <div class="col-md-6">
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="/api/placeholder/600/400" alt="Tiramisú">
+                                </div>
+                                <div class="menu-item-body">
+                                    <h3 class="menu-item-title">Tiramisú</h3>
+                                    <p class="menu-item-description">Postre italiano con café y mascarpone, esponjoso y elegante.</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">$70.00</span>
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn decrease-btn">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input type="number" min="0" value="0" class="quantity-input">
+                                            <button class="quantity-btn increase-btn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen del pedido (columna derecha) -->
+            <div class="col-lg-4">
+                <div class="order-summary card">
+                    <div class="card-header">
+                        <i class="fas fa-shopping-cart me-2"></i> Tu Pedido
+                    </div>
+                    <div class="card-body">
+                        <div class="order-items">
+                            <!-- El pedido se cargará dinámicamente aquí -->
+                            <div class="order-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="order-item-title">2x Espresso</span>
+                                    <div>
+                                        <span class="order-item-price">$50.00</span>
+                                        <button class="btn btn-sm text-danger ms-2">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Sin modificaciones</small>
+                            </div>
+
+                            <div class="order-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="order-item-title">1x Capuccino</span>
+                                    <div>
+                                        <span class="order-item-price">$45.00</span>
+                                        <button class="btn btn-sm text-danger ms-2">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Descafeinado</small>
+                            </div>
+
+                            <div class="order-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="order-item-title">1x Cheesecake</span>
+                                    <div>
+                                        <span class="order-item-price">$65.00</span>
+                                        <button class="btn btn-sm text-danger ms-2">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Extra frutos rojos</small>
+                            </div>
+                        </div>
+
+                        <div class="order-total">
+                            <span>Total:</span>
+                            <span>$160.00</span>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-primary complete-order-btn">
+                                <i class="fas fa-check-circle me-2"></i> Completar Pedido
+                            </button>
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-edit me-2"></i> Editar Pedido
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <small class="text-muted">Tu pedido será enviado a la cocina inmediatamente</small>
+                        </div>
+                    </div>
+                </div>
+
+               
