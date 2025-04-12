@@ -88,6 +88,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\videos\font.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="source\css\GestionCarta.css" />
     <Content Include="source\css\GestionEmpleado.css" />
@@ -99,8 +102,12 @@
     <Content Include="source\css\style.css" />
     <Content Include="source\css\bootstrap.css" />
     <Content Include="source\css\bootstrap.min.css" />
-    <Content Include="source\img\font.mp4" />
+    <Content Include="source\css\chatbot.css" />
+    <Content Include="source\img\font.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="source\img\logo.png" />
+    <Content Include="source\js\chatbot.js" />
     <Content Include="source\js\login.js" />
     <Content Include="source\js\pedidos.js" />
     <Content Include="source\js\script.js" />
@@ -139,6 +146,8 @@
     <Content Include="Views\GestionInventario\Index.cshtml" />
     <Content Include="Views\Pedidos\Index.cshtml" />
     <Content Include="Views\Pedidos\PedidoUsuario.cshtml" />
+    <None Include="Properties\PublishProfiles\appbuenisimo - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\appbuenisimo - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -33,9 +33,9 @@
             z-index: -1; /* Envía el video detrás de todo el contenido */
         }
     </style>
-
+    
     <video autoplay loop muted playsinline class="background-video">
-        <source src="~/source/img/font.mp4" type="video/mp4">
+        <source src="@Url.Content("~/source/img/font.mp4")" type="video/mp4">
         Tu navegador no soporta videos.
     </video>
 
@@ -76,7 +76,7 @@
                             <label class="login__check-label" for="check">
                                 <input class="login__check-input" type="checkbox" id="check" />
                                 <i class="ri-check-line login__check-icon"></i>
-                                Remember me
+                                Remember meee
                             </label>
                         </div>
                     </div>

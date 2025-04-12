@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="~/source/css/GestionCarta.css">
+    <title>Administración de Carta - Café Aroma</title>
+</head>
+<body>
+    <div class="container-fluid py-2">
+        <!-- Header con logo de cafetería -->
+        <div class="coffee-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-mug-hot fa-lg me-2"></i>
+                    <div>
+                        <h1 class="mb-0">Café Aroma</h1>
+                        <p class="mb-0 small">Administración de Carta</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-light" id="refreshData">
+                        <i class="fas fa-sync-alt me-1"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Gestión de la carta -->
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-utensils me-2" style="color: var(--primary-color);"></i>Productos del Menú</span>
+                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                    <i class="fas fa-plus me-1"></i>Nuevo Producto
+                </button>
+            </div>
+            <div class="card-body">
+                <!-- Barra de búsqueda y filtros -->
+                <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                    <div class="search-bar" style="flex: 1; max-width: 300px;">
+                        <input type="text" class="form-control" id="searchProducts" placeholder="Buscar producto...">
+                        <span class="search-icon"><i class="fas fa-search"></i></span>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-sort me-1"></i>Ordenar
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Nombre (A-Z)</a></li>
+                                <li><a class="dropdown-item" href="#">Nombre (Z-A)</a></li>
+                                <li><a class="dropdown-item" href="#">Precio (Menor a Mayor)</a></li>
+                                <li><a class="dropdown-item" href="#">Precio (Mayor a Menor)</a></li>
+                                <li><a class="dropdown-item" href="#">Más vendidos</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-filter me-1"></i>Estado
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Todos</a></li>
+                                <li><a class="dropdown-item" href="#">Activos</a></li>
+                                <li><a class="dropdown-item" href="#">Inactivos</a></li>
+                                <li><a class="dropdown-item" href="#">Destacados</a></li>
+                                <li><a class="dropdown-item" href="#">Temporada</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtros por categoría -->
+                <div class="mb-3">
+                    <button class="category-filter-btn active">Todos</button>
+                    <button class="category-filter-btn">Cafés</button>
+                    <button class="category-filter-btn">Bebidas Frías</button>
+                    <button class="category-filter-btn">Postres</button>
+                    <button class="category-filter-btn">Sándwiches</button>
+                    <button class="category-filter-btn">Desayunos</button>
+                    <button class="category-filter-btn">Snacks</button>
+                </div>
+
+                <!-- Tabla de productos -->
+                <div class="table-responsive">
+                    <table class="table table-hover" id="productTable">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Producto 1 -->
+                            <tr class="menu-item">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/api/placeholder/70/70" alt="Espresso" class="menu-item-image me-2">
+                                        <div>
+                                            <div class="menu-item-name">Espresso</div>
+                                            <div class="menu-item-description">Café fuerte y concentrado, servido en taza pequeña.</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="menu-item-category">Cafés</span></td>
+                                <td><span class="menu-item-price">$2.50</span></td>
+                                <td><span class="menu-item-stock in-stock">En stock</span></td>
+                                <td><span class="badge badge-status status-active">Activo</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-light"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Producto 2 -->
+                            <tr class="menu-item">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/api/placeholder/70/70" alt="Café Latte" class="menu-item-image me-2">
+                                        <div>
+                                            <div class="menu-item-name">Café Latte</div>
+                                            <div class="menu-item-description">Espresso con leche al vapor y una capa de espuma suave.</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="menu-item-category">Cafés</span></td>
+                                <td><span class="menu-item-price">$3.75</span></td>
+                                <td><span class="menu-item-stock in-stock">En stock</span></td>
+                                <td><span class="badge badge-status status-featured">Destacado</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-light"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Producto 3 -->
+                            <tr class="menu-item">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/api/placeholder/70/70" alt="Croissant de Almendra" class="menu-item-image me-2">
+                                        <div>
+                                            <div class="menu-item-name">Croissant de Almendra</div>
+                                            <div class="menu-item-description">Delicioso croissant horneado con almendras y glaseado.</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="menu-item-category">Postres</span></td>
+                                <td><span class="menu-item-price">$4.25</span></td>
+                                <td><span class="menu-item-stock low-stock">Stock bajo (5)</span></td>
+                                <td><span class="badge badge-status status-active">Activo</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-light"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Producto 4 -->
+                            <tr class="menu-item">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/api/placeholder/70/70" alt="Frappuccino de Caramelo" class="menu-item-image me-2">
+                                        <div>
+                                            <div class="menu-item-name">Frappuccino de Caramelo</div>
+                                            <div class="menu-item-description">Bebida helada de café con caramelo y crema batida.</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="menu-item-category">Bebidas Frías</span></td>
+                                <td><span class="menu-item-price">$5.50</span></td>
+                                <td><span class="menu-item-stock in-stock">En stock</span></td>
+                                <td><span class="badge badge-status status-seasonal">Temporada</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-light"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Producto 5 -->
+                            <tr class="menu-item">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/api/placeholder/70/70" alt="Sándwich de Pavo" class="menu-item-image me-2">
+                                        <div>
+                                            <div class="menu-item-name">Sándwich de Pavo</div>
+                                            <div class="menu-item-description">Pan integral con pechuga de pavo, queso, lechuga y tomate.</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="menu-item-category">Sándwiches</span></td>
+                                <td><span class="menu-item-price">$6.75</span></td>
+                                <td><span class="menu-item-stock out-stock">Sin stock</span></td>
+                                <td><span class="badge badge-status status-inactive">Inactivo</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editProductModal"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-light"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Producto 6 -->
+                            <tr class="menu-item">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/api/placeholder/70/70" alt="Muffin de Arándanos" class="menu-item-image me-2">
+                                        <div>
+                                            <div class="menu-item-name">Muffin de Arándanos</div>
+                                            <div
+

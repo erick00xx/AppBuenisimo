@@ -1,0 +1,317 @@
+﻿
+:root {
+    --primary-color: #6b4226;
+    --primary-hover: #8c5935;
+    --secondary-color: #d9a566;
+    --tertiary-color: #f2e4d8;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --gray-color: #6c757d;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f6f3f0;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.coffee-header {
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 0.75rem;
+}
+
+    .coffee-header h1 {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+    }
+
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.card-body {
+    padding: 0.75rem;
+}
+
+.table-mesa {
+    height: 60px;
+    width: 60px;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+    .table-mesa.available {
+        background-color: var(--success-color);
+    }
+
+    .table-mesa.occupied {
+        background-color: var(--danger-color);
+    }
+
+    .table-mesa.selected {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+
+    .table-mesa:hover {
+        opacity: 0.9;
+    }
+
+.badge-timer {
+    position: absolute;
+    bottom: 3px;
+    font-size: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1px 4px;
+}
+
+.menu-category {
+    margin-bottom: 8px;
+}
+
+.menu-category-title {
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.menu-items-container {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    background-color: white;
+    transition: all 0.2s;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+    .menu-item:hover {
+        background-color: var(--tertiary-color);
+    }
+
+.menu-item-title {
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+.menu-item-price {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    float: right;
+}
+
+.menu-item-description {
+    font-size: 0.7rem;
+    color: var(--gray-color);
+    clear: both;
+}
+
+.current-order {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 8px;
+    background-color: white;
+    margin-bottom: 8px;
+}
+
+.current-order-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.85rem;
+}
+
+.order-item-details {
+    flex-grow: 1;
+}
+
+.order-item-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.order-item-notes {
+    font-size: 0.7rem;
+    color: var(--gray-color);
+}
+
+.order-item-actions {
+    display: flex;
+    align-items: center;
+}
+
+.order-total {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-top: 8px;
+    text-align: right;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+    .nav-tabs .nav-link {
+        color: var(--gray-color);
+        border: none;
+        border-bottom: 2px solid transparent;
+        font-weight: 500;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            background-color: transparent;
+        }
+
+.search-bar {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+    .search-bar input {
+        padding-right: 25px;
+        border-radius: 20px;
+        border: 1px solid #ced4da;
+        font-size: 0.85rem;
+        height: calc(1.5em + 0.5rem + 2px);
+        padding: 0.25rem 0.5rem;
+    }
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+    .btn-primary:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+    }
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+    .btn-outline-primary:hover {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.history-item {
+    padding: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+    .history-item:last-child {
+        border-bottom: none;
+    }
+
+.history-item-title {
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.history-item-details {
+    font-size: 0.75rem;
+    color: var(--gray-color);
+}
+
+.history-items-container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.table-responsive {
+    font-size: 0.85rem;
+}
+
+.table thead th {
+    font-weight: 600;
+    font-size: 0.8rem;
+    background-color: var(--light-color);
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 0.7rem;
+    padding: 0.25em 0.6em;
+}
+
+
