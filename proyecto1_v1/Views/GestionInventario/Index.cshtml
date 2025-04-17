@@ -1,378 +1,201 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administración de Inventario - Café Aroma</title>
-    <link rel="stylesheet" href="~/source/css/GestionInventario.css">
-    <link rel="stylesheet" href="~/source/css/GestionEmpleado.css">
-    <link rel="stylesheet" href="~/source/css/GestionCarta.css">
+    <title>Gestión de Inventario - Café Aroma</title>
+    <link rel="stylesheet" href="~/source/css/diseño.css">
 </head>
 <body>
     <div class="container-fluid py-2">
-        <!-- Header con logo de cafetería -->
-        <div class="coffee-header">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-mug-hot fa-lg me-2"></i>
+        <!-- Card principal de gestión de inventario -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0" style="font-size: 0.9rem;">
+                        <i class="fas fa-boxes me-2" style="color: #6F4E37;"></i>Gestión de Inventario
+                    </h5>
                     <div>
-                        <h1 class="mb-0">Café Aroma</h1>
-                        <p class="mb-0 small">Administración de Inventario</p>
+                        <button class="btn btn-sm btn-primary me-2" data-bs-toggle="modal" data-bs-target="#registerItemModal" style="font-size: 0.7rem;">
+                            <i class="fas fa-plus-circle me-1"></i> Registrar Insumos
+                        </button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#discardItemModal" style="font-size: 0.7rem;">
+                            <i class="fas fa-trash-alt me-1"></i> Registrar Descarte
+                        </button>
                     </div>
                 </div>
-                <div>
-                    <button class="btn btn-sm btn-light" id="refreshInventory">
-                        <i class="fas fa-sync-alt me-1"></i> Actualizar
-                    </button>
-                </div>
             </div>
-        </div>
-
-        <!-- Gestión del inventario -->
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <span><i class="fas fa-boxes me-2" style="color: var(--primary-color);"></i>Inventario de Productos</span>
-                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addItemModal">
-                    <i class="fas fa-plus me-1"></i>Nuevo Artículo
-                </button>
-            </div>
+            
             <div class="card-body">
-                <!-- Barra de búsqueda y filtros -->
-                <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-                    <div class="search-bar" style="flex: 1; max-width: 300px;">
-                        <input type="text" class="form-control" id="searchInventory" placeholder="Buscar artículo...">
-                        <span class="search-icon"><i class="fas fa-search"></i></span>
+                <!-- Búsqueda y filtros -->
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-12 mb-2">
+                        <div class="search-bar">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="form-control form-control-sm" id="searchInventory" placeholder="Buscar insumos...">
+                        </div>
                     </div>
-                    <div class="d-flex gap-2">
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-sort me-1"></i>Ordenar
+                    <div class="col-md-6 col-sm-12 d-flex justify-content-md-end">
+                        <div class="dropdown me-2">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="categoryFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
+                                <i class="fas fa-th-large me-1"></i> Categoría
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Nombre (A-Z)</a></li>
-                                <li><a class="dropdown-item" href="#">Nombre (Z-A)</a></li>
-                                <li><a class="dropdown-item" href="#">Cantidad (Menor a Mayor)</a></li>
-                                <li><a class="dropdown-item" href="#">Cantidad (Mayor a Menor)</a></li>
-                                <li><a class="dropdown-item" href="#">Próximos a vencer</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="categoryFilterDropdown">
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Todas</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Café</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Leche y Lácteos</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Edulcorantes</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Panadería</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Frutas</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Insumos</a></li>
                             </ul>
                         </div>
                         <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-filter me-1"></i>Nivel de Stock
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="statusFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
+                                <i class="fas fa-filter me-1"></i> Estado
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Todos</a></li>
-                                <li><a class="dropdown-item" href="#">Stock normal</a></li>
-                                <li><a class="dropdown-item" href="#">Stock bajo</a></li>
-                                <li><a class="dropdown-item" href="#">Sin stock</a></li>
-                                <li><a class="dropdown-item" href="#">Próximos a vencer</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="statusFilterDropdown">
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Todos</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Stock normal</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Stock bajo</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Sin stock</a></li>
+                                <li><a class="dropdown-item" href="#" style="font-size: 0.75rem;">Próximos a vencer</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <!-- Filtros por categoría -->
-                <div class="mb-3">
-                    <button class="category-filter-btn active">Todos</button>
-                    <button class="category-filter-btn">Café</button>
-                    <button class="category-filter-btn">Leche y Lácteos</button>
-                    <button class="category-filter-btn">Edulcorantes</button>
-                    <button class="category-filter-btn">Panadería</button>
-                    <button class="category-filter-btn">Frutas</button>
-                    <button class="category-filter-btn">Insumos</button>
-                </div>
-
+                
                 <!-- Tabla de inventario -->
                 <div class="table-responsive">
-                    <table class="table table-hover" id="inventoryTable">
+                    <table class="table table-hover align-middle">
                         <thead>
-                            <tr>
-                                <th>Artículo</th>
-                                <th>Categoría</th>
-                                <th>Stock Actual</th>
-                                <th>Stock Mínimo</th>
-                                <th>Fecha Vencimiento</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                            <tr style="background-color: #FAF5F0;">
+                                <th scope="col" width="40">#</th>
+                                <th scope="col">Artículo</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Stock Actual</th>
+
+                                <th scope="col" width="80">Estado</th>
+                                <th scope="col" width="100">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Artículo 1 -->
-                            <tr class="inventory-item">
+                            <tr>
+                                <th scope="row">1</th>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="/api/placeholder/70/70" alt="Granos de Café Premium" class="inventory-item-image me-2">
+                                        <img src="/api/placeholder/40/40" class="me-2" alt="Foto producto">
                                         <div>
-                                            <div class="inventory-item-name">Granos de Café Premium</div>
-                                            <div class="inventory-item-description">Café colombiano tostado medio, bolsa 1kg</div>
+                                            <p class="mb-0 fw-medium">Granos de Café Premium</p>
+                                            <small class="text-muted">Café colombiano tostado medio, bolsa 1kg</small>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="inventory-item-category">Café</span></td>
-                                <td><span class="inventory-item-stock">25 kg</span></td>
-                                <td><span class="inventory-item-min-stock">10 kg</span></td>
-                                <td><span class="inventory-item-expiry">15/08/2025</span></td>
-                                <td><span class="badge badge-status status-normal">Normal</span></td>
+                                <td><span class="badge" style="background-color: #C8A780 !important;">Café</span></td>
+                                <td>25 kg</td>
+                                
+                                <td><span class="badge bg-success">Normal</span></td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal"><i class="fas fa-plus-circle"></i></button>
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-history"></i></button>
+                                    <div class="d-flex gap-1">
+                                        <button type="button" class="btn btn-sm btn-info btn-action" title="Ver historial" data-bs-toggle="modal" data-bs-target="#historyModal">
+                                            <i class="fas fa-history"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-warning btn-action" title="Registrar consumo" data-bs-toggle="modal" data-bs-target="#consumeModal">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
-
+                            
                             <!-- Artículo 2 -->
-                            <tr class="inventory-item">
+                            <tr>
+                                <th scope="row">2</th>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="/api/placeholder/70/70" alt="Leche Entera" class="inventory-item-image me-2">
+                                        <img src="/api/placeholder/40/40" class="me-2" alt="Foto producto">
                                         <div>
-                                            <div class="inventory-item-name">Leche Entera</div>
-                                            <div class="inventory-item-description">Leche fresca, botella 1L</div>
+                                            <p class="mb-0 fw-medium">Leche Entera</p>
+                                            <small class="text-muted">Leche fresca, botella 1L</small>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="inventory-item-category">Leche y Lácteos</span></td>
-                                <td><span class="inventory-item-stock">12 L</span></td>
-                                <td><span class="inventory-item-min-stock">15 L</span></td>
-                                <td><span class="inventory-item-expiry">20/04/2025</span></td>
-                                <td><span class="badge badge-status status-low">Stock Bajo</span></td>
+                                <td><span class="badge" style="background-color: #A7C4BC !important;">Leche y Lácteos</span></td>
+                                <td>12 L</td>                               
+                                <td><span class="badge bg-warning text-dark">Stock Bajo</span></td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal"><i class="fas fa-plus-circle"></i></button>
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-history"></i></button>
-                                </td>
-                            </tr>
-
-                            <!-- Artículo 3 -->
-                            <tr class="inventory-item">
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="/api/placeholder/70/70" alt="Jarabe de Vainilla" class="inventory-item-image me-2">
-                                        <div>
-                                            <div class="inventory-item-name">Jarabe de Vainilla</div>
-                                            <div class="inventory-item-description">Jarabe para café, botella 750ml</div>
-                                        </div>
+                                    <div class="d-flex gap-1">
+                                        <button type="button" class="btn btn-sm btn-info btn-action" title="Ver historial" data-bs-toggle="modal" data-bs-target="#historyModal">
+                                            <i class="fas fa-history"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-warning btn-action" title="Registrar consumo" data-bs-toggle="modal" data-bs-target="#consumeModal">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </button>
                                     </div>
                                 </td>
-                                <td><span class="inventory-item-category">Edulcorantes</span></td>
-                                <td><span class="inventory-item-stock">5 botellas</span></td>
-                                <td><span class="inventory-item-min-stock">3 botellas</span></td>
-                                <td><span class="inventory-item-expiry">10/12/2025</span></td>
-                                <td><span class="badge badge-status status-normal">Normal</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal"><i class="fas fa-plus-circle"></i></button>
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-history"></i></button>
-                                </td>
                             </tr>
-
-                            <!-- Artículo 4 -->
-                            <tr class="inventory-item">
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="/api/placeholder/70/70" alt="Masa para Croissant" class="inventory-item-image me-2">
-                                        <div>
-                                            <div class="inventory-item-name">Masa para Croissant</div>
-                                            <div class="inventory-item-description">Masa congelada, paquete de 20 unidades</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="inventory-item-category">Panadería</span></td>
-                                <td><span class="inventory-item-stock">0 paquetes</span></td>
-                                <td><span class="inventory-item-min-stock">5 paquetes</span></td>
-                                <td><span class="inventory-item-expiry">N/A</span></td>
-                                <td><span class="badge badge-status status-out">Sin Stock</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal"><i class="fas fa-plus-circle"></i></button>
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-history"></i></button>
-                                </td>
-                            </tr>
-
-                            <!-- Artículo 5 -->
-                            <tr class="inventory-item">
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="/api/placeholder/70/70" alt="Arándanos" class="inventory-item-image me-2">
-                                        <div>
-                                            <div class="inventory-item-name">Arándanos</div>
-                                            <div class="inventory-item-description">Arándanos frescos, bandeja 500g</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="inventory-item-category">Frutas</span></td>
-                                <td><span class="inventory-item-stock">4 bandejas</span></td>
-                                <td><span class="inventory-item-min-stock">3 bandejas</span></td>
-                                <td><span class="inventory-item-expiry">14/04/2025</span></td>
-                                <td><span class="badge badge-status status-expiring">Por vencer</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal"><i class="fas fa-plus-circle"></i></button>
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-history"></i></button>
-                                </td>
-                            </tr>
-
-                            <!-- Artículo 6 -->
-                            <tr class="inventory-item">
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="/api/placeholder/70/70" alt="Vasos de Café 12oz" class="inventory-item-image me-2">
-                                        <div>
-                                            <div class="inventory-item-name">Vasos de Café 12oz</div>
-                                            <div class="inventory-item-description">Vasos desechables con tapa, caja de 500 unidades</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="inventory-item-category">Insumos</span></td>
-                                <td><span class="inventory-item-stock">3 cajas</span></td>
-                                <td><span class="inventory-item-min-stock">2 cajas</span></td>
-                                <td><span class="inventory-item-expiry">No aplica</span></td>
-                                <td><span class="badge badge-status status-normal">Normal</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#restockModal"><i class="fas fa-plus-circle"></i></button>
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-history"></i></button>
-                                </td>
-                            </tr>
+                            
+                            <!-- Resto de artículos omitidos para brevedad -->
                         </tbody>
                     </table>
                 </div>
-
+                
                 <!-- Paginación -->
-                <nav aria-label="Paginación de inventario">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Siguiente</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-        <!-- Resumen de inventario -->
-        <div class="row">
-            <!-- Tarjeta de estadísticas rápidas -->
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <i class="fas fa-chart-bar me-2" style="color: var(--primary-color);"></i>Estadísticas de Inventario
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-3">
-                            <div class="col-6 col-lg-3">
-                                <div class="stat-card">
-                                    <div class="stat-card-value">125</div>
-                                    <div class="stat-card-label">Total Artículos</div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <div class="stat-card text-warning">
-                                    <div class="stat-card-value">12</div>
-                                    <div class="stat-card-label">Stock Bajo</div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <div class="stat-card text-danger">
-                                    <div class="stat-card-value">5</div>
-                                    <div class="stat-card-label">Sin Stock</div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <div class="stat-card text-info">
-                                    <div class="stat-card-value">8</div>
-                                    <div class="stat-card-label">Por Vencer</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tarjeta de alertas -->
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <i class="fas fa-exclamation-triangle me-2" style="color: var(--warning-color);"></i>Alertas de Inventario
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="badge rounded-pill bg-danger me-2">Sin Stock</span>
-                                    Masa para Croissant
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary">Pedir</button>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="small text-muted">Mostrando 1-5 de 15 artículos</div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination-sm">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="badge rounded-pill bg-warning me-2">Stock Bajo</span>
-                                    Leche Entera
-                                </div>
-                                <button class="btn btn-sm btn-outline-primary">Pedir</button>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="badge rounded-pill bg-info me-2">Por Vencer</span>
-                                    Arándanos - 3 días restantes
-                                </div>
-                                <button class="btn btn-sm btn-outline-secondary">Revisar</button>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
                             </li>
                         </ul>
-                    </div>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modales -->
-    <!-- Modal Agregar Artículo -->
-    <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+    <!-- Modal Registrar Insumos (Simplificado) -->
+    <div class="modal fade" id="registerItemModal" tabindex="-1" aria-labelledby="registerItemModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addItemModalLabel">Agregar Nuevo Artículo</h5>
+                    <h5 class="modal-title" id="registerItemModalLabel">Registrar Insumos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addItemForm">
+                    <form id="registerItemForm">
+                        <div class="mb-3">
+                            <label for="selectItem" class="form-label">Seleccionar Insumo *</label>
+                            <select class="form-select" id="selectItem" required>
+                                <option value="">Seleccionar insumo</option>
+                                <option value="1">Granos de Café Premium - Café colombiano tostado medio</option>
+                                <option value="2">Leche Entera - Botella 1L</option>
+                                <option value="3">Azúcar Refinada - Paquete 5kg</option>
+                                <option value="4">Croissants - Paquete 10u</option>
+                                <option value="5">Vasos Desechables - 8oz, paquete 100u</option>
+                                <option value="6">Leche Descremada - Botella 1L</option>
+                                <option value="7">Chocolate en Polvo - Paquete 1kg</option>
+                                <option value="8">Té Negro - Caja 100 bolsitas</option>
+                                <option value="9">Servilletas - Paquete 500u</option>
+                                <option value="10">Canela en Polvo - Frasco 100g</option>
+                            </select>
+                        </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="itemName" class="form-label">Nombre del Artículo *</label>
-                                    <input type="text" class="form-control" id="itemName" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="itemCategory" class="form-label">Categoría *</label>
-                                    <select class="form-select" id="itemCategory" required>
-                                        <option value="">Seleccionar categoría</option>
-                                        <option value="cafe">Café</option>
-                                        <option value="leche">Leche y Lácteos</option>
-                                        <option value="edulcorantes">Edulcorantes</option>
-                                        <option value="panaderia">Panadería</option>
-                                        <option value="frutas">Frutas</option>
-                                        <option value="insumos">Insumos</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="itemDescription" class="form-label">Descripción</label>
-                                    <textarea class="form-control" id="itemDescription" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="itemStock" class="form-label">Cantidad Inicial *</label>
-                                    <input type="number" class="form-control" id="itemStock" required>
+                                    <label for="itemStock" class="form-label">Cantidad a Ingresar *</label>
+                                    <input type="number" class="form-control" id="itemStock" required min="0" step="0.01">
                                 </div>
                                 <div class="mb-3">
                                     <label for="itemUnit" class="form-label">Unidad de Medida *</label>
@@ -387,136 +210,105 @@
                                         <option value="cajas">Cajas</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="itemMinStock" class="form-label">Stock Mínimo *</label>
-                                    <input type="number" class="form-control" id="itemMinStock" required>
+                                    <label for="itemSupplier" class="form-label">Proveedor</label>
+                                    <select class="form-select" id="itemSupplier">
+                                        <option value="">Seleccionar proveedor</option>
+                                        <option value="1">Distribuidora de Café El Barista</option>
+                                        <option value="2">Lácteos La Vaquita</option>
+                                        <option value="3">Dulces Sabores S.A.</option>
+                                        <option value="4">Panadería Industrial Los Hornos</option>
+                                        <option value="5">Frutas Frescas del Campo</option>
+                                        <option value="6">Insumos Cafeteros Pro</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="itemExpiry" class="form-label">Fecha de Vencimiento</label>
-                                    <input type="date" class="form-control" id="itemExpiry">
+                                    <label for="itemPrice" class="form-label">Precio de Compra</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="itemPrice" step="0.01" min="0">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="itemImage" class="form-label">Imagen del Artículo</label>
-                            <input type="file" class="form-control" id="itemImage">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="itemSupplier" class="form-label">Proveedor</label>
-                                <select class="form-select" id="itemSupplier">
-                                    <option value="">Seleccionar proveedor</option>
-                                    <option value="1">Distribuidora de Café El Barista</option>
-                                    <option value="2">Lácteos La Vaquita</option>
-                                    <option value="3">Dulces Sabores S.A.</option>
-                                    <option value="4">Panadería Industrial Los Hornos</option>
-                                    <option value="5">Frutas Frescas del Campo</option>
-                                    <option value="6">Insumos Cafeteros Pro</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="itemPrice" class="form-label">Precio de Compra</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" id="itemPrice" step="0.01">
-                                </div>
-                            </div>
+                            <label for="registerNotes" class="form-label">Notas adicionales</label>
+                            <textarea class="form-control" id="registerNotes" rows="2"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar Artículo</button>
+                    <button type="button" class="btn btn-primary">Registrar Insumo</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Editar Artículo -->
-    <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <!-- Modal Registrar Descarte -->
+    <div class="modal fade" id="discardItemModal" tabindex="-1" aria-labelledby="discardItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editItemModalLabel">Editar Artículo: Granos de Café Premium</h5>
+                    <h5 class="modal-title" id="discardItemModalLabel">Registrar Descarte de Insumos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Formulario similar al de agregar pero con datos prellenados -->
-                    <form id="editItemForm">
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="editItemName" class="form-label">Nombre del Artículo *</label>
-                                    <input type="text" class="form-control" id="editItemName" value="Granos de Café Premium" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editItemCategory" class="form-label">Categoría *</label>
-                                    <select class="form-select" id="editItemCategory" required>
-                                        <option value="">Seleccionar categoría</option>
-                                        <option value="cafe" selected>Café</option>
-                                        <option value="leche">Leche y Lácteos</option>
-                                        <option value="edulcorantes">Edulcorantes</option>
-                                        <option value="panaderia">Panadería</option>
-                                        <option value="frutas">Frutas</option>
-                                        <option value="insumos">Insumos</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editItemDescription" class="form-label">Descripción</label>
-                                    <textarea class="form-control" id="editItemDescription" rows="3">Café colombiano tostado medio, bolsa 1kg</textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="editItemStock" class="form-label">Stock Actual *</label>
-                                    <input type="number" class="form-control" id="editItemStock" value="25" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editItemUnit" class="form-label">Unidad de Medida *</label>
-                                    <select class="form-select" id="editItemUnit" required>
-                                        <option value="">Seleccionar unidad</option>
-                                        <option value="kg" selected>Kilogramos (kg)</option>
-                                        <option value="g">Gramos (g)</option>
-                                        <option value="l">Litros (L)</option>
-                                        <option value="ml">Mililitros (ml)</option>
-                                        <option value="unidades">Unidades</option>
-                                        <option value="paquetes">Paquetes</option>
-                                        <option value="cajas">Cajas</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editItemMinStock" class="form-label">Stock Mínimo *</label>
-                                    <input type="number" class="form-control" id="editItemMinStock" value="10" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editItemExpiry" class="form-label">Fecha de Vencimiento</label>
-                                    <input type="date" class="form-control" id="editItemExpiry" value="2025-08-15">
-                                </div>
-                            </div>
+                    <form id="discardItemForm">
+                        <div class="mb-3">
+                            <label for="discardItem" class="form-label">Artículo *</label>
+                            <select class="form-select" id="discardItem" required>
+                                <option value="">Seleccionar artículo</option>
+                                <option value="1">Granos de Café Premium</option>
+                                <option value="2">Leche Entera</option>
+                                <option value="3">Azúcar Refinada</option>
+                                <option value="4">Croissants</option>
+                                <option value="5">Vasos Desechables</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="editItemImage" class="form-label">Imagen del Artículo</label>
-                            <input type="file" class="form-control" id="editItemImage">
-                            <div class="mt-2">
-                                <img src="/api/placeholder/100/100" alt="Vista previa" class="img-thumbnail">
+                            <label for="discardQuantity" class="form-label">Cantidad a descartar *</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="discardQuantity" min="0.01" step="0.01" required>
+                                <span class="input-group-text" id="discardUnit">unidad</span>
                             </div>
+                            <div class="form-text">Stock actual: <span id="currentStock">-</span></div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="editItemSupplier" class="form-label">Proveedor</label>
-                                <select class="form-select" id="editItemSupplier">
-                                    <option value="">Seleccionar proveedor</option>
-                                    <option value="1" selected>Distribuidora de Café El Barista</option>
-                                    <option value="2">Lácteos La Vaquita</option>
-                                    <option value="3">Dulces Sabores S.A.</option>
-                                    <option value="4">Panadería Industrial Los Hornos</option>
-                                    <option value="5">Frutas Frescas del Campo</option>
-                                    <option value="6">Insumos Cafeteros Pro</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="editItemPrice" class="form-label">Precio de Compra
+                        <div class="mb-3">
+                            <label for="discardReason" class="form-label">Motivo del descarte *</label>
+                            <select class="form-select" id="discardReason" required>
+                                <option value="">Seleccionar motivo</option>
+                                <option value="vencido">Producto vencido</option>
+                                <option value="dañado">Producto dañado</option>
+                                <option value="calidad">Problemas de calidad</option>
+                                <option value="contaminado">Producto contaminado</option>
+                                <option value="otro">Otro motivo</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="discardNotes" class="form-label">Descripción detallada</label>
+                            <textarea class="form-control" id="discardNotes" rows="3" placeholder="Describa el motivo del descarte..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="discardPhoto" class="form-label">Foto (opcional)</label>
+                            <input type="file" class="form-control" id="discardPhoto">
+                            <div class="form-text">Se recomienda adjuntar foto en caso de productos dañados o contaminados.</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Registrar Descarte</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                    <script>
 
-                                    </script>
+    <!-- Scripts al final del body -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+</body>
+</html>

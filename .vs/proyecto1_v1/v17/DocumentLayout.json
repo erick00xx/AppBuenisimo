@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|c:\\users\\locals\\desktop\\sistemawebeficienciaoperativa\\proyecto1_v1\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|solutionrelative:proyecto1_v1\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|c:\\users\\locals\\desktop\\sistemawebeficienciaoperativa\\proyecto1_v1\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|solutionrelative:proyecto1_v1\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|c:\\users\\locals\\desktop\\sistemawebeficienciaoperativa\\proyecto1_v1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|solutionrelative:proyecto1_v1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|c:\\users\\locals\\desktop\\sistemawebeficienciaoperativa\\proyecto1_v1\\controllers\\gestioninventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|solutionrelative:proyecto1_v1\\controllers\\gestioninventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|c:\\users\\locals\\desktop\\sistemawebeficienciaoperativa\\proyecto1_v1\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|solutionrelative:proyecto1_v1\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|c:\\users\\locals\\desktop\\sistemawebeficienciaoperativa\\proyecto1_v1\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FF12871E-1EA1-4491-A1A2-974954AEC1C1}|proyecto1_v1\\proyecto1_v1.csproj|solutionrelative:proyecto1_v1\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PedidosController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\PedidosController.cs",
-              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\PedidosController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\PedidosController.cs",
-              "RelativeToolTip": "proyecto1_v1\\Controllers\\PedidosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Title": "ReportesController.cs",
+              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\ReportesController.cs",
+              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\ReportesController.cs",
+              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\ReportesController.cs",
+              "RelativeToolTip": "proyecto1_v1\\Controllers\\ReportesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T13:14:54.916Z",
+              "WhenOpened": "2025-04-16T19:25:21.221Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GestionInventarioController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\GestionInventarioController.cs",
-              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\GestionInventarioController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\GestionInventarioController.cs",
-              "RelativeToolTip": "proyecto1_v1\\Controllers\\GestionInventarioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Title": "PedidosController.cs",
+              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\PedidosController.cs",
+              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\PedidosController.cs",
+              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\PedidosController.cs",
+              "RelativeToolTip": "proyecto1_v1\\Controllers\\PedidosController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T13:14:30.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AutenticacionController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\AutenticacionController.cs",
-              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\AutenticacionController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\AutenticacionController.cs",
-              "RelativeToolTip": "proyecto1_v1\\Controllers\\AutenticacionController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T13:13:39.366Z",
+              "WhenOpened": "2025-04-16T19:21:47.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GestionEmpleadosController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\GestionEmpleadosController.cs",
-              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\GestionEmpleadosController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\GestionEmpleadosController.cs",
-              "RelativeToolTip": "proyecto1_v1\\Controllers\\GestionEmpleadosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "proyecto1_v1\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T13:13:09.995Z",
+              "WhenOpened": "2025-04-16T19:21:16.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GestionInventarioController.cs",
+              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\GestionInventarioController.cs",
+              "RelativeDocumentMoniker": "proyecto1_v1\\Controllers\\GestionInventarioController.cs",
+              "ToolTip": "C:\\Users\\locals\\Desktop\\SistemaWebEficienciaOperativa\\proyecto1_v1\\Controllers\\GestionInventarioController.cs",
+              "RelativeToolTip": "proyecto1_v1\\Controllers\\GestionInventarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T19:19:00.396Z",
               "EditorCaption": ""
             }
           ]

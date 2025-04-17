@@ -13,6 +13,21 @@ namespace proyecto1_v1.Controllers
         {
             return View();
         }
-
+        public ActionResult AgregarEmpleado()
+        {
+            return View();
+        }
+        public ActionResult ListarEmpleado()
+        {
+            return View();
+        }
+        public ActionResult InhabilitarEmpleado()
+        {
+            return View();
+        }
+        public ActionResult EditarEmpleado()
+        {
+            return View();
+        }
     }
 }

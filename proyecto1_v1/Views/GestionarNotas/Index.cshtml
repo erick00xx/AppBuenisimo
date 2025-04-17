@@ -1,0 +1,764 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Notas - Café Aroma</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6f4e37;
+            --secondary-color: #deb887;
+            --accent-color: #8b4513;
+            --light-bg: #f8f5f0;
+            --dark-text: #332211;
+            --danger-color: #dc3545;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            padding-bottom: 20px;
+        }
+
+        .cafe-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .cafe-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .cafe-header p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        .notes-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .date-selector {
+            display: flex;
+            align-items: center;
+        }
+
+        .date-selector button {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .date-display {
+            font-weight: 600;
+            margin: 0 10px;
+        }
+
+        .note-list {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .note-card {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .note-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .note-meta {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        .note-content {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+        }
+
+        .note-actions button {
+            background: none;
+            border: none;
+            padding: 5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-edit {
+            color: var(--warning-color);
+        }
+
+        .btn-delete {
+            color: var(--danger-color);
+        }
+
+        .note-priority {
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .priority-high {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger-color);
+        }
+
+        .priority-medium {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #856404;
+        }
+
+        .priority-low {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+        }
+
+        .note-form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+        }
+
+        .form-section-title {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #723a0d;
+            border-color: #723a0d;
+        }
+
+        .btn-outline-primary {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .sidebar-menu {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-menu h3 {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            color: var(--dark-text);
+            text-decoration: none;
+            margin-bottom: 5px;
+            transition: all 0.2s;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        .menu-item.active {
+            background-color: rgba(111, 78, 55, 0.1);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .user-filter {
+            margin-bottom: 20px;
+        }
+
+        .category-badge {
+            background-color: var(--secondary-color);
+            color: var(--dark-text);
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+            font-weight: 600;
+        }
+
+        /* Estilos para el modo oscuro del modal de edición */
+        .modal-content {
+            border-radius: 10px;
+            border: none;
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #eee;
+        }
+
+        media (max-width: 767px) {
+            .notes-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .date-selector {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="cafe-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1>Café Aroma</h1>
+                    <p>Sistema de Gestión de Notas</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <span>JM</span>
+                        </div>
+                        <div>
+                            <div class="fw-bold">Juan Martínez</div>
+                            <small>Barista</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 mb-4">
+
+                <div class="note-form-container">
+                    <h3 class="form-section-title">
+                        <i class="fas fa-plus-circle me-2"></i>Nueva Nota
+                    </h3>
+
+                    <form id="noteForm">
+                        <input type="hidden" id="noteId" value="">
+                        <div class="mb-3">
+                            <label for="noteTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="noteTitle" placeholder="Título de la nota" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="noteContent" class="form-label">Contenido</label>
+                            <textarea class="form-control" id="noteContent" rows="4" placeholder="Escribe tu nota aquí..." required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="noteCategory" class="form-label">Categoría</label>
+                            <select class="form-select" id="noteCategory">
+                                <option value="general">General</option>
+                                <option value="pedidos">Pedidos</option>
+                                <option value="inventario">Inventario</option>
+                                <option value="personal">Personal</option>
+                                <option value="mantenimiento">Mantenimiento</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="notePriority" class="form-label">Prioridad</label>
+                            <select class="form-select" id="notePriority">
+                                <option value="low">Baja</option>
+                                <option value="medium">Media</option>
+                                <option value="high">Alta</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" id="saveNoteBtn">
+                                <i class="fas fa-save me-2"></i>Guardar Nota
+                            </button>
+                            <button type="button" class="btn btn-outline-primary d-none" id="cancelEditBtn">
+                                <i class="fas fa-times me-2"></i>Cancelar Edición
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="notes-container">
+                    <div class="notes-header">
+                        <div class="date-selector">
+                            <button id="prevDay">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <h2 class="date-display" id="currentDate">16 de Abril, 2025</h2>
+                            <button id="nextDay">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="filters">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" id="filterSelect">
+                                    <option value="all">Todas las categorías</option>
+                                    <option value="general">General</option>
+                                    <option value="pedidos">Pedidos</option>
+                                    <option value="inventario">Inventario</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="mantenimiento">Mantenimiento</option>
+                                </select>
+                                <button class="btn btn-outline-secondary btn-sm" type="button">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-filter mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="userFilter" id="filterAll" value="all" checked>
+                            <label class="form-check-label" for="filterAll">Todas</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="userFilter" id="filterMine" value="mine">
+                            <label class="form-check-label" for="filterMine">Mis notas</label>
+                        </div>
+                    </div>
+
+                    <div class="note-list" id="noteList">
+                        <!-- Nota 1 -->
+                        <div class="note-card" data-id="1" data-category="inventario" data-priority="high">
+                            <div class="note-header">
+                                <div>
+                                    <h3 class="note-title">Inventario de café bajo</h3>
+                                    <div class="note-meta">
+                                        <span class="note-author">Juan Martínez</span> •
+                                        <span class="note-time">10:30 AM</span> •
+                                        <span class="category-badge">Inventario</span>
+                                        <span class="note-priority priority-high">Alta</span>
+                                    </div>
+                                </div>
+                                <div class="note-actions">
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="note-content">
+                                Hemos gastado casi todo el inventario de café tipo Arábica. Será necesario hacer un pedido hoy mismo para evitar quedarnos sin producto durante el fin de semana.
+                            </div>
+                        </div>
+
+                        <!-- Nota 2 -->
+                        <div class="note-card" data-id="2" data-category="pedidos" data-priority="medium">
+                            <div class="note-header">
+                                <div>
+                                    <h3 class="note-title">Pedido especial para evento</h3>
+                                    <div class="note-meta">
+                                        <span class="note-author">María López</span> •
+                                        <span class="note-time">09:15 AM</span> •
+                                        <span class="category-badge">Pedidos</span>
+                                        <span class="note-priority priority-medium">Media</span>
+                                    </div>
+                                </div>
+                                <div class="note-actions">
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="note-content">
+                                El cliente Empresa XYZ hizo un pedido para su evento del próximo viernes: 50 cappuccinos y 30 lattes. También solicitaron 4 bandejas de pasteles variados.
+                            </div>
+                        </div>
+
+                        <!-- Nota 3 -->
+                        <div class="note-card" data-id="3" data-category="mantenimiento" data-priority="low">
+                            <div class="note-header">
+                                <div>
+                                    <h3 class="note-title">Mantenimiento de la máquina espresso</h3>
+                                    <div class="note-meta">
+                                        <span class="note-author">Pedro Sánchez</span> •
+                                        <span class="note-time">08:45 AM</span> •
+                                        <span class="category-badge">Mantenimiento</span>
+                                        <span class="note-priority priority-low">Baja</span>
+                                    </div>
+                                </div>
+                                <div class="note-actions">
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="note-content">
+                                La máquina espresso principal necesitará mantenimiento próximamente. Está funcionando bien pero se ha detectado una pequeña fuga. Hay que programar el servicio técnico para la próxima semana.
+                            </div>
+                        </div>
+
+                        <!-- Nota 4 -->
+                        <div class="note-card" data-id="4" data-category="general" data-priority="medium">
+                            <div class="note-header">
+                                <div>
+                                    <h3 class="note-title">Recordatorio reunión de equipo</h3>
+                                    <div class="note-meta">
+                                        <span class="note-author">Ana Gómez</span> •
+                                        <span class="note-time">07:30 AM</span> •
+                                        <span class="category-badge">General</span>
+                                        <span class="note-priority priority-medium">Media</span>
+                                    </div>
+                                </div>
+                                <div class="note-actions">
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="note-content">
+                                Recordatorio: Mañana a las 9:00 AM tenemos reunión de equipo para discutir los nuevos productos que se incorporarán al menú. Se requiere asistencia de todo el personal.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación de eliminación -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmModalLabel">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar esta nota? Esta acción no se puede deshacer.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables globales
+            let currentNoteId = null;
+            let deleteNoteId = null;
+            const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+
+            // Referencias a elementos del DOM
+            const noteForm = document.getElementById('noteForm');
+            const noteIdInput = document.getElementById('noteId');
+            const noteTitleInput = document.getElementById('noteTitle');
+            const noteContentInput = document.getElementById('noteContent');
+            const noteCategorySelect = document.getElementById('noteCategory');
+            const notePrioritySelect = document.getElementById('notePriority');
+            const saveNoteBtn = document.getElementById('saveNoteBtn');
+            const cancelEditBtn = document.getElementById('cancelEditBtn');
+            const noteList = document.getElementById('noteList');
+            const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+            const filterSelect = document.getElementById('filterSelect');
+            const userFilterRadios = document.querySelectorAll('input[name="userFilter"]');
+            const prevDayBtn = document.getElementById('prevDay');
+            const nextDayBtn = document.getElementById('nextDay');
+            const currentDateDisplay = document.getElementById('currentDate');
+
+            // Fecha actual
+            let currentDate = new Date();
+            updateDateDisplay();
+
+            // Funciones de navegación de fecha
+            prevDayBtn.addEventListener('click', function() {
+                currentDate.setDate(currentDate.getDate() - 1);
+                updateDateDisplay();
+                // Aquí se cargarían las notas para la nueva fecha
+            });
+
+            nextDayBtn.addEventListener('click', function() {
+                currentDate.setDate(currentDate.getDate() + 1);
+                updateDateDisplay();
+                // Aquí se cargarían las notas para la nueva fecha
+            });
+
+            function updateDateDisplay() {
+                const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                currentDateDisplay.textContent = currentDate.toLocaleDateString('es-ES', options);
+            }
+
+            // Listener para el formulario de notas
+            noteForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const title = noteTitleInput.value.trim();
+                const content = noteContentInput.value.trim();
+                const category = noteCategorySelect.value;
+                const priority = notePrioritySelect.value;
+
+                if (title === '' || content === '') {
+                    alert('Por favor completa todos los campos requeridos.');
+                    return;
+                }
+
+                if (currentNoteId) {
+                    // Actualizar nota existente
+                    updateNote(currentNoteId, title, content, category, priority);
+                } else {
+                    // Crear nueva nota
+                    createNote(title, content, category, priority);
+                }
+
+                // Resetear formulario
+                resetForm();
+            });
+
+            // Cancelar edición
+            cancelEditBtn.addEventListener('click', function() {
+                resetForm();
+            });
+
+            // Filtro de categorías
+            filterSelect.addEventListener('change', function() {
+                filterNotes();
+            });
+
+            // Filtro de usuario
+            userFilterRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    filterNotes();
+                });
+            });
+
+            // Confirmar eliminación de nota
+            confirmDeleteBtn.addEventListener('click', function() {
+                if (deleteNoteId) {
+                    deleteNote(deleteNoteId);
+                    deleteModal.hide();
+                }
+            });
+
+            // Event delegation para botones de editar y eliminar
+            noteList.addEventListener('click', function(e) {
+                const target = e.target.closest('button');
+                if (!target) return;
+
+                const noteCard = target.closest('.note-card');
+                const noteId = noteCard.dataset.id;
+
+                if (target.classList.contains('btn-edit')) {
+                    editNote(noteId);
+                } else if (target.classList.contains('btn-delete')) {
+                    deleteNoteId = noteId;
+                    deleteModal.show();
+                }
+            });
+
+            // Función para crear una nueva nota
+            function createNote(title, content, category, priority) {
+                // En un entorno real, esto haría una petición al servidor
+
+                // ID provisional para demo (en una app real, esto vendría del servidor)
+                const noteId = Date.now().toString();
+
+                // Crear elementos DOM para la nueva nota
+                const noteCard = document.createElement('div');
+                noteCard.className = 'note-card';
+                noteCard.dataset.id = noteId;
+                noteCard.dataset.category = category;
+                noteCard.dataset.priority = priority;
+
+                // Obtener texto de categoría y prioridad para mostrar
+                const categoryText = noteCategorySelect.options[noteCategorySelect.selectedIndex].text;
+                const priorityText = notePrioritySelect.options[notePrioritySelect.selectedIndex].text;
+                const priorityClass = `priority-${priority}`;
+
+                // Formatear hora actual
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('es-ES', {hour: '2-digit', minute: '2-digit'});
+
+                noteCard.innerHTML = `
+                    <div class="note-header">
+                        <div>
+                            <h3 class="note-title">${title}</h3>
+                            <div class="note-meta">
+                                <span class="note-author">Juan Martínez</span> •
+                                <span class="note-time">${timeString}</span> •
+                                <span class="category-badge">${categoryText}</span>
+                                <span class="note-priority ${priorityClass}">${priorityText}</span>
+                            </div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="note-content">${content}</div>
+                `;
+
+                // Añadir la nueva nota al principio de la lista
+                noteList.insertBefore(noteCard, noteList.firstChild);
+
+                // Mostrar mensaje de éxito
+                alert('Nota creada correctamente.');
+            }
+
+            // Función para actualizar una nota existente
+            function updateNote(id, title, content, category, priority) {
+                // En un entorno real, esto haría una petición al servidor
+
+                // Encontrar la nota a actualizar
+                const noteCard = document.querySelector(`.note-card[data-id="${id}"]`);
+                if (!noteCard) return;
+
+                // Actualizar atributos de datos
+                noteCard.dataset.category = category;
+                noteCard.dataset.priority = priority;
+
+                // Obtener texto de categoría y prioridad para mostrar
+                const categoryText = noteCategorySelect.options[noteCategorySelect.selectedIndex].text;
+                const priorityText = notePrioritySelect.options[notePrioritySelect.selectedIndex].text;
+                const priorityClass = `priority-${priority}`;
+
+                // Actualizar contenido de la nota
+                const titleElement = noteCard.querySelector('.note-title');
+                const contentElement = noteCard.querySelector('.note-content');
+                const categoryElement = noteCard.querySelector('.category-badge');
+                const priorityElement = noteCard.querySelector('.note-priority');
+
+                titleElement.textContent = title;
+                contentElement.textContent = content;
+                categoryElement.textContent = categoryText;
+                priorityElement.textContent = priorityText;
+                priorityElement.className = `note-priority ${priorityClass}`;
+
+                // Mostrar mensaje de éxito
+                alert('Nota actualizada correctamente.');
+            }
+
+            // Función para eliminar una nota
+            function deleteNote(id) {
+                // En un entorno real, esto haría una petición al servidor
+
+                // Encontrar y eliminar la nota del DOM
+                const noteCard = document.querySelector(`.note-card[data-id="${id}"]`);
+                if (noteCard) {
+                    noteCard.remove();
+                    alert('Nota eliminada correctamente.');
+                }
+            }
+
+            // Función para cargar datos de una nota al formulario para edición
+            function editNote(id) {
+                const noteCard = document.querySelector(`.note-card[data-id="${id}"]`);
+                if (!noteCard) return;
+
+                // Extraer datos de la nota
+                const title = noteCard.querySelector('.note-title').textContent;
+                const content = noteCard.querySelector('.note-content').textContent.trim();
+                const category = noteCard.dataset.category;
+                const priority = noteCard.dataset.priority;
+
+                // Cargar datos en el formulario
+                noteIdInput.value = id;
+                noteTitleInput.value = title;
+                noteContentInput.value = content;
+                noteCategorySelect.value = category;
+                notePrioritySelect.value = priority;
+
+                // Actualizar estado del formulario
+                currentNoteI
+

@@ -37,14 +37,18 @@ body {
 }
 
 #sidebar {
-    width: 70px;
-    min-width: 70px;
-    z-index: 1000;
+    width: 0;
+    min-width: 0;
+    z-index: 1100;
     transition: all .25s ease-in-out;
-    /*background-color: #0e2238;*/
-    background: radial-gradient(circle at 20% 0%, #110f10, #120e10, #140d0f, #150c0d, #160b0b, #180a08, #180905, #190801); /* made at https://learnui.design/tools/gradient-generator.html */
+    background: radial-gradient(circle at 20% 0%, #110f10, #120e10, #140d0f, #150c0d, #160b0b, #180a08, #180905, #190801);
     display: flex;
     flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    overflow: hidden;
 }
 
     #sidebar.expand {
@@ -140,4 +144,51 @@ a.sidebar-link:hover {
 #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
     transform: rotate(45deg);
     transition: all .2s ease-out;
+}
+
+/* Hamburger button styles */
+.hamburger-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1200;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 0.5rem;
+    transition: all 0.25s ease;
+}
+
+    .hamburger-btn i {
+        font-size: 1.5rem;
+        color: #000;
+    }
+
+    .hamburger-btn:hover {
+        transform: scale(1.1);
+    }
+
+/* Overlay background */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    display: none;
+    transition: all 0.25s ease-in-out;
+}
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    #sidebar.expand {
+        width: 80%;
+        min-width: 80%;
+    }
 }

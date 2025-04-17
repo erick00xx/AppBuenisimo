@@ -13,5 +13,21 @@ namespace proyecto1_v1.Controllers
         {
             return View();
         }
+        public ActionResult RegistrarInsumos()
+        {
+            return View();
+        }
+        public ActionResult RegistrarDescarte()
+        {
+            return View();
+        }
+        public ActionResult ListarInventario()
+        {
+            return View();
+        }
+        public ActionResult FiltrarInventario()
+        {
+            return View();
+        }
     }
 }

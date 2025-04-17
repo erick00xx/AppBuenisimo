@@ -108,134 +108,7 @@
             </div>
         </div>
 
-        <!-- Gráficos de estadísticas -->
-        <div class="row mb-3">
-            <!-- Gráfico de ventas diarias -->
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-chart-line me-2" style="color: var(--primary-color);"></i>Ventas Diarias</span>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
-                                <i class="fas fa-calendar me-1"></i>Esta semana
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" style="font-size: 0.75rem;">
-                                <li><a class="dropdown-item" href="#">Hoy</a></li>
-                                <li><a class="dropdown-item" href="#">Esta semana</a></li>
-                                <li><a class="dropdown-item" href="#">Este mes</a></li>
-                                <li><a class="dropdown-item" href="#">Último trimestre</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="ventasDiariasChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gráfico de ventas por categoría -->
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-chart-pie me-2" style="color: var(--primary-color);"></i>Ventas por Categoría</span>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
-                                <i class="fas fa-filter me-1"></i>Este mes
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2" style="font-size: 0.75rem;">
-                                <li><a class="dropdown-item" href="#">Hoy</a></li>
-                                <li><a class="dropdown-item" href="#">Esta semana</a></li>
-                                <li><a class="dropdown-item" href="#">Este mes</a></li>
-                                <li><a class="dropdown-item" href="#">Último trimestre</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="categoriaChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gráficos de segunda línea -->
-        <div class="row mb-3">
-            <!-- Gráfico de métodos de pago -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-credit-card me-2" style="color: var(--primary-color);"></i>Métodos de Pago</span>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
-                                <i class="fas fa-filter me-1"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton3" style="font-size: 0.75rem;">
-                                <li><a class="dropdown-item" href="#">Hoy</a></li>
-                                <li><a class="dropdown-item" href="#">Esta semana</a></li>
-                                <li><a class="dropdown-item" href="#">Este mes</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="pagosChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gráfico de horas pico -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-clock me-2" style="color: var(--primary-color);"></i>Horas Pico</span>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
-                                <i class="fas fa-filter me-1"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton4" style="font-size: 0.75rem;">
-                                <li><a class="dropdown-item" href="#">Hoy</a></li>
-                                <li><a class="dropdown-item" href="#">Esta semana</a></li>
-                                <li><a class="dropdown-item" href="#">Fin de semana</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="horasPicoChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gráfico comparativa con períodos anteriores -->
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-calendar-week me-2" style="color: var(--primary-color);"></i>Comparativa</span>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
-                                <i class="fas fa-filter me-1"></i>Mes actual vs anterior
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton5" style="font-size: 0.75rem;">
-                                <li><a class="dropdown-item" href="#">Día anterior</a></li>
-                                <li><a class="dropdown-item" href="#">Semana anterior</a></li>
-                                <li><a class="dropdown-item" href="#">Mes anterior</a></li>
-                                <li><a class="dropdown-item" href="#">Año anterior</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="comparativaChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Tabla de reporte de ventas -->
         <div class="card mb-3">
@@ -244,9 +117,6 @@
                 <div>
                     <button class="btn btn-sm btn-primary btn-download" id="btnDescargarPDF">
                         <i class="fas fa-file-pdf"></i><span class="d-none d-sm-inline">Exportar PDF</span>
-                    </button>
-                    <button class="btn btn-sm btn-success btn-download ms-1" id="btnDescargarExcel">
-                        <i class="fas fa-file-excel"></i><span class="d-none d-sm-inline">Exportar Excel</span>
                     </button>
                 </div>
             </div>
@@ -377,3 +247,4 @@
                             </tr>
                             </div>
 </body>
+</html>

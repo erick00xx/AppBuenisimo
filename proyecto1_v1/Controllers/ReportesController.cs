@@ -28,5 +28,9 @@ namespace proyecto1_v1.Controllers
         {
             return View();
         }
+        public ActionResult ImprimirReporte()
+        {
+            return View();
+        }
     }
 }

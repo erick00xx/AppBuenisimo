@@ -103,56 +103,7 @@
             </div>
         </div>
 
-        <!-- Gráficos de estadísticas -->
-        <div class="row mb-3">
-            <!-- Gráfico de asistencia semanal -->
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-chart-line me-2" style="color: var(--primary-color);"></i>Asistencia Semanal</span>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
-                                <i class="fas fa-filter me-1"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" style="font-size: 0.75rem;">
-                                <li><a class="dropdown-item" href="#">Última semana</a></li>
-                                <li><a class="dropdown-item" href="#">Últimas dos semanas</a></li>
-                                <li><a class="dropdown-item" href="#">Último mes</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="asistenciaChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gráfico de rendimiento -->
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-chart-pie me-2" style="color: var(--primary-color);"></i>Estadísticas por Posición</span>
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.7rem;">
-                                <i class="fas fa-filter me-1"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2" style="font-size: 0.75rem;">
-                                <li><a class="dropdown-item" href="#">Asistencia</a></li>
-                                <li><a class="dropdown-item" href="#">Tardanzas</a></li>
-                                <li><a class="dropdown-item" href="#">Horas extras</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="posicionesChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
 
         <!-- Tabla de asistencia y horarios -->
         <div class="card mb-3">
@@ -161,9 +112,6 @@
                 <div>
                     <button class="btn btn-sm btn-primary btn-download" id="btnDescargarPDF">
                         <i class="fas fa-file-pdf"></i><span class="d-none d-sm-inline">Exportar PDF</span>
-                    </button>
-                    <button class="btn btn-sm btn-success btn-download ms-1" id="btnDescargarExcel">
-                        <i class="fas fa-file-excel"></i><span class="d-none d-sm-inline">Exportar Excel</span>
                     </button>
                 </div>
             </div>
@@ -203,7 +151,7 @@
                                 <th>Tardanza</th>
                                 <th>Ausencias</th>
                                 <th>Observaciones</th>
-                                <th>Acciones</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -224,10 +172,7 @@
                                 <td>0 min</td>
                                 <td>0</td>
                                 <td>-</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-light" title="Historial"><i class="fas fa-history"></i></button>
-                                </td>
+
                             </tr>
                             <tr class="employee-row">
                                 <td>
@@ -246,10 +191,7 @@
                                 <td>0 min</td>
                                 <td>0</td>
                                 <td>Horas extras: 1h 30m</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-light" title="Historial"><i class="fas fa-history"></i></button>
-                                </td>
+
                             </tr>
                             <tr class="employee-row">
                                 <td>
@@ -268,10 +210,7 @@
                                 <td>20 min</td>
                                 <td>0</td>
                                 <td>Tráfico reportado</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-light" title="Historial"><i class="fas fa-history"></i></button>
-                                </td>
+
                             </tr>
                             <tr class="employee-row">
                                 <td>
@@ -290,10 +229,7 @@
                                 <td>-</td>
                                 <td>1</td>
                                 <td>Enfermedad reportada</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-light" title="Historial"><i class="fas fa-history"></i></button>
-                                </td>
+
                             </tr>
                             <tr class="employee-row">
                                 <td>
@@ -312,10 +248,7 @@
                                 <td>5 min</td>
                                 <td>0</td>
                                 <td>-</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-light" title="Historial"><i class="fas fa-history"></i></button>
-                                </td>
+
                             </tr>
                             <tr class="employee-row">
                                 <td>
@@ -334,6 +267,5 @@
                                 <td>0 min</td>
                                 <td>0</td>
                                 <td>-</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-light" title="Historial"><i class="fas fa-history"></i
+                           </body>
+</html>
