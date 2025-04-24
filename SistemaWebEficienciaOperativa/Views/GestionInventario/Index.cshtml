@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "Compras y Desechos";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap CSS local -->
+    <link href="~/source/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons (usando CDN como alternativa) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <!-- Estilos personalizados mínimos -->
+    <style>
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-received {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #664d03;
+        }
+
+        .table-actions a {
+            margin: 0 5px;
+            font-size: 1.1rem;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <!-- Header con botones -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3 mb-0">@ViewBag.Title</h1>
+            <div class="btn-container">
+                <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#registrarCompraModal">
+                    <i class="bi bi-cart-plus me-2"></i>REGISTRAR COMPRA
+                </button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registrarDesechoModal">
+                    <i class="bi bi-trash me-2"></i>DESECHOS
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Registrar Compra -->
+        <div class="modal fade" id="registrarCompraModal" tabindex="-1" aria-labelledby="registrarCompraModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrarCompraModalLabel"><i class="bi bi-cart-plus me-2"></i>Registrar Nueva Compra</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formCompra">
+                            <div class="mb-3">
+                                <label for="nombreProductoCompra" class="form-label">Nombre del producto</label>
+                                <input type="text" class="form-control" id="nombreProductoCompra" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="detalleCompra" class="form-label">Detalle/Motivo (opcional)</label>
+                                <textarea class="form-control" id="detalleCompra" rows="2"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cantidadCompra" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" id="cantidadCompra" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="montoCompra" class="form-label">Monto de dinero</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" step="0.01" class="form-control" id="montoCompra" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaCompra" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="fechaCompra" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="guardarCompra">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Registrar Desecho -->
+        <div class="modal fade" id="registrarDesechoModal" tabindex="-1" aria-labelledby="registrarDesechoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrarDesechoModalLabel"><i class="bi bi-trash me-2"></i>Registrar Desecho</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formDesecho">
+                            <div class="mb-3">
+                                <label for="nombreProductoDesecho" class="form-label">Nombre del producto</label>
+                                <input type="text" class="form-control" id="nombreProductoDesecho" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="detalleDesecho" class="form-label">Detalle/Motivo (opcional)</label>
+                                <textarea class="form-control" id="detalleDesecho" rows="2"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cantidadDesecho" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" id="cantidadDesecho" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="montoDesecho" class="form-label">Monto aproximado (opcional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" step="0.01" class="form-control" id="montoDesecho">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaDesecho" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="fechaDesecho" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="guardarDesecho">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Compras -->
+        <div class="card shadow-sm mb-5">
+            <div class="card-header bg-white border-bottom-0">
+                <h2 class="h4 fw-bold mb-0 d-flex align-items-center">
+                    <i class="bi bi-cart-check me-2"></i>Últimas Compras
+                </h2>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="text-nowrap">Fecha</th>
+                                <th>Insumo</th>
+                                <th>Cantidad</th>
+                                <th>Estado</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-05-15</td>
+                                <td>Fertilizante NPK</td>
+                                <td>50 kg</td>
+                                <td><span class="status-badge status-received">Recibido</span></td>
+                                <td>$250.00</td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2024-05-10</td>
+                                <td>Ácido fosfórico</td>
+                                <td>20 L</td>
+                                <td><span class="status-badge status-pending">Pendiente</span></td>
+                                <td>$1,200.00</td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Desechos -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-white border-bottom-0">
+                <h2 class="h4 fw-bold mb-0 d-flex align-items-center">
+                    <i class="bi bi-trash me-2"></i>Últimos Desechos
+                </h2>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="text-nowrap">Fecha</th>
+                                <th>Insumo</th>
+                                <th>Cantidad</th>
+                                <th>Motivo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-05-12</td>
+                                <td>Fertilizante vencido</td>
+                                <td>5 kg</td>
+                                <td>Vencimiento</td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2024-05-08</td>
+                                <td>Envases plásticos</td>
+                                <td>10 unidades</td>
+                                <td>Dañados</td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery local -->
+    <script src="~/source/js/jquery-3.7.0.min.js"></script>
+
+    <!-- Bootstrap JS local -->
+    <script src="~/source/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts adicionales -->
+    <script>
+        $(document).ready(function () {
+            // Tooltips para los íconos de acción
+            $('[title]').tooltip({
+                trigger: 'hover',
+                placement: 'top'
+            });
+
+            // Confirmación antes de eliminar
+            $('.table-actions a.text-danger').on('click', function (e) {
+                if (!confirm('¿Está seguro que desea eliminar este registro?')) {
+                    e.preventDefault();
+                }
+            });
+
+            // Configurar fecha actual por defecto en los modales
+            const today = new Date().toISOString().split('T')[0];
+            $('#fechaCompra').val(today);
+            $('#fechaDesecho').val(today);
+
+            // Manejar el guardado de compra
+            $('#guardarCompra').on('click', function () {
+                if ($('#formCompra')[0].checkValidity()) {
+                    // Aquí iría la lógica para guardar la compra
+                    alert('Compra registrada exitosamente');
+                    $('#registrarCompraModal').modal('hide');
+                    // Podrías recargar la tabla o agregar la nueva fila dinámicamente
+                } else {
+                    $('#formCompra')[0].reportValidity();
+                }
+            });
+
+            // Manejar el guardado de desecho
+            $('#guardarDesecho').on('click', function () {
+                if ($('#formDesecho')[0].checkValidity()) {
+                    // Aquí iría la lógica para guardar el desecho
+                    alert('Desecho registrado exitosamente');
+                    $('#registrarDesechoModal').modal('hide');
+                    // Podrías recargar la tabla o agregar la nueva fila dinámicamente
+                } else {
+                    $('#formDesecho')[0].reportValidity();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

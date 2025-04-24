@@ -1,0 +1,69 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Asistencia</title>
+
+    <!-- Bootstrap CSS local -->
+    <link href="~/source/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="card border-dark mx-auto shadow" style="max-width: 500px;">
+            <div class="card-body text-center">
+                <h1 class="card-title mb-4 border-bottom border-dark pb-2">ASISTENCIA</h1>
+
+                <!-- Último registro -->
+                <div class="mb-4 p-3 border border-dark rounded">
+                    <p class="mb-1"><strong>ÚLTIMO REGISTRO:</strong></p>
+                    <p class="mb-0 fs-4">JUAN CARLOS FLORES</p>
+                    <p class="mb-1">HORA: 8:05 A.M.</p>
+                    <span class="badge bg-secondary border border-dark">INGRESANTE</span>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="d-grid gap-2 mb-4">
+                    <button class="btn btn-primary border border-dark border-2">INGRESO</button>
+                    <button class="btn btn-danger border border-dark border-2">SALIDA</button>
+                </div>
+
+                <!-- Formulario -->
+                <div class="border-top border-dark pt-3">
+                    <input type="text" class="form-control mb-2 border border-dark border-2" placeholder="Ingrese DNI...">
+                    <button class="btn btn-dark w-100 border border-dark border-2">ENVIAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery local -->
+    <script src="~/source/js/jquery-3.7.0.min.js"></script>
+
+    <!-- Bootstrap JS local -->
+    <script src="~/source/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".btn-primary").click(function () {
+                alert("Registro de INGRESO enviado");
+            });
+
+            $(".btn-danger").click(function () {
+                alert("Registro de SALIDA enviado");
+            });
+
+            $(".btn-dark").click(function () {
+                var dni = $("input").val();
+                if (dni.trim() === "") {
+                    alert("Por favor ingrese un DNI");
+                } else {
+                    alert("DNI " + dni + " enviado");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
