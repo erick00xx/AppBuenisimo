@@ -292,6 +292,8 @@
     <Content Include="Views\GestionCarta\CartaUsuario.cshtml" />
     <Content Include="Views\GestionarNotas\Index.cshtml" />
     <Content Include="Views\Asistencia\Registrar.cshtml" />
+    <Content Include="Views\GestionEmpleados\Listar.cshtml" />
+    <Content Include="Views\GestionEmpleados\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
