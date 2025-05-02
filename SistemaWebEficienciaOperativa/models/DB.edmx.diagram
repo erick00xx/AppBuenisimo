@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18619caf328f48cb91ec3a9c256d2b9e" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbAsistencias" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbHorarios" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbObservacionesAsistencias" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbRoles" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbSucursales" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbUsuarios" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK_Asistencias_Observaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK_Asistencias_Sucursales" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK_Asistencias_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK_Horarios_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

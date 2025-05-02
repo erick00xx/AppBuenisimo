@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_BUENISIMOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbAsistencias">
+    <Key>
+      <PropertyRef Name="idAsistencia" />
+    </Key>
+    <Property Name="idAsistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="idSucursal" Type="int" Nullable="false" />
+    <Property Name="idObservacionAsistencia" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="horaEntrada" Type="datetime" />
+    <Property Name="horaSalida" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbHorarios">
+    <Key>
+      <PropertyRef Name="idHorario" />
+    </Key>
+    <Property Name="idHorario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="diaSemana" Type="tinyint" Nullable="false" />
+    <Property Name="horaEntradaEsperada" Type="time" Precision="7" Nullable="false" />
+    <Property Name="horaSalidaEsperada" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbObservacionesAsistencias">
+    <Key>
+      <PropertyRef Name="idObservacionAsistencia" />
+    </Key>
+    <Property Name="idObservacionAsistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbRoles">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreRol" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbSucursales">
+    <Key>
+      <PropertyRef Name="idSucursal" />
+    </Key>
+    <Property Name="idSucursal" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbUsuarios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="100" />
+    <Property Name="correoElectronico" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="contrasena" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="fechaRegistro" Type="datetime" />
+    <Property Name="activo" Type="bit" />
+    <Property Name="dni" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_Asistencias_Observaciones">
+    <End Role="tbObservacionesAsistencias" Type="Self.tbObservacionesAsistencias" Multiplicity="1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbObservacionesAsistencias">
+        <PropertyRef Name="idObservacionAsistencia" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idObservacionAsistencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asistencias_Sucursales">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asistencias_Usuarios">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Horarios_Usuarios">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tbHorarios">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Roles">
+    <End Role="tbRoles" Type="Self.tbRoles" Multiplicity="1" />
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbRoles">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="tbUsuarios">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_BUENISIMOModelStoreContainer">
+    <EntitySet Name="tbAsistencias" EntityType="Self.tbAsistencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbHorarios" EntityType="Self.tbHorarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbObservacionesAsistencias" EntityType="Self.tbObservacionesAsistencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbRoles" EntityType="Self.tbRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Asistencias_Observaciones" Association="Self.FK_Asistencias_Observaciones">
+      <End Role="tbObservacionesAsistencias" EntitySet="tbObservacionesAsistencias" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asistencias_Sucursales" Association="Self.FK_Asistencias_Sucursales">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asistencias_Usuarios" Association="Self.FK_Asistencias_Usuarios">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Horarios_Usuarios" Association="Self.FK_Horarios_Usuarios">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbHorarios" EntitySet="tbHorarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+      <End Role="tbRoles" EntitySet="tbRoles" />
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

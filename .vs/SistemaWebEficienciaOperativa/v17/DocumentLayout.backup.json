@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\asistencia\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\asistencia\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\asistencia\\registrar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\asistencia\\registrar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\clsasistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\clsasistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\clsusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\clsusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Registrar.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Registrar.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Registrar.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Registrar.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Registrar.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T15:02:10.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AsistenciaController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T14:52:31.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Index.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T06:38:47.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "clsAsistencia.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\clsAsistencia.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\clsAsistencia.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\clsAsistencia.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\clsAsistencia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T05:10:57.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "clsUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\clsUsuario.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\clsUsuario.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\clsUsuario.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\clsUsuario.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA2wBMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T04:47:48.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DB.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\DB.edmx",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-05-02T04:37:26.593Z",
+              "EditorCaption": " [Diagram1]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

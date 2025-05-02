@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_BUENISIMOModelStoreContainer" CdmEntityContainer="DB_BUENISIMOEntities">
+    <EntitySetMapping Name="tbAsistencias">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbAsistencias">
+        <MappingFragment StoreEntitySet="tbAsistencias">
+          <ScalarProperty Name="idAsistencia" ColumnName="idAsistencia" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="idObservacionAsistencia" ColumnName="idObservacionAsistencia" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
+          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbHorarios">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbHorarios">
+        <MappingFragment StoreEntitySet="tbHorarios">
+          <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
+          <ScalarProperty Name="horaEntradaEsperada" ColumnName="horaEntradaEsperada" />
+          <ScalarProperty Name="horaSalidaEsperada" ColumnName="horaSalidaEsperada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbObservacionesAsistencias">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbObservacionesAsistencias">
+        <MappingFragment StoreEntitySet="tbObservacionesAsistencias">
+          <ScalarProperty Name="idObservacionAsistencia" ColumnName="idObservacionAsistencia" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbRoles">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbRoles">
+        <MappingFragment StoreEntitySet="tbRoles">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombreRol" ColumnName="nombreRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbSucursales">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbSucursales">
+        <MappingFragment StoreEntitySet="tbSucursales">
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbUsuarios">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbUsuarios">
+        <MappingFragment StoreEntitySet="tbUsuarios">
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

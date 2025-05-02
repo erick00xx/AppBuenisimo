@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,6 +140,46 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AsistenciaFormViewModel.cs" />
+    <Compile Include="Models\clsAsistencia.cs" />
+    <Compile Include="Models\clsHorario.cs" />
+    <Compile Include="Models\clsObservacionAsistencia.cs" />
+    <Compile Include="Models\clsRol.cs" />
+    <Compile Include="Models\clsSucursal.cs" />
+    <Compile Include="Models\clsUsuario.cs" />
+    <Compile Include="Models\DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbAsistencias.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbHorarios.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbObservacionesAsistencias.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbRoles.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbSucursales.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbUsuarios.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,12 +202,31 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB.edmx.diagram">
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\appbuenisimo - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\appbuenisimo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -218,17 +285,16 @@
     <Content Include="Views\GestionEmpleados\Index.cshtml" />
     <Content Include="Views\GestionCarta\Index.cshtml" />
     <Content Include="Views\GestionVentas\Index.cshtml" />
-    <Content Include="Views\Asistencia\Index.cshtml" />
     <Content Include="Views\GestionPedidos\Index.cshtml" />
     <Content Include="Views\GestionInventario\ReporteInventario.cshtml" />
     <Content Include="Views\GestionVentas\ReporteVentas.cshtml" />
     <Content Include="Views\GestionEmpleados\ReporteEmpleados.cshtml" />
     <Content Include="Views\GestionCarta\CartaUsuario.cshtml" />
     <Content Include="Views\GestionarNotas\Index.cshtml" />
+    <Content Include="Views\Asistencia\Registrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -256,6 +322,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

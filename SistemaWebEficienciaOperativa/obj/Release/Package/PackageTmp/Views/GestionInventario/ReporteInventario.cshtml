@@ -1,0 +1,249 @@
+﻿
+@{
+    ViewBag.Title = "ReporteInventario";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap CSS local -->
+    <link href="~/source/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <style>
+        .card-stat {
+            border-left: 4px solid #0d6efd;
+            transition: all 0.3s;
+        }
+
+            .card-stat:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .badge-estado {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+
+        .badge-recibido {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .badge-pendiente {
+            background-color: #fff3cd;
+            color: #664d03;
+        }
+
+        .table-responsive {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid py-4">
+        <h1 class="text-center mb-4"><i class="bi bi-clipboard-data"></i> Reporte de Inventario</h1>
+
+        <!-- Filtros -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-funnel"></i> Filtros</h5>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha inicial</label>
+                        <input type="date" class="form-control" id="fechaInicio">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha final</label>
+                        <input type="date" class="form-control" id="fechaFin">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Tipo de movimiento</label>
+                        <select class="form-select" id="tipoMovimiento">
+                            <option selected value="todos">Todos</option>
+                            <option value="compras">Compras</option>
+                            <option value="desechos">Desechos</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button class="btn btn-primary w-100" onclick="aplicarFiltros()">
+                            <i class="bi bi-filter"></i> Aplicar Filtros
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card card-stat h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Compras esta semana</h5>
+                        <h2 class="mb-0">3</h2>
+                        <p class="text-success mb-0"><small>+1 vs semana anterior</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-stat h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Desechos esta semana</h5>
+                        <h2 class="mb-0">2</h2>
+                        <p class="text-danger mb-0"><small>+1 vs semana anterior</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-stat h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Inversión total</h5>
+                        <h2 class="mb-0">S/ 1,450.00</h2>
+                        <p class="text-primary mb-0"><small>15% del presupuesto mensual</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compras -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-white">
+                <h4 class="mb-0"><i class="bi bi-cart-check"></i> Últimas Compras</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Insumo</th>
+                                <th>Cantidad</th>
+                                <th>Estado</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-05-15</td>
+                                <td>Fertilizante NPK</td>
+                                <td>50 kg</td>
+                                <td><span class="badge badge-estado badge-recibido">Recibido</span></td>
+                                <td>S/ 250.00</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2024-05-10</td>
+                                <td>Ácido fosfórico</td>
+                                <td>20 L</td>
+                                <td><span class="badge badge-estado badge-pendiente">Pendiente</span></td>
+                                <td>S/ 1,200.00</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desechos -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <h4 class="mb-0"><i class="bi bi-trash"></i> Últimos Desechos</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Insumo</th>
+                                <th>Cantidad</th>
+                                <th>Motivo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-05-12</td>
+                                <td>Fertilizante vencido</td>
+                                <td>5 kg</td>
+                                <td>Vencimiento</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2024-05-08</td>
+                                <td>Envases plásticos</td>
+                                <td>10 unidades</td>
+                                <td>Dañados</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery local -->
+    <script src="~/source/js/jquery-3.7.0.min.js"></script>
+
+    <!-- Bootstrap JS local -->
+    <script src="~/source/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function aplicarFiltros() {
+            const fechaInicio = $('#fechaInicio').val();
+            const fechaFin = $('#fechaFin').val();
+            const tipoMovimiento = $('#tipoMovimiento').val();
+
+            // Aquí iría la lógica para filtrar los datos
+            alert(`Filtrando por: ${fechaInicio} a ${fechaFin}, Tipo: ${tipoMovimiento}`);
+
+            // Simulación de filtrado
+            if(tipoMovimiento === 'compras') {
+                $('.card:has(h4:contains("Desechos"))').hide();
+                $('.card:has(h4:contains("Compras"))').show();
+            } else if(tipoMovimiento === 'desechos') {
+                $('.card:has(h4:contains("Compras"))').hide();
+                $('.card:has(h4:contains("Desechos"))').show();
+            } else {
+                $('.card:has(h4:contains("Compras")), .card:has(h4:contains("Desechos"))').show();
+            }
+        }
+
+        // Inicialización con datos de la semana actual
+        $(document).ready(function() {
+            const hoy = new Date();
+            const inicioSemana = new Date(hoy.setDate(hoy.getDate() - hoy.getDay()));
+
+            $('#fechaInicio').val(inicioSemana.toISOString().split('T')[0]);
+            $('#fechaFin').val(new Date().toISOString().split('T')[0]);
+        });
+    </script>
+</body>
+</html>
+
