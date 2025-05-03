@@ -20,12 +20,19 @@ namespace SistemaWebEficienciaOperativa.Controllers
         }
         public ActionResult Listar()
         {
-            
-            using (var db = new DB_BUENISIMOEntities())
+            try
             {
-                var data = db.tbUsuarios.ToList();
-                return View(data);
+                using (var db = new DB_BUENISIMOEntities())
+                {
+                    var data = db.tbUsuarios.ToList();
+                    return View(data);
+                }
             }
+            catch
+            {
+                return View("Listar");
+            }
+            
         }
         public ActionResult Crear()
         {
@@ -33,7 +40,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
         }
 
         [HttpPost]
-        public ActionResult Crear(tbUsuarios tbusuario)
+        public ActionResult Crear(tbUsuarios model)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +71,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
                     using (DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
                     {
                         
-                        db.tbUsuarios.Add(tbusuario);
+                        db.tbUsuarios.Add(model);
                         db.SaveChanges();
                     }
                     return RedirectToAction("Listar");
@@ -76,31 +83,41 @@ namespace SistemaWebEficienciaOperativa.Controllers
                     ViewBag.Message = message;
                 }
             }
-            return View(tbusuario);
+            return View(model);
         }
 
         public ActionResult Editar(int idUsuario)
         {
-            try
-            {
                 using(DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
                 {
-                    var model = db.tbUsuarios.Where(u => u.idUsuario == idUsuario).SingleOrDefault();
-                    return View(model);
+                    var data = db.tbUsuarios.Where(u => u.idUsuario == idUsuario).SingleOrDefault();
+                    return View(data);
                 }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            return View();
         }
 
         [HttpPost]
         public ActionResult Editar(int idUsuario, tbUsuarios model)
         {
-            return View(model);
+            using(DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
+            {
+                var data = db.tbUsuarios.FirstOrDefault(x => x.idUsuario == idUsuario);
+
+                if (data != null)
+                {
+                    data.idRol = model.idRol;
+                    data.nombre = model.nombre;
+                    data.apellido = model.apellido;
+                    data.correoElectronico = model.correoElectronico;
+                    data.contrasena = model.contrasena;
+                    data.fechaRegistro = model.fechaRegistro;
+                    data.activo = model.activo;
+                    data.dni = model.dni;
+
+                    db.SaveChanges();
+                    return View("Listar");
+                }
+                else return View();
+            }
         }
         
     }
