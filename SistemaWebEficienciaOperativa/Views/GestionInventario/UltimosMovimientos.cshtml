@@ -1,0 +1,49 @@
+﻿@model SistemaWebEficienciaOperativa.Models.InventarioMovimientosViewModel
+@{
+    ViewBag.Title = "Últimos Movimientos de Inventario";
+}
+<a href="@Url.Action("RegistrarCompra", "GestionInventario")" class="btn btn-primary me-2">
+    Registrar Nueva Compra
+</a>
+<a href="@Url.Action("RegistrarDesecho", "GestionInventario")" class="btn btn-danger">
+    Registrar Desecho
+</a>
+<h2 class="text-center">Últimos Movimientos de Inventario</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Últimas Compras -->
+        <div class="col-xs-12 col-md-6">
+            <h4>Últimas Compras</h4>
+            <div class="list-group">
+                @foreach (var item in Model.UltimasCompras)
+                {
+                    <div class="list-group-item">
+                        <strong>@item.Insumo</strong> — @item.Cantidad @item.Unidad<br />
+                        <small>
+                            Proveedor: @item.Proveedor | Sucursal: @item.Sucursal<br />
+                            Fecha: @item.Fecha.ToShortDateString()
+                        </small>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Últimos Desechos -->
+        <div class="col-xs-12 col-md-6">
+            <h4>Últimos Desechos</h4>
+            <div class="list-group">
+                @foreach (var item in Model.UltimosDesechos)
+                {
+                    <div class="list-group-item">
+                        <strong>@item.Insumo</strong> — @item.Cantidad @item.Unidad<br />
+                        <small>
+                            Motivo: @item.Motivo | Sucursal: @item.Sucursal<br />
+                            Fecha: @item.Fecha.ToShortDateString()
+                        </small>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

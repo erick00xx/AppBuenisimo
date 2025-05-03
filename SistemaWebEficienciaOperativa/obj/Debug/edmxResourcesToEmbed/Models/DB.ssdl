@@ -12,6 +12,20 @@
     <Property Name="horaEntrada" Type="datetime" />
     <Property Name="horaSalida" Type="datetime" />
   </EntityType>
+  <EntityType Name="tbDesechosInsumos">
+    <Key>
+      <PropertyRef Name="idDesechoInsumo" />
+    </Key>
+    <Property Name="idDesechoInsumo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idSucursal" Type="int" />
+    <Property Name="idInsumo" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idUnidad" Type="int" Nullable="false" />
+    <Property Name="fechaDesecho" Type="date" Nullable="false" />
+    <Property Name="motivo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="observaciones" Type="text" />
+    <Property Name="idIngresoInsumo" Type="int" />
+  </EntityType>
   <EntityType Name="tbHorarios">
     <Key>
       <PropertyRef Name="idHorario" />
@@ -22,12 +36,47 @@
     <Property Name="horaEntradaEsperada" Type="time" Precision="7" Nullable="false" />
     <Property Name="horaSalidaEsperada" Type="time" Precision="7" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbIngresosInsumos">
+    <Key>
+      <PropertyRef Name="idIngresoInsumo" />
+    </Key>
+    <Property Name="idIngresoInsumo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idSucursal" Type="int" />
+    <Property Name="idInsumo" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idUnidad" Type="int" Nullable="false" />
+    <Property Name="fechaCompra" Type="date" Nullable="false" />
+    <Property Name="fechaVencimiento" Type="date" />
+    <Property Name="idProveedor" Type="int" />
+    <Property Name="lote" Type="varchar" MaxLength="50" />
+    <Property Name="observaciones" Type="text" />
+  </EntityType>
+  <EntityType Name="tbInsumos">
+    <Key>
+      <PropertyRef Name="idInsumo" />
+    </Key>
+    <Property Name="idInsumo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="idUnidad" Type="int" Nullable="false" />
+    <Property Name="tipoInsumo" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="text" />
+  </EntityType>
   <EntityType Name="tbObservacionesAsistencias">
     <Key>
       <PropertyRef Name="idObservacionAsistencia" />
     </Key>
     <Property Name="idObservacionAsistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbProveedores">
+    <Key>
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="idProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreEmpresa" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="contacto" Type="varchar" MaxLength="100" />
+    <Property Name="telefono" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tbRoles">
     <Key>
@@ -43,6 +92,15 @@
     <Property Name="idSucursal" Type="int" Nullable="false" />
     <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbUnidades">
+    <Key>
+      <PropertyRef Name="idUnidad" />
+    </Key>
+    <Property Name="idUnidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="abreviatura" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
   <EntityType Name="tbUsuarios">
     <Key>
       <PropertyRef Name="idUsuario" />
@@ -57,6 +115,114 @@
     <Property Name="activo" Type="bit" />
     <Property Name="dni" Type="nvarchar" MaxLength="20" />
   </EntityType>
+  <Association Name="FK__tbDesecho__idIng__619B8048">
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="0..1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbIngresosInsumos">
+        <PropertyRef Name="idIngresoInsumo" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idIngresoInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDesecho__idIns__5FB337D6">
+    <End Role="tbInsumos" Type="Self.tbInsumos" Multiplicity="1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDesecho__idSuc__5EBF139D">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="0..1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDesecho__idUni__60A75C0F">
+    <End Role="tbUnidades" Type="Self.tbUnidades" Multiplicity="1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idIns__59FA5E80">
+    <End Role="tbInsumos" Type="Self.tbInsumos" Multiplicity="1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idPro__5BE2A6F2">
+    <End Role="tbProveedores" Type="Self.tbProveedores" Multiplicity="0..1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProveedores">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idSuc__59063A47">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="0..1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idUni__5AEE82B9">
+    <End Role="tbUnidades" Type="Self.tbUnidades" Multiplicity="1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbInsumos__idUni__5165187F">
+    <End Role="tbUnidades" Type="Self.tbUnidades" Multiplicity="1" />
+    <End Role="tbInsumos" Type="Self.tbInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Asistencias_Observaciones">
     <End Role="tbObservacionesAsistencias" Type="Self.tbObservacionesAsistencias" Multiplicity="1" />
     <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
@@ -119,11 +285,52 @@
   </Association>
   <EntityContainer Name="DB_BUENISIMOModelStoreContainer">
     <EntitySet Name="tbAsistencias" EntityType="Self.tbAsistencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbDesechosInsumos" EntityType="Self.tbDesechosInsumos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbHorarios" EntityType="Self.tbHorarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbIngresosInsumos" EntityType="Self.tbIngresosInsumos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbInsumos" EntityType="Self.tbInsumos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbObservacionesAsistencias" EntityType="Self.tbObservacionesAsistencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbProveedores" EntityType="Self.tbProveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbRoles" EntityType="Self.tbRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbUnidades" EntityType="Self.tbUnidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tbDesecho__idIng__619B8048" Association="Self.FK__tbDesecho__idIng__619B8048">
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDesecho__idIns__5FB337D6" Association="Self.FK__tbDesecho__idIns__5FB337D6">
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDesecho__idSuc__5EBF139D" Association="Self.FK__tbDesecho__idSuc__5EBF139D">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDesecho__idUni__60A75C0F" Association="Self.FK__tbDesecho__idUni__60A75C0F">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idIns__59FA5E80" Association="Self.FK__tbIngreso__idIns__59FA5E80">
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idPro__5BE2A6F2" Association="Self.FK__tbIngreso__idPro__5BE2A6F2">
+      <End Role="tbProveedores" EntitySet="tbProveedores" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idSuc__59063A47" Association="Self.FK__tbIngreso__idSuc__59063A47">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idUni__5AEE82B9" Association="Self.FK__tbIngreso__idUni__5AEE82B9">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbInsumos__idUni__5165187F" Association="Self.FK__tbInsumos__idUni__5165187F">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+    </AssociationSet>
     <AssociationSet Name="FK_Asistencias_Observaciones" Association="Self.FK_Asistencias_Observaciones">
       <End Role="tbObservacionesAsistencias" EntitySet="tbObservacionesAsistencias" />
       <End Role="tbAsistencias" EntitySet="tbAsistencias" />

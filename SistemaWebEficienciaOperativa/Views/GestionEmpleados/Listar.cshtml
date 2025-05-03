@@ -16,8 +16,8 @@
             <p>Email: @empleado.correoElectronico</p>
             <p>DNI: @empleado.dni</p>
             <div class="acciones">
-                <a href="@Url.Action("Ver", "GestionEmpleados", new { id = empleado.idUsuario })" class="btn btn-primary">Ver</a>
-                <a href="@Url.Action("Editar", "GestionEmpleados", new { id = empleado.idUsuario })" class="btn btn-secondary">Editar</a>
+                <a href="@Url.Action("Ver", "GestionEmpleados", new { idUsuario = empleado.idUsuario })" class="btn btn-primary">Ver</a>
+                <a href="@Url.Action("Editar", "GestionEmpleados", new { idUsuario = empleado.idUsuario })" class="btn btn-secondary">Editar</a>
             </div>
         </div>
     }

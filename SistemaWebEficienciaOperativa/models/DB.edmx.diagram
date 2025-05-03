@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="18619caf328f48cb91ec3a9c256d2b9e" Name="Diagram1">
+      <Diagram DiagramId="18619caf328f48cb91ec3a9c256d2b9e" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbAsistencias" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbHorarios" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbObservacionesAsistencias" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
@@ -16,6 +16,20 @@
         <AssociationConnector Association="DB_BUENISIMOModel.FK_Asistencias_Usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK_Horarios_Usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbDesechosInsumos" Width="1.5" PointX="14.125" PointY="9.875" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbIngresosInsumos" Width="1.5" PointX="11.875" PointY="9.75" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbInsumos" Width="1.5" PointX="9.625" PointY="14.75" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbProveedores" Width="1.5" PointX="9.625" PointY="10.5" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbUnidades" Width="1.5" PointX="7.375" PointY="6" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbDesecho__idIng__619B8048" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbDesecho__idIns__5FB337D6" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbDesecho__idSuc__5EBF139D" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbDesecho__idUni__60A75C0F" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbIngreso__idIns__59FA5E80" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbIngreso__idPro__5BE2A6F2" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbIngreso__idSuc__59063A47" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbIngreso__idUni__5AEE82B9" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbInsumos__idUni__5165187F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

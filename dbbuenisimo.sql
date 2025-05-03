@@ -85,7 +85,136 @@ INSERT INTO tbHorarios (idUsuario, diaSemana, horaEntradaEsperada, horaSalidaEsp
 (4, 2, '09:00', '18:00');
 
 -- Insertar asistencias
-INSERT INTO tbAsistencias (idUsuario, idSucursal, idObservacionAsistencia, fecha, horaEntrada, horaSalida) VALUES 
-(3, 1, 1, '2025-04-28', '2025-04-28 08:01:00', '2025-04-28 17:02:00'),
-(3, 1, 2, '2025-04-29', '2025-04-29 08:20:00', '2025-04-29 17:00:00'),
-(4, 2, 1, '2025-04-28', '2025-04-28 09:00:00', '2025-04-28 18:01:00');
+INSERT INTO tbAsistencias (idUsuario, idSucursal, idObservacionAsistencia, fecha) VALUES 
+(3, 1, 1, '2025-04-28'),
+(3, 1, 2, '2025-04-29'),
+(4, 2, 1, '2025-04-28');
+
+
+
+
+
+
+
+-- Tabla: unidades de medida
+CREATE TABLE tbUnidades (
+    idUnidad INT identity(1,1) PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL unique,
+    tipo VARCHAR(20) NOT NULL, -- peso, volumen, cantidad
+    abreviatura VARCHAR(10) NOT NULL
+);
+
+-- Tabla: insumos
+CREATE TABLE tbInsumos (
+    idInsumo INT identity(1,1) PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL unique,
+    idUnidad INT NOT NULL,
+    tipoInsumo VARCHAR(50), -- materia prima, empaque, perecedero, etc.
+    descripcion TEXT,
+    FOREIGN KEY (idUnidad) REFERENCES tbUnidades(idUnidad)
+);
+
+-- Tabla: proveedores
+CREATE TABLE tbProveedores (
+    idProveedor INT identity(1,1) PRIMARY KEY,
+    nombreEmpresa VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100),
+    telefono VARCHAR(20),
+    email VARCHAR(100)
+);
+
+-- Tabla: ingresos de insumos (compras)
+CREATE TABLE tbIngresosInsumos (
+    idIngresoInsumo INT identity(1,1) PRIMARY KEY,
+	idSucursal INT,
+    idInsumo INT NOT NULL,
+    cantidad DECIMAL(10,2) NOT NULL,
+    idUnidad INT NOT NULL,
+    fechaCompra DATE NOT NULL,
+    fechaVencimiento DATE,
+    idProveedor INT,
+    lote VARCHAR(50),
+    observaciones TEXT,
+	FOREIGN KEY (idSucursal) REFERENCES tbSucursales(idSucursal),
+    FOREIGN KEY (idInsumo) REFERENCES tbInsumos(idInsumo),
+    FOREIGN KEY (idUnidad) REFERENCES tbUnidades(idUnidad),
+    FOREIGN KEY (idProveedor) REFERENCES tbProveedores(idProveedor)
+);
+
+-- Tabla: desechos de insumos
+CREATE TABLE tbDesechosInsumos (
+    idDesechoInsumo INT identity(1,1) PRIMARY KEY,
+	idSucursal INT,
+    idInsumo INT NOT NULL,
+    cantidad DECIMAL(10,2) NOT NULL,
+    idUnidad INT NOT NULL,
+    fechaDesecho DATE NOT NULL,
+    motivo VARCHAR(100) NOT NULL,
+    observaciones TEXT,
+    idIngresoInsumo INT,
+	FOREIGN KEY (idSucursal) REFERENCES tbSucursales(idSucursal),
+    FOREIGN KEY (idInsumo) REFERENCES tbInsumos(idInsumo),
+    FOREIGN KEY (idUnidad) REFERENCES tbUnidades(idUnidad),
+    FOREIGN KEY (idIngresoInsumo) REFERENCES tbIngresosInsumos(idIngresoInsumo)
+);
+
+
+-- Insertar unidades de medida
+INSERT INTO tbUnidades (nombre, tipo, abreviatura) VALUES
+('Unidad', 'cantidad', 'un'),
+('Kilogramo', 'peso', 'kg'),
+('Litro', 'volumen', 'L'),
+('Gramo', 'peso', 'g'),
+('Mililitro', 'volumen', 'ml');
+
+-- Insertar insumos
+INSERT INTO tbInsumos (nombre, idUnidad, tipoInsumo, descripcion) VALUES
+('Café en grano', 2, 'materia prima', 'Café Arábica Premium'),
+('Vaso descartable 8oz', 1, 'empaque', 'Vaso térmico desechable'),
+('Leche entera', 3, 'perecedero', 'Leche pasteurizada de vaca'),
+('Azúcar blanca', 2, 'materia prima', 'Azúcar refinada'),
+('Jarabe de vainilla', 5, 'materia prima', 'Saborizante líquido');
+
+-- Insertar proveedores
+INSERT INTO tbProveedores (nombreEmpresa, contacto, telefono, email) VALUES
+('Café Perú S.A.', 'Carlos Méndez', '987654321', 'ventas@cafeperu.com'),
+('Lácteos del Sur', 'Juan Torres', '912345678', 'ventas@lacteosur.com'),
+('Empaques Express', 'Lucía Díaz', '934567890', 'contacto@empaquesexpress.com');
+
+-- Insertar ingresos de insumos (compras)
+INSERT INTO tbIngresosInsumos (idInsumo, cantidad, idUnidad, fechaCompra, fechaVencimiento, idProveedor, lote, observaciones) VALUES
+(1, 5.00, 2, '2025-05-01', NULL, 1, 'CG202505', 'Café tostado en grano'),
+(2, 200, 1, '2025-05-01', NULL, 3, 'VD202505', 'Caja con 200 vasos'),
+(3, 10.00, 3, '2025-05-01', '2025-06-01', 2, 'LT202505', 'Refrigerado, mantener frío'),
+(4, 20.00, 2, '2025-05-01', NULL, 1, 'AZ202505', 'Saco de 20kg'),
+(5, 2.50, 5, '2025-05-01', '2025-07-15', 1, 'JV202505', 'Botellas de 500ml');
+
+-- Insertar desechos de insumos
+INSERT INTO tbDesechosInsumos (idInsumo, cantidad, idUnidad, fechaDesecho, motivo, observaciones, idIngresoInsumo) VALUES
+(3, 2.00, 3, '2025-05-03', 'vencimiento', 'Lote caducado', 3),
+(1, 0.50, 2, '2025-05-03', 'mal estado', 'Se derramó parte del saco', 1),
+(5, 0.25, 5, '2025-05-03', 'contaminación', 'Sabor alterado', 5);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- esta tabla aun nooo
+CREATE TABLE tbStockActual (
+    idInsumo INT PRIMARY KEY,
+    cantidadActual DECIMAL(10,2) NOT NULL DEFAULT 0,
+    idUnidad INT NOT NULL,
+    FOREIGN KEY (idInsumo) REFERENCES tbInsumos(idInsumo),
+    FOREIGN KEY (idUnidad) REFERENCES tbUnidades(idUnidad)
+);

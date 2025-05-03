@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Layout</title>
 
-    <!-- Bootstrap (solo una versión) -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
@@ -17,80 +17,77 @@
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="~/source/css/style.css">
 
+    <style>
+        /* Sidebar styles */
+        #sidebar {
+            width: 0;
+            min-width: 0;
+            overflow: hidden;
+            z-index: 1100;
+            transition: all 0.25s ease-in-out;
+            background: radial-gradient(circle at 20% 0%, #110f10, #120e10, #140d0f, #150c0d, #160b0b, #180a08, #180905, #190801);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+        }
+
+            #sidebar.expand {
+                width: 260px;
+                min-width: 260px;
+            }
+
+        .hamburger-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1200;
+            background-color: transparent;
+            cursor: pointer;
+            border: 0;
+            padding: 0.5rem;
+        }
+
+            .hamburger-btn i {
+                font-size: 1.5rem;
+                color: #000;
+            }
+
+        .main {
+            width: 100%;
+            transition: all 0.35s ease-in-out;
+            padding-left: 15px !important;
+        }
+
+        /* Overlay background (no bg-white) */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* semitransparente */
+            z-index: 1050;
+            display: none;
+        }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+    </style>
 </head>
-<style>
-    /* Custom styles for overlay sidebar */
-    #sidebar {
-        width: 0;
-        min-width: 0;
-        overflow: hidden;
-        z-index: 1100;
-        transition: all .25s ease-in-out;
-        background: radial-gradient(circle at 20% 0%, #110f10, #120e10, #140d0f, #150c0d, #160b0b, #180a08, #180905, #190801);
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        height: 100vh;
-        left: 0;
-        top: 0;
-    }
-
-        #sidebar.expand {
-            width: 260px;
-            min-width: 260px;
-        }
-
-    /* Hamburger button styles */
-    .hamburger-btn {
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        z-index: 1200;
-        background-color: transparent;
-        cursor: pointer;
-        border: 0;
-        padding: 0.5rem;
-    }
-
-        .hamburger-btn i {
-            font-size: 1.5rem;
-            color: #000;
-        }
-
-    /* Main content always takes full width */
-    .main {
-        width: 100%;
-        transition: all 0.35s ease-in-out;
-        padding-left: 15px !important;
-    }
-
-    /* Optional overlay effect */
-    .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1050;
-        display: none;
-    }
-
-        .sidebar-overlay.active {
-            display: block;
-        }
-</style>
 <body>
     <div class="wrapper">
-        <!-- Hamburger button -->
+
+        <!-- Botón Hamburguesa -->
         <button class="hamburger-btn" type="button" id="hamburgerBtn">
             <i class="lni lni-menu"></i>
         </button>
 
-        <!-- Overlay background -->
-        <div class="sidebar-overlay bg-white position-fixed top-0 start-0 w-100 h-100" id="sidebarOverlay"></div>
-
-
+        <!-- Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <!-- Sidebar -->
         <aside id="sidebar">
@@ -104,21 +101,13 @@
             </div>
 
             <ul class="sidebar-nav">
-                <!-- Sucursales -->
+
+                <!-- Marcar asistencia -->
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                       data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="lni lni-map-marker"></i>
-                        <span>Sucursales</span>
+                    <a href="@Url.Action("Registrar", "Asistencia")" class="sidebar-link">
+                        <i class="lni lni-book"></i>
+                        <span>Asistencia</span>
                     </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link"><i></i> Sucursal Centro</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link"><i></i> Sucursal Norte</a>
-                        </li>
-                    </ul>
                 </li>
 
                 <!-- Gestión -->
@@ -130,28 +119,23 @@
                     </a>
                     <ul id="Gestion" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="@Url.Action("Index", "GestionEmpleados")" class="sidebar-link">
+                            <a href="@Url.Action("Listar", "GestionEmpleados")" class="sidebar-link">
                                 <i></i> Empleados
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="@Url.Action("Index", "GestionInventario")" class="sidebar-link">
+                            <a href="@Url.Action("UltimosMovimientos", "GestionInventario")" class="sidebar-link">
                                 <i></i> Inventario
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="@Url.Action("Index", "GestionCarta")" class="sidebar-link">
-                                <i></i> Carta
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="@Url.Action("Index", "GestionVentas")" class="sidebar-link">
-                                <i></i> Ventas
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="@Url.Action("Index", "GestionPedidos")" class="sidebar-link">
+                            <a href="#" class="sidebar-link">
                                 <i></i> Pedidos
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">
+                                <i></i> Ventas
                             </a>
                         </li>
                     </ul>
@@ -184,13 +168,6 @@
                 </li>
 
 
-                <!-- Marcar asistencia -->
-                <li class="sidebar-item">
-                    <a href="@Url.Action("Registrar", "Asistencia")" class="sidebar-link">
-                        <i class="lni lni-book"></i>
-                        <span>Registrar Asistencia</span>
-                    </a>
-                </li>
 
                 <!-- Carta Virtual -->
                 <li class="sidebar-item">
@@ -210,14 +187,25 @@
             </ul>
 
             <div class="sidebar-footer">
-                <a href="@Url.Action("Logout", "Autenticacion")" class="sidebar-link">
-                    <i class="lni lni-exit"></i>
-                    <span>Cerrar sesión</span>
-                </a>
+                @if (Session["usuario"] == null)
+                {
+                    <a href="@Url.Action("Index", "Autenticacion")" class="sidebar-link">
+                        <i class="lni lni-exit"></i>
+                        <span>Iniciar sesión</span>
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Logout", "Autenticacion")" class="sidebar-link">
+                        <i class="lni lni-exit"></i>
+                        <span>Cerrar sesión</span>
+                    </a>
+                }
+
             </div>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Contenido principal -->
         <div class="main p-3">
             <div class="container">
                 @RenderBody()
@@ -233,38 +221,33 @@
     <script src="~/source/js/script.js"></script>
 
     <script>
-        // Custom JavaScript for hamburger menu
+        // Lógica para abrir/cerrar sidebar
         document.addEventListener('DOMContentLoaded', function () {
             const sidebar = document.getElementById('sidebar');
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const overlay = document.getElementById('sidebarOverlay');
 
-            // Toggle sidebar when hamburger is clicked
+            // Toggle sidebar
             hamburgerBtn.addEventListener('click', function () {
                 sidebar.classList.toggle('expand');
                 overlay.classList.toggle('active');
 
-                // Change hamburger icon
                 const icon = hamburgerBtn.querySelector('i');
-                if (sidebar.classList.contains('expand')) {
-                    icon.classList.remove('lni-menu');
-                    icon.classList.add('lni-close');
-                } else {
-                    icon.classList.remove('lni-close');
-                    icon.classList.add('lni-menu');
-                }
+                icon.classList.toggle('lni-menu');
+                icon.classList.toggle('lni-close');
             });
 
-            // Close sidebar when clicking on overlay
+            // Cerrar sidebar al hacer clic en el overlay
             overlay.addEventListener('click', function () {
                 sidebar.classList.remove('expand');
                 overlay.classList.remove('active');
+
                 const icon = hamburgerBtn.querySelector('i');
                 icon.classList.remove('lni-close');
                 icon.classList.add('lni-menu');
             });
 
-            // For toggling dropdown when sidebar is expanded
+            // Botón interno para contraer el sidebar
             const toggleBtn = document.querySelector('.toggle-btn');
             toggleBtn.addEventListener('click', function () {
                 sidebar.classList.toggle('expand');

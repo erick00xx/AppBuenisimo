@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SistemaWebEficienciaOperativa.Models;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
@@ -16,22 +17,31 @@ namespace SistemaWebEficienciaOperativa.Controllers
 
         // POST: Autenticacion
         [HttpPost]
-        public ActionResult Login(string usuario, string contrasena)
+        public ActionResult Login(tbUsuarios model)
         {
-            // Lógica estática de autenticación
-            if (usuario == "admin" && contrasena == "1234")
+            try
             {
-                // Almacenar en sesión
-                Session["Usuario"] = usuario;
+                using(DB_BUENISIMOEntities context = new DB_BUENISIMOEntities())
+                {
+                    var usuario = context.tbUsuarios
+                        .Where(u => u.dni == model.dni && u.contrasena == model.contrasena)
+                        .FirstOrDefault();
+                    if(usuario == null)
+                    {
+                        ViewBag.Error = "Usuario o contraseña incorrectos.";
+                        return View("Index");
+                    }
+                    Session["usuario"] = usuario.idUsuario;
+                    return RedirectToAction("Index", "Home");
+                }
 
-                // Redirigir a Home
-                return RedirectToAction("Index", "Home");
             }
-            else
+            catch(Exception ex)
             {
-                // Mensaje de error
-                ViewBag.Error = "Usuario o contraseña incorrectos.";
-                return View();
+                ModelState.AddModelError("", "Error de Sistema: " + ex.Message);
+                string message = "Intentalo nuevamente";
+                ViewBag.Message = message;
+                return View("Index");
             }
         }
 

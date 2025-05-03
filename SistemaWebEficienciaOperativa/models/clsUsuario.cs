@@ -20,14 +20,6 @@ namespace SistemaWebEficienciaOperativa.Models
         public bool Activo { get; set; }
         public string Dni { get; set; }
 
-        // la tabla rol es padre de la tabla usuario
-        public virtual clsRol Rol { get; set; }
-
-        // el atributo idUsuario es foraneo en la tabla Horarios
-        public virtual ICollection<clsHorario> Horarios { get; set; }
-
-        public virtual ICollection<clsAsistencia> Asistencias { get; set; }
-
 
         // Constructo pa registrar fecha
         public clsUsuario()

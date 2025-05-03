@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Inventario - Dashboard";
+}
+
+<div class="container mt-4">
+    <h3 class="text-white mb-3">📦 Últimas Compras de Insumos</h3>
+    <div class="table-responsive">
+        <table class="table table-dark table-bordered table-sm text-white">
+            <thead class="table-secondary text-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Insumo</th>
+                    <th>Cantidad</th>
+                    <th>Unidad</th>
+                    <th>Proveedor</th>
+                    <th>Lote</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UltimasCompras)
+                {
+                    <tr>
+                        <td>@item.fechaCompra.ToString("yyyy-MM-dd")</td>
+                        <td>@item.tbInsumos.nombre</td>
+                        <td>@item.cantidad</td>
+                        <td>@item.tbUnidades.abreviatura</td>
+                        <td>@item.tbProveedores?.nombreEmpresa ?? "N/A"</td>
+                        <td>@item.lote</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="text-white mt-5 mb-3">🗑️ Últimos Desechos de Insumos</h3>
+    <div class="table-responsive">
+        <table class="table table-dark table-bordered table-sm text-white">
+            <thead class="table-secondary text-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Insumo</th>
+                    <th>Cantidad</th>
+                    <th>Unidad</th>
+                    <th>Motivo</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var desecho in Model.UltimosDesechos)
+                {
+                    <tr>
+                        <td>@desecho.fechaDesecho.ToString("yyyy-MM-dd")</td>
+                        <td>@desecho.tbInsumos.nombre</td>
+                        <td>@desecho.cantidad</td>
+                        <td>@desecho.tbUnidades.abreviatura</td>
+                        <td>@desecho.motivo</td>
+                        <td>@desecho.observaciones</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

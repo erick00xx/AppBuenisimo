@@ -49,6 +49,8 @@
     <Property Name="idSucursal" Type="Int32" Nullable="false" />
     <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="tbAsistencias" Relationship="Self.FK_Asistencias_Sucursales" FromRole="tbSucursales" ToRole="tbAsistencias" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idSuc__5EBF139D" FromRole="tbSucursales" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idSuc__59063A47" FromRole="tbSucursales" ToRole="tbIngresosInsumos" />
   </EntityType>
   <EntityType Name="tbUsuarios">
     <Key>
@@ -154,5 +156,228 @@
       <End Role="tbRoles" EntitySet="tbRoles" />
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
     </AssociationSet>
+    <EntitySet Name="tbDesechosInsumos" EntityType="DB_BUENISIMOModel.tbDesechosInsumos" />
+    <EntitySet Name="tbIngresosInsumos" EntityType="DB_BUENISIMOModel.tbIngresosInsumos" />
+    <EntitySet Name="tbInsumos" EntityType="DB_BUENISIMOModel.tbInsumos" />
+    <EntitySet Name="tbProveedores" EntityType="DB_BUENISIMOModel.tbProveedores" />
+    <EntitySet Name="tbUnidades" EntityType="DB_BUENISIMOModel.tbUnidades" />
+    <AssociationSet Name="FK__tbDesecho__idIng__619B8048" Association="DB_BUENISIMOModel.FK__tbDesecho__idIng__619B8048">
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDesecho__idIns__5FB337D6" Association="DB_BUENISIMOModel.FK__tbDesecho__idIns__5FB337D6">
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDesecho__idSuc__5EBF139D" Association="DB_BUENISIMOModel.FK__tbDesecho__idSuc__5EBF139D">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDesecho__idUni__60A75C0F" Association="DB_BUENISIMOModel.FK__tbDesecho__idUni__60A75C0F">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idIns__59FA5E80" Association="DB_BUENISIMOModel.FK__tbIngreso__idIns__59FA5E80">
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idPro__5BE2A6F2" Association="DB_BUENISIMOModel.FK__tbIngreso__idPro__5BE2A6F2">
+      <End Role="tbProveedores" EntitySet="tbProveedores" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idSuc__59063A47" Association="DB_BUENISIMOModel.FK__tbIngreso__idSuc__59063A47">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbIngreso__idUni__5AEE82B9" Association="DB_BUENISIMOModel.FK__tbIngreso__idUni__5AEE82B9">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbInsumos__idUni__5165187F" Association="DB_BUENISIMOModel.FK__tbInsumos__idUni__5165187F">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tbDesechosInsumos">
+    <Key>
+      <PropertyRef Name="idDesechoInsumo" />
+    </Key>
+    <Property Name="idDesechoInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSucursal" Type="Int32" />
+    <Property Name="idInsumo" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="idUnidad" Type="Int32" Nullable="false" />
+    <Property Name="fechaDesecho" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="motivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idIngresoInsumo" Type="Int32" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idIng__619B8048" FromRole="tbDesechosInsumos" ToRole="tbIngresosInsumos" />
+    <NavigationProperty Name="tbInsumos" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idIns__5FB337D6" FromRole="tbDesechosInsumos" ToRole="tbInsumos" />
+    <NavigationProperty Name="tbSucursales" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idSuc__5EBF139D" FromRole="tbDesechosInsumos" ToRole="tbSucursales" />
+    <NavigationProperty Name="tbUnidades" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idUni__60A75C0F" FromRole="tbDesechosInsumos" ToRole="tbUnidades" />
+  </EntityType>
+  <EntityType Name="tbIngresosInsumos">
+    <Key>
+      <PropertyRef Name="idIngresoInsumo" />
+    </Key>
+    <Property Name="idIngresoInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSucursal" Type="Int32" />
+    <Property Name="idInsumo" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="idUnidad" Type="Int32" Nullable="false" />
+    <Property Name="fechaCompra" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="idProveedor" Type="Int32" />
+    <Property Name="lote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idIng__619B8048" FromRole="tbIngresosInsumos" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbInsumos" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idIns__59FA5E80" FromRole="tbIngresosInsumos" ToRole="tbInsumos" />
+    <NavigationProperty Name="tbProveedores" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idPro__5BE2A6F2" FromRole="tbIngresosInsumos" ToRole="tbProveedores" />
+    <NavigationProperty Name="tbSucursales" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idSuc__59063A47" FromRole="tbIngresosInsumos" ToRole="tbSucursales" />
+    <NavigationProperty Name="tbUnidades" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idUni__5AEE82B9" FromRole="tbIngresosInsumos" ToRole="tbUnidades" />
+  </EntityType>
+  <EntityType Name="tbInsumos">
+    <Key>
+      <PropertyRef Name="idInsumo" />
+    </Key>
+    <Property Name="idInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idUnidad" Type="Int32" Nullable="false" />
+    <Property Name="tipoInsumo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idIns__5FB337D6" FromRole="tbInsumos" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idIns__59FA5E80" FromRole="tbInsumos" ToRole="tbIngresosInsumos" />
+    <NavigationProperty Name="tbUnidades" Relationship="DB_BUENISIMOModel.FK__tbInsumos__idUni__5165187F" FromRole="tbInsumos" ToRole="tbUnidades" />
+  </EntityType>
+  <EntityType Name="tbProveedores">
+    <Key>
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="idProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEmpresa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idPro__5BE2A6F2" FromRole="tbProveedores" ToRole="tbIngresosInsumos" />
+  </EntityType>
+  <EntityType Name="tbUnidades">
+    <Key>
+      <PropertyRef Name="idUnidad" />
+    </Key>
+    <Property Name="idUnidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="abreviatura" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="DB_BUENISIMOModel.FK__tbDesecho__idUni__60A75C0F" FromRole="tbUnidades" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="DB_BUENISIMOModel.FK__tbIngreso__idUni__5AEE82B9" FromRole="tbUnidades" ToRole="tbIngresosInsumos" />
+    <NavigationProperty Name="tbInsumos" Relationship="DB_BUENISIMOModel.FK__tbInsumos__idUni__5165187F" FromRole="tbUnidades" ToRole="tbInsumos" />
+  </EntityType>
+  <Association Name="FK__tbDesecho__idIng__619B8048">
+    <End Type="DB_BUENISIMOModel.tbIngresosInsumos" Role="tbIngresosInsumos" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbDesechosInsumos" Role="tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbIngresosInsumos">
+        <PropertyRef Name="idIngresoInsumo" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idIngresoInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDesecho__idIns__5FB337D6">
+    <End Type="DB_BUENISIMOModel.tbInsumos" Role="tbInsumos" Multiplicity="1" />
+    <End Type="DB_BUENISIMOModel.tbDesechosInsumos" Role="tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDesecho__idSuc__5EBF139D">
+    <End Type="DB_BUENISIMOModel.tbSucursales" Role="tbSucursales" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbDesechosInsumos" Role="tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDesecho__idUni__60A75C0F">
+    <End Type="DB_BUENISIMOModel.tbUnidades" Role="tbUnidades" Multiplicity="1" />
+    <End Type="DB_BUENISIMOModel.tbDesechosInsumos" Role="tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idIns__59FA5E80">
+    <End Type="DB_BUENISIMOModel.tbInsumos" Role="tbInsumos" Multiplicity="1" />
+    <End Type="DB_BUENISIMOModel.tbIngresosInsumos" Role="tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idPro__5BE2A6F2">
+    <End Type="DB_BUENISIMOModel.tbProveedores" Role="tbProveedores" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbIngresosInsumos" Role="tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProveedores">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idSuc__59063A47">
+    <End Type="DB_BUENISIMOModel.tbSucursales" Role="tbSucursales" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbIngresosInsumos" Role="tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbIngreso__idUni__5AEE82B9">
+    <End Type="DB_BUENISIMOModel.tbUnidades" Role="tbUnidades" Multiplicity="1" />
+    <End Type="DB_BUENISIMOModel.tbIngresosInsumos" Role="tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbInsumos__idUni__5165187F">
+    <End Type="DB_BUENISIMOModel.tbUnidades" Role="tbUnidades" Multiplicity="1" />
+    <End Type="DB_BUENISIMOModel.tbInsumos" Role="tbInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

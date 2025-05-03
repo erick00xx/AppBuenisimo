@@ -98,26 +98,43 @@ namespace SistemaWebEficienciaOperativa.Controllers
         [HttpPost]
         public ActionResult Editar(int idUsuario, tbUsuarios model)
         {
-            using(DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
+            if (!ModelState.IsValid)
             {
-                var data = db.tbUsuarios.FirstOrDefault(x => x.idUsuario == idUsuario);
-
-                if (data != null)
+                // ❌ Si el modelo no es válido, devuelves el mismo modelo para que se conserven los datos ingresados
+                return View(model);
+            }
+            try
+            {
+                using (DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
                 {
+                    var data = db.tbUsuarios.FirstOrDefault(x => x.idUsuario == idUsuario);
+
+                    if (data == null)
+                    {
+                        // No se encontró el usuario, devolver a la vista con un mensaje de error
+                        ModelState.AddModelError("", "El usuario no fue encontrado.");
+                        return View(model);
+                    }
+
                     data.idRol = model.idRol;
                     data.nombre = model.nombre;
                     data.apellido = model.apellido;
                     data.correoElectronico = model.correoElectronico;
                     data.contrasena = model.contrasena;
-                    data.fechaRegistro = model.fechaRegistro;
+                    data.fechaRegistro = DateTime.Now;
                     data.activo = model.activo;
                     data.dni = model.dni;
 
                     db.SaveChanges();
-                    return View("Listar");
+                    return RedirectToAction("Listar");
                 }
-                else return View();
+            }catch(Exception ex)
+            {
+                // Algo salió mal: te quedas en la vista y devuelves el modelo con un mensaje de error
+                ModelState.AddModelError("", "Error al actualizar el usuario: " + ex.Message);
+                return View(model);
             }
+            
         }
         
     }

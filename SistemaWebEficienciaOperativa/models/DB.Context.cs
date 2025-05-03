@@ -31,5 +31,10 @@ namespace SistemaWebEficienciaOperativa.Models
         public virtual DbSet<tbRoles> tbRoles { get; set; }
         public virtual DbSet<tbSucursales> tbSucursales { get; set; }
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<tbDesechosInsumos> tbDesechosInsumos { get; set; }
+        public virtual DbSet<tbIngresosInsumos> tbIngresosInsumos { get; set; }
+        public virtual DbSet<tbInsumos> tbInsumos { get; set; }
+        public virtual DbSet<tbProveedores> tbProveedores { get; set; }
+        public virtual DbSet<tbUnidades> tbUnidades { get; set; }
     }
 }
