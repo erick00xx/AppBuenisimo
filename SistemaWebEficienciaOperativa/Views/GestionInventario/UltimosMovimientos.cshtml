@@ -1,48 +1,72 @@
 ﻿@model SistemaWebEficienciaOperativa.Models.InventarioMovimientosViewModel
-@{
-    ViewBag.Title = "Últimos Movimientos de Inventario";
-}
-<a href="@Url.Action("RegistrarCompra", "GestionInventario")" class="btn btn-primary me-2">
-    Registrar Nueva Compra
-</a>
-<a href="@Url.Action("RegistrarDesecho", "GestionInventario")" class="btn btn-danger">
-    Registrar Desecho
-</a>
-<h2 class="text-center">Últimos Movimientos de Inventario</h2>
 
-<div class="container-fluid">
-    <div class="row">
+@{
+    ViewBag.Title = "Movimientos de Inventario";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <h2 class="text-center mb-1">Movimientos de Inventario</h2>
+        <div>
+            <a href="@Url.Action("RegistrarCompra", "GestionInventario")" class="mb-1 btn btn-outline-primary me-2">
+                ➕ Nueva Compra
+            </a>
+            <a href="@Url.Action("RegistrarDesecho", "GestionInventario")" class="mb-1 btn btn-outline-danger">
+                ♻️ Registrar Desecho
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4">
         <!-- Últimas Compras -->
-        <div class="col-xs-12 col-md-6">
-            <h4>Últimas Compras</h4>
-            <div class="list-group">
-                @foreach (var item in Model.UltimasCompras)
-                {
-                    <div class="list-group-item">
-                        <strong>@item.Insumo</strong> — @item.Cantidad @item.Unidad<br />
-                        <small>
-                            Proveedor: @item.Proveedor | Sucursal: @item.Sucursal<br />
-                            Fecha: @item.Fecha.ToShortDateString()
-                        </small>
-                    </div>
-                }
+        <div class="col-12 col-md-6">
+            <div class="card border-success shadow-sm h-100">
+                <div class="card-header bg-success text-white fw-bold text-center">
+                    🛒 Últimas Compras
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var item in Model.UltimasCompras)
+                    {
+                        <li class="list-group-item">
+                            <strong>@item.Insumo</strong> — @item.Cantidad @item.Unidad
+                            <br />
+                            <small class="text-muted">
+                                Proveedor: @item.Proveedor | Sucursal: @item.Sucursal<br />
+                                Fecha: @item.Fecha.ToShortDateString()
+                            </small>
+                        </li>
+                    }
+                    @if (!Model.UltimasCompras.Any())
+                    {
+                        <li class="list-group-item text-muted text-center">Sin registros recientes.</li>
+                    }
+                </ul>
             </div>
         </div>
 
         <!-- Últimos Desechos -->
-        <div class="col-xs-12 col-md-6">
-            <h4>Últimos Desechos</h4>
-            <div class="list-group">
-                @foreach (var item in Model.UltimosDesechos)
-                {
-                    <div class="list-group-item">
-                        <strong>@item.Insumo</strong> — @item.Cantidad @item.Unidad<br />
-                        <small>
-                            Motivo: @item.Motivo | Sucursal: @item.Sucursal<br />
-                            Fecha: @item.Fecha.ToShortDateString()
-                        </small>
-                    </div>
-                }
+        <div class="col-12 col-md-6">
+            <div class="card border-danger shadow-sm h-100">
+                <div class="card-header bg-danger text-white fw-bold text-center">
+                    🗑️ Últimos Desechos
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var item in Model.UltimosDesechos)
+                    {
+                        <li class="list-group-item">
+                            <strong>@item.Insumo</strong> — @item.Cantidad @item.Unidad
+                            <br />
+                            <small class="text-muted">
+                                Motivo: @item.Motivo | Sucursal: @item.Sucursal<br />
+                                Fecha: @item.Fecha.ToShortDateString()
+                            </small>
+                        </li>
+                    }
+                    @if (!Model.UltimosDesechos.Any())
+                    {
+                        <li class="list-group-item text-muted text-center">Sin registros recientes.</li>
+                    }
+                </ul>
             </div>
         </div>
     </div>

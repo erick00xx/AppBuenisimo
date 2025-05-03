@@ -1,0 +1,59 @@
+﻿@model SistemaWebEficienciaOperativa.Models.ReporteAsistenciaEmpleadoViewModel
+
+@{
+    ViewBag.Title = "Reporte de Asistencias";
+}
+
+<h2>Reporte de Asistencias</h2>
+
+@using (Html.BeginForm("ReporteAsistencias", "Asistencia", FormMethod.Get))
+{
+    <div class="row g-3 mb-3">
+        <div class="col-md-4">
+            @Html.Label("Empleado")
+            @Html.DropDownList("idUsuario", Model.Usuarios, "-- Seleccione --", new { @class = "form-select" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("Desde")
+            @Html.TextBox("fechaDesde", Model.FechaDesde?.ToString("yyyy-MM-dd"), new { @type = "date", @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            @Html.Label("Hasta")
+            @Html.TextBox("fechaHasta", Model.FechaHasta?.ToString("yyyy-MM-dd"), new { @type = "date", @class = "form-control" })
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+    </div>
+}
+
+@if (Model.Asistencias.Any())
+{
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Fecha</th>
+                <th>Sucursal</th>
+                <th>Observación</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.Asistencias)
+            {
+                <tr>
+                    <td>@a.Fecha.ToShortDateString()</td>
+                    <td>@a.Sucursal</td>
+                    <td>@a.Observacion</td>
+                    <td>@(a.HoraEntrada?.ToString(@"hh\:mm") ?? "-")</td>
+                    <td>@(a.HoraSalida?.ToString(@"hh\:mm") ?? "-")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No se encontraron asistencias en el rango seleccionado.</p>
+}

@@ -158,6 +158,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReporteAsistenciaEmpleadoViewModel.cs" />
     <Compile Include="Models\tbAsistencias.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -303,10 +304,10 @@
     <Content Include="Views\GestionEmpleados\Listar.cshtml" />
     <Content Include="Views\GestionEmpleados\Crear.cshtml" />
     <Content Include="Views\GestionEmpleados\Editar.cshtml" />
-    <Content Include="Views\GestionInventario\Dashboard.cshtml" />
     <Content Include="Views\GestionInventario\UltimosMovimientos.cshtml" />
     <Content Include="Views\GestionInventario\RegistrarCompra.cshtml" />
     <Content Include="Views\GestionInventario\RegistrarDesecho.cshtml" />
+    <Content Include="Views\Asistencia\ReporteAsistencias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

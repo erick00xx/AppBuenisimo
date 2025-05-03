@@ -89,5 +89,60 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 }
             }
         }
+
+        public ActionResult ReporteAsistencias(int? idUsuario, DateTime? fechaDesde, DateTime? fechaHasta)
+        {
+            using (var db = new DB_BUENISIMOEntities())
+            {
+                // Lista de usuarios activos para el dropdown
+                var usuarios = db.tbUsuarios
+                    .Where(u => u.activo == true)
+                    .Select(u => new SelectListItem
+                    {
+                        Value = u.idUsuario.ToString(),
+                        Text = u.nombre + " " + u.apellido
+                    }).ToList();
+
+                // Armamos la consulta base
+                var asistenciasQuery = db.tbAsistencias.AsQueryable();
+
+                if (idUsuario.HasValue)
+                    asistenciasQuery = asistenciasQuery.Where(a => a.idUsuario == idUsuario.Value);
+
+                if (fechaDesde.HasValue)
+                    asistenciasQuery = asistenciasQuery.Where(a => a.fecha >= fechaDesde.Value);
+
+                if (fechaHasta.HasValue)
+                    asistenciasQuery = asistenciasQuery.Where(a => a.fecha <= fechaHasta.Value);
+
+                // Ejecutamos la consulta primero con ToList(), luego manipulamos los datos en memoria
+                var asistenciasDB = asistenciasQuery
+                    .OrderByDescending(a => a.fecha)
+                    .ToList();
+
+                // Proyección ya en memoria, ahora sí podemos usar TimeOfDay
+                var asistencias = asistenciasDB
+                    .Select(a => new AsistenciaDetalle
+                    {
+                        Fecha = a.fecha,
+                        Sucursal = a.tbSucursales?.nombre,
+                        Observacion = a.tbObservacionesAsistencias?.descripcion,
+                        HoraEntrada = a.horaEntrada?.TimeOfDay,
+                        HoraSalida = a.horaSalida?.TimeOfDay
+                    }).ToList();
+
+                // Creamos el ViewModel
+                var viewModel = new ReporteAsistenciaEmpleadoViewModel
+                {
+                    IdUsuario = idUsuario,
+                    FechaDesde = fechaDesde,
+                    FechaHasta = fechaHasta,
+                    Asistencias = asistencias,
+                    Usuarios = usuarios
+                };
+
+                return View(viewModel);
+            }
+        }
     }
 }

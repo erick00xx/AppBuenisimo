@@ -2,79 +2,56 @@
     ViewBag.Title = "Listar";
 }
 
-<h2>Listar Empleados</h2>
+<h2 class="text-center mb-4">👥 Listar Empleados</h2>
 
-<div>
-    <a class="btn btn-success" href="~/GestionEmpleados/Crear">Crear nuevo Usuario</a>
+<div class="text-end mb-3">
+    <a class="btn btn-success btn-lg px-4" href="~/GestionEmpleados/Crear">
+        ➕ Crear nuevo Usuario
+    </a>
 </div>
 
 <div class="contenedor-empleados">
     @foreach (var empleado in Model)
     {
         <div class="bloque-empleado">
-            <h3>@empleado.nombre @empleado.apellido</h3>
-            <p>Email: @empleado.correoElectronico</p>
-            <p>DNI: @empleado.dni</p>
+            <h3 class="mb-2 text-uppercase fw-bold">@empleado.nombre @empleado.apellido</h3>
+            <p class="mb-1"><strong>Email:</strong> @empleado.correoElectronico</p>
+            <p class="mb-3"><strong>DNI:</strong> @empleado.dni</p>
             <div class="acciones">
-                <a href="@Url.Action("Ver", "GestionEmpleados", new { idUsuario = empleado.idUsuario })" class="btn btn-primary">Ver</a>
-                <a href="@Url.Action("Editar", "GestionEmpleados", new { idUsuario = empleado.idUsuario })" class="btn btn-secondary">Editar</a>
+                <a href="@Url.Action("Ver", "GestionEmpleados", new { idUsuario = empleado.idUsuario })"
+                   class="btn btn-primary btn-lg w-100 mb-2">👁 Historial</a>
+                <a href="@Url.Action("Editar", "GestionEmpleados", new { idUsuario = empleado.idUsuario })"
+                   class="btn btn-secondary btn-lg w-100">✏️ Editar Cuenta</a>
             </div>
         </div>
     }
 </div>
 
 <style>
-    /* Contenedor general */
     .contenedor-empleados {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 2 columnas o más, dependiendo del ancho */
-        gap: 15px;
-        padding: 10px;
-    }
-
-    /* Bloque de cada empleado */
-    .bloque-empleado {
-        background-color: #f9f9f9;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
         padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .bloque-empleado {
+        background-color: #ffffff;
+        padding: 20px;
+        border: 2px solid #dee2e6;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
         text-align: center;
-        transition: transform 0.3s ease;
     }
 
-        /* Efecto de hover para los bloques */
-        .bloque-empleado:hover {
-            transform: translateY(-5px);
-        }
-
-    /* Botones de acción */
-    .acciones {
-        margin-top: 10px;
+    .bloque-empleado:hover {
+        transform: translateY(-4px);
     }
 
-        .acciones .btn {
-            display: inline-block;
-            padding: 8px 15px;
-            margin: 5px;
-            text-decoration: none;
-            color: white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+    .acciones .btn {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
 
-        .acciones .btn-primary {
-            background-color: #007bff;
-        }
-
-            .acciones .btn-primary:hover {
-                background-color: #0056b3;
-            }
-
-        .acciones .btn-secondary {
-            background-color: #6c757d;
-        }
-
-            .acciones .btn-secondary:hover {
-                background-color: #5a6268;
-            }
 </style>

@@ -18,6 +18,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
         {
             return View();
         }
+
         public ActionResult Listar()
         {
             try
