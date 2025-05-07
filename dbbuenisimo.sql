@@ -1,9 +1,11 @@
 create database DB_BUENISIMO;
+
 USE DB_BUENISIMO;
 
+----------- GESTIONAR CUENTAS
 create table tbRoles(
 	idRol int identity(1,1) primary key,
-	nombreRol nvarchar(50) not null unique
+	nombreRol nvarchar(50)  null unique
 );
 CREATE TABLE tbObservacionesAsistencias(
 	idObservacionAsistencia int identity(1,1) primary key,
@@ -28,6 +30,7 @@ create table tbSucursales(
 	nombre nvarchar(100) not null
 );
 
+--------------------- GESTIONAR ASISTENCIAS
 create table tbAsistencias(
 	idAsistencia int identity(1,1) primary key,
 	idUsuario int not null,
@@ -94,7 +97,7 @@ INSERT INTO tbAsistencias (idUsuario, idSucursal, idObservacionAsistencia, fecha
 
 
 
-
+------------------- PARA GESTION DE INVENTARIO
 
 -- Tabla: unidades de medida
 CREATE TABLE tbUnidades (
@@ -196,6 +199,41 @@ INSERT INTO tbDesechosInsumos (idInsumo, cantidad, idUnidad, fechaDesecho, motiv
 (5, 0.25, 5, '2025-05-03', 'contaminación', 'Sabor alterado', 5);
 
 
+------------------------------------ CARTA DE BUENISIMO
+CREATE TABLE tbTiposProductos(
+	idTipoProducto INT PRIMARY KEY,
+	nombre NVARCHAR(30)
+);
+
+CREATE TABLE tbCategorias (
+    idCategoria INT PRIMARY KEY IDENTITY,
+    nombre NVARCHAR(50) NOT NULL,
+	idTipoProducto INT FOREIGN KEY REFERENCES tbTiposProductos(idTipoProducto)
+);
+-- Define cómo se vende cada producto
+CREATE TABLE tbTiposMedidas (
+    idTipoMedida INT PRIMARY KEY IDENTITY,
+    nombre NVARCHAR(30) NOT NULL -- Ej: Tamaño, Tipo (Simple/Doble), Único
+);
+-- Define valores posibles por tipo de medida
+CREATE TABLE tbMedidas (
+    idMedida INT PRIMARY KEY IDENTITY,
+    idTipoMedida INT FOREIGN KEY REFERENCES tbTiposMedidas(idTipoMedida),
+    nombre NVARCHAR(30) NOT NULL -- Ej: REG, MED, GR, Simple, Doble
+);
+CREATE TABLE tbProductos (
+    idProducto INT PRIMARY KEY IDENTITY,
+    nombre NVARCHAR(100) NOT NULL,
+    idCategoria INT FOREIGN KEY REFERENCES tbCategorias(idCategoria),
+    idTipoMedida INT FOREIGN KEY REFERENCES tbTiposMedidas(idTipoMedida),
+    descripcion NVARCHAR(255)
+);
+CREATE TABLE tbPrecios (
+    IdPrecio INT PRIMARY KEY IDENTITY,
+    IdProducto INT FOREIGN KEY REFERENCES tbProductos(IdProducto),
+    IdMedida INT FOREIGN KEY REFERENCES tbMedidas(IdMedida) NULL, -- Puede ser NULL si no tiene variantes
+    Precio DECIMAL(6,2) NOT NULL
+);
 
 
 

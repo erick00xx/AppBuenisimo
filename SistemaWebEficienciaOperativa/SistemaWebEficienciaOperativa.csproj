@@ -162,6 +162,9 @@
     <Compile Include="Models\tbAsistencias.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbCategorias.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbDesechosInsumos.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -174,7 +177,16 @@
     <Compile Include="Models\tbInsumos.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbMedidas.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbObservacionesAsistencias.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPrecios.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbProductos.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbProveedores.cs">
@@ -184,6 +196,9 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbSucursales.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTiposMedidas.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbUnidades.cs">
@@ -308,6 +323,7 @@
     <Content Include="Views\GestionInventario\RegistrarCompra.cshtml" />
     <Content Include="Views\GestionInventario\RegistrarDesecho.cshtml" />
     <Content Include="Views\Asistencia\ReporteAsistencias.cshtml" />
+    <Content Include="Views\GestionCarta\AgregarProducto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

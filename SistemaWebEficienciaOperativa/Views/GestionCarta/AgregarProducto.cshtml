@@ -1,0 +1,72 @@
+﻿@model SistemaWebEficienciaOperativa.Models.tbProductos
+@{
+    //ViewBag.Title = "Agregar Producto";
+    Layout = null;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.idCategoria, "Tipo de Producto")
+        @Html.DropDownListFor(m => m.idCategoria, (SelectList)ViewBag.TipoProducto, "Selecciona un Tipo de Producto", new { @class = "form-control", id = "TipoProducto" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.idCategoria, "Categoría")
+        @Html.DropDownListFor(m => m.idCategoria, (SelectList)ViewBag.Categorias, "Selecciona una Categoría", new { @class = "form-control", id = "Categorias" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.idTipoMedida, "Tipo de Medida")
+        @Html.DropDownListFor(m => m.idTipoMedida, (SelectList)ViewBag.TiposMedidas, "Selecciona un tipo de medida", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.nombre)
+        @Html.TextBoxFor(m => m.nombre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.descripcion)
+        @Html.TextAreaFor(m => m.descripcion, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear Producto</button>
+}
+
+@* Sección para mostrar errores si el modelo no es válido *@
+@Html.ValidationSummary(true)
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // Cuando se selecciona un tipo de producto, actualizamos el dropdown de categorías
+        $('#TipoProducto').change(function () {
+            var tipoProducto = $(this).val();
+
+            // Hacer la llamada AJAX para obtener las categorías
+            $.ajax({
+                url: '@Url.Action("ObtenerCategoriasPorTipo", "GestionCarta")',
+                data: { tipoProducto: tipoProducto },
+                type: 'GET',
+                success: function (data) {
+                    // Limpiar el dropdown de categorías
+                    var categoriaDropdown = $('#Categorias');
+                    categoriaDropdown.empty();
+
+                    // Añadir las opciones predeterminadas
+                    categoriaDropdown.append('<option value="">Selecciona una Categoría</option>');
+
+                    // Rellenar las categorías según el tipo de producto
+                    $.each(data, function (index, item) {
+                        categoriaDropdown.append('<option value="' + item.idCategoria + '">' + item.nombre + '</option>');
+                    });
+                }
+            });
+        });
+    </script>
+}

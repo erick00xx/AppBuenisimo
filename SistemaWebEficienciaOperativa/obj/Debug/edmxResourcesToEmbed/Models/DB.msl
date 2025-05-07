@@ -127,5 +127,52 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbCategorias">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbCategorias">
+        <MappingFragment StoreEntitySet="tbCategorias">
+          <ScalarProperty Name="tipoProducto" ColumnName="tipoProducto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbMedidas">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbMedidas">
+        <MappingFragment StoreEntitySet="tbMedidas">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
+          <ScalarProperty Name="idMedida" ColumnName="idMedida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbPrecios">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbPrecios">
+        <MappingFragment StoreEntitySet="tbPrecios">
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdPrecio" ColumnName="IdPrecio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbProductos">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbProductos">
+        <MappingFragment StoreEntitySet="tbProductos">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbTiposMedidas">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbTiposMedidas">
+        <MappingFragment StoreEntitySet="tbTiposMedidas">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

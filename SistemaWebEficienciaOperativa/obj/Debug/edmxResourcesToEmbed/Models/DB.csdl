@@ -39,7 +39,7 @@
       <PropertyRef Name="idRol" />
     </Key>
     <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nombreRol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nombreRol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Usuarios_Roles" FromRole="tbRoles" ToRole="tbUsuarios" />
   </EntityType>
   <EntityType Name="tbSucursales">
@@ -196,6 +196,31 @@
     <AssociationSet Name="FK__tbInsumos__idUni__5165187F" Association="DB_BUENISIMOModel.FK__tbInsumos__idUni__5165187F">
       <End Role="tbUnidades" EntitySet="tbUnidades" />
       <End Role="tbInsumos" EntitySet="tbInsumos" />
+    </AssociationSet>
+    <EntitySet Name="tbCategorias" EntityType="DB_BUENISIMOModel.tbCategorias" />
+    <EntitySet Name="tbMedidas" EntityType="DB_BUENISIMOModel.tbMedidas" />
+    <EntitySet Name="tbPrecios" EntityType="DB_BUENISIMOModel.tbPrecios" />
+    <EntitySet Name="tbProductos" EntityType="DB_BUENISIMOModel.tbProductos" />
+    <EntitySet Name="tbTiposMedidas" EntityType="DB_BUENISIMOModel.tbTiposMedidas" />
+    <AssociationSet Name="FK__tbProduct__idCat__71D1E811" Association="DB_BUENISIMOModel.FK__tbProduct__idCat__71D1E811">
+      <End Role="tbCategorias" EntitySet="tbCategorias" />
+      <End Role="tbProductos" EntitySet="tbProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbMedidas__idTip__6EF57B66" Association="DB_BUENISIMOModel.FK__tbMedidas__idTip__6EF57B66">
+      <End Role="tbTiposMedidas" EntitySet="tbTiposMedidas" />
+      <End Role="tbMedidas" EntitySet="tbMedidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbPrecios__IdMed__76969D2E" Association="DB_BUENISIMOModel.FK__tbPrecios__IdMed__76969D2E">
+      <End Role="tbMedidas" EntitySet="tbMedidas" />
+      <End Role="tbPrecios" EntitySet="tbPrecios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbPrecios__IdPro__75A278F5" Association="DB_BUENISIMOModel.FK__tbPrecios__IdPro__75A278F5">
+      <End Role="tbProductos" EntitySet="tbProductos" />
+      <End Role="tbPrecios" EntitySet="tbPrecios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbProduct__idTip__72C60C4A" Association="DB_BUENISIMOModel.FK__tbProduct__idTip__72C60C4A">
+      <End Role="tbTiposMedidas" EntitySet="tbTiposMedidas" />
+      <End Role="tbProductos" EntitySet="tbProductos" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="tbDesechosInsumos">
@@ -377,6 +402,118 @@
       </Principal>
       <Dependent Role="tbInsumos">
         <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbCategorias">
+    <Key>
+      <PropertyRef Name="idCategoria" />
+    </Key>
+    <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tipoProducto" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbProductos" Relationship="DB_BUENISIMOModel.FK__tbProduct__idCat__71D1E811" FromRole="tbCategorias" ToRole="tbProductos" />
+  </EntityType>
+  <EntityType Name="tbMedidas">
+    <Key>
+      <PropertyRef Name="idMedida" />
+    </Key>
+    <Property Name="idMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTipoMedida" Type="Int32" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbTiposMedidas" Relationship="DB_BUENISIMOModel.FK__tbMedidas__idTip__6EF57B66" FromRole="tbMedidas" ToRole="tbTiposMedidas" />
+    <NavigationProperty Name="tbPrecios" Relationship="DB_BUENISIMOModel.FK__tbPrecios__IdMed__76969D2E" FromRole="tbMedidas" ToRole="tbPrecios" />
+  </EntityType>
+  <EntityType Name="tbPrecios">
+    <Key>
+      <PropertyRef Name="IdPrecio" />
+    </Key>
+    <Property Name="IdPrecio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <NavigationProperty Name="tbMedidas" Relationship="DB_BUENISIMOModel.FK__tbPrecios__IdMed__76969D2E" FromRole="tbPrecios" ToRole="tbMedidas" />
+    <NavigationProperty Name="tbProductos" Relationship="DB_BUENISIMOModel.FK__tbPrecios__IdPro__75A278F5" FromRole="tbPrecios" ToRole="tbProductos" />
+  </EntityType>
+  <EntityType Name="tbProductos">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="idCategoria" Type="Int32" />
+    <Property Name="idTipoMedida" Type="Int32" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbCategorias" Relationship="DB_BUENISIMOModel.FK__tbProduct__idCat__71D1E811" FromRole="tbProductos" ToRole="tbCategorias" />
+    <NavigationProperty Name="tbPrecios" Relationship="DB_BUENISIMOModel.FK__tbPrecios__IdPro__75A278F5" FromRole="tbProductos" ToRole="tbPrecios" />
+    <NavigationProperty Name="tbTiposMedidas" Relationship="DB_BUENISIMOModel.FK__tbProduct__idTip__72C60C4A" FromRole="tbProductos" ToRole="tbTiposMedidas" />
+  </EntityType>
+  <EntityType Name="tbTiposMedidas">
+    <Key>
+      <PropertyRef Name="idTipoMedida" />
+    </Key>
+    <Property Name="idTipoMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbMedidas" Relationship="DB_BUENISIMOModel.FK__tbMedidas__idTip__6EF57B66" FromRole="tbTiposMedidas" ToRole="tbMedidas" />
+    <NavigationProperty Name="tbProductos" Relationship="DB_BUENISIMOModel.FK__tbProduct__idTip__72C60C4A" FromRole="tbTiposMedidas" ToRole="tbProductos" />
+  </EntityType>
+  <Association Name="FK__tbProduct__idCat__71D1E811">
+    <End Type="DB_BUENISIMOModel.tbCategorias" Role="tbCategorias" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbProductos" Role="tbProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCategorias">
+        <PropertyRef Name="idCategoria" />
+      </Principal>
+      <Dependent Role="tbProductos">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbMedidas__idTip__6EF57B66">
+    <End Type="DB_BUENISIMOModel.tbTiposMedidas" Role="tbTiposMedidas" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbMedidas" Role="tbMedidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTiposMedidas">
+        <PropertyRef Name="idTipoMedida" />
+      </Principal>
+      <Dependent Role="tbMedidas">
+        <PropertyRef Name="idTipoMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbPrecios__IdMed__76969D2E">
+    <End Type="DB_BUENISIMOModel.tbMedidas" Role="tbMedidas" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbPrecios" Role="tbPrecios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbMedidas">
+        <PropertyRef Name="idMedida" />
+      </Principal>
+      <Dependent Role="tbPrecios">
+        <PropertyRef Name="IdMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbPrecios__IdPro__75A278F5">
+    <End Type="DB_BUENISIMOModel.tbProductos" Role="tbProductos" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbPrecios" Role="tbPrecios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProductos">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="tbPrecios">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbProduct__idTip__72C60C4A">
+    <End Type="DB_BUENISIMOModel.tbTiposMedidas" Role="tbTiposMedidas" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbProductos" Role="tbProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTiposMedidas">
+        <PropertyRef Name="idTipoMedida" />
+      </Principal>
+      <Dependent Role="tbProductos">
+        <PropertyRef Name="idTipoMedida" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
