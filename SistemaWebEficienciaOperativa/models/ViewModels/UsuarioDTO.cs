@@ -7,8 +7,7 @@ using WebGrease.Css.Ast.Selectors;
 
 namespace SistemaWebEficienciaOperativa.Models
 {
-    [Table("tbUsuarios")]
-    public class clsUsuario
+    public class UsuarioDTO
     {
         public int IdUsuario { get; set; }
         public int IdRol { get; set; }
@@ -22,7 +21,7 @@ namespace SistemaWebEficienciaOperativa.Models
 
 
         // Constructo pa registrar fecha
-        public clsUsuario()
+        public UsuarioDTO()
         {
             FechaRegistro = DateTime.Now;
         }

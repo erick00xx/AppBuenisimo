@@ -11,11 +11,11 @@ namespace SistemaWebEficienciaOperativa.Controllers
         public ActionResult Registrar()
         {
             CargarUltimaAsistencia();
-            return View(new clsUsuario());
+            return View(new UsuarioDTO());
         }
 
         [HttpPost]
-        public ActionResult Registrar(clsUsuario objUsuario, string accion)
+        public ActionResult Registrar(UsuarioDTO objUsuario, string accion)
         {
             CargarUltimaAsistencia(); // Esto se llama siempre
 

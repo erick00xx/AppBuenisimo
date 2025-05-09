@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Models;
+using SistemaWebEficienciaOperativa.Services;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
     public class GestionCartaController : Controller
     {
+        ProductoServices productoServices = new ProductoServices();
         // GET: GestionCarta
         public ActionResult Index()
         {
@@ -21,47 +24,53 @@ namespace SistemaWebEficienciaOperativa.Controllers
             return View();
         }
 
-        //public ActionResult AgregarProducto()
-        //{
-        //    using (DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
-        //    {
-        //        ViewBag.TipoProducto = new SelectList(db.tbCategorias.ToList(), "tipoProducto", "tipoProducto");
-        //        ViewBag.Categorias = new SelectList(db.tbCategorias.ToList(), "idCategoria", "nombre");
-        //        ViewBag.TiposMedidas = new SelectList(db.tbTiposMedidas.ToList(), "idTipoMedida", "nombre");
-        //        db.Dispose();
-        //        return View();
-        //    }
-
-        //}
 
         //Acción para cargar el formulario de agregar producto
         public ActionResult AgregarProducto()
         {
-            using (DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
-            {
-                // Obtener las categorías y tipos de medida
-                //ViewBag.TipoProducto = new SelectList(db.tbCategorias.Select(c => c.tipoProducto).Distinct(), "tipoProducto", "tipoProducto");
-                ViewBag.TipoProducto = new SelectList(db.tbCategorias.ToList(), "tipoProducto", "tipoProducto");
-                ViewBag.Categorias = new SelectList(new List<tbCategorias>(), "idCategoria", "nombre"); // Vacío inicialmente
-                ViewBag.TiposMedidas = new SelectList(db.tbTiposMedidas.ToList(), "idTipoMedida", "nombre");
-                db.Dispose();
-                return View();
-            }
+            var tiposProductos = productoServices.TiposProductos();
+            var tiposMedidas = productoServices.TiposMedidas();
+            ViewBag.TipoProducto = new SelectList(tiposProductos, "idTipoProducto", "nombre");
+            ViewBag.TipoMedida = new SelectList(tiposMedidas, "idTipoMedida", "nombre");
+            Debug.WriteLine("LLEGA AQUI");
+            return View();
         }
 
-        // Acción para obtener categorías según el tipo de producto seleccionado
-        public JsonResult ObtenerCategoriasPorTipo(string tipoProducto)
+        public JsonResult ObtenerCategoriasPorTipo(int idTipoProducto)
         {
-            using (DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
-            {
-                var categorias = db.tbCategorias
-                                   .Where(c => c.tipoProducto == tipoProducto)
-                                   .ToList();
+            Debug.WriteLine("LLEGA ID: " + idTipoProducto);
 
-                // Devolver las categorías filtradas como JSON
-                return Json(categorias, JsonRequestBehavior.AllowGet);
+            var categorias = productoServices.CategoriasPorTipo(idTipoProducto);
+            var resultado = categorias.Select(c => new {
+                idCategoria = c.idCategoria,
+                nombre = c.nombre
+            });
+
+            return Json(resultado, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult AgregarProducto(tbProductos producto)
+        {
+            if (ModelState.IsValid)
+            {
+                Debug.Write("modelo valido");
+                productoServices.GuardarProducto(producto);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Debug.Write("modelo invalido");
+                // Manejar el error de validación
+                return View("AgregarProducto", producto);
             }
         }
+
+        public ActionResult ListarProductos()
+        {
+            var productos = productoServices.ListarProductos();
+            return View(productos);
+        }
+
 
     }
 }

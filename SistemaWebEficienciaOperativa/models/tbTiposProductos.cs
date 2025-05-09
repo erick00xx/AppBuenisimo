@@ -12,20 +12,18 @@ namespace SistemaWebEficienciaOperativa.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbCategorias
+    public partial class tbTiposProductos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbCategorias()
+        public tbTiposProductos()
         {
-            this.tbProductos = new HashSet<tbProductos>();
+            this.tbCategorias = new HashSet<tbCategorias>();
         }
     
-        public int idCategoria { get; set; }
+        public int idTipoProducto { get; set; }
         public string nombre { get; set; }
-        public Nullable<int> idTipoProducto { get; set; }
     
-        public virtual tbTiposProductos tbTiposProductos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbProductos> tbProductos { get; set; }
+        public virtual ICollection<tbCategorias> tbCategorias { get; set; }
     }
 }
