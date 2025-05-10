@@ -40,7 +40,6 @@ namespace SistemaWebEficienciaOperativa.Models
         public virtual DbSet<tbPrecios> tbPrecios { get; set; }
         public virtual DbSet<tbProductos> tbProductos { get; set; }
         public virtual DbSet<tbTiposMedidas> tbTiposMedidas { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbTiposProductos> tbTiposProductos { get; set; }
         public virtual DbSet<tbCategorias> tbCategorias { get; set; }
     }

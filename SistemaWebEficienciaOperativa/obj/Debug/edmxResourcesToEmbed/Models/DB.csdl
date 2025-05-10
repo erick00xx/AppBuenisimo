@@ -217,7 +217,6 @@
       <End Role="tbTiposMedidas" EntitySet="tbTiposMedidas" />
       <End Role="tbProductos" EntitySet="tbProductos" />
     </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="DB_BUENISIMOModel.sysdiagrams" />
     <EntitySet Name="tbTiposProductos" EntityType="DB_BUENISIMOModel.tbTiposProductos" />
     <EntitySet Name="tbCategorias" EntityType="DB_BUENISIMOModel.tbCategorias" />
     <AssociationSet Name="FK__tbCategor__idTip__6383C8BA" Association="DB_BUENISIMOModel.FK__tbCategor__idTip__6383C8BA">
@@ -502,16 +501,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="tbTiposProductos">
     <Key>
       <PropertyRef Name="idTipoProducto" />

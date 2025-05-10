@@ -138,9 +138,13 @@
     <Compile Include="Controllers\GestionPedidosController.cs" />
     <Compile Include="Controllers\GestionVentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReporteEmpleadoController.cs" />
+    <Compile Include="Controllers\ReporteInventarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\ReporteEmpleadoModel.cs" />
+    <Compile Include="Models\ViewModels\ReporteInventarioModel.cs" />
     <Compile Include="Models\ViewModels\UsuarioDTO.cs" />
     <Compile Include="Models\DB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -156,9 +160,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAsistencias.cs">
       <DependentUpon>DB.tt</DependentUpon>
@@ -216,6 +217,8 @@
     <Compile Include="Models\ViewModels\ReporteAsistenciaEmpleadoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CartaServices.cs" />
+    <Compile Include="Services\EmpleadoService.cs" />
+    <Compile Include="Services\ReporteInventarioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -333,6 +336,10 @@
     <Content Include="Views\Asistencia\ReporteAsistencias.cshtml" />
     <Content Include="Views\GestionCarta\AgregarProducto.cshtml" />
     <Content Include="Views\GestionCarta\ListarProductos.cshtml" />
+    <Content Include="Views\ReporteInventario\Index.cshtml" />
+    <Content Include="Views\ReporteInventario\DetalleProducto.cshtml" />
+    <Content Include="Views\ReporteEmpleado\Index.cshtml" />
+    <Content Include="Views\ReporteEmpleado\DetallePagoQuincenal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

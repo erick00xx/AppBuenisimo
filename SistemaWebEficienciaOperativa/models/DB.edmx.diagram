@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="18619caf328f48cb91ec3a9c256d2b9e" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbAsistencias" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+      <Diagram DiagramId="18619caf328f48cb91ec3a9c256d2b9e" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbAsistencias" Width="1.875" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbHorarios" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbObservacionesAsistencias" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbRoles" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
@@ -38,7 +38,6 @@
         <AssociationConnector Association="DB_BUENISIMOModel.FK__tbPrecios__IdMed__76969D2E" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK__tbPrecios__IdPro__75A278F5" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK__tbProduct__idTip__72C60C4A" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbTiposProductos" Width="1.5" PointX="8.5" PointY="1" />
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbCategorias" Width="1.5" PointX="10.75" PointY="0.75" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK__tbCategor__idTip__6383C8BA" />
