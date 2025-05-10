@@ -42,6 +42,13 @@
         <EntityTypeShape EntityType="DB_BUENISIMOModel.tbCategorias" Width="1.5" PointX="10.75" PointY="0.75" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK__tbCategor__idTip__6383C8BA" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK__tbProduct__idCat__6B24EA82" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbDetallePedido" Width="1.5" PointX="17.5" PointY="8.125" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbEstadosPedidos" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbMesas" Width="1.5" PointX="0.75" PointY="11.375" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbPedidos" Width="1.5" PointX="3" PointY="11" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbDetalle__idPed__5AEE82B9" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbDetalle__idPre__5BE2A6F2" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK__tbPedidos__idMes__6383C8BA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

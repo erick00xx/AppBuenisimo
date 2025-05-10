@@ -235,9 +235,41 @@ CREATE TABLE tbPrecios (
     Precio DECIMAL(6,2) NOT NULL
 );
 
+ALTER TABLE tbProductos
+ADD estado NVARCHAR(10) NOT NULL DEFAULT 'activo';
 
 
 
+
+-----------------------------------ORDEN DE PEDIDO
+
+
+
+CREATE TABLE tbMesas (
+    idMesa INT PRIMARY KEY IDENTITY,
+    numeroMesa INT NOT NULL,       -- Número de la mesa, ejemplo: mesa 1, mesa 2, etc.
+    estado NVARCHAR(20) NULL   -- Puede ser "Libre", "Ocupada", "Reservada", etc.
+);
+CREATE TABLE tbPedidos (
+    idPedido INT PRIMARY KEY IDENTITY,
+    idMesa INT FOREIGN KEY REFERENCES tbMesas(idMesa),  -- Relacionado con la mesa en la que se realizó el pedido
+    fechaPedido DATETIME NULL,                      -- Fecha y hora en que se hizo el pedido
+    estado NVARCHAR(20)NULL,                        -- Estado del pedido, ejemplo: "En preparación", "Entregado"
+    usuarioId INT  NULL,                               -- Puede ser el ID del usuario que hizo el pedido
+	total DECIMAL(6,2)
+);
+
+CREATE TABLE tbDetallePedido (
+    idDetalle INT PRIMARY KEY IDENTITY,
+    idPedido INT FOREIGN KEY REFERENCES tbPedidos(idPedido),  -- Relacionado con el pedido
+    idPrecio INT FOREIGN KEY REFERENCES tbPrecios(IdPrecio),  -- Relacionado con el producto que se pidió
+    cantidad INT NULL,                            -- La cantidad de productos solicitados
+    subtotal DECIMAL(6,2) NULL,                     -- El precio del producto en ese momento
+);
+CREATE TABLE tbEstadosPedidos (
+    idEstadoPedido INT PRIMARY KEY IDENTITY,
+    estado NVARCHAR(50) NOT NULL  -- Ejemplo: "En espera", "En preparación", "Listo para entregar", "Entregado"
+);
 
 
 

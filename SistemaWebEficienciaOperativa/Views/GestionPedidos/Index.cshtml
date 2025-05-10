@@ -42,7 +42,8 @@
         <div class="row g-3">
             <!-- Mesa 1 - Libre -->
             <div class="col-md-4">
-                <div class="card mesa-libre border-success h-100">
+                <div class="card mesa-libre border-success h-100 cursor-pointer"
+                     data-bs-toggle="modal" data-bs-target="#modalDetalle" data-mesa="1" data-estado="LIBRE">
                     <div class="card-body text-center">
                         <h3 class="card-title">MESA 01</h3>
                         <p class="card-text">LIBRE</p>
@@ -88,7 +89,7 @@
                 <div class="card border-primary h-100 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modalNuevoPedido">
                     <div class="card-body text-center">
                         <h3 class="card-title"><i class="bi bi-plus-lg"></i></h3>
-                        <p class="card-text">NUEVO PEDIDO</p>
+                        <p class="card-text">@Html.ActionLink("Nuevo Pedido", "Pedidos", null, new { @class = "btn btn-secondary" })</p>
                     </div>
                 </div>
             </div>
@@ -258,99 +259,6 @@
         </div>
     </div>
 
-    <!-- Modal Nuevo Pedido -->
-    <div class="modal fade" id="modalNuevoPedido" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-light">
-                    <h5 class="modal-title">Nuevo Pedido</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row mb-4">
-                        <div class="col-md-4">
-                            <label class="form-label">Mesa</label>
-                            <select class="form-select">
-                                <option selected>MESA 01</option>
-                                <option>MESA 02</option>
-                                <option>MESA 03</option>
-                                <option>MESA 04</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <h5>Producto</h5>
-                            <select class="form-select">
-                                <option selected disabled>Seleccione un producto</option>
-                                <option>Café Espresso</option>
-                                <option>Croissant</option>
-                                <option>Té</option>
-                                <option>Jugo Natural</option>
-                            </select>
-                            <p class="mt-2">Precio: <strong>S/ 0.00</strong></p>
-                        </div>
-                        <div class="col-md-6">
-                            <h5>Tamaño/Porción</h5>
-                            <select class="form-select">
-                                <option selected disabled>Seleccione tamaño</option>
-                                <option>Grande</option>
-                                <option>Mediano</option>
-                                <option>Pequeño</option>
-                            </select>
-                            <div class="input-group mt-2">
-                                <span class="input-group-text">Cantidad</span>
-                                <input type="number" class="form-control" value="1" min="1">
-                            </div>
-                            <p class="mt-2">Subtotal: <strong>S/ 0.00</strong></p>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Comentarios</label>
-                        <textarea class="form-control" placeholder="Ej: Sin azúcar, extra caliente..."></textarea>
-                    </div>
-
-                    <div class="text-end mb-3">
-                        <button class="btn btn-success">
-                            <i class="bi bi-plus-lg"></i> Agregar al Pedido
-                        </button>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Detalle</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio Unit.</th>
-                                    <th>Subtotal</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="6" class="text-center text-muted">No hay productos agregados</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="text-end mt-3">
-                        <h4>Total: <span class="text-primary">S/ 0.00</span></h4>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                        <i class="bi bi-check-circle"></i> Confirmar Pedido
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- jQuery local -->
     <script src="~/source/js/jquery-3.7.0.min.js"></script>

@@ -14,6 +14,12 @@ namespace SistemaWebEficienciaOperativa.Models
     
     public partial class tbPrecios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbPrecios()
+        {
+            this.tbDetallePedido = new HashSet<tbDetallePedido>();
+        }
+    
         public int IdPrecio { get; set; }
         public Nullable<int> IdProducto { get; set; }
         public Nullable<int> IdMedida { get; set; }
@@ -21,5 +27,7 @@ namespace SistemaWebEficienciaOperativa.Models
     
         public virtual tbMedidas tbMedidas { get; set; }
         public virtual tbProductos tbProductos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbDetallePedido> tbDetallePedido { get; set; }
     }
 }

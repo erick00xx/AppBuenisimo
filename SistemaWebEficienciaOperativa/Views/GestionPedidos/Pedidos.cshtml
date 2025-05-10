@@ -1,0 +1,105 @@
+﻿@model SistemaWebEficienciaOperativa.Models.tbDetallePedido
+
+@{
+    ViewBag.Title = "Crear Pedido";
+}
+
+<h2>Crear Pedido</h2>
+
+<!-- Buscador -->
+<input type="text" id="search" placeholder="Buscar producto..." class="form-control" />
+
+<!-- Lista de productos encontrados -->
+<ul id="productos-list" class="list-group mt-3">
+    <!-- Los productos serán añadidos dinámicamente aquí -->
+</ul>
+
+<h3>Productos seleccionados</h3>
+
+<!-- Lista de productos seleccionados -->
+<ul id="productos-seleccionados" class="list-group mt-3">
+    <!-- Los productos seleccionados se mostrarán aquí -->
+</ul>
+
+<form id="pedido-form" action="@Url.Action("GuardarPedido", "GestionPedidos")" method="post">
+    @* Este formulario enviará la lista de productos seleccionados y sus cantidades *@
+    <input type="hidden" id="detalle-pedido" name="detallePedido" />
+    <button type="submit" class="btn btn-success mt-3">Guardar Pedido</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Al escribir en el buscador
+        $("#search").on("input", function () {
+            var searchTerm = $(this).val();
+            if (searchTerm.length >= 3) {  // Empieza a buscar después de 3 caracteres
+                $.ajax({
+                    url: '@Url.Action("BuscarProductos", "GestionPedidos")',
+                    data: { term: searchTerm },
+                    dataType: 'json',
+                    success: function (data) {
+                        $("#productos-list").empty();
+                        if (data.length > 0) {
+                            data.forEach(function (producto) {
+                                $("#productos-list").append(
+                                    `<li class="list-group-item">
+                                        <strong>${producto.Producto}</strong><br/>
+                                        ${producto.Categoria}<br/>
+                                        S/.${producto.Precio}
+                                        <button class="btn btn-primary btn-sm add-producto" data-id="${producto.Id}" data-nombre="${producto.Producto}" data-precio="${producto.Precio}">Añadir</button>
+                                    </li>`
+                                );
+                            });
+                        } else {
+                            $("#productos-list").append("<li class='list-group-item'>No se encontraron productos.</li>");
+                        }
+                    }
+                });
+            } else {
+                $("#productos-list").empty();  // Limpiar lista si no hay suficientes caracteres
+            }
+        });
+
+        // Añadir el producto a la lista de productos seleccionados
+        $(document).on("click", ".add-producto", function () {
+            var productoId = $(this).data("id");
+            var productoNombre = $(this).data("nombre");
+            var productoPrecio = $(this).data("precio");
+
+            $("#productos-seleccionados").append(
+                `<li class="list-group-item" data-id="${productoId}">
+                    ${productoNombre} - S/.${productoPrecio}
+                    <input type="number" class="form-control cantidad" value="1" min="1" style="width: 80px; display: inline-block; margin-left: 10px;" />
+                    <button class="btn btn-danger btn-sm remove-producto" style="margin-left: 10px;">Eliminar</button>
+                </li>`
+            );
+        });
+
+        // Eliminar producto de la lista seleccionada
+        $(document).on("click", ".remove-producto", function () {
+            $(this).closest("li").remove();
+        });
+
+        // Enviar el formulario con los productos seleccionados y sus cantidades
+        $("#pedido-form").submit(function (e) {
+            e.preventDefault();
+            var detallePedido = [];
+
+            $("#productos-seleccionados li").each(function () {
+                var productoId = $(this).data("id");
+                var cantidad = $(this).find(".cantidad").val();
+                detallePedido.push({
+                    idPrecio: productoId,
+                    cantidad: cantidad
+                });
+            });
+
+            // Convertir el array a JSON y colocarlo en el campo hidden
+            $("#detalle-pedido").val(JSON.stringify(detallePedido));
+
+            // Enviar el formulario
+            this.submit();
+        });
+    });
+</script>

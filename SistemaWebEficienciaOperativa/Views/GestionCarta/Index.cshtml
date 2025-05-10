@@ -358,7 +358,7 @@
     <script>
         // Confirmación antes de eliminar
         document.querySelectorAll('.table-actions a.text-danger').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 if (!confirm('¿Está seguro que desea eliminar este ítem del menú?')) {
                     e.preventDefault();
                 }
@@ -367,7 +367,7 @@
 
         // Confirmación antes de deshabilitar/habilitar
         document.querySelectorAll('.table-actions a.text-warning').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 const action = this.querySelector('i').classList.contains('bi-eye-slash') ? 'deshabilitar' : 'habilitar';
                 if (!confirm(`¿Está seguro que desea ${action} este ítem?`)) {
                     e.preventDefault();

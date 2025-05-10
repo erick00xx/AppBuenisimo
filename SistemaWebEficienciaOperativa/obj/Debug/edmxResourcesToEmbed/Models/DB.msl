@@ -149,6 +149,7 @@
     <EntitySetMapping Name="tbProductos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbProductos">
         <MappingFragment StoreEntitySet="tbProductos">
+          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
           <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
@@ -179,6 +180,46 @@
           <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbDetallePedido">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbDetallePedido">
+        <MappingFragment StoreEntitySet="tbDetallePedido">
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idPrecio" ColumnName="idPrecio" />
+          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+          <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbEstadosPedidos">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbEstadosPedidos">
+        <MappingFragment StoreEntitySet="tbEstadosPedidos">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idEstadoPedido" ColumnName="idEstadoPedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbMesas">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbMesas">
+        <MappingFragment StoreEntitySet="tbMesas">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="numeroMesa" ColumnName="numeroMesa" />
+          <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbPedidos">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbPedidos">
+        <MappingFragment StoreEntitySet="tbPedidos">
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="usuarioId" ColumnName="usuarioId" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+          <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

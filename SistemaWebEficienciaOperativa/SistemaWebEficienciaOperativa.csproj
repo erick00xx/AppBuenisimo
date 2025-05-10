@@ -143,6 +143,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbDetallePedido.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbEstadosPedidos.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbMesas.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPedidos.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\CuentaDTO.cs" />
+    <Compile Include="Models\ViewModels\DetallePedidoViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductoPrecioDTO.cs" />
     <Compile Include="Models\ViewModels\ReporteEmpleadoModel.cs" />
     <Compile Include="Models\ViewModels\ReporteInventarioModel.cs" />
     <Compile Include="Models\ViewModels\UsuarioDTO.cs" />
@@ -216,8 +231,9 @@
     <Compile Include="Models\ViewModels\ProductoDTO.cs" />
     <Compile Include="Models\ViewModels\ReporteAsistenciaEmpleadoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CartaServices.cs" />
     <Compile Include="Services\EmpleadoService.cs" />
+    <Compile Include="Services\PedidoService.cs" />
+    <Compile Include="Services\ProductoService.cs" />
     <Compile Include="Services\ReporteInventarioService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -340,6 +356,7 @@
     <Content Include="Views\ReporteInventario\DetalleProducto.cshtml" />
     <Content Include="Views\ReporteEmpleado\Index.cshtml" />
     <Content Include="Views\ReporteEmpleado\DetallePagoQuincenal.cshtml" />
+    <Content Include="Views\GestionPedidos\Pedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

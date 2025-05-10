@@ -13,5 +13,6 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
         public string CategoriaNombre { get; set; }
         public string TipoProductoNombre { get; set; }
         public string TipoMedidaNombre { get; set; }
+        public string Estado { get; set; }
     }
 }

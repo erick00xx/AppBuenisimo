@@ -64,7 +64,23 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 return View("AgregarProducto", producto);
             }
         }
-
+        public ActionResult OcultarProducto(int id)
+        {
+            if (!productoServices.OcultarProducto(id))
+            {
+                ViewBag.Error = "No se pudo ocultar el producto";
+            }
+            return RedirectToAction("ListarProductos");
+        }
+        public ActionResult MostrarProducto(int id)
+        {
+            Debug.WriteLine("Llega para mostrar producto");
+            if (!productoServices.MostrarProducto(id))
+            {
+                Debug.WriteLine("no se pudo mostrar el producto");
+            }
+            return RedirectToAction("ListarProductos");
+        }
         public ActionResult ListarProductos()
         {
             var productos = productoServices.ListarProductos();

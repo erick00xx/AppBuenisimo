@@ -227,6 +227,22 @@
       <End Role="tbCategorias" EntitySet="tbCategorias" />
       <End Role="tbProductos" EntitySet="tbProductos" />
     </AssociationSet>
+    <EntitySet Name="tbDetallePedido" EntityType="DB_BUENISIMOModel.tbDetallePedido" />
+    <EntitySet Name="tbEstadosPedidos" EntityType="DB_BUENISIMOModel.tbEstadosPedidos" />
+    <EntitySet Name="tbMesas" EntityType="DB_BUENISIMOModel.tbMesas" />
+    <EntitySet Name="tbPedidos" EntityType="DB_BUENISIMOModel.tbPedidos" />
+    <AssociationSet Name="FK__tbDetalle__idPed__5AEE82B9" Association="DB_BUENISIMOModel.FK__tbDetalle__idPed__5AEE82B9">
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+      <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDetalle__idPre__5BE2A6F2" Association="DB_BUENISIMOModel.FK__tbDetalle__idPre__5BE2A6F2">
+      <End Role="tbPrecios" EntitySet="tbPrecios" />
+      <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbPedidos__idMes__6383C8BA" Association="DB_BUENISIMOModel.FK__tbPedidos__idMes__6383C8BA">
+      <End Role="tbMesas" EntitySet="tbMesas" />
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="tbDesechosInsumos">
     <Key>
@@ -430,6 +446,7 @@
     <Property Name="Precio" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
     <NavigationProperty Name="tbMedidas" Relationship="DB_BUENISIMOModel.FK__tbPrecios__IdMed__76969D2E" FromRole="tbPrecios" ToRole="tbMedidas" />
     <NavigationProperty Name="tbProductos" Relationship="DB_BUENISIMOModel.FK__tbPrecios__IdPro__75A278F5" FromRole="tbPrecios" ToRole="tbProductos" />
+    <NavigationProperty Name="tbDetallePedido" Relationship="DB_BUENISIMOModel.FK__tbDetalle__idPre__5BE2A6F2" FromRole="tbPrecios" ToRole="tbDetallePedido" />
   </EntityType>
   <EntityType Name="tbProductos">
     <Key>
@@ -443,6 +460,7 @@
     <NavigationProperty Name="tbPrecios" Relationship="DB_BUENISIMOModel.FK__tbPrecios__IdPro__75A278F5" FromRole="tbProductos" ToRole="tbPrecios" />
     <NavigationProperty Name="tbTiposMedidas" Relationship="DB_BUENISIMOModel.FK__tbProduct__idTip__72C60C4A" FromRole="tbProductos" ToRole="tbTiposMedidas" />
     <NavigationProperty Name="tbCategorias" Relationship="DB_BUENISIMOModel.FK__tbProduct__idCat__6B24EA82" FromRole="tbProductos" ToRole="tbCategorias" />
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tbTiposMedidas">
     <Key>
@@ -540,6 +558,83 @@
       </Principal>
       <Dependent Role="tbProductos">
         <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbDetallePedido">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPedido" Type="Int32" />
+    <Property Name="idPrecio" Type="Int32" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="subtotal" Type="Decimal" Precision="6" Scale="2" />
+    <NavigationProperty Name="tbPedidos" Relationship="DB_BUENISIMOModel.FK__tbDetalle__idPed__5AEE82B9" FromRole="tbDetallePedido" ToRole="tbPedidos" />
+    <NavigationProperty Name="tbPrecios" Relationship="DB_BUENISIMOModel.FK__tbDetalle__idPre__5BE2A6F2" FromRole="tbDetallePedido" ToRole="tbPrecios" />
+  </EntityType>
+  <EntityType Name="tbEstadosPedidos">
+    <Key>
+      <PropertyRef Name="idEstadoPedido" />
+    </Key>
+    <Property Name="idEstadoPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbMesas">
+    <Key>
+      <PropertyRef Name="idMesa" />
+    </Key>
+    <Property Name="idMesa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numeroMesa" Type="Int32" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbPedidos" Relationship="DB_BUENISIMOModel.FK__tbPedidos__idMes__6383C8BA" FromRole="tbMesas" ToRole="tbPedidos" />
+  </EntityType>
+  <EntityType Name="tbPedidos">
+    <Key>
+      <PropertyRef Name="idPedido" />
+    </Key>
+    <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idMesa" Type="Int32" />
+    <Property Name="fechaPedido" Type="DateTime" Precision="3" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="usuarioId" Type="Int32" />
+    <Property Name="total" Type="Decimal" Precision="6" Scale="2" />
+    <NavigationProperty Name="tbDetallePedido" Relationship="DB_BUENISIMOModel.FK__tbDetalle__idPed__5AEE82B9" FromRole="tbPedidos" ToRole="tbDetallePedido" />
+    <NavigationProperty Name="tbMesas" Relationship="DB_BUENISIMOModel.FK__tbPedidos__idMes__6383C8BA" FromRole="tbPedidos" ToRole="tbMesas" />
+  </EntityType>
+  <Association Name="FK__tbDetalle__idPed__5AEE82B9">
+    <End Type="DB_BUENISIMOModel.tbPedidos" Role="tbPedidos" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbDetallePedido" Role="tbDetallePedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPedidos">
+        <PropertyRef Name="idPedido" />
+      </Principal>
+      <Dependent Role="tbDetallePedido">
+        <PropertyRef Name="idPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDetalle__idPre__5BE2A6F2">
+    <End Type="DB_BUENISIMOModel.tbPrecios" Role="tbPrecios" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbDetallePedido" Role="tbDetallePedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPrecios">
+        <PropertyRef Name="IdPrecio" />
+      </Principal>
+      <Dependent Role="tbDetallePedido">
+        <PropertyRef Name="idPrecio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbPedidos__idMes__6383C8BA">
+    <End Type="DB_BUENISIMOModel.tbMesas" Role="tbMesas" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbPedidos" Role="tbPedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbMesas">
+        <PropertyRef Name="idMesa" />
+      </Principal>
+      <Dependent Role="tbPedidos">
+        <PropertyRef Name="idMesa" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
