@@ -274,6 +274,45 @@ CREATE TABLE tbEstadosPedidos (
 
 
 
+--Para hacer pedidos ( tbMesas, tbPedidos, tbDetallePedido
+
+
+-- 1. Renombrar la columna 'usuarioId' a 'idUsuario'
+EXEC sp_rename 'tbPedidos.usuarioId', 'idUsuario', 'COLUMN';
+
+-- 2. Agregar la clave foránea para relacionar con tbUsuario(idUsuario)
+ALTER TABLE tbPedidos
+ADD CONSTRAINT FK_tbPedidos_tbUsuario
+FOREIGN KEY (idUsuario) REFERENCES tbUsuarios(idUsuario);
+
+
+-- 1. Eliminar la columna 'estado'
+ALTER TABLE tbPedidos
+DROP COLUMN estado;
+
+-- 2. Agregar la nueva columna 'idEstadoPedido'
+ALTER TABLE tbPedidos
+ADD idEstadoPedido INT;
+
+-- 3. Crear la clave foránea que relaciona con 'tbEstadosPedidos(idEstadoPedido)'
+ALTER TABLE tbPedidos
+ADD CONSTRAINT FK_tbPedidos_tbEstadosPedidos
+FOREIGN KEY (idEstadoPedido) REFERENCES tbEstadosPedidos(idEstadoPedido);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

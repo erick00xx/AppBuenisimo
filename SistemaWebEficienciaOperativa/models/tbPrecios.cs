@@ -25,9 +25,9 @@ namespace SistemaWebEficienciaOperativa.Models
         public Nullable<int> IdMedida { get; set; }
         public decimal Precio { get; set; }
     
-        public virtual tbMedidas tbMedidas { get; set; }
-        public virtual tbProductos tbProductos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbDetallePedido> tbDetallePedido { get; set; }
+        public virtual tbMedidas tbMedidas { get; set; }
+        public virtual tbProductos tbProductos { get; set; }
     }
 }

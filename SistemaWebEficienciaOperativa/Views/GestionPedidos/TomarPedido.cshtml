@@ -1,5 +1,5 @@
 ﻿@* En Views/GestionPedidos/Pedidos.cshtml *@
-@model SistemaWebEficienciaOperativa.Models.tbDetallePedido 
+@model SistemaWebEficienciaOperativa.Models.tbDetallePedido
 
 @{
     ViewBag.Title = "Crear Pedido para Mesa " + ViewBag.IdMesa; // Mostrar el número de mesa si lo pasas
@@ -30,7 +30,7 @@
     @*  *@
 </ul>
 
-<form id="pedido-form" action="@Url.Action("GuardarPedido", "GestionPedidos")" method="post">
+<form id="pedido-form" action="@Url.Action("GuardarNuevoPedido", "GestionPedidos")" method="post">
     @Html.AntiForgeryToken() <!-- Buena práctica para seguridad contra CSRF -->
     <input type="hidden" id="detalle-pedido" name="detallePedido" />
     <input type="hidden" name="idMesa" value="@ViewBag.IdMesa" /> @* ¡IMPORTANTE! Pasar el idMesa *@

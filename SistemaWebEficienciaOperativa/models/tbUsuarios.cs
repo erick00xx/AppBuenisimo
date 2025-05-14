@@ -19,6 +19,7 @@ namespace SistemaWebEficienciaOperativa.Models
         {
             this.tbAsistencias = new HashSet<tbAsistencias>();
             this.tbHorarios = new HashSet<tbHorarios>();
+            this.tbPedidos = new HashSet<tbPedidos>();
         }
     
         public int idUsuario { get; set; }
@@ -35,6 +36,8 @@ namespace SistemaWebEficienciaOperativa.Models
         public virtual ICollection<tbAsistencias> tbAsistencias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbHorarios> tbHorarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbPedidos> tbPedidos { get; set; }
         public virtual tbRoles tbRoles { get; set; }
     }
 }

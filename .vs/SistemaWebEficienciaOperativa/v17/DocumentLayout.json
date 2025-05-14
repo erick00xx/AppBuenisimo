@@ -1,29 +1,57 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\locals\\desktop\\nueva carpeta (3)\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\reporteempleado\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\veroeditarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\veroeditarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\tomarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\tomarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\pedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\pedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\panelcocina.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\panelcocina.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\detallepedidoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\detallepedidoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestioncarta\\agregarproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestioncarta\\agregarproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\productopreciodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\productopreciodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\pedidocompletoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\pedidocompletoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\reporteempleado\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\reporteempleado\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\locals\\desktop\\nueva carpeta (3)\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\services\\empleadoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\services\\empleadoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\empleadoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\locals\\desktop\\nueva carpeta (3)\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\reporteempleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\reporteempleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\reporteempleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\locals\\desktop\\nueva carpeta (3)\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\locals\\desktop\\nueva carpeta (3)\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\reporteempleado\\detallepagoquincenal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\reporteempleado\\detallepagoquincenal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\reporteempleado\\detallepagoquincenal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\locals\\desktop\\nueva carpeta (3)\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\reporteempleadomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\reporteempleadomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\reporteempleadomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,89 +62,172 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DB.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\DB.edmx",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2025-05-10T06:38:07.26Z",
-              "IsPinned": true,
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DetallePagoQuincenal.cshtml",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAcwGcAAAApAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "VerOEditarPedido.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
+              "ViewState": "AgIAAHcAAAAAAAAAAADwv4sAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-10T10:05:46.879Z",
+              "WhenOpened": "2025-05-14T05:03:03.682Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "TomarPedido.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAswCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T04:54:44.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DetallePedidoViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T04:49:58.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PanelCocina.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
+              "ViewState": "AgIAACYAAAAAAAAAAADwvzwAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T05:04:42.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Pedidos.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAmwIwAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T04:04:08.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductoPrecioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T04:50:54.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AgregarProducto.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-14T05:26:09.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PedidoCompletoViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAIwBIAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T04:49:39.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DetallePagoQuincenal.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAcwGcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-10T10:05:46.879Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGcAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvw8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-10T10:04:20.757Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "ReporteEmpleadoController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAawEkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:03:23.598Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T10:03:23.598Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "EmpleadoService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
               "ViewState": "AgIAANAAAAAAAAAAAAAAAOUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:02:22.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T10:02:22.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "ReporteEmpleadoModel.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta (3)\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAzwCwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:01:22.836Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T10:01:22.836Z"
             }
           ]
         }

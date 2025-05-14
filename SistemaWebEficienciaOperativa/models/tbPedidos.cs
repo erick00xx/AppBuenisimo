@@ -23,12 +23,14 @@ namespace SistemaWebEficienciaOperativa.Models
         public int idPedido { get; set; }
         public Nullable<int> idMesa { get; set; }
         public Nullable<System.DateTime> fechaPedido { get; set; }
-        public string estado { get; set; }
-        public Nullable<int> usuarioId { get; set; }
+        public Nullable<int> idUsuario { get; set; }
         public Nullable<decimal> total { get; set; }
+        public Nullable<int> idEstadoPedido { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbDetallePedido> tbDetallePedido { get; set; }
+        public virtual tbEstadosPedidos tbEstadosPedidos { get; set; }
         public virtual tbMesas tbMesas { get; set; }
+        public virtual tbUsuarios tbUsuarios { get; set; }
     }
 }

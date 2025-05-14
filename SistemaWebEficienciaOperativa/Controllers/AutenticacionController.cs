@@ -32,6 +32,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
                         return View("Index");
                     }
                     Session["usuario"] = usuario.idUsuario;
+                    Session["idUsuario"] = usuario.idUsuario;
                     return RedirectToAction("Index", "Home");
                 }
 

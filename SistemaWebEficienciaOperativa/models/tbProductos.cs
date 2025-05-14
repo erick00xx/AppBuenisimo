@@ -27,9 +27,9 @@ namespace SistemaWebEficienciaOperativa.Models
         public string descripcion { get; set; }
         public string estado { get; set; }
     
+        public virtual tbCategorias tbCategorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbPrecios> tbPrecios { get; set; }
         public virtual tbTiposMedidas tbTiposMedidas { get; set; }
-        public virtual tbCategorias tbCategorias { get; set; }
     }
 }

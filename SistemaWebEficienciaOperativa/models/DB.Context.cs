@@ -25,26 +25,27 @@ namespace SistemaWebEficienciaOperativa.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbAsistencias> tbAsistencias { get; set; }
-        public virtual DbSet<tbHorarios> tbHorarios { get; set; }
-        public virtual DbSet<tbObservacionesAsistencias> tbObservacionesAsistencias { get; set; }
-        public virtual DbSet<tbRoles> tbRoles { get; set; }
-        public virtual DbSet<tbSucursales> tbSucursales { get; set; }
-        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
-        public virtual DbSet<tbDesechosInsumos> tbDesechosInsumos { get; set; }
-        public virtual DbSet<tbIngresosInsumos> tbIngresosInsumos { get; set; }
-        public virtual DbSet<tbInsumos> tbInsumos { get; set; }
-        public virtual DbSet<tbProveedores> tbProveedores { get; set; }
-        public virtual DbSet<tbUnidades> tbUnidades { get; set; }
-        public virtual DbSet<tbMedidas> tbMedidas { get; set; }
-        public virtual DbSet<tbPrecios> tbPrecios { get; set; }
-        public virtual DbSet<tbProductos> tbProductos { get; set; }
-        public virtual DbSet<tbTiposMedidas> tbTiposMedidas { get; set; }
-        public virtual DbSet<tbTiposProductos> tbTiposProductos { get; set; }
         public virtual DbSet<tbCategorias> tbCategorias { get; set; }
+        public virtual DbSet<tbDesechosInsumos> tbDesechosInsumos { get; set; }
         public virtual DbSet<tbDetallePedido> tbDetallePedido { get; set; }
         public virtual DbSet<tbEstadosPedidos> tbEstadosPedidos { get; set; }
+        public virtual DbSet<tbHorarios> tbHorarios { get; set; }
+        public virtual DbSet<tbIngresosInsumos> tbIngresosInsumos { get; set; }
+        public virtual DbSet<tbInsumos> tbInsumos { get; set; }
+        public virtual DbSet<tbMedidas> tbMedidas { get; set; }
         public virtual DbSet<tbMesas> tbMesas { get; set; }
+        public virtual DbSet<tbObservacionesAsistencias> tbObservacionesAsistencias { get; set; }
         public virtual DbSet<tbPedidos> tbPedidos { get; set; }
+        public virtual DbSet<tbPrecios> tbPrecios { get; set; }
+        public virtual DbSet<tbProductos> tbProductos { get; set; }
+        public virtual DbSet<tbProveedores> tbProveedores { get; set; }
+        public virtual DbSet<tbRoles> tbRoles { get; set; }
+        public virtual DbSet<tbSucursales> tbSucursales { get; set; }
+        public virtual DbSet<tbTiposMedidas> tbTiposMedidas { get; set; }
+        public virtual DbSet<tbTiposProductos> tbTiposProductos { get; set; }
+        public virtual DbSet<tbUnidades> tbUnidades { get; set; }
+        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
     }
 }
