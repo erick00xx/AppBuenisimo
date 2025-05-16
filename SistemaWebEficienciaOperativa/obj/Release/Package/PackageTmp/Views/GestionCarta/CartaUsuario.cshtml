@@ -282,9 +282,9 @@
     <script src="~/source/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Animación suave al hacer clic en enlaces
-            $('a[href^="#"]').on('click', function(event) {
+            $('a[href^="#"]').on('click', function (event) {
                 event.preventDefault();
                 $('html, body').animate({
                     scrollTop: $($(this).attr('href')).offset().top - 20

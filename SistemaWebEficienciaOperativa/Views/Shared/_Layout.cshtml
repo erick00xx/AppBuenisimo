@@ -1,4 +1,9 @@
-﻿@{ Layout = null; }
+﻿@{ Layout = null;
+    if (Session["idUsuario"] == null)
+    {
+        Response.Redirect("~/Autenticacion"); // o la ruta que uses para el login
+    }
+}
 
 <!DOCTYPE html>
 <html>
@@ -225,7 +230,7 @@
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
     <script src="~/source/js/script.js"></script>
-    
+
 
     <script>
         // Lógica para abrir/cerrar sidebar

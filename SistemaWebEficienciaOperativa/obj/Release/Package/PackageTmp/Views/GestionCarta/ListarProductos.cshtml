@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SistemaWebEficienciaOperativa.Models.ViewModels.ProductoDTO>
+@{
+    ViewBag.Title = "ListarProductos";
+}
+
+<h2>Productos de "Buenísimo"</h2>
+
+@* MOSTRAR EN FORMA DE TABLA *@
+
+@Html.ActionLink("Insertar nuevo Producto", "AgregarProducto", null, new { @class = "btn btn-secondary" })
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <td>IdProducto</td>
+            <td>Nombre</td>
+            <td>Descripcion</td>
+            <td>Categoria</td>
+            <td>Tipo</td>
+            <td>Medida</td>
+            <td></td>
+        </tr>
+        @foreach (var producto in Model)
+        {
+            <tr>
+                <td>@producto.IdProducto</td>
+                <td>@producto.NombreProducto</td>
+                <td>@producto.Descripcion</td>
+                <td>@producto.CategoriaNombre</td>
+                <td>@producto.TipoProductoNombre</td>
+                <td>@producto.TipoMedidaNombre</td>
+                <td>
+                    @if (producto.Estado == "activo")
+                    {
+                        @Html.ActionLink("Visible", "OcultarProducto", new { id = producto.IdProducto }, new { @class = "btn btn-success" })
+                    }
+                    else if (producto.Estado == "inactivo")
+                    {
+                        @Html.ActionLink("Oculto", "MostrarProducto", new { id = producto.IdProducto }, new { @class = "btn btn-danger" })
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<!-- Mostrar productos en forma de tarjetas -->
+<div class="row">
+    @foreach (var producto in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">@producto.NombreProducto</h5>
+                    <p class="card-text"><strong>ID:</strong> @producto.IdProducto</p>
+                    <p class="card-text"><strong>Descripción:</strong> @producto.Descripcion</p>
+                    <p class="card-text"><strong>Categoría:</strong> @producto.CategoriaNombre</p>
+                    <p class="card-text"><strong>Tipo:</strong> @producto.TipoProductoNombre</p>
+                    <p class="card-text"><strong>Medida:</strong> @producto.TipoMedidaNombre</p>
+                    <div class="mt-2">
+                        @if (producto.Estado == "activo")
+                        {
+                            @Html.ActionLink("Visible", "OcultarProducto", new { id = producto.IdProducto }, new { @class = "btn btn-success" })
+                        }
+                        else if (producto.Estado == "inactivo")
+                        {
+                            @Html.ActionLink("Oculto", "MostrarProducto", new { id = producto.IdProducto }, new { @class = "btn btn-danger" })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,292 @@
+﻿@model SistemaWebEficienciaOperativa.Models.ViewModels.PedidoCompletoViewModel
+@{
+    ViewBag.Title = $"Pedido N° {Model.IdPedido} - Mesa {Model.NumeroMesa}";
+    bool puedeEditarItems = ViewBag.PuedeEditarItems ?? false;
+    // Lista de todos los items que se pueden agregar, para el buscador
+    // Esto es opcional y puede ser pesado. El buscador AJAX es más eficiente.
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@Html.Raw(TempData["ErrorMessage"].ToString().Replace(Environment.NewLine, "<br/>"))</div>
+}
+
+@using (Html.BeginForm("ActualizarPedidoCompleto", "GestionPedidos", FormMethod.Post, new { id = "form-edit-pedido" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.IdPedido)
+    @Html.HiddenFor(m => m.IdMesa) @* Útil si necesitas referenciarlo en JS o post-procesamiento *@
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <p><strong>Mesa:</strong> @Model.NumeroMesa</p>
+            <p><strong>Atendido por:</strong> @Model.NombreUsuario</p>
+        </div>
+        <div class="col-md-4">
+            <p><strong>Fecha Pedido:</strong> @Model.FechaPedido.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Total Actual: S/. <span id="total-pedido-display">@Model.TotalPedido.ToString("N2")</span></strong></p>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.IdEstadoPedido, "Estado del Pedido:", new { @class = "font-weight-bold" })
+                @Html.DropDownListFor(m => m.IdEstadoPedido, (SelectList)ViewBag.EstadosPedido, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.IdEstadoPedido)
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <h4>Ítems del Pedido</h4>
+
+    if (puedeEditarItems)
+    {
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="search-add-item">Añadir Producto al Pedido:</label>
+                <input type="text" id="search-add-item" class="form-control" placeholder="Buscar producto para añadir..." />
+            </div>
+            <div class="col-md-6">
+                <ul id="productos-encontrados-list" class="list-group mt-2" style="max-height: 200px; overflow-y: auto;">
+                    @* Resultados de búsqueda de productos aquí *@
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Los ítems de este pedido no se pueden modificar porque su estado actual es "@Model.EstadoPedido".
+            Solo se puede cambiar el estado general del pedido.
+        </div>
+    }
+
+    <table class="table table-sm table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Producto</th>
+                <th>Medida</th>
+                <th style="width: 100px;">Cantidad</th>
+                <th>Precio Unit.</th>
+                <th>Subtotal</th>
+                @if (puedeEditarItems)
+                {
+                    <th style="width: 80px;">Acción</th>
+                }
+            </tr>
+        </thead>
+        <tbody id="items-pedido-tbody">
+            @for (int i = 0; i < Model.Items.Count; i++)
+            {
+                // Guardar los valores originales para poder restaurarlos o compararlos si es necesario
+                var item = Model.Items[i];
+                <tr class="item-row" data-idprecio="@item.IdPrecio" data-iddetalle="@item.IdDetalle">
+                    @Html.HiddenFor(m => Model.Items[i].IdDetalle, new { @class = "item-iddetalle" })
+                    @Html.HiddenFor(m => Model.Items[i].IdPrecio, new { @class = "item-idprecio" })
+                    @Html.HiddenFor(m => Model.Items[i].NombreProducto) @* Para reconstruir en JS si es necesario *@
+                    @Html.HiddenFor(m => Model.Items[i].Medida)
+                    @Html.HiddenFor(m => Model.Items[i].PrecioUnitario, new { @class = "item-preciounitario" })
+
+                    <td>@item.NombreProducto</td>
+                    <td>@item.Medida</td>
+                    <td>
+                        @if (puedeEditarItems)
+                        {
+                            @Html.TextBoxFor(m => Model.Items[i].Cantidad, new { @class = "form-control form-control-sm item-cantidad", type = "number", min = "1" })
+                            @Html.ValidationMessageFor(m => Model.Items[i].Cantidad)
+                        }
+                        else
+                        {
+                            <span>@item.Cantidad</span>
+                        }
+                    </td>
+                    <td class="text-right">@item.PrecioUnitario.ToString("N2")</td>
+                    <td class="text-right item-subtotal">@item.Subtotal.ToString("N2")</td>
+                    @if (puedeEditarItems)
+                    {
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm btn-block remove-item-btn" title="Quitar item">
+                                <i class="fas fa-trash"></i> @* Asumiendo FontAwesome *@
+                            </button>
+                        </td>
+                    }
+                </tr>
+            }
+            @if (!Model.Items.Any())
+            {
+                <tr id="no-items-row"><td colspan="@(puedeEditarItems ? 6 : 5)" class="text-center text-muted">Este pedido no tiene ítems.</td></tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-right font-weight-bold mb-3">
+        Nuevo Total Estimado: S/. <span id="nuevo-total-estimado-display">@Model.TotalPedido.ToString("N2")</span>
+    </div>
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Cambios</button>
+        @Html.ActionLink("Volver a Mesas", "Index", null, new { @class = "btn btn-secondary" })
+        @Html.ActionLink("Ir al Panel de Cocina", "PanelCocina", null, new { @class = "btn btn-info" })
+    </div>
+}
+
+    @* Incluir jQuery si no está en _Layout *@
+    @* <script src="~/Scripts/jquery-3.6.0.min.js"></script> *@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        const puedeEditarItems = @(Json.Encode(puedeEditarItems));
+
+        function actualizarSubtotalYTotal() {
+            let totalGeneral = 0;
+            $('#items-pedido-tbody tr.item-row').each(function () {
+                const $row = $(this);
+                const cantidad = parseInt($row.find('.item-cantidad').val()) || 0;
+                const precioUnitario = parseFloat($row.find('.item-preciounitario').val()) || 0;
+                const subtotal = cantidad * precioUnitario;
+                $row.find('.item-subtotal').text(subtotal.toFixed(2));
+                totalGeneral += subtotal;
+            });
+            $('#nuevo-total-estimado-display').text(totalGeneral.toFixed(2));
+            $('#total-pedido-display').text(totalGeneral.toFixed(2)); // Actualizar también el total principal
+        }
+
+        // Inicializar subtotales y total si se puede editar
+        if (puedeEditarItems) {
+            actualizarSubtotalYTotal();
+        }
+
+        // Cambios en cantidad
+        $('#items-pedido-tbody').on('change keyup', '.item-cantidad', function () {
+            if (!puedeEditarItems) return;
+            let cantidad = parseInt($(this).val());
+            if (isNaN(cantidad) || cantidad < 1) {
+                $(this).val(1); // Forzar a 1 si es inválido
+            }
+            actualizarSubtotalYTotal();
+        });
+
+        // Quitar item
+        $('#items-pedido-tbody').on('click', '.remove-item-btn', function () {
+            if (!puedeEditarItems) return;
+            $(this).closest('tr.item-row').remove();
+            if ($('#items-pedido-tbody tr.item-row').length === 0) {
+                $('#items-pedido-tbody').append('<tr id="no-items-row"><td colspan="' + (puedeEditarItems ? 6 : 5) + '" class="text-center text-muted">Este pedido no tiene ítems.</td></tr>');
+            }
+            renumerarNombresDeInputs();
+            actualizarSubtotalYTotal();
+        });
+
+        // Búsqueda y adición de nuevos productos (solo si puedeEditarItems)
+        if (puedeEditarItems) {
+            $('#search-add-item').on('input', function () {
+                const searchTerm = $(this).val();
+                const $list = $('#productos-encontrados-list');
+                if (searchTerm.length < 2) { // Mínimo 2 caracteres para buscar
+                    $list.empty();
+                    return;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("BuscarProductos", "GestionPedidos")', // Reutilizamos la acción
+                    data: { term: searchTerm },
+                    dataType: 'json',
+                    success: function (productos) {
+                        $list.empty();
+                        if (productos && productos.length > 0) {
+                            productos.forEach(function (p) {
+                                // Verificar si el producto ya está en la tabla de items
+                                if ($(`#items-pedido-tbody tr.item-row[data-idprecio="${p.Id}"]`).length === 0) {
+                                   const listItem = $(`<a href="#" class="list-group-item list-group-item-action add-found-product-btn"></a>`)
+                                        .data('idprecio', p.Id)
+                                        .data('nombre', p.Producto)
+                                        .data('medida', p.Medida || '')
+                                        .data('precio', p.Precio)
+                                        .html(`<strong>${p.Producto}</strong> ${p.Medida ? '('+p.Medida+')' : ''} <span class="badge badge-secondary float-right">S/. ${parseFloat(p.Precio).toFixed(2)}</span><br><small>${p.Categoria}</small>`);
+                                    $list.append(listItem);
+                                }
+                            });
+                        } else {
+                            $list.append('<li class="list-group-item text-muted">No se encontraron productos o ya están añadidos.</li>');
+                        }
+                    },
+                    error: function () {
+                        $list.empty().append('<li class="list-group-item text-danger">Error al buscar.</li>');
+                    }
+                });
+            });
+
+            $('#productos-encontrados-list').on('click', '.add-found-product-btn', function (e) {
+                e.preventDefault();
+                const $this = $(this);
+                const idPrecio = $this.data('idprecio');
+                const nombre = $this.data('nombre');
+                const medida = $this.data('medida');
+                const precio = parseFloat($this.data('precio'));
+                const itemIndex = $('#items-pedido-tbody tr.item-row').length; // Para los nombres de los inputs
+
+                // Si la fila "no-items-row" existe, quitarla
+                $('#no-items-row').remove();
+
+                // Crear la nueva fila para la tabla (esto debe generar inputs con nombres como Model.Items[index].Propiedad)
+                const newRow = `
+                    <tr class="item-row" data-idprecio="${idPrecio}" data-iddetalle="0">
+                        <input type="hidden" name="Items[${itemIndex}].IdDetalle" value="0" class="item-iddetalle" />
+                        <input type="hidden" name="Items[${itemIndex}].IdPrecio" value="${idPrecio}" class="item-idprecio" />
+                        <input type="hidden" name="Items[${itemIndex}].NombreProducto" value="${nombre}" />
+                        <input type="hidden" name="Items[${itemIndex}].Medida" value="${medida}" />
+                        <input type="hidden" name="Items[${itemIndex}].PrecioUnitario" value="${precio.toFixed(2)}" class="item-preciounitario" />
+                        <td>${nombre}</td>
+                        <td>${medida}</td>
+                        <td><input type="number" name="Items[${itemIndex}].Cantidad" value="1" class="form-control form-control-sm item-cantidad" min="1" /></td>
+                        <td class="text-right">${precio.toFixed(2)}</td>
+                        <td class="text-right item-subtotal">${precio.toFixed(2)}</td>
+                        <td><button type="button" class="btn btn-danger btn-sm btn-block remove-item-btn" title="Quitar item"><i class="fas fa-trash"></i></button></td>
+                    </tr>`;
+                $('#items-pedido-tbody').append(newRow);
+                $('#search-add-item').val(''); // Limpiar buscador
+                $('#productos-encontrados-list').empty(); // Limpiar lista de búsqueda
+                renumerarNombresDeInputs(); // Asegurar que los índices son correctos
+                actualizarSubtotalYTotal();
+            });
+        } // fin if(puedeEditarItems)
+
+        // Renumerar los names de los inputs para el Model Binding de la lista al hacer submit
+        function renumerarNombresDeInputs() {
+            $('#items-pedido-tbody tr.item-row').each(function(index, row) {
+                $(row).find('input, select').each(function() { // Incluir selects si los tuvieras
+                    const currentName = $(this).attr('name');
+                    if (currentName) { // Solo procesar inputs con name (los que se envían)
+                        const newName = currentName.replace(/Items\[\d+\]/, `Items[${index}]`);
+                        $(this).attr('name', newName);
+                    }
+                });
+            });
+        }
+
+        // Antes de enviar el formulario, asegurarse de que los índices estén correctos
+        $('#form-edit-pedido').submit(function() {
+            if (puedeEditarItems) {
+                renumerarNombresDeInputs();
+                // Validar que haya al menos un item si se está editando y no solo cambiando estado
+                if ($('#items-pedido-tbody tr.item-row').length === 0) {
+                    alert("El pedido debe tener al menos un ítem si se están modificando los productos.");
+                    // Opcionalmente, puedes añadir un mensaje más elegante en la UI
+                    // y prevenir el submit: e.preventDefault();
+                }
+            }
+            // El total se recalculará en el backend para seguridad.
+        });
+
+    });
+    </script>
+    <style>
+        /* Estilos adicionales para esta vista si son necesarios */
+        .table-sm th, .table-sm td { padding: .4rem; }
+    </style>

@@ -25,7 +25,6 @@ namespace SistemaWebEficienciaOperativa.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbAsistencias> tbAsistencias { get; set; }
         public virtual DbSet<tbCategorias> tbCategorias { get; set; }
         public virtual DbSet<tbDesechosInsumos> tbDesechosInsumos { get; set; }

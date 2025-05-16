@@ -1,0 +1,57 @@
+﻿@model SistemaWebEficienciaOperativa.Models.UsuarioDTO
+
+@{
+    ViewBag.Title = "Registrar Asistencia";
+}
+
+<div class="container-sm py-4">
+    <div class="card shadow-lg border-0 mx-auto" style="max-width: 450px;">
+        <div class="card-body">
+            <h2 class="text-center mb-4 border-bottom pb-2">Registro de Asistencia</h2>
+
+            <!-- Última actividad -->
+            @if (ViewBag.UltimoUsuario != null)
+            {
+                <div class="alert alert-light border border-dark text-center mb-4">
+                    <p class="mb-1 fw-bold text-uppercase text-secondary">Última Actividad</p>
+                    <p class="mb-0 fs-5 text-uppercase fw-semibold">@ViewBag.UltimoUsuario</p>
+                    <p class="mb-1 small">Hora: @ViewBag.UltimoHora</p>
+                    <span class="badge rounded-pill fs-6 px-3 @(ViewBag.UltimoEstado == "INGRESANTE" ? "bg-secondary text-white" : "bg-success")">
+                        @ViewBag.UltimoEstado
+                    </span>
+                </div>
+            }
+
+            <!-- Formulario -->
+            @using (Html.BeginForm("Registrar", "Asistencia", FormMethod.Post))
+            {
+                <div class="mb-3">
+                    @Html.TextBoxFor(m => m.Dni, new
+                    {
+                        @class = "form-control form-control-lg text-center border border-dark",
+                        placeholder = "Ingrese su DNI",
+                        autocomplete = "off"
+                    })
+                    @Html.ValidationMessageFor(m => m.Dni, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="d-grid gap-2 mb-3">
+                    <button type="submit" name="accion" value="Ingresar" class="btn btn-success btn-lg">
+                        ✅ Marcar Ingreso
+                    </button>
+                    <button type="submit" name="accion" value="Salir" class="btn btn-outline-danger btn-lg">
+                        ❌ Marcar Salida
+                    </button>
+                </div>
+            }
+
+            <!-- Mensaje de confirmación -->
+            @if (TempData["Mensaje"] != null)
+            {
+                <div class="alert alert-success border border-dark text-center mt-3" role="alert">
+                    @TempData["Mensaje"]
+                </div>
+            }
+        </div>
+    </div>
+</div>

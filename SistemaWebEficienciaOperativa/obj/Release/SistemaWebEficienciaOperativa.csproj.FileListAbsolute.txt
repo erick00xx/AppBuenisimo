@@ -84,3 +84,7 @@ C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficiencia
 C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficienciaOperativa\obj\Release\SistemaW.D4265761.Up2Date
 C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficienciaOperativa\obj\Release\SistemaWebEficienciaOperativa.dll
 C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficienciaOperativa\obj\Release\SistemaWebEficienciaOperativa.pdb
+C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficienciaOperativa\bin\EntityFramework.dll
+C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficienciaOperativa\bin\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficienciaOperativa\bin\EntityFramework.xml
+C:\Users\USUARIO\source\repos\SistemaWebEficienciaOperativa\SistemaWebEficienciaOperativa\bin\EntityFramework.SqlServer.xml

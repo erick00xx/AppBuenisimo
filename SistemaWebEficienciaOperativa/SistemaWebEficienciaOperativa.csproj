@@ -143,28 +143,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbDetallePedido.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbEstadosPedidos.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbMesas.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbPedidos.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ViewModels\CuentaDTO.cs" />
-    <Compile Include="Models\ViewModels\PedidoCompletoViewModel.cs" />
-    <Compile Include="Models\ViewModels\DetallePedidoViewModel.cs" />
-    <Compile Include="Models\ViewModels\ProductoPrecioDTO.cs" />
-    <Compile Include="Models\ViewModels\ReporteEmpleadoModel.cs" />
-    <Compile Include="Models\ViewModels\ReporteInventarioModel.cs" />
-    <Compile Include="Models\ViewModels\UsuarioDTO.cs" />
     <Compile Include="Models\DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +167,12 @@
     <Compile Include="Models\tbDesechosInsumos.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbDetallePedido.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbEstadosPedidos.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbHorarios.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -201,7 +185,13 @@
     <Compile Include="Models\tbMedidas.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbMesas.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbObservacionesAsistencias.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPedidos.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPrecios.cs">
@@ -231,6 +221,13 @@
     <Compile Include="Models\tbUsuarios.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\CuentaDTO.cs" />
+    <Compile Include="Models\ViewModels\PedidoCompletoViewModel.cs" />
+    <Compile Include="Models\ViewModels\DetallePedidoViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductoPrecioDTO.cs" />
+    <Compile Include="Models\ViewModels\ReporteEmpleadoModel.cs" />
+    <Compile Include="Models\ViewModels\ReporteInventarioModel.cs" />
+    <Compile Include="Models\ViewModels\UsuarioDTO.cs" />
     <Compile Include="Models\ViewModels\InventarioMovimientosViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductoDTO.cs" />
     <Compile Include="Models\ViewModels\ReporteAsistenciaEmpleadoViewModel.cs" />

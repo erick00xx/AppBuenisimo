@@ -1,0 +1,59 @@
+﻿@model SistemaWebEficienciaOperativa.Models.tbIngresosInsumos
+@{
+    ViewBag.Title = "Registrar Nueva Compra";
+}
+
+<h4 class="text-center mb-4">Registrar Nueva Compra de Insumo</h4>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "container" }))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.idSucursal, "Sucursal", new { @class = "form-label fw-semibold" })
+        @Html.DropDownList("idSucursal", (SelectList)ViewBag.Sucursales, "-- Seleccione --", new { @class = "form-select" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.idInsumo, "Insumo", new { @class = "form-label fw-semibold" })
+        @Html.DropDownList("idInsumo", (SelectList)ViewBag.Insumos, "-- Seleccione --", new { @class = "form-select" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.cantidad, "Cantidad", new { @class = "form-label fw-semibold" })
+        @Html.TextBoxFor(m => m.cantidad, new { @class = "form-control", type = "number", step = "0.01", placeholder = "Cantidad" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.idUnidad, "Unidad", new { @class = "form-label fw-semibold" })
+        @Html.DropDownList("idUnidad", (SelectList)ViewBag.Unidades, "-- Seleccione --", new { @class = "form-select" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.fechaCompra, "Fecha de compra", new { @class = "form-label fw-semibold" })
+        @Html.TextBoxFor(m => m.fechaCompra, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.fechaVencimiento, "Fecha de vencimiento", new { @class = "form-label fw-semibold" })
+        @Html.TextBoxFor(m => m.fechaVencimiento, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.idProveedor, "Proveedor", new { @class = "form-label fw-semibold" })
+        @Html.DropDownList("idProveedor", (SelectList)ViewBag.Proveedores, "-- Seleccione --", new { @class = "form-select" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.LabelFor(m => m.lote, "Lote", new { @class = "form-label fw-semibold" })
+        @Html.TextBoxFor(m => m.lote, new { @class = "form-control", placeholder = "Código de lote" })
+    </div>
+
+    <div class="form-group mb-4">
+        @Html.LabelFor(m => m.observaciones, "Observaciones", new { @class = "form-label fw-semibold" })
+        @Html.TextAreaFor(m => m.observaciones, new { @class = "form-control", rows = "3", placeholder = "Detalle adicional (opcional)" })
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Registrar Compra</button>
+}
+

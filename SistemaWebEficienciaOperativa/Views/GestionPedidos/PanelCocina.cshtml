@@ -1,11 +1,10 @@
 ﻿@model List<SistemaWebEficienciaOperativa.Models.ViewModels.PedidoCompletoViewModel>
 @{
-    ViewBag.Title = "Panel de Cocina / Barra";
+    ViewBag.Title = "Panel de Barra";
     var listaTodosLosEstados = ViewBag.ListaTodosLosEstadosPedido as List<SistemaWebEficienciaOperativa.Models.tbEstadosPedidos> ?? new List<SistemaWebEficienciaOperativa.Models.tbEstadosPedidos>();
 }
 
-<h2>@ViewBag.Title</h2>
-
+<h2>Barra</h2>
 @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
