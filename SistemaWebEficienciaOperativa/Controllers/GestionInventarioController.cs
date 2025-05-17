@@ -23,7 +23,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
         public ActionResult RegistrarCompra()
         {
             ViewBag.Insumos = new SelectList(db.tbInsumos, "idInsumo", "nombre");
-            ViewBag.Unidades = new SelectList(db.tbUnidades, "idUnidad", "abreviatura");
+            ViewBag.Unidades = new SelectList(db.tbUnidades, "idUnidad", "nombre");
             ViewBag.Proveedores = new SelectList(db.tbProveedores, "idProveedor", "nombreEmpresa");
             ViewBag.Sucursales = new SelectList(db.tbSucursales, "idSucursal", "nombre"); // asegúrate que tbSucursales está en EF
 

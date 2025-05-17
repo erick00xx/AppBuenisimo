@@ -25,7 +25,6 @@ namespace SistemaWebEficienciaOperativa.Controllers
         }
 
 
-        //Acción para cargar el formulario de agregar producto
         public ActionResult AgregarProducto()
         {
             var tiposProductos = productoServices.TiposProductos();

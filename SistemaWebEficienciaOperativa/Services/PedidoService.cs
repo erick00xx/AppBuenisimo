@@ -40,10 +40,6 @@ namespace SistemaWebEficienciaOperativa.Services
                 .ToList();
         }
 
-        /// <summary>
-        /// Guarda un nuevo pedido y actualiza el estado de la mesa a "Ocupada".
-        /// </summary>
-        /// <returns>El ID del pedido creado.</returns>
         public int GuardarNuevoPedido(string detallePedidoJson, int idUsuario, int idMesa)
         {
             var productosSeleccionados = Newtonsoft.Json.JsonConvert.DeserializeObject<List<DetallePedidoViewModel>>(detallePedidoJson);

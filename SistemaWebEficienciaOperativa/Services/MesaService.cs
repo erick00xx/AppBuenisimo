@@ -38,10 +38,7 @@ namespace SistemaWebEficienciaOperativa.Services
             // Considerar loguear si la mesa no se encuentra
         }
 
-        /// <summary>
-        /// Obtiene el estado de la mesa basado en si tiene pedidos activos.
-        /// Un pedido activo es aquel que no está "Entregado" ni "Cancelado".
-        /// </summary>
+
         public string ObtenerEstadoCalculadoMesa(int idMesa)
         {
             bool tienePedidoActivo = _dbContext.tbPedidos
@@ -52,11 +49,6 @@ namespace SistemaWebEficienciaOperativa.Services
             return tienePedidoActivo ? "Ocupada" : "Disponible";
         }
 
-        /// <summary>
-        /// Lista las mesas y calcula su estado actual basado en los pedidos.
-        /// Actualiza el campo 'estado' del objeto mesa en memoria para la vista.
-        /// NO persiste este estado calculado en la DB aquí, eso se hace en ActualizarEstadoMesa.
-        /// </summary>
         public List<tbMesas> ListarMesasConEstadoCalculado()
         {
             var mesas = _dbContext.tbMesas.OrderBy(m => m.numeroMesa).ToList();

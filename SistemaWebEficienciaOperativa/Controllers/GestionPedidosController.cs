@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Services;
 using SistemaWebEficienciaOperativa.Models; // Para tbEstadosPedidos directamente si es necesario
 using SistemaWebEficienciaOperativa.Models.ViewModels;
-// using Newtonsoft.Json; // Ya no es necesario aquí si la deserialización está en el servicio
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
@@ -25,7 +24,6 @@ namespace SistemaWebEficienciaOperativa.Controllers
         public ActionResult Index()
         {
             var mesas = _mesaService.ListarMesasConEstadoCalculado();
-            // Para cada mesa "Ocupada", necesitamos el ID del pedido activo para el enlace
             var pedidosActivos = mesas
                 .Where(m => m.estado == "Ocupada")
                 .Select(m => new { m.idMesa, Pedido = _pedidoService.ObtenerPedidoActivoPorMesa(m.idMesa) })
@@ -51,7 +49,6 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Si la mesa ya está "Ocupada" según la DB (o cálculo), quizás redirigir a VerOEditarPedido
             var pedidoActivo = _pedidoService.ObtenerPedidoActivoPorMesa(idMesa.Value);
             if (pedidoActivo != null)
             {
@@ -61,8 +58,6 @@ namespace SistemaWebEficienciaOperativa.Controllers
 
             ViewBag.IdMesa = idMesa.Value;
             ViewBag.NumeroMesa = mesa.numeroMesa;
-            // La vista TomarPedido.cshtml es la que ya tienes para buscar productos y armar el pedido inicial.
-            // El @model de esta vista no es crítico, ya que los datos se manejan con JS.
             return View();
         }
 
@@ -122,8 +117,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
             }
 
             ViewBag.EstadosPedido = new SelectList(_pedidoService.ObtenerTodosLosEstadosPedido(), "idEstadoPedido", "estado", pedidoVM.IdEstadoPedido);
-            // Determinar si el pedido es editable basado en su estado actual
-            // Por ejemplo, solo se puede editar si está "En espera"
+            // depende el estado es editable o no.
             ViewBag.PuedeEditarItems = pedidoVM.EstadoPedido == "En espera";
 
             return View(pedidoVM);
@@ -163,8 +157,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 ViewBag.EstadosPedido = new SelectList(_pedidoService.ObtenerTodosLosEstadosPedido(), "idEstadoPedido", "estado", pedidoVM.IdEstadoPedido);
                 var currentPedido = _pedidoService.ObtenerPedidoCompleto(pedidoVM.IdPedido); // Recargar desde DB
                 ViewBag.PuedeEditarItems = currentPedido?.EstadoPedido == "En espera";
-                // Devolver el VM original que el usuario intentó enviar para que pueda corregir,
-                // o el actual de la DB. Depende de la UX deseada.
+
                 return View("VerOEditarPedido", pedidoVM);
             }
         }
@@ -178,7 +171,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
             return View(pedidosParaCocina);
         }
 
-        // POST: GestionPedidos/CambiarEstadoPedidoPanel (Desde el Panel de Cocina)
+        // POST: GestionPedidos/CambiarEstadoPedidoPanel (Desde el Panel de Barra)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CambiarEstadoPedidoPanel(int idPedido, int idNuevoEstado)
