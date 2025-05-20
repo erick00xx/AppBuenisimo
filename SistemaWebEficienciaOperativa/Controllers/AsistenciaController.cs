@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Models.ViewModels;
@@ -48,6 +49,7 @@ namespace SistemaWebEficienciaOperativa.Controllers // Asegúrate que el namespa
         {
             if (!ObtenerIdUsuarioActual(out int idUsuarioActual))
             {
+                Debug.WriteLine("Session idUsuario: " + Session["idUsuario"]);
                 TempData["ErrorMessage"] = "Sesión expirada o no válida. Por favor, inicie sesión de nuevo.";
                 return RedirectToAction("Index", "Autenticacion"); // Redirige al login
             }
