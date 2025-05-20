@@ -14,12 +14,24 @@ namespace SistemaWebEficienciaOperativa.Models
     
     public partial class tbHorarios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbHorarios()
+        {
+            this.tbAsistencias = new HashSet<tbAsistencias>();
+        }
+    
         public int idHorario { get; set; }
         public int idUsuario { get; set; }
         public byte diaSemana { get; set; }
-        public System.TimeSpan horaEntradaEsperada { get; set; }
-        public System.TimeSpan horaSalidaEsperada { get; set; }
+        public System.TimeSpan horaEntrada { get; set; }
+        public System.TimeSpan horaSalida { get; set; }
+        public decimal pagoPorHora { get; set; }
+        public System.DateTime fechaInicioVigencia { get; set; }
+        public Nullable<System.DateTime> fechaFinVigencia { get; set; }
+        public bool activo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbAsistencias> tbAsistencias { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }
     }
 }

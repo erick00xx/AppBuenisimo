@@ -21,7 +21,11 @@ namespace SistemaWebEficienciaOperativa.Models
         public System.DateTime fecha { get; set; }
         public Nullable<System.DateTime> horaEntrada { get; set; }
         public Nullable<System.DateTime> horaSalida { get; set; }
+        public Nullable<int> minutosTardanza { get; set; }
+        public Nullable<int> idHorarioAplicado { get; set; }
+        public string comentariosAdicionales { get; set; }
     
+        public virtual tbHorarios tbHorarios { get; set; }
         public virtual tbObservacionesAsistencias tbObservacionesAsistencias { get; set; }
         public virtual tbSucursales tbSucursales { get; set; }
         public virtual tbUsuarios tbUsuarios { get; set; }

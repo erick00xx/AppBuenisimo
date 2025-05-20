@@ -22,6 +22,10 @@
     <EntitySet Name="tbTiposProductos" EntityType="DB_BUENISIMOModel.tbTiposProductos" />
     <EntitySet Name="tbUnidades" EntityType="DB_BUENISIMOModel.tbUnidades" />
     <EntitySet Name="tbUsuarios" EntityType="DB_BUENISIMOModel.tbUsuarios" />
+    <AssociationSet Name="FK_tbAsistencias_tbHorarios_idHorarioAplicado" Association="DB_BUENISIMOModel.FK_tbAsistencias_tbHorarios_idHorarioAplicado">
+      <End Role="tbHorarios" EntitySet="tbHorarios" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia" Association="DB_BUENISIMOModel.FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia">
       <End Role="tbObservacionesAsistencias" EntitySet="tbObservacionesAsistencias" />
       <End Role="tbAsistencias" EntitySet="tbAsistencias" />
@@ -138,6 +142,10 @@
     <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="horaEntrada" Type="DateTime" Precision="3" />
     <Property Name="horaSalida" Type="DateTime" Precision="3" />
+    <Property Name="minutosTardanza" Type="Int32" />
+    <Property Name="idHorarioAplicado" Type="Int32" />
+    <Property Name="comentariosAdicionales" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbHorarios" Relationship="DB_BUENISIMOModel.FK_tbAsistencias_tbHorarios_idHorarioAplicado" FromRole="tbAsistencias" ToRole="tbHorarios" />
     <NavigationProperty Name="tbObservacionesAsistencias" Relationship="DB_BUENISIMOModel.FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia" FromRole="tbAsistencias" ToRole="tbObservacionesAsistencias" />
     <NavigationProperty Name="tbSucursales" Relationship="DB_BUENISIMOModel.FK_tbAsistencias_tbSucursales_idSucursal" FromRole="tbAsistencias" ToRole="tbSucursales" />
     <NavigationProperty Name="tbUsuarios" Relationship="DB_BUENISIMOModel.FK_tbAsistencias_tbUsuarios_idUsuario" FromRole="tbAsistencias" ToRole="tbUsuarios" />
@@ -197,8 +205,13 @@
     <Property Name="idHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idUsuario" Type="Int32" Nullable="false" />
     <Property Name="diaSemana" Type="Byte" Nullable="false" />
-    <Property Name="horaEntradaEsperada" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="horaSalidaEsperada" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="horaEntrada" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="horaSalida" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="pagoPorHora" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="fechaInicioVigencia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaFinVigencia" Type="DateTime" Precision="0" />
+    <Property Name="activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbAsistencias" Relationship="DB_BUENISIMOModel.FK_tbAsistencias_tbHorarios_idHorarioAplicado" FromRole="tbHorarios" ToRole="tbAsistencias" />
     <NavigationProperty Name="tbUsuarios" Relationship="DB_BUENISIMOModel.FK_tbHorarios_tbUsuarios_idUsuario" FromRole="tbHorarios" ToRole="tbUsuarios" />
   </EntityType>
   <EntityType Name="tbIngresosInsumos">
@@ -379,6 +392,18 @@
     <NavigationProperty Name="tbPedidos" Relationship="DB_BUENISIMOModel.FK_tbPedidos_tbUsuarios_idUsuario" FromRole="tbUsuarios" ToRole="tbPedidos" />
     <NavigationProperty Name="tbRoles" Relationship="DB_BUENISIMOModel.FK_tbUsuarios_tbRoles_idRol" FromRole="tbUsuarios" ToRole="tbRoles" />
   </EntityType>
+  <Association Name="FK_tbAsistencias_tbHorarios_idHorarioAplicado">
+    <End Type="DB_BUENISIMOModel.tbHorarios" Role="tbHorarios" Multiplicity="0..1" />
+    <End Type="DB_BUENISIMOModel.tbAsistencias" Role="tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbHorarios">
+        <PropertyRef Name="idHorario" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idHorarioAplicado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia">
     <End Type="DB_BUENISIMOModel.tbObservacionesAsistencias" Role="tbObservacionesAsistencias" Multiplicity="1" />
     <End Type="DB_BUENISIMOModel.tbAsistencias" Role="tbAsistencias" Multiplicity="*" />

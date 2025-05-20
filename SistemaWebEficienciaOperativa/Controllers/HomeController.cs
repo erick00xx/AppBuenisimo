@@ -10,7 +10,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("Registrar", "Asistencia");
+            return RedirectToAction("Marcar", "Asistencia");
         }
     }
 }

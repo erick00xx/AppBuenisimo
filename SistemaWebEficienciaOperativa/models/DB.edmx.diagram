@@ -5,27 +5,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="437280a31a4f41dcb9e17385e5cc6ed0" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbAsistencias" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbCategorias" Width="1.5" PointX="0.75" PointY="30.75" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbDesechosInsumos" Width="1.5" PointX="3" PointY="7.75" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbDetallePedido" Width="1.5" PointX="7.5" PointY="17.25" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbEstadosPedidos" Width="1.5" PointX="3" PointY="14.625" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbHorarios" Width="1.5" PointX="3" PointY="36.625" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbIngresosInsumos" Width="1.5" PointX="6" PointY="7.5" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbInsumos" Width="1.5" PointX="3.75" PointY="23.625" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbMedidas" Width="1.5" PointX="3" PointY="27.625" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbMesas" Width="1.5" PointX="3" PointY="17.5" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbObservacionesAsistencias" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbPedidos" Width="1.5" PointX="5.25" PointY="17" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbPrecios" Width="1.5" PointX="5.25" PointY="29.25" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbProductos" Width="1.5" PointX="3" PointY="30.375" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbProveedores" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbRoles" Width="1.5" PointX="1.5" PointY="20.875" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbSucursales" Width="1.5" PointX="0.75" PointY="8.375" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbTiposMedidas" Width="1.5" PointX="0.75" PointY="27.75" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbTiposProductos" Width="1.5" PointX="1.5" PointY="34" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbUnidades" Width="1.5" PointX="1.5" PointY="23.75" />
-        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbUsuarios" Width="1.5" PointX="0.75" PointY="12.875" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbAsistencias" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbCategorias" Width="1.5" PointX="0.75" PointY="35.5" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbDesechosInsumos" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbDetallePedido" Width="1.5" PointX="7.5" PointY="22" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbEstadosPedidos" Width="1.5" PointX="3" PointY="29.375" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbHorarios" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbIngresosInsumos" Width="1.5" PointX="6" PointY="7.875" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbInsumos" Width="1.5" PointX="3.75" PointY="26.125" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbMedidas" Width="1.5" PointX="3" PointY="32.5" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbMesas" Width="1.5" PointX="3" PointY="22.25" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbObservacionesAsistencias" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbPedidos" Width="1.5" PointX="5.25" PointY="21.75" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbPrecios" Width="1.5" PointX="5.25" PointY="34" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbProductos" Width="1.5" PointX="3" PointY="35.125" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbProveedores" Width="1.5" PointX="3.75" PointY="12.375" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbRoles" Width="1.5" PointX="1.5" PointY="18.125" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbSucursales" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbTiposMedidas" Width="1.5" PointX="0.75" PointY="32.5" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbTiposProductos" Width="1.5" PointX="1.5" PointY="38.75" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbUnidades" Width="1.5" PointX="1.5" PointY="26.125" />
+        <EntityTypeShape EntityType="DB_BUENISIMOModel.tbUsuarios" Width="1.5" PointX="1.5" PointY="13.25" />
+        <AssociationConnector Association="DB_BUENISIMOModel.FK_tbAsistencias_tbHorarios_idHorarioAplicado" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK_tbAsistencias_tbSucursales_idSucursal" />
         <AssociationConnector Association="DB_BUENISIMOModel.FK_tbAsistencias_tbUsuarios_idUsuario" />

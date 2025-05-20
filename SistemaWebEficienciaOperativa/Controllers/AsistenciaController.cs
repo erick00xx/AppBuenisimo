@@ -1,148 +1,149 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using SistemaWebEficienciaOperativa.Models;
+using SistemaWebEficienciaOperativa.Models.ViewModels;
+using SistemaWebEficienciaOperativa.Services;
 
-namespace SistemaWebEficienciaOperativa.Controllers
+namespace TuProyecto.Controllers // Asegúrate que el namespace sea el correcto
 {
+    //[Authorize] // Este atributo [Authorize] necesitará ser personalizado si no usas ASP.NET Identity.
+                // Si solo dependes de la sesión, podrías crear un filtro de acción personalizado
+                // o simplemente verificar la sesión en cada acción o en un método base del controlador.
     public class AsistenciaController : Controller
     {
-        
-        public ActionResult Registrar()
+        private readonly AsistenciaService _asistenciaService;
+        // private readonly HorarioService _horarioService; // Ya no es necesario para obtener datos del usuario si AsistenciaService lo maneja
+
+        public AsistenciaController()
         {
-            CargarUltimaAsistencia();
-            return View(new UsuarioDTO());
+            _asistenciaService = new AsistenciaService();
+            // _horarioService = new HorarioService();
         }
 
+        private bool ObtenerIdUsuarioActual(out int idUsuario)
+        {
+            idUsuario = 0;
+            if (Session["idUsuario"] == null)
+            {
+                return false; // No hay sesión o el idUsuario no está en la sesión
+            }
+
+            if (Session["idUsuario"] is int)
+            {
+                idUsuario = (int)Session["idUsuario"];
+                return true;
+            }
+            // Si no es int, intenta convertir (aunque debería ser int si lo guardaste así)
+            else if (int.TryParse(Session["idUsuario"].ToString(), out int parsedId))
+            {
+                idUsuario = parsedId;
+                return true;
+            }
+            return false; // No se pudo convertir a int
+        }
+
+
+        // GET: Asistencia/Marcar
+        public ActionResult Marcar()
+        {
+            if (!ObtenerIdUsuarioActual(out int idUsuarioActual))
+            {
+                TempData["ErrorMessage"] = "Sesión expirada o no válida. Por favor, inicie sesión de nuevo.";
+                return RedirectToAction("Index", "Autenticacion"); // Redirige al login
+            }
+
+            var viewModel = _asistenciaService.PrepararViewModelMarcacion(idUsuarioActual);
+            if (viewModel.SucursalesDisponibles == null || !viewModel.SucursalesDisponibles.Any())
+            {
+                // Si AsistenciaService no pudo cargar las sucursales (quizás porque el usuario no existe, aunque no debería pasar aquí)
+                // o si simplemente quieres asegurarte de que se carguen aquí.
+                viewModel.SucursalesDisponibles = new SelectList(_asistenciaService.ObtenerSucursales(), "idSucursal", "nombre", viewModel.IdSucursalSeleccionada);
+            }
+            return View(viewModel);
+        }
+
+        // POST: Asistencia/RegistrarEntrada
         [HttpPost]
-        public ActionResult Registrar(UsuarioDTO objUsuario, string accion)
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistrarEntrada(MarcarAsistenciaViewModel model)
         {
-            CargarUltimaAsistencia(); // Esto se llama siempre
-
-            if (string.IsNullOrWhiteSpace(objUsuario.Dni))
+            if (!ObtenerIdUsuarioActual(out int idUsuarioActual))
             {
-                ModelState.AddModelError("Dni", "El DNI es obligatorio.");
-                return View(objUsuario);
+                TempData["ErrorMessage"] = "Sesión expirada o no válida. Por favor, inicie sesión de nuevo.";
+                return RedirectToAction("Index", "Autenticacion");
             }
 
-            using (var db = new DB_BUENISIMOEntities())
+            if (model.IdSucursalSeleccionada <= 0)
             {
-                var usuario = db.tbUsuarios.FirstOrDefault(u => u.dni == objUsuario.Dni);
-                if (usuario == null)
-                {
-                    ModelState.AddModelError("Dni", "Usuario no encontrado o inactivo.");
-                    return View(objUsuario);
-                }
-
-                if (accion == "Ingresar")
-                {
-                    db.tbAsistencias.Add(new tbAsistencias
-                    {
-                        idUsuario = usuario.idUsuario,
-                        fecha = DateTime.Today,
-                        horaEntrada = DateTime.Now,
-                        idSucursal = 1,
-                        idObservacionAsistencia = 1
-                    });
-                    db.SaveChanges();
-                    TempData["Mensaje"] = "Ingreso registrado.";
-                }
-                else if (accion == "Salir")
-                {
-                    var ultima = db.tbAsistencias
-                        .Where(a => a.idUsuario == usuario.idUsuario && a.horaSalida == null)
-                        .OrderByDescending(a => a.idAsistencia)
-                        .FirstOrDefault();
-
-                    if (ultima == null)
-                    {
-                        ModelState.AddModelError("", "No hay un ingreso previo para marcar salida.");
-                        return View(objUsuario);
-                    }
-
-                    ultima.horaSalida = DateTime.Now;
-                    db.SaveChanges();
-                    TempData["Mensaje"] = "Salida registrada.";
-                }
+                TempData["ErrorMessage"] = "Debe seleccionar una sucursal para marcar la entrada.";
+                // Es mejor recargar el modelo completo para la vista si falla la validación del lado del cliente
+                var viewModelRecargado = _asistenciaService.PrepararViewModelMarcacion(idUsuarioActual);
+                viewModelRecargado.IdSucursalSeleccionada = model.IdSucursalSeleccionada; // Mantener el intento del usuario
+                // Podrías añadir un error de ModelState aquí también
+                // ModelState.AddModelError("IdSucursalSeleccionada", "Debe seleccionar una sucursal.");
+                return View("Marcar", viewModelRecargado);
             }
 
-            return RedirectToAction("Registrar");
+            var resultado = _asistenciaService.RegistrarEntrada(idUsuarioActual, model.IdSucursalSeleccionada);
+            if (resultado.Item1) // Éxito
+            {
+                TempData["SuccessMessage"] = resultado.Item2;
+            }
+            else // Error
+            {
+                TempData["ErrorMessage"] = resultado.Item2;
+            }
+            return RedirectToAction("Marcar");
         }
 
-        private void CargarUltimaAsistencia()
+        // POST: Asistencia/RegistrarSalida
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistrarSalida(MarcarAsistenciaViewModel model)
         {
-            using (var db = new DB_BUENISIMOEntities())
+            if (!ObtenerIdUsuarioActual(out int idUsuarioActual))
             {
-                var ult = db.tbAsistencias
-                    .OrderByDescending(a => a.idAsistencia)
-                    .FirstOrDefault();
-
-                if (ult != null)
-                {
-                    var user = db.tbUsuarios.Find(ult.idUsuario);
-                    if (user != null)
-                    {
-                        ViewBag.UltimoUsuario = user.nombre + " " + user.apellido;
-                        ViewBag.UltimoHora = (ult.horaSalida ?? ult.horaEntrada)?.ToString("hh:mm tt");
-                        ViewBag.UltimoEstado = ult.horaSalida == null ? "INGRESANTE" : "SALIENTE";
-                    }
-                }
+                TempData["ErrorMessage"] = "Sesión expirada o no válida. Por favor, inicie sesión de nuevo.";
+                return RedirectToAction("Index", "Autenticacion");
             }
+
+            if (model.IdSucursalSeleccionada <= 0)
+            {
+                TempData["ErrorMessage"] = "Debe seleccionar una sucursal para marcar la salida.";
+                var viewModelRecargado = _asistenciaService.PrepararViewModelMarcacion(idUsuarioActual);
+                viewModelRecargado.IdSucursalSeleccionada = model.IdSucursalSeleccionada;
+                return View("Marcar", viewModelRecargado);
+            }
+
+            var resultado = _asistenciaService.RegistrarSalida(idUsuarioActual, model.IdSucursalSeleccionada, model.ConfirmarSalidaTemprana);
+
+            if (resultado.Item1) // Éxito
+            {
+                TempData["SuccessMessage"] = resultado.Item2;
+            }
+            else // Error
+            {
+                if (resultado.Item2 == "SALIDA_TEMPRANA_REQUIERE_CONFIRMACION")
+                {
+                    TempData["WarningMessage"] = "Estás intentando marcar tu salida muy temprano. Por favor, confirma si deseas continuar.";
+                    var viewModelRecargado = _asistenciaService.PrepararViewModelMarcacion(idUsuarioActual);
+                    viewModelRecargado.IdSucursalSeleccionada = model.IdSucursalSeleccionada;
+                    viewModelRecargado.ConfirmarSalidaTemprana = false; // Para que el checkbox no venga pre-marcado
+                    viewModelRecargado.RequiereConfirmacionSalidaTemprana = true;
+                    return View("Marcar", viewModelRecargado);
+                }
+                TempData["ErrorMessage"] = resultado.Item2;
+            }
+            return RedirectToAction("Marcar");
         }
 
-        public ActionResult ReporteAsistencias(int? idUsuario, DateTime? fechaDesde, DateTime? fechaHasta)
+        protected override void Dispose(bool disposing)
         {
-            using (var db = new DB_BUENISIMOEntities())
+            if (disposing)
             {
-                // Lista de usuarios activos para el dropdown
-                var usuarios = db.tbUsuarios
-                    .Where(u => u.activo == true)
-                    .Select(u => new SelectListItem
-                    {
-                        Value = u.idUsuario.ToString(),
-                        Text = u.nombre + " " + u.apellido
-                    }).ToList();
-
-                // Armamos la consulta base
-                var asistenciasQuery = db.tbAsistencias.AsQueryable();
-
-                if (idUsuario.HasValue)
-                    asistenciasQuery = asistenciasQuery.Where(a => a.idUsuario == idUsuario.Value);
-
-                if (fechaDesde.HasValue)
-                    asistenciasQuery = asistenciasQuery.Where(a => a.fecha >= fechaDesde.Value);
-
-                if (fechaHasta.HasValue)
-                    asistenciasQuery = asistenciasQuery.Where(a => a.fecha <= fechaHasta.Value);
-
-                // Ejecutamos la consulta primero con ToList(), luego manipulamos los datos en memoria
-                var asistenciasDB = asistenciasQuery
-                    .OrderByDescending(a => a.fecha)
-                    .ToList();
-
-                // Proyección ya en memoria, ahora sí podemos usar TimeOfDay
-                var asistencias = asistenciasDB
-                    .Select(a => new AsistenciaDetalle
-                    {
-                        Fecha = a.fecha,
-                        Sucursal = a.tbSucursales?.nombre,
-                        Observacion = a.tbObservacionesAsistencias?.descripcion,
-                        HoraEntrada = a.horaEntrada?.TimeOfDay,
-                        HoraSalida = a.horaSalida?.TimeOfDay
-                    }).ToList();
-
-                // Creamos el ViewModel
-                var viewModel = new ReporteAsistenciaEmpleadoViewModel
-                {
-                    IdUsuario = idUsuario,
-                    FechaDesde = fechaDesde,
-                    FechaHasta = fechaHasta,
-                    Asistencias = asistencias,
-                    Usuarios = usuarios
-                };
-
-                return View(viewModel);
+                _asistenciaService.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

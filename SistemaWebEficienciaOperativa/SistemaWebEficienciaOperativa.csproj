@@ -138,6 +138,7 @@
     <Compile Include="Controllers\GestionPedidosController.cs" />
     <Compile Include="Controllers\GestionVentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorariosController.cs" />
     <Compile Include="Controllers\ReporteEmpleadoController.cs" />
     <Compile Include="Controllers\ReporteInventarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,14 +223,18 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\CuentaDTO.cs" />
+    <Compile Include="Models\ViewModels\MarcarAsistenciaViewModel.cs" />
     <Compile Include="Models\ViewModels\InventarioMovimientosViewModel - Copia.cs" />
     <Compile Include="Models\ViewModels\ProductoDTO.cs" />
+    <Compile Include="Models\ViewModels\HorarioEmpleados.cs" />
     <Compile Include="Models\ViewModels\ReporteEmpleadoModel.cs" />
     <Compile Include="Models\ViewModels\ReporteInventarioModel.cs" />
     <Compile Include="Models\ViewModels\UsuarioDTO.cs" />
     <Compile Include="Models\ViewModels\DetallePedidoViewModel.cs" />
     <Compile Include="Models\ViewModels\ReporteAsistenciaEmpleadoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AsistenciaService.cs" />
+    <Compile Include="Services\HorarioService.cs" />
     <Compile Include="Services\EmpleadoService.cs" />
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Services\PedidoService.cs" />
@@ -343,8 +348,6 @@
     <Content Include="Views\GestionEmpleados\ReporteEmpleados.cshtml" />
     <Content Include="Views\GestionCarta\CartaUsuario.cshtml" />
     <Content Include="Views\GestionarNotas\Index.cshtml" />
-    <Content Include="Views\Asistencia\Registrar.cshtml" />
-    <Content Include="Views\GestionEmpleados\Listar.cshtml" />
     <Content Include="Views\GestionEmpleados\Crear.cshtml" />
     <Content Include="Views\GestionEmpleados\Editar.cshtml" />
     <Content Include="Views\GestionInventario\UltimosMovimientos.cshtml" />
@@ -359,6 +362,13 @@
     <Content Include="Views\ReporteEmpleado\DetallePagoQuincenal.cshtml" />
     <Content Include="Views\GestionPedidos\NuevoPedido.cshtml" />
     <Content Include="Views\GestionPedidos\DetallesPedido.cshtml" />
+    <Content Include="Views\Horarios\Index.cshtml" />
+    <Content Include="Views\Horarios\Horarios.cshtml" />
+    <Content Include="Views\Horarios\EditarHorario.cshtml" />
+    <Content Include="Views\GestionEmpleados\EditarHorario.cshtml" />
+    <Content Include="Views\GestionEmpleados\Horarios.cshtml" />
+    <Content Include="Views\GestionEmpleados\Index.cshtml" />
+    <Content Include="Views\Asistencia\Marcar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

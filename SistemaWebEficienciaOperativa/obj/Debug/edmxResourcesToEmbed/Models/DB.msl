@@ -4,6 +4,9 @@
     <EntitySetMapping Name="tbAsistencias">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbAsistencias">
         <MappingFragment StoreEntitySet="tbAsistencias">
+          <ScalarProperty Name="comentariosAdicionales" ColumnName="comentariosAdicionales" />
+          <ScalarProperty Name="idHorarioAplicado" ColumnName="idHorarioAplicado" />
+          <ScalarProperty Name="minutosTardanza" ColumnName="minutosTardanza" />
           <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
           <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -60,8 +63,12 @@
     <EntitySetMapping Name="tbHorarios">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbHorarios">
         <MappingFragment StoreEntitySet="tbHorarios">
-          <ScalarProperty Name="horaSalidaEsperada" ColumnName="horaSalidaEsperada" />
-          <ScalarProperty Name="horaEntradaEsperada" ColumnName="horaEntradaEsperada" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fechaFinVigencia" ColumnName="fechaFinVigencia" />
+          <ScalarProperty Name="fechaInicioVigencia" ColumnName="fechaInicioVigencia" />
+          <ScalarProperty Name="pagoPorHora" ColumnName="pagoPorHora" />
+          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+          <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
           <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
           <ScalarProperty Name="idHorario" ColumnName="idHorario" />

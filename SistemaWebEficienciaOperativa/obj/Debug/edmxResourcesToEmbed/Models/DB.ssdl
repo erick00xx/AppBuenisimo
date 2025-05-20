@@ -11,6 +11,9 @@
     <Property Name="fecha" Type="date" Nullable="false" />
     <Property Name="horaEntrada" Type="datetime" />
     <Property Name="horaSalida" Type="datetime" />
+    <Property Name="minutosTardanza" Type="int" />
+    <Property Name="idHorarioAplicado" Type="int" />
+    <Property Name="comentariosAdicionales" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="tbCategorias">
     <Key>
@@ -58,8 +61,12 @@
     <Property Name="idHorario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idUsuario" Type="int" Nullable="false" />
     <Property Name="diaSemana" Type="tinyint" Nullable="false" />
-    <Property Name="horaEntradaEsperada" Type="time" Precision="7" Nullable="false" />
-    <Property Name="horaSalidaEsperada" Type="time" Precision="7" Nullable="false" />
+    <Property Name="horaEntrada" Type="time" Precision="7" Nullable="false" />
+    <Property Name="horaSalida" Type="time" Precision="7" Nullable="false" />
+    <Property Name="pagoPorHora" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="fechaInicioVigencia" Type="date" Nullable="false" />
+    <Property Name="fechaFinVigencia" Type="date" />
+    <Property Name="activo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbIngresosInsumos">
     <Key>
@@ -200,6 +207,18 @@
     <Property Name="activo" Type="bit" />
     <Property Name="dni" Type="nvarchar" MaxLength="20" />
   </EntityType>
+  <Association Name="FK_tbAsistencias_tbHorarios_idHorarioAplicado">
+    <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="0..1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbHorarios">
+        <PropertyRef Name="idHorario" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idHorarioAplicado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia">
     <End Role="tbObservacionesAsistencias" Type="Self.tbObservacionesAsistencias" Multiplicity="1" />
     <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
@@ -534,6 +553,10 @@
     <EntitySet Name="tbTiposProductos" EntityType="Self.tbTiposProductos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUnidades" EntityType="Self.tbUnidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbAsistencias_tbHorarios_idHorarioAplicado" Association="Self.FK_tbAsistencias_tbHorarios_idHorarioAplicado">
+      <End Role="tbHorarios" EntitySet="tbHorarios" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia" Association="Self.FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia">
       <End Role="tbObservacionesAsistencias" EntitySet="tbObservacionesAsistencias" />
       <End Role="tbAsistencias" EntitySet="tbAsistencias" />
