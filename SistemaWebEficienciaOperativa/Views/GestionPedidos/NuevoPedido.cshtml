@@ -1,0 +1,254 @@
+﻿@{
+    ViewBag.Title = "Nuevo Pedido";
+}
+
+<style>
+    #lista-productos-busqueda .list-group-item {
+        cursor: pointer;
+    }
+
+        #lista-productos-busqueda .list-group-item:hover {
+            background-color: #f0f0f0;
+        }
+
+    .cantidad-input {
+        width: 60px;
+        text-align: center;
+    }
+</style>
+
+<h2>Nuevo Pedido</h2>
+<br />
+<div>
+    @Html.ActionLink("Volver a Pedidos Activos", "Index", "GestionPedidos", null, new { @class = "btn btn-outline-secondary mb-3" })
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>Seleccionar Mesa</h4>
+        @Html.DropDownList("codMesa", (SelectList)ViewBag.MesasDisponibles, "Seleccione una mesa", new { @class = "form-control mb-3", id = "selectMesa" })
+
+        <h4>Buscar Productos</h4>
+        <input type="text" id="busquedaProducto" class="form-control mb-2" placeholder="🔍 Escriba para buscar..." />
+        <div id="lista-productos-busqueda" class="list-group" style="max-height: 300px; overflow-y: auto;">
+            <!-- Los resultados de la búsqueda aparecerán aquí -->
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h4>Detalle del Pedido</h4>
+        <div id="carrito-compras" class="table-responsive">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Medida</th>
+                        <th>Precio Unit.</th>
+                        <th class="text-center">Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="carrito-items">
+                    <!-- Los items del carrito aparecerán aquí -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-right"><strong>TOTAL:</strong></td>
+                        <td id="carrito-total" class="font-weight-bold">S/ 0.00</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <button id="btnCrearPedido" class="btn btn-success btn-lg float-right mt-3">Crear Pedido</button>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let carrito = []; // Array para almacenar los items del pedido
+
+            // --- BÚSQUEDA DE PRODUCTOS ---
+            $('#busquedaProducto').on('keyup', function () {
+                let criterio = $(this).val();
+                if (criterio.length < 2) { // No buscar con menos de 2 caracteres
+                    $('#lista-productos-busqueda').empty();
+                    return;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("Buscar", "GestionPedidos")',
+                    type: 'GET',
+                    data: { criterio: criterio },
+                    success: function (data) {
+                        $('#lista-productos-busqueda').empty();
+                        if (data && data.length > 0) {
+                            data.forEach(function (producto) {
+                                let itemHtml = `<a href="#" class="list-group-item list-group-item-action"
+                                                   data-idprecio="${producto.IdPrecio}"
+                                                   data-nombre="${producto.NombreProducto}"
+                                                   data-medida="${producto.Medida}"
+                                                   data-precio="${producto.Precio.toFixed(2)}"
+                                                   data-categoria="${producto.Categoria}">
+                                                    <strong>${producto.NombreProducto}</strong> (${producto.Medida}) - S/ ${producto.Precio.toFixed(2)}
+                                                    <br><small class="text-muted">${producto.Categoria}</small>
+                                                </a>`;
+                                $('#lista-productos-busqueda').append(itemHtml);
+                            });
+                        } else {
+                            $('#lista-productos-busqueda').html('<p class="text-muted p-2">No se encontraron productos.</p>');
+                        }
+                    },
+                    error: function (err) {
+                        console.error("Error en búsqueda: ", err);
+                        $('#lista-productos-busqueda').html('<p class="text-danger p-2">Error al buscar productos.</p>');
+                    }
+                });
+            });
+
+            // --- AGREGAR PRODUCTO AL CARRITO ---
+            $('#lista-productos-busqueda').on('click', '.list-group-item', function (e) {
+                e.preventDefault();
+                const idPrecio = parseInt($(this).data('idprecio'));
+                const nombre = $(this).data('nombre');
+                const medida = $(this).data('medida');
+                const precio = parseFloat($(this).data('precio'));
+
+                agregarAlCarrito(idPrecio, nombre, medida, precio, 1);
+                $('#busquedaProducto').val(''); // Limpiar búsqueda
+                $('#lista-productos-busqueda').empty(); // Limpiar resultados
+            });
+
+            function agregarAlCarrito(idPrecio, nombre, medida, precioUnitario, cantidad) {
+                const itemExistente = carrito.find(item => item.IdPrecio === idPrecio);
+
+                if (itemExistente) {
+                    itemExistente.Cantidad += cantidad;
+                    itemExistente.Subtotal = itemExistente.Cantidad * itemExistente.PrecioUnitario;
+                } else {
+                    carrito.push({
+                        IdPrecio: idPrecio,
+                        NombreProducto: nombre,
+                        Medida: medida,
+                        PrecioUnitario: precioUnitario,
+                        Cantidad: cantidad,
+                        Subtotal: precioUnitario * cantidad
+                    });
+                }
+                renderizarCarrito();
+            }
+
+            // --- RENDERIZAR CARRITO ---
+            function renderizarCarrito() {
+                $('#carrito-items').empty();
+                let totalGeneral = 0;
+
+                if (carrito.length === 0) {
+                    $('#carrito-items').html('<tr><td colspan="6" class="text-center text-muted">El carrito está vacío.</td></tr>');
+                } else {
+                    carrito.forEach(function (item, index) {
+                        totalGeneral += item.Subtotal;
+                        let filaHtml = `
+                            <tr>
+                                <td>${item.NombreProducto}</td>
+                                <td>${item.Medida}</td>
+                                <td>S/ ${item.PrecioUnitario.toFixed(2)}</td>
+                                <td class="text-center">
+                                    <input type="number" class="form-control form-control-sm cantidad-input" value="${item.Cantidad}" min="1" data-index="${index}">
+                                </td>
+                                <td>S/ ${item.Subtotal.toFixed(2)}</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm btn-remover-item" data-index="${index}">
+                                        <i class="fas fa-trash-alt"></i> <!-- Necesitas FontAwesome para el ícono -->
+                                    </button>
+                                </td>
+                            </tr>`;
+                        $('#carrito-items').append(filaHtml);
+                    });
+                }
+                $('#carrito-total').text('S/ ' + totalGeneral.toFixed(2));
+            }
+
+            // --- ACTUALIZAR CANTIDAD EN CARRITO ---
+            $('#carrito-items').on('change', '.cantidad-input', function () {
+                const index = parseInt($(this).data('index'));
+                let nuevaCantidad = parseInt($(this).val());
+
+                if (isNaN(nuevaCantidad) || nuevaCantidad < 1) {
+                    nuevaCantidad = 1; // Mínimo 1
+                    $(this).val(1); // Corregir en la UI
+                }
+
+                carrito[index].Cantidad = nuevaCantidad;
+                carrito[index].Subtotal = carrito[index].Cantidad * carrito[index].PrecioUnitario;
+                renderizarCarrito();
+            });
+
+            // --- REMOVER ITEM DEL CARRITO ---
+            $('#carrito-items').on('click', '.btn-remover-item', function () {
+                const index = parseInt($(this).data('index'));
+                carrito.splice(index, 1); // Eliminar el item del array
+                renderizarCarrito();
+            });
+
+            // --- CREAR PEDIDO ---
+            $('#btnCrearPedido').on('click', function () {
+                const codMesa = $('#selectMesa').val();
+
+                if (!codMesa) {
+                    alert('Por favor, seleccione una mesa.');
+                    return;
+                }
+                if (carrito.length === 0) {
+                    alert('Por favor, agregue productos al pedido.');
+                    return;
+                }
+
+                // Preparamos los detalles para enviar al servidor
+                // El ViewModel `DetallePedidoViewModel` en C# espera IdPrecio, Cantidad, Subtotal
+                // NombreProducto, Medida, PrecioUnitario son para la UI, no es necesario enviarlos si el servidor puede reconstruirlos o no los necesita.
+                // Aquí los enviamos como están definidos en el JS, el backend `CrearPedidoInputViewModel` los tomará.
+                const pedidoData = {
+                    CodMesa: codMesa,
+                    Detalles: carrito.map(item => ({
+                        IdPrecio: item.IdPrecio,
+                        Cantidad: item.Cantidad,
+                        Subtotal: item.Subtotal
+                        // Si tu DetallePedidoViewModel backend necesita más campos, añádelos aquí
+                        // NombreProducto: item.NombreProducto,
+                        // Medida: item.Medida,
+                        // PrecioUnitario: item.PrecioUnitario
+                    }))
+                };
+
+                // Deshabilitar botón para evitar doble click
+                $(this).prop('disabled', true).text('Procesando...');
+
+                $.ajax({
+                    url: '@Url.Action("CrearPedidoPost", "GestionPedidos")',
+                    type: 'POST',
+                    contentType: 'application/json', // IMPORTANTE para enviar JSON
+                    data: JSON.stringify(pedidoData),
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            window.location.href = response.redirectTo; // Redirigir al Index
+                        } else {
+                            alert('Error: ' + response.message);
+                            $('#btnCrearPedido').prop('disabled', false).text('Crear Pedido');
+                        }
+                    },
+                    error: function (err) {
+                        console.error("Error al crear pedido: ", err);
+                        alert('Ocurrió un error de comunicación al crear el pedido.');
+                        $('#btnCrearPedido').prop('disabled', false).text('Crear Pedido');
+                    }
+                });
+            });
+
+            renderizarCarrito(); // Renderizar inicialmente por si hay algo (aunque debería estar vacío)
+        });
+    </script>

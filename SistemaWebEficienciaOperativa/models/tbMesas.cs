@@ -20,10 +20,10 @@ namespace SistemaWebEficienciaOperativa.Models
             this.tbPedidos = new HashSet<tbPedidos>();
         }
     
-        public int idMesa { get; set; }
-        public int numeroMesa { get; set; }
-        public string estado { get; set; }
+        public string codMesa { get; set; }
+        public Nullable<int> idSucursal { get; set; }
     
+        public virtual tbSucursales tbSucursales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbPedidos> tbPedidos { get; set; }
     }

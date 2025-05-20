@@ -21,7 +21,7 @@ namespace SistemaWebEficienciaOperativa.Models
         }
     
         public int idPedido { get; set; }
-        public Nullable<int> idMesa { get; set; }
+        public string codMesa { get; set; }
         public Nullable<System.DateTime> fechaPedido { get; set; }
         public Nullable<int> idUsuario { get; set; }
         public Nullable<decimal> total { get; set; }

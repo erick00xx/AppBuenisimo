@@ -1,0 +1,283 @@
+﻿@model SistemaWebEficienciaOperativa.Models.tbPedidos
+@{
+    ViewBag.Title = "Detalles del Pedido #" + Model.idPedido;
+}
+
+<style>
+    #lista-productos-busqueda .list-group-item {
+        cursor: pointer;
+    }
+
+        #lista-productos-busqueda .list-group-item:hover {
+            background-color: #f0f0f0;
+        }
+
+    .cantidad-input {
+        width: 60px;
+        text-align: center;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+<br />
+<div>
+    @Html.ActionLink("Volver a Pedidos Activos", "Index", "GestionPedidos", null, new { @class = "btn btn-outline-secondary mb-3" })
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <input type="hidden" id="idPedido" value="@Model.idPedido" />
+
+        <h4>Información del Pedido</h4>
+        <div class="form-group">
+            <label for="selectMesa">Mesa:</label>
+            @Html.DropDownList("codMesa", (SelectList)ViewBag.MesasDisponibles, new { @class = "form-control", id = "selectMesa" })
+        </div>
+        <div class="form-group">
+            <label for="selectEstadoPedido">Estado del Pedido:</label>
+            @Html.DropDownList("idEstadoPedido", (SelectList)ViewBag.EstadosPedido, new { @class = "form-control", id = "selectEstadoPedido" })
+        </div>
+        <hr />
+        <h4>Buscar Productos</h4>
+        <input type="text" id="busquedaProducto" class="form-control mb-2" placeholder="🔍 Escriba para buscar..." />
+        <div id="lista-productos-busqueda" class="list-group" style="max-height: 300px; overflow-y: auto;">
+            <!-- Los resultados de la búsqueda aparecerán aquí -->
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h4>Detalle del Pedido</h4>
+        <div id="carrito-compras" class="table-responsive">
+            <table class="table table-sm table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Medida</th>
+                        <th>Precio Unit.</th>
+                        <th class="text-center">Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="carrito-items">
+                    <!-- Los items del carrito aparecerán aquí -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-right"><strong>TOTAL:</strong></td>
+                        <td id="carrito-total" class="font-weight-bold">S/ 0.00</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <button id="btnGuardarCambios" class="btn btn-success btn-lg float-right mt-3">
+            <i class="fas fa-save"></i> Guardar Cambios
+        </button>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let carrito = []; // Array para almacenar los items del pedido
+
+            // --- INICIALIZAR CARRITO CON DATOS DEL MODELO ---
+            function inicializarCarrito() {
+                @if (Model.tbDetallePedido != null)
+                {
+                    foreach (var detalle in Model.tbDetallePedido)
+                    {
+                        // Asegúrate de que tbPrecios, tbProductos y tbMedidas están cargados (Include en el servicio)
+                        if (detalle.tbPrecios != null && detalle.tbPrecios.tbProductos != null && detalle.tbPrecios.tbMedidas != null)
+                        {
+                            @:agregarAlCarrito(@detalle.idPrecio, "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tbPrecios.tbProductos.nombre))", "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tbPrecios.tbMedidas.nombre))", @detalle.tbPrecios.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture), @detalle.cantidad, false);
+                        }
+                    }
+                }
+                renderizarCarrito(); // Renderizar una vez inicializado
+            }
+
+
+            // --- BÚSQUEDA DE PRODUCTOS --- (Igual que en NuevoPedido.cshtml)
+            $('#busquedaProducto').on('keyup', function () {
+                let criterio = $(this).val();
+                if (criterio.length < 2) {
+                    $('#lista-productos-busqueda').empty();
+                    return;
+                }
+                $.ajax({
+                    url: '@Url.Action("Buscar", "GestionPedidos")',
+                    type: 'GET',
+                    data: { criterio: criterio },
+                    success: function (data) {
+                        $('#lista-productos-busqueda').empty();
+                        if (data && data.length > 0) {
+                            data.forEach(function (producto) {
+                                let itemHtml = `<a href="#" class="list-group-item list-group-item-action"
+                                                   data-idprecio="${producto.IdPrecio}"
+                                                   data-nombre="${producto.NombreProducto}"
+                                                   data-medida="${producto.Medida}"
+                                                   data-precio="${producto.Precio.toFixed(2)}"
+                                                   data-categoria="${producto.Categoria}">
+                                                    <strong>${producto.NombreProducto}</strong> (${producto.Medida}) - S/ ${producto.Precio.toFixed(2)}
+                                                    <br><small class="text-muted">${producto.Categoria}</small>
+                                                </a>`;
+                                $('#lista-productos-busqueda').append(itemHtml);
+                            });
+                        } else {
+                            $('#lista-productos-busqueda').html('<p class="text-muted p-2">No se encontraron productos.</p>');
+                        }
+                    },
+                    error: function (err) {
+                        console.error("Error en búsqueda: ", err);
+                        $('#lista-productos-busqueda').html('<p class="text-danger p-2">Error al buscar productos.</p>');
+                    }
+                });
+            });
+
+            // --- AGREGAR PRODUCTO AL CARRITO --- (Modificado para no renderizar si es carga inicial)
+            $('#lista-productos-busqueda').on('click', '.list-group-item', function (e) {
+                e.preventDefault();
+                const idPrecio = parseInt($(this).data('idprecio'));
+                const nombre = $(this).data('nombre');
+                const medida = $(this).data('medida');
+                const precio = parseFloat($(this).data('precio'));
+
+                agregarAlCarrito(idPrecio, nombre, medida, precio, 1, true); // true para renderizar
+                $('#busquedaProducto').val('');
+                $('#lista-productos-busqueda').empty();
+            });
+
+            function agregarAlCarrito(idPrecio, nombre, medida, precioUnitario, cantidad, renderizar = true) {
+                const itemExistente = carrito.find(item => item.IdPrecio === idPrecio);
+
+                if (itemExistente) {
+                    itemExistente.Cantidad += cantidad;
+                    itemExistente.Subtotal = itemExistente.Cantidad * itemExistente.PrecioUnitario;
+                } else {
+                    carrito.push({
+                        IdPrecio: idPrecio,
+                        NombreProducto: nombre,
+                        Medida: medida,
+                        PrecioUnitario: precioUnitario,
+                        Cantidad: cantidad,
+                        Subtotal: precioUnitario * cantidad
+                    });
+                }
+                if (renderizar) {
+                    renderizarCarrito();
+                }
+            }
+
+            // --- RENDERIZAR CARRITO --- (Igual que en NuevoPedido.cshtml)
+            function renderizarCarrito() {
+                $('#carrito-items').empty();
+                let totalGeneral = 0;
+
+                if (carrito.length === 0) {
+                    $('#carrito-items').html('<tr><td colspan="6" class="text-center text-muted">Aún no hay productos en el pedido. Agregue algunos.</td></tr>');
+                } else {
+                    carrito.forEach(function (item, index) {
+                        totalGeneral += item.Subtotal;
+                        let filaHtml = `
+                            <tr>
+                                <td>${item.NombreProducto}</td>
+                                <td>${item.Medida}</td>
+                                <td>S/ ${item.PrecioUnitario.toFixed(2)}</td>
+                                <td class="text-center">
+                                    <input type="number" class="form-control form-control-sm cantidad-input" value="${item.Cantidad}" min="1" data-index="${index}">
+                                </td>
+                                <td>S/ ${item.Subtotal.toFixed(2)}</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm btn-remover-item" data-index="${index}" title="Quitar producto">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>`;
+                        $('#carrito-items').append(filaHtml);
+                    });
+                }
+                $('#carrito-total').text('S/ ' + totalGeneral.toFixed(2));
+            }
+
+            // --- ACTUALIZAR CANTIDAD EN CARRITO --- (Igual que en NuevoPedido.cshtml)
+            $('#carrito-items').on('change', '.cantidad-input', function () {
+                const index = parseInt($(this).data('index'));
+                let nuevaCantidad = parseInt($(this).val());
+
+                if (isNaN(nuevaCantidad) || nuevaCantidad < 1) {
+                    nuevaCantidad = 1;
+                    $(this).val(1);
+                }
+
+                carrito[index].Cantidad = nuevaCantidad;
+                carrito[index].Subtotal = carrito[index].Cantidad * carrito[index].PrecioUnitario;
+                renderizarCarrito();
+            });
+
+            // --- REMOVER ITEM DEL CARRITO --- (Igual que en NuevoPedido.cshtml)
+            $('#carrito-items').on('click', '.btn-remover-item', function () {
+                const index = parseInt($(this).data('index'));
+                carrito.splice(index, 1);
+                renderizarCarrito();
+            });
+
+            // --- GUARDAR CAMBIOS DEL PEDIDO ---
+            $('#btnGuardarCambios').on('click', function () {
+                const idPedidoVal = $('#idPedido').val();
+                const codMesaVal = $('#selectMesa').val();
+                const idEstadoPedidoVal = $('#selectEstadoPedido').val();
+
+                if (!codMesaVal) {
+                    alert('Por favor, seleccione una mesa.');
+                    return;
+                }
+                if (!idEstadoPedidoVal) {
+                    alert('Por favor, seleccione un estado para el pedido.');
+                    return;
+                }
+                if (carrito.length === 0) {
+                    alert('Por favor, agregue al menos un producto al pedido.');
+                    return;
+                }
+
+                const pedidoData = {
+                    IdPedido: parseInt(idPedidoVal),
+                    CodMesa: codMesaVal,
+                    IdEstadoPedido: parseInt(idEstadoPedidoVal),
+                    Detalles: carrito.map(item => ({ // Solo enviar lo necesario para el ViewModel de backend
+                        IdPrecio: item.IdPrecio,
+                        Cantidad: item.Cantidad,
+                        Subtotal: item.Subtotal
+                    }))
+                };
+
+                $(this).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Guardando...');
+
+                $.ajax({
+                    url: '@Url.Action("ActualizarPedidoPost", "GestionPedidos")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(pedidoData),
+                    success: function (response) {
+                        if (response.success) {
+                            alert(response.message);
+                            window.location.href = response.redirectTo;
+                        } else {
+                            alert('Error: ' + response.message);
+                            $('#btnGuardarCambios').prop('disabled', false).html('<i class="fas fa-save"></i> Guardar Cambios');
+                        }
+                    },
+                    error: function (err) {
+                        console.error("Error al actualizar pedido: ", err);
+                        alert('Ocurrió un error de comunicación al actualizar el pedido.');
+                        $('#btnGuardarCambios').prop('disabled', false).html('<i class="fas fa-save"></i> Guardar Cambios');
+                    }
+                });
+            });
+
+            // Inicializar el carrito con los datos del modelo al cargar la página
+            inicializarCarrito();
+        });
+    </script>

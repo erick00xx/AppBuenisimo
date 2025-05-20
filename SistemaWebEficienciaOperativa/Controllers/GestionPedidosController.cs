@@ -3,203 +3,150 @@ using System;
 using System.Linq;
 using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Services;
-using SistemaWebEficienciaOperativa.Models; // Para tbEstadosPedidos directamente si es necesario
+using SistemaWebEficienciaOperativa.Models; // Para DB_BUENISIMOEntities
 using SistemaWebEficienciaOperativa.Models.ViewModels;
+using System.Collections.Generic;
+using System.Data.Entity; // Para .Include si lo usas directamente en el controller
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
-    // [Authorize] // Considera añadir autorización global o por acción
     public class GestionPedidosController : Controller
     {
-        private readonly PedidoService _pedidoService;
-        private readonly MesaService _mesaService;
+        private readonly PedidoService _pedidoService = new PedidoService();
+        private readonly DB_BUENISIMOEntities _dbContext = new DB_BUENISIMOEntities(); // Si necesitas acceso directo
 
-        public GestionPedidosController()
-        {
-            _pedidoService = new PedidoService();
-            _mesaService = new MesaService();
-        }
+        // Asumimos que obtienes esto de la sesión o autenticación
+        // Por ahora, lo dejamos hardcodeado para pruebas
+        private int ObtenerIdSucursalActual() { return 1; /* TODO: Implementar lógica real */ }
+        private int ObtenerIdUsuarioActual() { return 1; /* TODO: Implementar lógica real */ }
 
-        // GET: GestionPedidos (Vista de Mesas)
+
+        // GET: GestionPedidos (Vista de Pedidos Activos)
         public ActionResult Index()
         {
-            var mesas = _mesaService.ListarMesasConEstadoCalculado();
-            var pedidosActivos = mesas
-                .Where(m => m.estado == "Ocupada")
-                .Select(m => new { m.idMesa, Pedido = _pedidoService.ObtenerPedidoActivoPorMesa(m.idMesa) })
-                .Where(mp => mp.Pedido != null)
-                .ToDictionary(mp => mp.idMesa, mp => mp.Pedido.idPedido);
-
-            ViewBag.PedidosActivosPorMesa = pedidosActivos;
-            return View(mesas);
+            int idSucursal = ObtenerIdSucursalActual();
+            var pedidosActivos = _pedidoService.ListarPedidosActivos(idSucursal);
+            return View(pedidosActivos);
         }
 
-        // GET: GestionPedidos/TomarPedido/{idMesa}
-        public ActionResult TomarPedido(int? idMesa) // Sigue siendo para NUEVOS pedidos
+        // GET: GestionPedidos/NuevoPedido
+        public ActionResult NuevoPedido()
         {
-            if (!idMesa.HasValue)
-            {
-                TempData["ErrorMessage"] = "Debe seleccionar una mesa.";
-                return RedirectToAction("Index");
-            }
-            var mesa = _mesaService.ObtenerMesaPorId(idMesa.Value);
-            if (mesa == null)
-            {
-                TempData["ErrorMessage"] = "Mesa no encontrada.";
-                return RedirectToAction("Index");
-            }
-
-            var pedidoActivo = _pedidoService.ObtenerPedidoActivoPorMesa(idMesa.Value);
-            if (pedidoActivo != null)
-            {
-                TempData["InfoMessage"] = $"La mesa {mesa.numeroMesa} ya tiene el pedido N° {pedidoActivo.idPedido} activo.";
-                return RedirectToAction("VerOEditarPedido", new { idPedido = pedidoActivo.idPedido });
-            }
-
-            ViewBag.IdMesa = idMesa.Value;
-            ViewBag.NumeroMesa = mesa.numeroMesa;
+            int idSucursal = ObtenerIdSucursalActual();
+            var mesasDisponibles = _pedidoService.ListarMesasDisponiblesYActual(idSucursal);
+            ViewBag.MesasDisponibles = new SelectList(mesasDisponibles, "codMesa", "codMesa");
             return View();
         }
 
-
-        [HttpGet]
-        public JsonResult BuscarProductos(string term) // Sigue igual
-        {
-            var productos = _pedidoService.BuscarProductos(term);
-            return Json(productos, JsonRequestBehavior.AllowGet);
-        }
-
-        // POST: GestionPedidos/GuardarNuevoPedido (Cambió de GuardarPedido)
+        // POST: GestionPedidos/CrearPedidoPost
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult GuardarNuevoPedido(string detallePedido, int idMesa) // detallePedido es el JSON
+        public ActionResult CrearPedidoPost(CrearPedidoInputViewModel model)
         {
-            if (Session["idUsuario"] == null || !int.TryParse(Session["idUsuario"].ToString(), out int idUsuarioLogueado))
+            if (!ModelState.IsValid) // Verifica si el modelo cumple con las validaciones (si las tuviera)
             {
-                TempData["ErrorMessage"] = "Sesión no válida. Por favor, inicie sesión.";
-                return RedirectToAction("Login", "Account"); // Ajusta
+                // Colecta los errores de validación para mostrar un mensaje más detallado si es necesario.
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Json(new { success = false, message = "Datos incompletos o inválidos. " + string.Join(" ", errors) });
             }
 
-            if (string.IsNullOrEmpty(detallePedido) || detallePedido == "[]")
+            if (model == null || string.IsNullOrEmpty(model.CodMesa) || model.Detalles == null || !model.Detalles.Any())
             {
-                TempData["ErrorMessage"] = "Debe seleccionar al menos un producto.";
-                return RedirectToAction("TomarPedido", new { idMesa = idMesa });
+                return Json(new { success = false, message = "Datos incompletos. Seleccione una mesa y agregue productos." });
             }
 
             try
             {
-                int nuevoPedidoId = _pedidoService.GuardarNuevoPedido(detallePedido, idUsuarioLogueado, idMesa);
-                TempData["SuccessMessage"] = $"Pedido N° {nuevoPedidoId} para la mesa {idMesa} guardado exitosamente.";
-                // Redirigir a la vista de edición/visualización del pedido recién creado
-                return RedirectToAction("VerOEditarPedido", new { idPedido = nuevoPedidoId });
-            }
-            catch (ArgumentException argEx)
-            {
-                TempData["ErrorMessage"] = argEx.Message;
-                return RedirectToAction("TomarPedido", new { idMesa = idMesa });
+                int idUsuarioActual = ObtenerIdUsuarioActual();
+                int idSucursal = ObtenerIdSucursalActual(); // Aunque el pedido se asocia a la mesa, podrías necesitarlo
+                _pedidoService.CrearPedido(idUsuarioActual, model.CodMesa, model.Detalles, idSucursal);
+                return Json(new { success = true, message = "Pedido creado exitosamente.", redirectTo = Url.Action("Index") });
             }
             catch (Exception ex)
             {
-                // Loguear el error (ex)
-                TempData["ErrorMessage"] = "Error al guardar el pedido: " + ex.Message;
-                return RedirectToAction("TomarPedido", new { idMesa = idMesa });
+                // Loggear el error ex
+                return Json(new { success = false, message = "Error al crear el pedido: " + ex.Message });
             }
         }
 
-        // GET: GestionPedidos/VerOEditarPedido/{idPedido}
-        public ActionResult VerOEditarPedido(int idPedido)
+        // GET: GestionPedidos/DetallesPedido/5
+        public ActionResult DetallesPedido(int id)
         {
-            var pedidoVM = _pedidoService.ObtenerPedidoCompleto(idPedido);
-            if (pedidoVM == null)
+            var pedido = _pedidoService.ObtenerPedidoPorId(id);
+            if (pedido == null)
             {
-                TempData["ErrorMessage"] = "Pedido no encontrado.";
-                return RedirectToAction("Index");
+                return HttpNotFound();
             }
 
-            ViewBag.EstadosPedido = new SelectList(_pedidoService.ObtenerTodosLosEstadosPedido(), "idEstadoPedido", "estado", pedidoVM.IdEstadoPedido);
-            // depende el estado es editable o no.
-            ViewBag.PuedeEditarItems = pedidoVM.EstadoPedido == "En espera";
+            int idSucursal = ObtenerIdSucursalActual(); // o pedido.tbMesas.idSucursal.Value;
 
-            return View(pedidoVM);
+            // Lista de mesas: disponibles + la actual del pedido
+            ViewBag.MesasDisponibles = new SelectList(
+                _pedidoService.ListarMesasDisponiblesYActual(idSucursal, pedido.codMesa),
+                "codMesa", "codMesa", pedido.codMesa);
+
+            ViewBag.EstadosPedido = new SelectList(
+                _pedidoService.ListarEstadosPedido(),
+                "idEstadoPedido", "estado", pedido.idEstadoPedido);
+
+            return View(pedido);
         }
 
-        // POST: GestionPedidos/ActualizarPedidoCompleto
+        // POST: GestionPedidos/ActualizarPedidoPost
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ActualizarPedidoCompleto(PedidoCompletoViewModel pedidoVM)
+        public ActionResult ActualizarPedidoPost(ActualizarPedidoInputViewModel model)
         {
-            if (Session["idUsuario"] == null || !int.TryParse(Session["idUsuario"].ToString(), out int idUsuarioLogueado))
+            if (!ModelState.IsValid)
             {
-                TempData["ErrorMessage"] = "Sesión no válida.";
-                return RedirectToAction("Login", "Account"); // Ajusta
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                return Json(new { success = false, message = "Datos incompletos o inválidos. " + string.Join(" ", errors) });
             }
 
-            if (!ModelState.IsValid) // Validar data annotations del ViewModel
+            if (model.Detalles == null || !model.Detalles.Any())
             {
-                TempData["ErrorMessage"] = "Datos inválidos. Por favor revise los campos.";
-                // Recargar vista con los datos y errores
-                ViewBag.EstadosPedido = new SelectList(_pedidoService.ObtenerTodosLosEstadosPedido(), "idEstadoPedido", "estado", pedidoVM.IdEstadoPedido);
-                var currentPedido = _pedidoService.ObtenerPedidoCompleto(pedidoVM.IdPedido); // Recargar desde DB
-                ViewBag.PuedeEditarItems = currentPedido?.EstadoPedido == "En espera";
-                return View("VerOEditarPedido", pedidoVM); // Devolver el VM con errores
+                return Json(new { success = false, message = "El pedido debe tener al menos un producto." });
             }
 
             try
             {
-                _pedidoService.ActualizarPedidoCompleto(pedidoVM, idUsuarioLogueado);
-                TempData["SuccessMessage"] = $"Pedido N° {pedidoVM.IdPedido} actualizado correctamente.";
-                return RedirectToAction("VerOEditarPedido", new { idPedido = pedidoVM.IdPedido });
-            }
-            catch (Exception ex)
-            {
-                // Loguear ex
-                TempData["ErrorMessage"] = "Error al actualizar el pedido: " + ex.Message;
-                ViewBag.EstadosPedido = new SelectList(_pedidoService.ObtenerTodosLosEstadosPedido(), "idEstadoPedido", "estado", pedidoVM.IdEstadoPedido);
-                var currentPedido = _pedidoService.ObtenerPedidoCompleto(pedidoVM.IdPedido); // Recargar desde DB
-                ViewBag.PuedeEditarItems = currentPedido?.EstadoPedido == "En espera";
-
-                return View("VerOEditarPedido", pedidoVM);
-            }
-        }
-
-        // GET: GestionPedidos/PanelCocina
-        public ActionResult PanelCocina()
-        {
-            var pedidosParaCocina = _pedidoService.ObtenerPedidosParaPanelCocina();
-            // Para los dropdowns de cambio de estado en cada tarjeta de pedido
-            ViewBag.ListaTodosLosEstadosPedido = _pedidoService.ObtenerTodosLosEstadosPedido();
-            return View(pedidosParaCocina);
-        }
-
-        // POST: GestionPedidos/CambiarEstadoPedidoPanel (Desde el Panel de Barra)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CambiarEstadoPedidoPanel(int idPedido, int idNuevoEstado)
-        {
-            if (Session["idUsuario"] == null || !int.TryParse(Session["idUsuario"].ToString(), out int idUsuarioLogueado))
-            {
-                TempData["ErrorMessage"] = "Sesión no válida.";
-                return RedirectToAction("PanelCocina");
-            }
-
-            try
-            {
-                bool success = _pedidoService.ActualizarEstadoPedido(idPedido, idNuevoEstado, idUsuarioLogueado);
-                if (success)
+                int idUsuarioActual = ObtenerIdUsuarioActual();
+                bool actualizado = _pedidoService.ActualizarPedido(model, idUsuarioActual);
+                if (actualizado)
                 {
-                    TempData["SuccessMessage"] = $"Estado del pedido N° {idPedido} actualizado.";
+                    return Json(new { success = true, message = "Pedido actualizado exitosamente.", redirectTo = Url.Action("Index") });
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = $"No se pudo actualizar el estado del pedido N° {idPedido} (quizás no existe).";
+                    return Json(new { success = false, message = "No se pudo encontrar o actualizar el pedido." });
                 }
             }
             catch (Exception ex)
             {
-                // Loguear ex
-                TempData["ErrorMessage"] = "Error al cambiar estado del pedido: " + ex.Message;
+                // Loggear el error ex
+                return Json(new { success = false, message = "Error al actualizar el pedido: " + ex.Message });
             }
-            return RedirectToAction("PanelCocina");
+        }
+
+
+        // GET: GestionPedidos/Buscar (Esta acción ya la tienes y es reutilizable)
+        public JsonResult Buscar(string criterio)
+        {
+            if (string.IsNullOrWhiteSpace(criterio))
+            {
+                return Json(new List<object>(), JsonRequestBehavior.AllowGet);
+            }
+
+            var productos = _pedidoService.Buscar(criterio)
+                .Select(p => new
+                {
+                    p.IdPrecio,
+                    NombreProducto = p.tbProductos.nombre,
+                    Medida = p.tbMedidas.nombre,
+                    Categoria = p.tbProductos.tbCategorias.nombre,
+                    Precio = p.Precio
+                })
+                .ToList();
+
+            return Json(productos, JsonRequestBehavior.AllowGet);
         }
     }
 }

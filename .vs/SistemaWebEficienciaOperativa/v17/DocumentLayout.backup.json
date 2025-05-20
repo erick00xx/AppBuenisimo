@@ -1,66 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\detallespedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\detallespedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\veroeditarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\veroeditarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\gestionpedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestionpedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\tomarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\tomarpedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\pedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\pedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\panelcocina.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\panelcocina.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\detallepedidoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\detallepedidoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\detallepedidoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestioncarta\\agregarproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestioncarta\\agregarproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\productopreciodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\productopreciodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\nuevopedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\nuevopedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\pedidocompletoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\pedidocompletoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\reporteempleado\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\reporteempleado\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\services\\empleadoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\empleadoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\reporteempleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\reporteempleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\reporteempleado\\detallepagoquincenal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\reporteempleado\\detallepagoquincenal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\reporteempleadomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\reporteempleadomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,188 +38,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DetallesPedido.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\DetallesPedido.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\DetallesPedido.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\DetallesPedido.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\DetallesPedido.cshtml",
+              "ViewState": "AgIAAD4AAAAAAAAAAADwv08AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T06:17:48.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DB.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\DB.edmx",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2025-05-16T16:21:32.667Z",
-              "EditorCaption": " [Diagram1]"
+              "WhenOpened": "2025-05-20T05:11:23.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DetallePedidoViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\DetallePedidoViewModel.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\DetallePedidoViewModel.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\DetallePedidoViewModel.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\DetallePedidoViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T04:08:53.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NuevoPedido.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\NuevoPedido.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\NuevoPedido.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\NuevoPedido.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\NuevoPedido.cshtml",
+              "ViewState": "AgIAANcAAAAAAAAAAAAmwN0AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-19T17:03:03.883Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Web.config",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Web.config",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Web.config",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-05-16T16:19:43.645Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-19T16:16:25.34Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "VerOEditarPedido.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\VerOEditarPedido.cshtml",
-              "ViewState": "AgIAAHcAAAAAAAAAAADwv4sAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T05:03:03.682Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TomarPedido.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\TomarPedido.cshtml",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAswCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T04:54:44.158Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DetallePedidoViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Title": "GestionPedidosController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAADwv0cAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T04:49:58.939Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PanelCocina.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\PanelCocina.cshtml",
-              "ViewState": "AgIAACYAAAAAAAAAAADwvzwAAABcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T05:04:42.71Z"
+              "WhenOpened": "2025-05-19T16:13:44.019Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Pedidos.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Pedidos.cshtml",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAmwIwAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T04:04:08.668Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductoPrecioDTO.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ProductoPrecioDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Title": "PedidoService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAiwMIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T04:50:54.582Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AgregarProducto.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionCarta\\AgregarProducto.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-14T05:26:09.212Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PedidoCompletoViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\PedidoCompletoViewModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAIwBIAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T04:49:39.376Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DetallePagoQuincenal.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\DetallePagoQuincenal.cshtml",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAcwGcAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-10T10:05:46.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\ReporteEmpleado\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvw8AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-10T10:04:20.757Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ReporteEmpleadoController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\ReporteEmpleadoController.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAawEkAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:03:23.598Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "EmpleadoService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAAAAAOUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:02:22.925Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ReporteEmpleadoModel.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\ReporteEmpleadoModel.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAzwCwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:01:22.836Z"
+              "WhenOpened": "2025-05-18T20:07:53.375Z",
+              "EditorCaption": ""
             }
           ]
         }

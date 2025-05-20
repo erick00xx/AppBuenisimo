@@ -107,9 +107,8 @@
     <EntitySetMapping Name="tbMesas">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbMesas">
         <MappingFragment StoreEntitySet="tbMesas">
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="numeroMesa" ColumnName="numeroMesa" />
-          <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="codMesa" ColumnName="codMesa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -128,7 +127,7 @@
           <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
           <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
-          <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+          <ScalarProperty Name="codMesa" ColumnName="codMesa" />
           <ScalarProperty Name="idPedido" ColumnName="idPedido" />
         </MappingFragment>
       </EntityTypeMapping>

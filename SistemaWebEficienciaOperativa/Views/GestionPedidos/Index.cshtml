@@ -1,120 +1,41 @@
-﻿@model List<SistemaWebEficienciaOperativa.Models.tbMesas>
+﻿@model List<SistemaWebEficienciaOperativa.Models.tbPedidos>
 @{
-    ViewBag.Title = "Gestión de Mesas y Pedidos";
-    var pedidosActivosPorMesa = ViewBag.PedidosActivosPorMesa as Dictionary<int, int> ?? new Dictionary<int, int>();
+    ViewBag.Title = "Index";
 }
 
-<h2>@ViewBag.Title</h2>
-
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-}
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-}
-@if (TempData["InfoMessage"] != null)
-{
-    <div class="alert alert-info">@TempData["InfoMessage"]</div>
-}
-
-<div class="mb-3">
-    @Html.ActionLink("Ir al Panel de Barra", "PanelCocina", "GestionPedidos", null, new { @class = "btn btn-lg btn-info" })
+<h2>Pedidos Activos</h2>
+<br />
+<div>
+    @Html.ActionLink("Nuevo Pedido", "NuevoPedido", "GestionPedidos", null, new { @class = "btn btn-dark" })
 </div>
-
-<div class="row">
-    @if (Model != null && Model.Any())
+<br />
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No hay pedidos activos en este momento.</div>
+}
+else
+{
+    foreach (var m in Model)
     {
-        foreach (var mesa in Model)
-        {
-            string cardClass = "border-secondary"; // Default
-            string estadoTextClass = "text-secondary";
-            if (mesa.estado == "Ocupada")
-            {
-                cardClass = "border-danger";
-                estadoTextClass = "text-danger font-weight-bold";
-            }
-            else if (mesa.estado == "Disponible")
-            {
-                cardClass = "border-success";
-                estadoTextClass = "text-success font-weight-bold";
-            }
-            // Podrías tener más estados como "Reservada", "Limpieza", etc.
-
-            <div class="col-md-3 col-sm-4 col-xs-6 mb-4">
-                <div class="card h-100 @cardClass" style="min-height: 180px;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">Mesa @mesa.numeroMesa</h5>
-                        <p class="card-text text-center">
-                            Estado: <span class="@estadoTextClass">@mesa.estado</span>
-                        </p>
-                        <div class="mt-auto text-center">
-                            @if (mesa.estado == "Disponible" || string.IsNullOrEmpty(mesa.estado))
-                            {
-                                @Html.ActionLink("Tomar Pedido", "TomarPedido", "GestionPedidos", new { idMesa = mesa.idMesa }, new { @class = "btn btn-primary btn-block" })
-                            }
-                            else if (mesa.estado == "Ocupada")
-                            {
-                                if (pedidosActivosPorMesa.TryGetValue(mesa.idMesa, out int idPedidoActivo))
-                                {
-                                    @Html.ActionLink("Ver/Editar Pedido", "VerOEditarPedido", "GestionPedidos", new { idPedido = idPedidoActivo }, new { @class = "btn btn-warning btn-block" })
-                                }
-                                else
-                                {
-                                    // Fallback si el estado es Ocupada pero no encontramos pedido activo (raro, pero defensivo)
-                                    @Html.ActionLink("Revisar Mesa", "TomarPedido", "GestionPedidos", new { idMesa = mesa.idMesa }, new { @class = "btn btn-info btn-block" })
-                                    <small class="text-muted d-block">Revisar</small>
-                                }
-                            }
-                            @* Añadir más lógica para otros estados si los implementas *@
-                        </div>
-                    </div>
-                </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                Mesa: <strong>@m.tbMesas.codMesa</strong> - Estado: <span class="badge badge-info">@m.tbEstadosPedidos.estado</span>
             </div>
-        }
+            <div class="card-body">
+                <h5 class="card-title">Pedido #@m.idPedido</h5>
+                @if (m.idEstadoPedido == 1)
+                {
+                    <p class="card-text text-danger font-weight-bold">¡Nuevo Pedido!</p>
+                }
+                <p class="card-text">
+                    Total: @(m.total?.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("es-PE"))) <br />
+                    Usuario: @(m.tbUsuarios?.nombre ?? "N/A") @(m.tbUsuarios?.apellido ?? "")
+                </p>
+                @Html.ActionLink("Ver Detalles", "DetallesPedido", "GestionPedidos", new { id = m.idPedido }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="card-footer text-muted">
+                Registrado: @(m.fechaPedido?.ToString("g"))
+            </div>
+        </div>
     }
-    else
-    {
-        <div class="col-12"><p>No hay mesas registradas.</p></div>
-    }
-</div>
-
-<style>
-    .card {
-        transition: box-shadow .3s ease-in-out;
-    }
-
-        .card:hover {
-            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
-        }
-
-    .h-100 {
-        height: 100%;
-    }
-
-    .d-flex {
-        display: flex;
-    }
-
-    .flex-column {
-        flex-direction: column;
-    }
-
-    .mt-auto {
-        margin-top: auto;
-    }
-
-    .btn-block {
-        display: block;
-        width: 100%;
-    }
-
-    .border-danger {
-        border-width: 2px !important;
-    }
-
-    .border-success {
-        border-width: 2px !important;
-    }
-</style>
+}

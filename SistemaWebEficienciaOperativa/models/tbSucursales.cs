@@ -20,6 +20,7 @@ namespace SistemaWebEficienciaOperativa.Models
             this.tbAsistencias = new HashSet<tbAsistencias>();
             this.tbDesechosInsumos = new HashSet<tbDesechosInsumos>();
             this.tbIngresosInsumos = new HashSet<tbIngresosInsumos>();
+            this.tbMesas = new HashSet<tbMesas>();
         }
     
         public int idSucursal { get; set; }
@@ -31,5 +32,7 @@ namespace SistemaWebEficienciaOperativa.Models
         public virtual ICollection<tbDesechosInsumos> tbDesechosInsumos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbIngresosInsumos> tbIngresosInsumos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbMesas> tbMesas { get; set; }
     }
 }
