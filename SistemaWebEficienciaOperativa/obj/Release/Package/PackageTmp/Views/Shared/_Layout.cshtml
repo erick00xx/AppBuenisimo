@@ -1,8 +1,8 @@
 ﻿@{ Layout = null;
-    if (Session["idUsuario"] == null)
-    {
-        Response.Redirect("~/Autenticacion"); // o la ruta que uses para el login
-    }
+    //if (Session["idUsuario"] == null)
+    //{
+    //    Response.Redirect("~/Autenticacion"); // o la ruta que uses para el login
+    //}
 }
 
 <!DOCTYPE html>
@@ -110,7 +110,7 @@
 
                 <!-- Marcar asistencia -->
                 <li class="sidebar-item">
-                    <a href="@Url.Action("Registrar", "Asistencia")" class="sidebar-link">
+                    <a href="@Url.Action("Marcar", "Asistencia")" class="sidebar-link">
                         <i class="lni lni-book"></i>
                         <span>Asistencia</span>
                     </a>
@@ -125,7 +125,7 @@
                     </a>
                     <ul id="Gestion" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="@Url.Action("Listar", "GestionEmpleados")" class="sidebar-link">
+                            <a href="@Url.Action("Index", "GestionEmpleados")" class="sidebar-link">
                                 <i></i> Empleados
                             </a>
                         </li>
@@ -225,7 +225,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="~/source/js/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>

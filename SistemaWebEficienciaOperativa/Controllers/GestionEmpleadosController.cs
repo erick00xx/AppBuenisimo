@@ -226,7 +226,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 {
                     using (DB_BUENISIMOEntities db = new DB_BUENISIMOEntities())
                     {
-                        
+                        model.contrasena = PasswordHasher.HashPassword(model.contrasena);
                         db.tbUsuarios.Add(model);
                         db.SaveChanges();
                     }

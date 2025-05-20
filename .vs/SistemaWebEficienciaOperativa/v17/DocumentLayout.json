@@ -3,71 +3,83 @@
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\asistencia\\marcar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\asistencia\\marcar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\marcarasistenciaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\services\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\marcarasistenciaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\marcarasistenciaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\asistencia\\marcar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\asistencia\\marcar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\editarhorario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\editarhorario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\editarhorario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\horarios\\editarhorario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\horarios\\editarhorario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\horarios\\editarhorario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\horarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\horarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\horarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\horarios\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\horarios\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\horarios\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -78,32 +90,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "AutenticacionController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AutenticacionController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\AutenticacionController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AutenticacionController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\AutenticacionController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAkwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T10:10:55.714Z",
+              "WhenOpened": "2025-05-20T11:25:30.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AsistenciaService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAxwCkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T09:45:32.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MarcarAsistenciaViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAiwC8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T09:44:10.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GestionEmpleadosController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAiwBgBAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T09:00:50.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\PasswordHasher.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PasswordHasher.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\PasswordHasher.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T10:49:12.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\LoginService.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\LoginService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\LoginService.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\LoginService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAiwC4AAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T10:51:47.984Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Marcar.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:50:39.155Z",
+              "WhenOpened": "2025-05-20T09:03:25.913Z",
               "EditorCaption": ""
             },
             {
@@ -121,58 +197,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AsistenciaService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T09:45:32.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MarcarAsistenciaViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAqwC8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T09:44:10.184Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DB.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\DB.edmx",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2025-05-20T09:43:15.633Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAuwHAAAABPAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "Marcar.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:23:31.694Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T09:50:39.155Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T10:10:55.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Crear.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Crear.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Crear.cshtml",
@@ -180,12 +229,34 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Crear.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:21:54.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T09:21:54.406Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
+              "Title": "DB.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\DB.edmx",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\DB.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-05-20T09:43:15.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAuwHAAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T09:23:31.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Editar.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Editar.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Editar.cshtml",
@@ -193,12 +264,11 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Editar.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:21:36.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T09:21:36.792Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Horarios.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Horarios.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Horarios.cshtml",
@@ -206,12 +276,11 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Horarios.cshtml",
               "ViewState": "AgIAAGMAAAAAAAAAAAAswHQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:04:56.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T09:04:56.54Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "EditarHorario.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\EditarHorario.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\EditarHorario.cshtml",
@@ -219,38 +288,11 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\EditarHorario.cshtml",
               "ViewState": "AgIAADAAAAAAAAAAAADwv0gAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:04:36.219Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T09:04:36.219Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAswBEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:03:25.913Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GestionEmpleadosController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T09:00:50.527Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "EditarHorario.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Horarios\\EditarHorario.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Horarios\\EditarHorario.cshtml",
@@ -258,12 +300,11 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Horarios\\EditarHorario.cshtml",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAADkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T08:51:57.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T08:51:57.023Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Horarios\\Index.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Index.cshtml",
@@ -271,12 +312,11 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T08:36:17.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T08:36:17.75Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "Horarios.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Horarios\\Horarios.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Horarios.cshtml",
@@ -284,12 +324,11 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Horarios.cshtml",
               "ViewState": "AgIAAGkAAAAAAAAAAAAswHwAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T08:33:57.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T08:33:57.811Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "HorariosController.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
@@ -297,8 +336,7 @@
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAxwAoAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T08:26:41.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T08:26:41.967Z"
             }
           ]
         }
