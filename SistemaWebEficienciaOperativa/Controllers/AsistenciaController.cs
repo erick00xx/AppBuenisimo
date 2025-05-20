@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Models.ViewModels;
 using SistemaWebEficienciaOperativa.Services;
 
-namespace TuProyecto.Controllers // Asegúrate que el namespace sea el correcto
+namespace SistemaWebEficienciaOperativa.Controllers // Asegúrate que el namespace sea el correcto
 {
     //[Authorize] // Este atributo [Authorize] necesitará ser personalizado si no usas ASP.NET Identity.
                 // Si solo dependes de la sesión, podrías crear un filtro de acción personalizado

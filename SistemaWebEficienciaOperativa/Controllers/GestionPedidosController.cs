@@ -6,7 +6,8 @@ using SistemaWebEficienciaOperativa.Services;
 using SistemaWebEficienciaOperativa.Models; // Para DB_BUENISIMOEntities
 using SistemaWebEficienciaOperativa.Models.ViewModels;
 using System.Collections.Generic;
-using System.Data.Entity; // Para .Include si lo usas directamente en el controller
+using System.Data.Entity;
+using System.Diagnostics; // Para .Include si lo usas directamente en el controller
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
@@ -18,8 +19,16 @@ namespace SistemaWebEficienciaOperativa.Controllers
         // Asumimos que obtienes esto de la sesión o autenticación
         // Por ahora, lo dejamos hardcodeado para pruebas
         private int ObtenerIdSucursalActual() { return 1; /* TODO: Implementar lógica real */ }
-        private int ObtenerIdUsuarioActual() { return 1; /* TODO: Implementar lógica real */ }
-
+        private int ObtenerIdUsuarioActual()
+        {
+            Debug.WriteLine(Session["idUsuario"]);
+            if (Session["idUsuario"] != null)
+            {
+                Debug.WriteLine(Session["idUsuario"]);
+                return (int)Session["idUsuario"]; // No hay sesión o el idUsuario no está en la sesión
+            }
+            return 1;
+        }
 
         // GET: GestionPedidos (Vista de Pedidos Activos)
         public ActionResult Index()
