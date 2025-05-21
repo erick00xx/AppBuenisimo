@@ -1,6 +1,7 @@
 ﻿using SistemaWebEficienciaOperativa.Models;
 using SistemaWebEficienciaOperativa.Models.ViewModels;
 using SistemaWebEficienciaOperativa.Services;
+using SistemaWebEficienciaOperativa.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -277,7 +278,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
                     data.apellido = model.apellido;
                     data.correoElectronico = model.correoElectronico;
                     data.contrasena = model.contrasena;
-                    data.fechaRegistro = DateTime.Now;
+                    data.fechaRegistro = TimeProvider.Now;
                     data.activo = model.activo;
                     data.dni = model.dni;
 

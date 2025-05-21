@@ -6,6 +6,7 @@ using System.Data.Entity;
 using SistemaWebEficienciaOperativa.Models;
 using SistemaWebEficienciaOperativa.Models.ViewModels;
 using System.Diagnostics;
+using SistemaWebEficienciaOperativa.Utils;
 
 namespace SistemaWebEficienciaOperativa.Services
 {
@@ -59,7 +60,7 @@ namespace SistemaWebEficienciaOperativa.Services
                 var pedido = new tbPedidos
                 {
                     codMesa = codMesa,
-                    fechaPedido = DateTime.Now,
+                    fechaPedido = TimeProvider.Now,
                     idUsuario = idUsuario,
                     total = totalPedido,
                     idEstadoPedido = 1, // "En espera"
@@ -124,7 +125,7 @@ namespace SistemaWebEficienciaOperativa.Services
                         pedidoExistente.total = model.Detalles.Sum(d => d.Subtotal);
                         // Opcional: registrar quién y cuándo modificó (necesitarías campos adicionales en tbPedidos)
                         // pedidoExistente.idUsuarioUltimaModificacion = idUsuarioActual;
-                        // pedidoExistente.fechaUltimaModificacion = DateTime.Now;
+                        // pedidoExistente.fechaUltimaModificacion = TimeProvider.Now;
 
                         // Eliminar detalles antiguos
                         var detallesAntiguos = _dbContext.tbDetallePedido.Where(d => d.idPedido == model.IdPedido);

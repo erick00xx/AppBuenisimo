@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SistemaWebEficienciaOperativa.Utils;
 
 namespace SistemaWebEficienciaOperativa.Services
 {
@@ -109,7 +110,7 @@ namespace SistemaWebEficienciaOperativa.Services
                 case "Octubre": return 10;
                 case "Noviembre": return 11;
                 case "Diciembre": return 12;
-                default: return DateTime.Now.Month;
+                default: return TimeProvider.Now.Month;
             }
         }
 

@@ -237,10 +237,11 @@
     <Compile Include="Services\HorarioService.cs" />
     <Compile Include="Services\EmpleadoService.cs" />
     <Compile Include="Services\LoginService.cs" />
-    <Compile Include="Services\PasswordHasher.cs" />
+    <Compile Include="Utils\PasswordHasher.cs" />
     <Compile Include="Services\PedidoService.cs" />
     <Compile Include="Services\ProductoService.cs" />
     <Compile Include="Services\ReporteInventarioService.cs" />
+    <Compile Include="Utils\TimeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

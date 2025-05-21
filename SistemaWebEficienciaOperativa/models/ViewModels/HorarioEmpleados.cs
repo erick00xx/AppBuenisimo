@@ -2,7 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc; // Para SelectList
+using System.Web.Mvc;
+using SistemaWebEficienciaOperativa.Utils; // Para SelectList
 
 namespace SistemaWebEficienciaOperativa.Models.ViewModels
 {
@@ -82,7 +83,7 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
         [Display(Name = "Inicio Vigencia")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime FechaInicioVigencia { get; set; } = DateTime.Today;
+        public DateTime FechaInicioVigencia { get; set; } = TimeProvider.Today;
 
         [Display(Name = "Fin Vigencia (Opcional)")]
         [DataType(DataType.Date)]

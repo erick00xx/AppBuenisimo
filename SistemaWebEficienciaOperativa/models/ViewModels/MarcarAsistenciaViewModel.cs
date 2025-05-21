@@ -1,7 +1,9 @@
 ﻿// En tu carpeta ViewModels
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc; // Para SelectList
+using System.Web.Mvc;
+using SistemaWebEficienciaOperativa.Services;
+using SistemaWebEficienciaOperativa.Utils; // Para SelectList
 
 namespace SistemaWebEficienciaOperativa.Models.ViewModels
 {
@@ -9,8 +11,8 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
     {
         public int IdUsuario { get; set; } // Se obtendrá del usuario logueado
         public string NombreUsuario { get; set; }
-        public DateTime FechaActual { get; set; } = DateTime.Today;
-        public string HoraActual { get { return DateTime.Now.ToString("HH:mm:ss"); } }
+        public DateTime FechaActual { get; set; } = TimeProvider.Today;
+        public string HoraActual { get { return TimeProvider.Now.ToString("HH:mm:ss"); } }
 
         public bool PuedeMarcarEntrada { get; set; }
         public string MensajeEntrada { get; set; } // Ej: "Puedes marcar tu entrada", "Aún no es hora", "Tienes X minutos de tardanza"

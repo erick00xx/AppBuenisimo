@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity; // Para Include
 using SistemaWebEficienciaOperativa.Models; // Asumiendo que aquí están tus entidades EF (DB_BUENISIMOEntities, tbUsuario, tbHorario)
-using SistemaWebEficienciaOperativa.Models.ViewModels; // Para los ViewModels
+using SistemaWebEficienciaOperativa.Models.ViewModels;
+using SistemaWebEficienciaOperativa.Utils; // Para los ViewModels
 
 namespace SistemaWebEficienciaOperativa.Services
 {
@@ -166,9 +167,9 @@ namespace SistemaWebEficienciaOperativa.Services
 
                 // Opción 2: Borrado lógico (recomendado si tienes 'activo' y 'fechaFinVigencia')
                 horario.activo = false;
-                if (horario.fechaFinVigencia == null || horario.fechaFinVigencia > DateTime.Today)
+                if (horario.fechaFinVigencia == null || horario.fechaFinVigencia > TimeProvider.Today)
                 {
-                    horario.fechaFinVigencia = DateTime.Today.AddDays(-1); // Marcar como finalizado ayer
+                    horario.fechaFinVigencia = TimeProvider.Today.AddDays(-1); // Marcar como finalizado ayer
                 }
                 _dbContext.Entry(horario).State = EntityState.Modified;
 

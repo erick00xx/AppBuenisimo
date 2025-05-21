@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace SistemaWebEficienciaOperativa.Services
+namespace SistemaWebEficienciaOperativa.Utils
 {
     public static class PasswordHasher
     {

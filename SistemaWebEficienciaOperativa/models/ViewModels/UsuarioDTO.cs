@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using SistemaWebEficienciaOperativa.Utils;
 using WebGrease.Css.Ast.Selectors;
 
 namespace SistemaWebEficienciaOperativa.Models
@@ -23,7 +24,7 @@ namespace SistemaWebEficienciaOperativa.Models
         // Constructo pa registrar fecha
         public UsuarioDTO()
         {
-            FechaRegistro = DateTime.Now;
+            FechaRegistro = TimeProvider.Now;
         }
 
 

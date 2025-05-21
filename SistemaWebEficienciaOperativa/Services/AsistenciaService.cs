@@ -6,6 +6,7 @@ using System.Data.Entity;
 using SistemaWebEficienciaOperativa.Models; // Tus entidades EF
 using SistemaWebEficienciaOperativa.Models.ViewModels;
 using System.Web.Mvc;
+using SistemaWebEficienciaOperativa.Utils;
 
 namespace SistemaWebEficienciaOperativa.Services
 {
@@ -59,15 +60,15 @@ namespace SistemaWebEficienciaOperativa.Services
             var viewModel = new MarcarAsistenciaViewModel
             {
                 IdUsuario = idUsuario,
-                FechaActual = DateTime.Today
+                FechaActual = TimeProvider.Today
             };
             var usuario = _dbContext.tbUsuarios.Find(idUsuario);
             if (usuario == null) return viewModel; // O lanzar excepción
 
             viewModel.NombreUsuario = $"{usuario.nombre} {usuario.apellido}";
 
-            var horarioHoy = ObtenerHorarioVigenteParaUsuarioHoy(idUsuario, DateTime.Today);
-            var asistenciaHoy = ObtenerAsistenciaDeHoy(idUsuario, DateTime.Today);
+            var horarioHoy = ObtenerHorarioVigenteParaUsuarioHoy(idUsuario, TimeProvider.Today);
+            var asistenciaHoy = ObtenerAsistenciaDeHoy(idUsuario, TimeProvider.Today);
 
             viewModel.SucursalesDisponibles = new SelectList(_dbContext.tbSucursales.ToList(), "idSucursal", "nombre");
 
@@ -81,9 +82,9 @@ namespace SistemaWebEficienciaOperativa.Services
             }
 
             viewModel.HorarioEsperadoHoy = $"{horarioHoy.horaEntrada:hh\\:mm} - {horarioHoy.horaSalida:hh\\:mm}";
-            DateTime ahora = DateTime.Now;
-            DateTime horaEntradaEsperada = DateTime.Today.Add(horarioHoy.horaEntrada);
-            DateTime horaSalidaEsperada = DateTime.Today.Add(horarioHoy.horaSalida);
+            DateTime ahora = TimeProvider.Now;
+            DateTime horaEntradaEsperada = TimeProvider.Today.Add(horarioHoy.horaEntrada);
+            DateTime horaSalidaEsperada = TimeProvider.Today.Add(horarioHoy.horaSalida);
 
             // Lógica de ENTRADA
             if (asistenciaHoy == null || asistenciaHoy.horaEntrada == null)
@@ -168,8 +169,8 @@ namespace SistemaWebEficienciaOperativa.Services
 
         public Tuple<bool, string> RegistrarEntrada(int idUsuario, int idSucursal)
         {
-            DateTime fechaHoy = DateTime.Today;
-            DateTime ahora = DateTime.Now;
+            DateTime fechaHoy = TimeProvider.Today;
+            DateTime ahora = TimeProvider.Now;
 
             var asistenciaHoy = ObtenerAsistenciaDeHoy(idUsuario, fechaHoy);
             if (asistenciaHoy != null && asistenciaHoy.horaEntrada != null)
@@ -250,8 +251,8 @@ namespace SistemaWebEficienciaOperativa.Services
 
         public Tuple<bool, string> RegistrarSalida(int idUsuario, int idSucursal, bool confirmaSalidaTemprana)
         {
-            DateTime fechaHoy = DateTime.Today;
-            DateTime ahora = DateTime.Now;
+            DateTime fechaHoy = TimeProvider.Today;
+            DateTime ahora = TimeProvider.Now;
 
             var asistenciaHoy = ObtenerAsistenciaDeHoy(idUsuario, fechaHoy);
             if (asistenciaHoy == null || asistenciaHoy.horaEntrada == null)

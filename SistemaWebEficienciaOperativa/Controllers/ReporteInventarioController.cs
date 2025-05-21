@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Models.ViewModels;
 using static SistemaWebEficienciaOperativa.Services.ReporteInventarioService;
+using SistemaWebEficienciaOperativa.Utils;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
@@ -22,14 +23,14 @@ namespace SistemaWebEficienciaOperativa.Controllers
         {
             var viewModel = new ReporteInventarioModel
             {
-                FechaInicio = DateTime.Now.AddDays(-7),
-                FechaFin = DateTime.Now,
+                FechaInicio = TimeProvider.Now.AddDays(-7),
+                FechaFin = TimeProvider.Now,
                 TipoMovimiento = "todos"
             };
 
             // Generar estadísticas
             _inventarioService.GenerarEstadisticas(
-                DateTime.Now,
+                TimeProvider.Now,
                 out int comprasEstaSemana,
                 out int desechosEstaSemana,
                 out decimal inversionTotal);
