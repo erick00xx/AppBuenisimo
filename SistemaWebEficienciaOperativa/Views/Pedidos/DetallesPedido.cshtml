@@ -8,13 +8,62 @@
         cursor: pointer;
     }
 
-        #lista-productos-busqueda .list-group-item:hover {
-            background-color: #f0f0f0;
-        }
+    #lista-productos-busqueda .list-group-item:hover {
+        background-color: #f0f0f0;
+    }
 
     .cantidad-input {
-        width: 60px;
+        width: 70px; /* Un poco más de espacio para el número */
         text-align: center;
+    }
+
+    /* Estilos de NuevoPedido.cshtml */
+    .opciones-producto {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+    .opciones-producto fieldset {
+        margin-bottom: 5px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .opciones-producto legend {
+        font-size: 0.9em;
+        font-weight: bold;
+        padding: 0 5px;
+        width: auto;
+        border-bottom: none;
+        margin-bottom: 5px;
+    }
+    .opciones-producto label {
+        margin-right: 10px;
+        font-weight: normal;
+        font-size: 0.9em; /* Para que no ocupe tanto espacio */
+    }
+    .agregado-tag {
+        display: inline-block;
+        background-color: #e0e0e0;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+    }
+    .agregado-tag .remove-agregado {
+        cursor: pointer;
+        color: red;
+        margin-left: 5px;
+        font-weight: bold;
+    }
+
+    .modal-agregados-list .list-group-item {
+        cursor: pointer;
+    }
+    .modal-agregados-list .list-group-item:hover {
+        background-color: #f0f0f0;
     }
 </style>
 
@@ -48,15 +97,15 @@
     <div class="col-md-8">
         <h4>Detalle del Pedido</h4>
         <div id="carrito-compras" class="table-responsive">
-            <table class="table table-sm table-striped">
+            <table class="table table-sm"> <!-- Quitado table-striped para mejor legibilidad con opciones -->
                 <thead class="thead-light">
                     <tr>
-                        <th>Producto</th>
+                        <th>Producto y Opciones</th>
                         <th>Medida</th>
                         <th>Precio Unit.</th>
                         <th class="text-center">Cantidad</th>
                         <th>Subtotal</th>
-                        <th>Acción</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="carrito-items">
@@ -77,207 +126,423 @@
     </div>
 </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            let carrito = []; // Array para almacenar los items del pedido
+<!-- Modal para buscar Agregados (copiado de NuevoPedido.cshtml) -->
+<div class="modal fade" id="modalBuscarAgregados" tabindex="-1" role="dialog" aria-labelledby="modalBuscarAgregadosLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalBuscarAgregadosLabel">Buscar Agregado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="busquedaAgregadoInput" class="form-control mb-2" placeholder="🔍 Escriba para buscar agregados..." />
+                <div id="lista-agregados-busqueda" class="list-group modal-agregados-list" style="max-height: 250px; overflow-y: auto;">
+                    <!-- Resultados de búsqueda de agregados -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-            // --- INICIALIZAR CARRITO CON DATOS DEL MODELO ---
-            function inicializarCarrito() {
-                @if (Model.tbDetallePedido != null)
+@* Asegúrate de que jQuery esté cargado (generalmente en _Layout.cshtml) *@
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+@* Bootstrap JS es necesario para el modal *@
+@* <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
+@* FontAwesome para iconos (si los usas) *@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" /> 
+
+ <script>
+    $(document).ready(function () {
+        let carrito = []; // Array para almacenar los items del pedido
+        let currentItemUIDForAgregado = null;
+        let listaGlobalAgregados = []; // Se poblará desde ViewBag
+
+        // --- POBLAR listaGlobalAgregados DESDE ViewBag ---
+        @if(ViewBag.TodosAgregadosJson != null)
+        {
+            // Usar try-catch por si el JSON es inválido o ViewBag.TodosAgregadosJson es una cadena malformada.
+            @:try {
+            @:    listaGlobalAgregados = JSON.parse('@Html.Raw(ViewBag.TodosAgregadosJson)');
+            @:} catch (e) {
+            @:    console.error("Error al parsear TodosAgregadosJson:", e);
+            @:    console.log("Contenido de TodosAgregadosJson:", '@Html.Raw(ViewBag.TodosAgregadosJson)');
+            @:    alert("Error al cargar datos de agregados. Algunas funciones podrían no operar correctamente.");
+            @:}
+        } else {
+            @:console.warn("ViewBag.TodosAgregadosJson no fue proporcionado. La información de agregados (nombre/precio) para items existentes no estará disponible.");
+        }
+
+
+        // --- GENERADOR DE UID --- (de NuevoPedido.cshtml)
+        function generateUID() {
+            return 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // --- INICIALIZAR CARRITO CON DATOS DEL MODELO ---
+        function inicializarCarrito() {
+            carrito = []; // Limpiar por si acaso
+            console.log("Inicializando carrito. Número de detalles del modelo:", @(Model.tbDetallePedido?.Count ?? 0));
+            @if (Model.tbDetallePedido != null)
+            {
+
+                foreach (var detalle in Model.tbDetallePedido)
                 {
-                    foreach (var detalle in Model.tbDetallePedido)
+                    @:console.log("Procesando detalle con idPrecio:", @detalle.idPrecio);
+                    if (detalle.tbPrecios != null && detalle.tbPrecios.tbProductos != null && detalle.tbPrecios.tbMedidas != null)
                     {
-                        // Asegúrate de que tbPrecios, tbProductos y tbMedidas están cargados (Include en el servicio)
-                        if (detalle.tbPrecios != null && detalle.tbPrecios.tbProductos != null && detalle.tbPrecios.tbMedidas != null)
-                        {
-                            @:agregarAlCarrito(@detalle.idPrecio, "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tbPrecios.tbProductos.nombre))", "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tbPrecios.tbMedidas.nombre))", @detalle.tbPrecios.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture), @detalle.cantidad, false);
+                        @:var uid = generateUID();
+                        @:var itemInicial = {
+                        @:    UID: uid,
+                        @:    IdPrecio: @detalle.idPrecio,
+                        @:    NombreProducto: "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tbPrecios.tbProductos.nombre))",
+                        @:    Medida: "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tbPrecios.tbMedidas.nombre))",
+                        @:    PrecioUnitario: parseFloat(@(detalle.tbPrecios.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture))),
+                        @:    Cantidad: parseInt(@detalle.cantidad),
+                        @:    TipoLeche: "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tipoLeche ?? "Normal"))",
+                        @:    TipoAzucar: "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.tipoAzucar ?? "Rubia"))",
+                        @:    CantidadHielo: "@Html.Raw(HttpUtility.JavaScriptStringEncode(detalle.cantidadHielo ?? "Normal"))",
+                        @:    Agregados: [],
+                        @:    Subtotal: parseFloat(@(detalle.subtotal?.ToString(System.Globalization.CultureInfo.InvariantCulture))) // El subtotal ya viene del backend
+                        @:};
+
+                        // Llenar Agregados buscando en listaGlobalAgregados
+                        if (detalle.idAgregado1.HasValue) {
+                            @:var agg1Info = listaGlobalAgregados.find(a => a.idAgregado == @detalle.idAgregado1.Value);
+                            @:if (agg1Info) itemInicial.Agregados.push({ idAgregado: agg1Info.idAgregado, nombre: agg1Info.nombre, precio: parseFloat(agg1Info.precio) });
+                            @:else if(@detalle.idAgregado1.Value) itemInicial.Agregados.push({ idAgregado: @detalle.idAgregado1.Value, nombre: 'Agregado ID: ' + @detalle.idAgregado1.Value, precio: 0 }); // Placeholder
                         }
-                    }
+                        if (detalle.idAgregado2.HasValue) {
+                            @:var agg2Info = listaGlobalAgregados.find(a => a.idAgregado == @detalle.idAgregado2.Value);
+                            @:if (agg2Info) itemInicial.Agregados.push({ idAgregado: agg2Info.idAgregado, nombre: agg2Info.nombre, precio: parseFloat(agg2Info.precio) });
+                            @:else if(@detalle.idAgregado2.Value) itemInicial.Agregados.push({ idAgregado: @detalle.idAgregado2.Value, nombre: 'Agregado ID: ' + @detalle.idAgregado2.Value, precio: 0 }); // Placeholder
+                        }
+                        if (detalle.idAgregado3.HasValue) {
+                            @:var agg3Info = listaGlobalAgregados.find(a => a.idAgregado == @detalle.idAgregado3.Value);
+                            @:if (agg3Info) itemInicial.Agregados.push({ idAgregado: agg3Info.idAgregado, nombre: agg3Info.nombre, precio: parseFloat(agg3Info.precio) });
+                            @:else if(@detalle.idAgregado3.Value) itemInicial.Agregados.push({ idAgregado: @detalle.idAgregado3.Value, nombre: 'Agregado ID: ' + @detalle.idAgregado3.Value, precio: 0 }); // Placeholder
+                        }
+                        @:carrito.push(itemInicial);
+                        @:console.log("Item creado para idPrecio:", @detalle.idPrecio, itemInicial);
+                    }else {
+            @:console.warn("Detalle con idPrecio @detalle.idPrecio no tiene tbPrecios, tbProductos o tbMedidas cargados.");
+        }
                 }
-                renderizarCarrito(); // Renderizar una vez inicializado
             }
+            renderizarCarrito(); // Renderizar una vez inicializado
+        }
 
-
-            // --- BÚSQUEDA DE PRODUCTOS --- (Igual que en NuevoPedido.cshtml)
-            $('#busquedaProducto').on('keyup', function () {
-                let criterio = $(this).val();
-                if (criterio.length < 2) {
-                    $('#lista-productos-busqueda').empty();
-                    return;
-                }
-                $.ajax({
-                    url: '@Url.Action("Buscar", "Pedidos")',
-                    type: 'GET',
-                    data: { criterio: criterio },
-                    success: function (data) {
-                        $('#lista-productos-busqueda').empty();
-                        if (data && data.length > 0) {
-                            data.forEach(function (producto) {
-                                let itemHtml = `<a href="#" class="list-group-item list-group-item-action"
-                                                   data-idprecio="${producto.IdPrecio}"
-                                                   data-nombre="${producto.NombreProducto}"
-                                                   data-medida="${producto.Medida}"
-                                                   data-precio="${producto.Precio.toFixed(2)}"
-                                                   data-categoria="${producto.Categoria}">
-                                                    <strong>${producto.NombreProducto}</strong> (${producto.Medida}) - S/ ${producto.Precio.toFixed(2)}
-                                                    <br><small class="text-muted">${producto.Categoria}</small>
-                                                </a>`;
-                                $('#lista-productos-busqueda').append(itemHtml);
-                            });
-                        } else {
-                            $('#lista-productos-busqueda').html('<p class="text-muted p-2">No se encontraron productos.</p>');
-                        }
-                    },
-                    error: function (err) {
-                        console.error("Error en búsqueda: ", err);
-                        $('#lista-productos-busqueda').html('<p class="text-danger p-2">Error al buscar productos.</p>');
-                    }
-                });
-            });
-
-            // --- AGREGAR PRODUCTO AL CARRITO --- (Modificado para no renderizar si es carga inicial)
-            $('#lista-productos-busqueda').on('click', '.list-group-item', function (e) {
-                e.preventDefault();
-                const idPrecio = parseInt($(this).data('idprecio'));
-                const nombre = $(this).data('nombre');
-                const medida = $(this).data('medida');
-                const precio = parseFloat($(this).data('precio'));
-
-                agregarAlCarrito(idPrecio, nombre, medida, precio, 1, true); // true para renderizar
-                $('#busquedaProducto').val('');
+        // --- BÚSQUEDA DE PRODUCTOS --- (Igual que en NuevoPedido.cshtml)
+        $('#busquedaProducto').on('keyup', function () {
+            let criterio = $(this).val();
+            if (criterio.length < 2) {
                 $('#lista-productos-busqueda').empty();
+                return;
+            }
+            $.ajax({
+                url: '@Url.Action("Buscar", "Pedidos")', // Reutiliza la acción existente
+                type: 'GET',
+                data: { criterio: criterio },
+                success: function (data) {
+                    $('#lista-productos-busqueda').empty();
+                    if (data && data.length > 0) {
+                        data.forEach(function (producto) {
+                            let itemHtml = `<a href="#" class="list-group-item list-group-item-action"
+                                               data-idprecio="${producto.IdPrecio}"
+                                               data-nombre="${producto.NombreProducto}"
+                                               data-medida="${producto.Medida}"
+                                               data-precio="${parseFloat(producto.Precio).toFixed(2)}"
+                                               data-categoria="${producto.Categoria}">
+                                                <strong>${producto.NombreProducto}</strong> (${producto.Medida}) - S/ ${parseFloat(producto.Precio).toFixed(2)}
+                                                <br><small class="text-muted">${producto.Categoria}</small>
+                                            </a>`;
+                            $('#lista-productos-busqueda').append(itemHtml);
+                        });
+                    } else {
+                        $('#lista-productos-busqueda').html('<p class="text-muted p-2">No se encontraron productos.</p>');
+                    }
+                },
+                error: function (err) { console.error("Error en búsqueda de productos: ", err); $('#lista-productos-busqueda').html('<p class="text-danger p-2">Error al buscar productos.</p>'); }
             });
+        });
 
-            function agregarAlCarrito(idPrecio, nombre, medida, precioUnitario, cantidad, renderizar = true) {
-                const itemExistente = carrito.find(item => item.IdPrecio === idPrecio);
+        // --- AGREGAR PRODUCTO NUEVO AL CARRITO (desde búsqueda) ---
+        $('#lista-productos-busqueda').on('click', '.list-group-item', function (e) {
+            e.preventDefault();
+            const idPrecio = parseInt($(this).data('idprecio'));
+            const nombre = $(this).data('nombre');
+            const medida = $(this).data('medida');
+            const precio = parseFloat($(this).data('precio'));
 
-                if (itemExistente) {
-                    itemExistente.Cantidad += cantidad;
-                    itemExistente.Subtotal = itemExistente.Cantidad * itemExistente.PrecioUnitario;
-                } else {
-                    carrito.push({
-                        IdPrecio: idPrecio,
-                        NombreProducto: nombre,
-                        Medida: medida,
-                        PrecioUnitario: precioUnitario,
-                        Cantidad: cantidad,
-                        Subtotal: precioUnitario * cantidad
-                    });
-                }
-                if (renderizar) {
-                    renderizarCarrito();
-                }
+            const nuevoItem = {
+                UID: generateUID(),
+                IdPrecio: idPrecio,
+                NombreProducto: nombre,
+                Medida: medida,
+                PrecioUnitario: precio,
+                Cantidad: 1,
+                TipoLeche: 'Normal', // Valores por defecto para nuevos productos
+                TipoAzucar: 'Rubia',
+                CantidadHielo: 'Normal',
+                Agregados: [],
+                Subtotal: precio // Se recalculará en renderizarCarrito
+            };
+            carrito.push(nuevoItem);
+
+            renderizarCarrito();
+            $('#busquedaProducto').val('');
+            $('#lista-productos-busqueda').empty();
+        });
+
+        // --- RENDERIZAR CARRITO --- (Adaptado de NuevoPedido.cshtml)
+        function renderizarCarrito() {
+            $('#carrito-items').empty();
+            let totalGeneral = 0;
+
+            if (carrito.length === 0) {
+                $('#carrito-items').html('<tr><td colspan="6" class="text-center text-muted">Aún no hay productos en el pedido. Agregue algunos.</td></tr>');
+            } else {
+                carrito.forEach(function (item) {
+                    let precioAgregadosItem = item.Agregados.reduce((sum, agg) => sum + parseFloat(agg.precio), 0);
+                    item.Subtotal = (item.PrecioUnitario * item.Cantidad) + (precioAgregadosItem * item.Cantidad);
+                    totalGeneral += item.Subtotal;
+
+                    let agregadosHtml = item.Agregados.map(agg =>
+                        `<span class="agregado-tag">${agg.nombre} (S/ ${parseFloat(agg.precio).toFixed(2)}) <span class="remove-agregado" data-item-uid="${item.UID}" data-agregado-id="${agg.idAgregado}">×</span></span>`
+                    ).join('');
+
+                    let filaHtml = `
+                    <tr data-uid="${item.UID}">
+                        <td>
+                            ${item.NombreProducto}<br>
+                            <div class="opciones-producto">
+                                <fieldset>
+                                    <legend>Leche</legend>
+                                    <label><input type="radio" name="tipoLeche-${item.UID}" value="Normal" ${item.TipoLeche === 'Normal' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Normal</label>
+                                    <label><input type="radio" name="tipoLeche-${item.UID}" value="Deslactosada" ${item.TipoLeche === 'Deslactosada' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Deslactosada</label>
+                                    <label><input type="radio" name="tipoLeche-${item.UID}" value="Almendras" ${item.TipoLeche === 'Almendras' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Almendras</label>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Azúcar</legend>
+                                    <label><input type="radio" name="tipoAzucar-${item.UID}" value="Rubia" ${item.TipoAzucar === 'Rubia' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Rubia</label>
+                                    <label><input type="radio" name="tipoAzucar-${item.UID}" value="Blanca" ${item.TipoAzucar === 'Blanca' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Blanca</label>
+                                    <label><input type="radio" name="tipoAzucar-${item.UID}" value="Panela" ${item.TipoAzucar === 'Panela' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Panela</label>
+                                    <label><input type="radio" name="tipoAzucar-${item.UID}" value="Estevia" ${item.TipoAzucar === 'Estevia' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Estevia</label>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Hielo</legend>
+                                    <label><input type="radio" name="cantidadHielo-${item.UID}" value="Normal" ${item.CantidadHielo === 'Normal' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Normal</label>
+                                    <label><input type="radio" name="cantidadHielo-${item.UID}" value="Poco" ${item.CantidadHielo === 'Poco' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Poco</label>
+                                    <label><input type="radio" name="cantidadHielo-${item.UID}" value="Mucho" ${item.CantidadHielo === 'Mucho' ? 'checked' : ''} data-uid="${item.UID}" class="opcion-item"> Mucho</label>
+                                </fieldset>
+                                <div>
+                                    ${agregadosHtml}
+                                </div>
+                                ${item.Agregados.length < 3 ? `<button class="btn btn-outline-info btn-sm btn-abrir-modal-agregado mt-1" data-item-uid="${item.UID}">+ Agregado</button>` : ''}
+                            </div>
+                        </td>
+                        <td>${item.Medida}</td>
+                        <td>S/ ${item.PrecioUnitario.toFixed(2)}</td>
+                        <td class="text-center">
+                            <input type="number" class="form-control form-control-sm cantidad-input" value="${item.Cantidad}" min="1" data-uid="${item.UID}">
+                        </td>
+                        <td>S/ ${item.Subtotal.toFixed(2)}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm btn-separar-item mb-1" data-uid="${item.UID}" title="Separar item (Duplicar)"><i class="fas fa-clone"></i></button>
+                            <button class="btn btn-danger btn-sm btn-remover-item" data-uid="${item.UID}" title="Remover item"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>`;
+                    $('#carrito-items').append(filaHtml);
+                });
             }
+            $('#carrito-total').text('S/ ' + totalGeneral.toFixed(2));
+        }
 
-            // --- RENDERIZAR CARRITO --- (Igual que en NuevoPedido.cshtml)
-            function renderizarCarrito() {
-                $('#carrito-items').empty();
-                let totalGeneral = 0;
-
-                if (carrito.length === 0) {
-                    $('#carrito-items').html('<tr><td colspan="6" class="text-center text-muted">Aún no hay productos en el pedido. Agregue algunos.</td></tr>');
-                } else {
-                    carrito.forEach(function (item, index) {
-                        totalGeneral += item.Subtotal;
-                        let filaHtml = `
-                            <tr>
-                                <td>${item.NombreProducto}</td>
-                                <td>${item.Medida}</td>
-                                <td>S/ ${item.PrecioUnitario.toFixed(2)}</td>
-                                <td class="text-center">
-                                    <input type="number" class="form-control form-control-sm cantidad-input" value="${item.Cantidad}" min="1" data-index="${index}">
-                                </td>
-                                <td>S/ ${item.Subtotal.toFixed(2)}</td>
-                                <td>
-                                    <button class="btn btn-danger btn-sm btn-remover-item" data-index="${index}" title="Quitar producto">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </td>
-                            </tr>`;
-                        $('#carrito-items').append(filaHtml);
-                    });
-                }
-                $('#carrito-total').text('S/ ' + totalGeneral.toFixed(2));
+        // --- ACTUALIZAR OPCIONES (LECHE, AZUCAR, HIELO) --- (de NuevoPedido.cshtml)
+        $('#carrito-items').on('change', '.opcion-item', function () {
+            const itemUID = $(this).data('uid');
+            const item = carrito.find(i => i.UID === itemUID);
+            if (item) {
+                let inputName = $(this).attr('name').split('-')[0]; // "tipoLeche", "tipoAzucar", "cantidadHielo"
+                let propToUpdate;
+                if (inputName === 'tipoLeche') propToUpdate = 'TipoLeche';
+                else if (inputName === 'tipoAzucar') propToUpdate = 'TipoAzucar';
+                else if (inputName === 'cantidadHielo') propToUpdate = 'CantidadHielo';
+                else return;
+                item[propToUpdate] = $(this).val();
+                // No es necesario renderizar todo el carrito por esto, a menos que afecte el precio (no es el caso aquí)
             }
+        });
 
-            // --- ACTUALIZAR CANTIDAD EN CARRITO --- (Igual que en NuevoPedido.cshtml)
-            $('#carrito-items').on('change', '.cantidad-input', function () {
-                const index = parseInt($(this).data('index'));
+        // --- ACTUALIZAR CANTIDAD EN CARRITO ---
+        $('#carrito-items').on('change keyup', '.cantidad-input', function () {
+            const itemUID = $(this).data('uid');
+            const item = carrito.find(i => i.UID === itemUID);
+            if (item) {
                 let nuevaCantidad = parseInt($(this).val());
-
                 if (isNaN(nuevaCantidad) || nuevaCantidad < 1) {
                     nuevaCantidad = 1;
-                    $(this).val(1);
                 }
+                item.Cantidad = nuevaCantidad;
+                renderizarCarrito(); // Recalcular subtotal y total
+            }
+        });
 
-                carrito[index].Cantidad = nuevaCantidad;
-                carrito[index].Subtotal = carrito[index].Cantidad * carrito[index].PrecioUnitario;
+        // --- REMOVER ITEM DEL CARRITO ---
+        $('#carrito-items').on('click', '.btn-remover-item', function () {
+            const itemUID = $(this).data('uid');
+            carrito = carrito.filter(item => item.UID !== itemUID);
+            renderizarCarrito();
+        });
+
+        // --- SEPARAR ITEM (DUPLICAR) --- (de NuevoPedido.cshtml)
+        $('#carrito-items').on('click', '.btn-separar-item', function () {
+            const itemUID = $(this).data('uid');
+            const itemOriginal = carrito.find(item => item.UID === itemUID);
+            if (itemOriginal) {
+                const itemCopiado = JSON.parse(JSON.stringify(itemOriginal));
+                itemCopiado.UID = generateUID();
+                itemCopiado.Cantidad = 1; // La copia es de cantidad 1
+                // Opcional: si el original tenía > 1, reducir su cantidad
+                // if (itemOriginal.Cantidad > 1) itemOriginal.Cantidad -=1;
+
+                const originalIndex = carrito.findIndex(item => item.UID === itemUID);
+                carrito.splice(originalIndex + 1, 0, itemCopiado);
                 renderizarCarrito();
-            });
+            }
+        });
 
-            // --- REMOVER ITEM DEL CARRITO --- (Igual que en NuevoPedido.cshtml)
-            $('#carrito-items').on('click', '.btn-remover-item', function () {
-                const index = parseInt($(this).data('index'));
-                carrito.splice(index, 1);
+        // --- MANEJO DE AGREGADOS --- (de NuevoPedido.cshtml)
+        $('#carrito-items').on('click', '.btn-abrir-modal-agregado', function () {
+            currentItemUIDForAgregado = $(this).data('item-uid');
+            $('#busquedaAgregadoInput').val('');
+            $('#lista-agregados-busqueda').empty().html('<p class="text-muted p-2">Busque un agregado.</p>');
+            $('#modalBuscarAgregados').modal('show');
+        });
+
+        $('#busquedaAgregadoInput').on('keyup', function () {
+            let criterio = $(this).val();
+            if (criterio.length === 0) {
+                 $('#lista-agregados-busqueda').html('<p class="text-muted p-2">Escriba para buscar...</p>');
+                 return;
+            }
+            $.ajax({
+                url: '@Url.Action("BuscarAgregados", "Pedidos")',
+                type: 'GET', data: { criterio: criterio },
+                success: function (data) {
+                    $('#lista-agregados-busqueda').empty();
+                    if (data && data.length > 0) {
+                        data.forEach(function (agregado) {
+                            $('#lista-agregados-busqueda').append(
+                                `<a href="#" class="list-group-item list-group-item-action agregar-seleccionado"
+                                   data-idagregado="${agregado.idAgregado}"
+                                   data-nombre="${agregado.nombre}"
+                                   data-precio="${parseFloat(agregado.precio).toFixed(2)}">
+                                    <strong>${agregado.nombre}</strong> - S/ ${parseFloat(agregado.precio).toFixed(2)}
+                                </a>`);
+                        });
+                    } else {
+                        $('#lista-agregados-busqueda').html('<p class="text-muted p-2">No se encontraron agregados.</p>');
+                    }
+                },
+                error: function (err) { console.error("Error en búsqueda de agregados: ", err); $('#lista-agregados-busqueda').html('<p class="text-danger p-2">Error al buscar.</p>'); }
+            });
+        });
+
+        $('#lista-agregados-busqueda').on('click', '.agregar-seleccionado', function (e) {
+            e.preventDefault();
+            const idAgregado = parseInt($(this).data('idagregado'));
+            const nombre = $(this).data('nombre');
+            const precio = parseFloat($(this).data('precio'));
+
+            const itemCarrito = carrito.find(i => i.UID === currentItemUIDForAgregado);
+            if (itemCarrito) {
+                if (itemCarrito.Agregados.length < 3) {
+                    itemCarrito.Agregados.push({ idAgregado, nombre, precio });
+                    renderizarCarrito();
+                } else {
+                    alert('Este producto ya tiene el máximo de 3 agregados.');
+                }
+            }
+            $('#modalBuscarAgregados').modal('hide');
+        });
+
+        $('#carrito-items').on('click', '.remove-agregado', function () {
+            const itemUID = $(this).data('item-uid');
+            const idAgregadoToRemove = parseInt($(this).data('agregado-id'));
+            const itemCarrito = carrito.find(i => i.UID === itemUID);
+            if (itemCarrito) {
+                // Para remover correctamente si hay duplicados, removemos solo la primera instancia encontrada con ese ID
+                const indexToRemove = itemCarrito.Agregados.findIndex(ag => ag.idAgregado === idAgregadoToRemove);
+                if (indexToRemove > -1) {
+                    itemCarrito.Agregados.splice(indexToRemove, 1);
+                }
                 renderizarCarrito();
-            });
+            }
+        });
 
-            // --- GUARDAR CAMBIOS DEL PEDIDO ---
-            $('#btnGuardarCambios').on('click', function () {
-                const idPedidoVal = $('#idPedido').val();
-                const codMesaVal = $('#selectMesa').val();
-                const idEstadoPedidoVal = $('#selectEstadoPedido').val();
+        // --- GUARDAR CAMBIOS DEL PEDIDO ---
+        $('#btnGuardarCambios').on('click', function () {
+            const idPedidoVal = $('#idPedido').val();
+            const codMesaVal = $('#selectMesa').val();
+            const idEstadoPedidoVal = $('#selectEstadoPedido').val();
 
-                if (!codMesaVal) {
-                    alert('Por favor, seleccione una mesa.');
-                    return;
-                }
-                if (!idEstadoPedidoVal) {
-                    alert('Por favor, seleccione un estado para el pedido.');
-                    return;
-                }
-                if (carrito.length === 0) {
-                    alert('Por favor, agregue al menos un producto al pedido.');
-                    return;
-                }
+            if (!codMesaVal) { alert('Por favor, seleccione una mesa.'); return; }
+            if (!idEstadoPedidoVal) { alert('Por favor, seleccione un estado para el pedido.'); return; }
+            if (carrito.length === 0) { alert('Por favor, agregue al menos un producto al pedido.'); return; }
 
-                const pedidoData = {
-                    IdPedido: parseInt(idPedidoVal),
-                    CodMesa: codMesaVal,
-                    IdEstadoPedido: parseInt(idEstadoPedidoVal),
-                    Detalles: carrito.map(item => ({ // Solo enviar lo necesario para el ViewModel de backend
+            const pedidoData = {
+                IdPedido: parseInt(idPedidoVal),
+                CodMesa: codMesaVal,
+                IdEstadoPedido: parseInt(idEstadoPedidoVal),
+                Detalles: carrito.map(item => {
+                    let idAg1 = null, idAg2 = null, idAg3 = null;
+                    if (item.Agregados.length > 0) idAg1 = item.Agregados[0].idAgregado;
+                    if (item.Agregados.length > 1) idAg2 = item.Agregados[1].idAgregado;
+                    if (item.Agregados.length > 2) idAg3 = item.Agregados[2].idAgregado;
+                    return {
                         IdPrecio: item.IdPrecio,
                         Cantidad: item.Cantidad,
-                        Subtotal: item.Subtotal
-                    }))
-                };
+                        Subtotal: item.Subtotal, // Ya calculado con agregados
+                        TipoLeche: item.TipoLeche,
+                        TipoAzucar: item.TipoAzucar,
+                        CantidadHielo: item.CantidadHielo,
+                        IdAgregado1: idAg1,
+                        IdAgregado2: idAg2,
+                        IdAgregado3: idAg3
+                    };
+                })
+            };
 
-                $(this).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Guardando...');
+            $(this).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Guardando...');
 
-                $.ajax({
-                    url: '@Url.Action("ActualizarPedidoPost", "Pedidos")',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(pedidoData),
-                    success: function (response) {
-                        if (response.success) {
-                            alert(response.message);
-                            window.location.href = response.redirectTo;
-                        } else {
-                            alert('Error: ' + response.message);
-                            $('#btnGuardarCambios').prop('disabled', false).html('<i class="fas fa-save"></i> Guardar Cambios');
-                        }
-                    },
-                    error: function (err) {
-                        console.error("Error al actualizar pedido: ", err);
-                        alert('Ocurrió un error de comunicación al actualizar el pedido.');
+            $.ajax({
+                url: '@Url.Action("ActualizarPedidoPost", "Pedidos")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(pedidoData),
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                        window.location.href = response.redirectTo;
+                    } else {
+                        alert('Error: ' + response.message);
                         $('#btnGuardarCambios').prop('disabled', false).html('<i class="fas fa-save"></i> Guardar Cambios');
                     }
-                });
+                },
+                error: function (err) {
+                    console.error("Error al actualizar pedido: ", err);
+                    alert('Ocurrió un error de comunicación al actualizar el pedido.');
+                    $('#btnGuardarCambios').prop('disabled', false).html('<i class="fas fa-save"></i> Guardar Cambios');
+                }
             });
-
-            // Inicializar el carrito con los datos del modelo al cargar la página
-            inicializarCarrito();
         });
-    </script>
+
+        // Inicializar el carrito con los datos del modelo al cargar la página
+        inicializarCarrito();
+    });
+ </script>

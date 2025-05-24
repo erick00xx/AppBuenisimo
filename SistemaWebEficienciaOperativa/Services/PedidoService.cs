@@ -56,17 +56,26 @@ namespace SistemaWebEficienciaOperativa.Services
         {
             using (var _dbContext = new DB_BUENISIMOEntities())
             {
+                // El total del pedido ahora se calcula en el frontend y se envía en cada detalle.
+                // O se recalcula aquí basado en los precios base + agregados si fuera necesario
+                // Por ahora, confiamos en el subtotal enviado desde el frontend, que ya debería incluir agregados.
                 decimal totalPedido = detallesVM.Sum(d => d.Subtotal);
+
+                int? sucursalId = _dbContext.tbMesas
+                            .Where(m => m.codMesa == codMesa)
+                            .Select(m => (int?)m.idSucursal)
+                            .FirstOrDefault();
                 var pedido = new tbPedidos
                 {
                     codMesa = codMesa,
                     fechaPedido = TimeProvider.Now,
                     idUsuario = idUsuario,
                     total = totalPedido,
-                    idEstadoPedido = 1, // "En espera"
+                    idEstadoPedido = 1, // "Pendiente" o el estado inicial que definas
+                    idSucursal = sucursalId
                 };
                 _dbContext.tbPedidos.Add(pedido);
-                _dbContext.SaveChanges();
+                _dbContext.SaveChanges(); // Guardar pedido para obtener su ID
 
                 foreach (var detalleVM in detallesVM)
                 {
@@ -75,11 +84,19 @@ namespace SistemaWebEficienciaOperativa.Services
                         idPedido = pedido.idPedido,
                         idPrecio = detalleVM.IdPrecio,
                         cantidad = detalleVM.Cantidad,
-                        subtotal = detalleVM.Subtotal,
+                        subtotal = detalleVM.Subtotal, // Este subtotal YA incluye los agregados
+
+                        // Nuevos campos
+                        tipoLeche = detalleVM.TipoLeche,
+                        tipoAzucar = detalleVM.TipoAzucar,
+                        cantidadHielo = detalleVM.CantidadHielo,
+                        idAgregado1 = detalleVM.IdAgregado1,
+                        idAgregado2 = detalleVM.IdAgregado2,
+                        idAgregado3 = detalleVM.IdAgregado3
                     };
                     _dbContext.tbDetallePedido.Add(detallePedido);
                 }
-                _dbContext.SaveChanges();
+                _dbContext.SaveChanges(); // Guardar todos los detalles
             }
         }
 
@@ -91,8 +108,8 @@ namespace SistemaWebEficienciaOperativa.Services
                     .Include(p => p.tbMesas)
                     .Include(p => p.tbEstadosPedidos)
                     .Include(p => p.tbUsuarios)
-                    .Include(p => p.tbDetallePedido.Select(dp => dp.tbPrecios.tbProductos.tbCategorias))
-                    .Include(p => p.tbDetallePedido.Select(dp => dp.tbPrecios.tbMedidas))
+                    .Include(p => p.tbDetallePedido.Select(dp => dp.tbPrecios.tbProductos.tbCategorias)) // Asegura tbPrecios y tbProductos
+                    .Include(p => p.tbDetallePedido.Select(dp => dp.tbPrecios.tbMedidas))          // Asegura tbMedidas
                     .FirstOrDefault(p => p.idPedido == idPedido);
             }
         }
@@ -114,24 +131,16 @@ namespace SistemaWebEficienciaOperativa.Services
                     try
                     {
                         var pedidoExistente = _dbContext.tbPedidos.Find(model.IdPedido);
-                        if (pedidoExistente == null)
-                        {
-                            return false; // O lanzar excepción
-                        }
+                        if (pedidoExistente == null) return false;
 
-                        // Actualizar campos del pedido
                         pedidoExistente.codMesa = model.CodMesa;
                         pedidoExistente.idEstadoPedido = model.IdEstadoPedido;
-                        pedidoExistente.total = model.Detalles.Sum(d => d.Subtotal);
-                        // Opcional: registrar quién y cuándo modificó (necesitarías campos adicionales en tbPedidos)
-                        // pedidoExistente.idUsuarioUltimaModificacion = idUsuarioActual;
-                        // pedidoExistente.fechaUltimaModificacion = TimeProvider.Now;
+                        pedidoExistente.total = model.Detalles.Sum(d => d.Subtotal); // Recalcular total
 
-                        // Eliminar detalles antiguos
                         var detallesAntiguos = _dbContext.tbDetallePedido.Where(d => d.idPedido == model.IdPedido);
                         _dbContext.tbDetallePedido.RemoveRange(detallesAntiguos);
+                        _dbContext.SaveChanges(); // Aplicar eliminación antes de agregar nuevos para evitar conflictos de PK si se reusan IDs (aunque no debería ser el caso aquí)
 
-                        // Agregar nuevos detalles
                         foreach (var detalleVM in model.Detalles)
                         {
                             var nuevoDetalle = new tbDetallePedido
@@ -139,7 +148,13 @@ namespace SistemaWebEficienciaOperativa.Services
                                 idPedido = model.IdPedido,
                                 idPrecio = detalleVM.IdPrecio,
                                 cantidad = detalleVM.Cantidad,
-                                subtotal = detalleVM.Subtotal
+                                subtotal = detalleVM.Subtotal,
+                                tipoLeche = detalleVM.TipoLeche,
+                                tipoAzucar = detalleVM.TipoAzucar,
+                                cantidadHielo = detalleVM.CantidadHielo,
+                                idAgregado1 = detalleVM.IdAgregado1,
+                                idAgregado2 = detalleVM.IdAgregado2,
+                                idAgregado3 = detalleVM.IdAgregado3
                             };
                             _dbContext.tbDetallePedido.Add(nuevoDetalle);
                         }
@@ -209,6 +224,47 @@ namespace SistemaWebEficienciaOperativa.Services
                     .Include(p => p.tbMedidas)
                     .FirstOrDefault(p => p.IdPrecio == idPrecio);
                 return precio;
+            }
+        }
+
+        // Nueva función para buscar Agregados
+        public List<tbAgregados> BuscarAgregados(string criterio)
+        {
+            using (var _dbContext = new DB_BUENISIMOEntities())
+            {
+                if (string.IsNullOrWhiteSpace(criterio))
+                {
+                    // Podrías devolver todos si el criterio es vacío, o una lista vacía.
+                    // Por coherencia con el buscador de productos, devolvemos los más populares o una lista vacía.
+                    // O simplemente todos los agregados activos.
+                    return _dbContext.tbAgregados.Take(10).ToList(); // O todos: .ToList();
+                }
+                string criterioLower = criterio.ToLower();
+                return _dbContext.tbAgregados
+                                .Where(a => a.nombre.ToLower().Contains(criterioLower) ||
+                                            (a.descripcion != null && a.descripcion.ToLower().Contains(criterioLower)))
+                                .Take(10) // Limitar resultados
+                                .ToList();
+            }
+        }
+        // Función para obtener todos los agregados (puede ser útil para un dropdown inicial o si el buscador está vacío)
+        public List<tbAgregados> ListarTodosAgregados()
+        {
+            using (var _dbContext = new DB_BUENISIMOEntities())
+            {
+                try
+                {
+                    var agregados = _dbContext.tbAgregados.ToList();
+                    // Punto de depuración aquí: verifica que 'agregados' contiene los datos esperados
+                    // y que los campos 'idAgregado', 'nombre' y 'precio' tienen valores.
+                    return agregados;
+                }
+                catch (Exception ex)
+                {
+                    // Loggear este error es importante si ocurre
+                    System.Diagnostics.Trace.WriteLine("Error en PedidoService.ListarTodosAgregados: " + ex.ToString());
+                    return new List<tbAgregados>(); // Devolver lista vacía en caso de error
+                }
             }
         }
     }

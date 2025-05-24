@@ -19,7 +19,16 @@ namespace SistemaWebEficienciaOperativa.Models
         public Nullable<int> idPrecio { get; set; }
         public Nullable<int> cantidad { get; set; }
         public Nullable<decimal> subtotal { get; set; }
+        public Nullable<int> idAgregado1 { get; set; }
+        public Nullable<int> idAgregado2 { get; set; }
+        public Nullable<int> idAgregado3 { get; set; }
+        public string tipoLeche { get; set; }
+        public string tipoAzucar { get; set; }
+        public string cantidadHielo { get; set; }
     
+        public virtual tbAgregados tbAgregados { get; set; }
+        public virtual tbAgregados tbAgregados1 { get; set; }
+        public virtual tbAgregados tbAgregados2 { get; set; }
         public virtual tbPedidos tbPedidos { get; set; }
         public virtual tbPrecios tbPrecios { get; set; }
     }

@@ -5,14 +5,19 @@ using System.Web.Mvc;
 
 namespace SistemaWebEficienciaOperativa.Models.ViewModels
 {
-    public class DetallePedidoViewModel
+    public class DetallePedidoViewModel // Este es el que usa CrearPedidoInputViewModel
     {
         public int IdPrecio { get; set; }
-        public string NombreProducto { get; set; } // Para mostrar en el carrito
-        public string Medida { get; set; } // Para mostrar en el carrito
-        public decimal PrecioUnitario { get; set; } // Para recálculos
         public int Cantidad { get; set; }
-        public decimal Subtotal { get; set; }
+        public decimal Subtotal { get; set; } // El subtotal ahora incluirá el precio de los agregados
+
+        // Nuevos campos
+        public string TipoLeche { get; set; }
+        public string TipoAzucar { get; set; }
+        public string CantidadHielo { get; set; }
+        public int? IdAgregado1 { get; set; }
+        public int? IdAgregado2 { get; set; }
+        public int? IdAgregado3 { get; set; }
     }
 }
 
@@ -51,23 +56,30 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
         // public int IdSucursal {get; set;}
     }
 
+    //public class ActualizarPedidoInputViewModel
+    //{
+    //    [Required]
+    //    public int IdPedido { get; set; }
+
+    //    [Required(ErrorMessage = "Debe seleccionar una mesa.")]
+    //    public string CodMesa { get; set; } // Podrías querer cambiar la mesa
+
+    //    [Required(ErrorMessage = "Debe seleccionar un estado para el pedido.")]
+    //    public int IdEstadoPedido { get; set; }
+
+    //    public List<DetallePedidoViewModel> Detalles { get; set; } // Reutilizamos el ViewModel existente
+
+    //    public ActualizarPedidoInputViewModel()
+    //    {
+    //        Detalles = new List<DetallePedidoViewModel>();
+    //    }
+    //}
     public class ActualizarPedidoInputViewModel
     {
-        [Required]
         public int IdPedido { get; set; }
-
-        [Required(ErrorMessage = "Debe seleccionar una mesa.")]
-        public string CodMesa { get; set; } // Podrías querer cambiar la mesa
-
-        [Required(ErrorMessage = "Debe seleccionar un estado para el pedido.")]
+        public string CodMesa { get; set; }
         public int IdEstadoPedido { get; set; }
-
-        public List<DetallePedidoViewModel> Detalles { get; set; } // Reutilizamos el ViewModel existente
-
-        public ActualizarPedidoInputViewModel()
-        {
-            Detalles = new List<DetallePedidoViewModel>();
-        }
+        public List<DetallePedidoViewModel> Detalles { get; set; }
     }
 }
 

@@ -8,6 +8,8 @@ using SistemaWebEficienciaOperativa.Models.ViewModels;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics; // Para .Include si lo usas directamente en el controller
+using Newtonsoft.Json; // <--- ASEGÚRATE DE TENER ESTE USING
+using System.Web;      // <--- ASEGÚRATE DE TENER ESTE USING (para HtmlString)
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
@@ -44,6 +46,8 @@ namespace SistemaWebEficienciaOperativa.Controllers
             int idSucursal = ObtenerIdSucursalActual();
             var mesasDisponibles = _pedidoService.ListarMesasDisponiblesYActual(idSucursal);
             ViewBag.MesasDisponibles = new SelectList(mesasDisponibles, "codMesa", "codMesa");
+            // Podríamos cargar aquí todos los agregados si quisiéramos tenerlos disponibles sin búsqueda inicial
+            // ViewBag.Agregados = _pedidoService.ListarTodosAgregados();
             return View();
         }
 
@@ -86,9 +90,8 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 return HttpNotFound();
             }
 
-            int idSucursal = ObtenerIdSucursalActual(); // o pedido.tbMesas.idSucursal.Value;
+            int idSucursal = ObtenerIdSucursalActual();
 
-            // Lista de mesas: disponibles + la actual del pedido
             ViewBag.MesasDisponibles = new SelectList(
                 _pedidoService.ListarMesasDisponiblesYActual(idSucursal, pedido.codMesa),
                 "codMesa", "codMesa", pedido.codMesa);
@@ -96,6 +99,32 @@ namespace SistemaWebEficienciaOperativa.Controllers
             ViewBag.EstadosPedido = new SelectList(
                 _pedidoService.ListarEstadosPedido(),
                 "idEstadoPedido", "estado", pedido.idEstadoPedido);
+
+            // --- LÓGICA MEJORADA PARA ViewBag.TodosAgregadosJson ---
+            string jsonAgregados = "[]"; // Default a un array JSON vacío
+            try
+            {
+                var todosAgregadosLista = _pedidoService.ListarTodosAgregados();
+                if (todosAgregadosLista != null && todosAgregadosLista.Any())
+                {
+                    var agregadosParaView = todosAgregadosLista
+                        .Select(a => new { a.idAgregado, a.nombre, precio = a.precio }) // Asegurar que precio no sea null
+                        .ToList();
+                    jsonAgregados = JsonConvert.SerializeObject(agregadosParaView);
+                    System.Diagnostics.Trace.WriteLine("JSON de Agregados generado: " + jsonAgregados); // Usar Trace en lugar de Debug
+                }
+                else
+                {
+                    System.Diagnostics.Trace.WriteLine("No se encontraron agregados en el servicio ListarTodosAgregados o la lista está vacía.");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine("Error al obtener o serializar TodosAgregados: " + ex.ToString());
+                // jsonAgregados ya es "[]" por defecto, así que no es necesario reasignarlo aquí.
+            }
+            ViewBag.TodosAgregadosJson = new HtmlString(jsonAgregados);
+            // --- FIN LÓGICA MEJORADA ---
 
             return View(pedido);
         }
@@ -156,6 +185,29 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 .ToList();
 
             return Json(productos, JsonRequestBehavior.AllowGet);
+        }
+
+        // NUEVA ACCIÓN PARA BUSCAR AGREGADOS
+        [HttpGet] // Especificar GET
+        public JsonResult BuscarAgregados(string criterio)
+        {
+            if (string.IsNullOrWhiteSpace(criterio))
+            {
+                // Devuelve una lista vacía o los primeros N agregados si no hay criterio
+                var todosAgregados = _pedidoService.ListarTodosAgregados().Take(5)
+                    .Select(a => new { a.idAgregado, a.nombre, a.precio });
+                return Json(todosAgregados, JsonRequestBehavior.AllowGet);
+            }
+
+            var agregados = _pedidoService.BuscarAgregados(criterio)
+                .Select(a => new {
+                    a.idAgregado,
+                    a.nombre,
+                    a.precio
+                    // puedes añadir descripción si la usas en el frontend
+                })
+                .ToList();
+            return Json(agregados, JsonRequestBehavior.AllowGet);
         }
     }
 }

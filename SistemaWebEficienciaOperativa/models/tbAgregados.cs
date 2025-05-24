@@ -12,27 +12,26 @@ namespace SistemaWebEficienciaOperativa.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbPedidos
+    public partial class tbAgregados
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbPedidos()
+        public tbAgregados()
         {
             this.tbDetallePedido = new HashSet<tbDetallePedido>();
+            this.tbDetallePedido1 = new HashSet<tbDetallePedido>();
+            this.tbDetallePedido2 = new HashSet<tbDetallePedido>();
         }
     
-        public int idPedido { get; set; }
-        public string codMesa { get; set; }
-        public Nullable<System.DateTime> fechaPedido { get; set; }
-        public Nullable<int> idUsuario { get; set; }
-        public Nullable<decimal> total { get; set; }
-        public Nullable<int> idEstadoPedido { get; set; }
-        public Nullable<int> idSucursal { get; set; }
+        public int idAgregado { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public decimal precio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbDetallePedido> tbDetallePedido { get; set; }
-        public virtual tbEstadosPedidos tbEstadosPedidos { get; set; }
-        public virtual tbMesas tbMesas { get; set; }
-        public virtual tbSucursales tbSucursales { get; set; }
-        public virtual tbUsuarios tbUsuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbDetallePedido> tbDetallePedido1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbDetallePedido> tbDetallePedido2 { get; set; }
     }
 }

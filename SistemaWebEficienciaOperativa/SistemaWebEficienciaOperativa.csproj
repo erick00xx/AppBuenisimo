@@ -159,6 +159,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbAgregados.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAsistencias.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
