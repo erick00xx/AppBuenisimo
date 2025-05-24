@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DB_BUENISIMOModelStoreContainer" CdmEntityContainer="DB_BUENISIMOEntities">
+    <EntitySetMapping Name="tbAgregados">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbAgregados">
+        <MappingFragment StoreEntitySet="tbAgregados">
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idAgregado" ColumnName="idAgregado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbAsistencias">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbAsistencias">
         <MappingFragment StoreEntitySet="tbAsistencias">
@@ -44,6 +54,12 @@
     <EntitySetMapping Name="tbDetallePedido">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbDetallePedido">
         <MappingFragment StoreEntitySet="tbDetallePedido">
+          <ScalarProperty Name="cantidadHielo" ColumnName="cantidadHielo" />
+          <ScalarProperty Name="tipoAzucar" ColumnName="tipoAzucar" />
+          <ScalarProperty Name="tipoLeche" ColumnName="tipoLeche" />
+          <ScalarProperty Name="idAgregado3" ColumnName="idAgregado3" />
+          <ScalarProperty Name="idAgregado2" ColumnName="idAgregado2" />
+          <ScalarProperty Name="idAgregado1" ColumnName="idAgregado1" />
           <ScalarProperty Name="subtotal" ColumnName="subtotal" />
           <ScalarProperty Name="cantidad" ColumnName="cantidad" />
           <ScalarProperty Name="idPrecio" ColumnName="idPrecio" />
@@ -130,6 +146,7 @@
     <EntitySetMapping Name="tbPedidos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbPedidos">
         <MappingFragment StoreEntitySet="tbPedidos">
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
           <ScalarProperty Name="idEstadoPedido" ColumnName="idEstadoPedido" />
           <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />

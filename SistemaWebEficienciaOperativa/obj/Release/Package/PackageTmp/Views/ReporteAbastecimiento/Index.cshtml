@@ -1,4 +1,4 @@
-﻿@model SistemaWebEficienciaOperativa.Models.ViewModels.ReporteInventarioModel
+﻿@model SistemaWebEficienciaOperativa.Models.ViewModels.ReporteAbastecimientoModel
 
 @{
     ViewBag.Title = "Reporte de Inventario";
@@ -99,7 +99,7 @@
                             <td>@compra.Proveedor</td>
                             <td>S/. @compra.Total.ToString("N2")</td>
                             <td>
-                                <a href="@Url.Action("DetalleProducto", "ReporteInventario", new { id = compra.IdIngresoInsumo, tipo = "compra" })"
+                                <a href="@Url.Action("DetalleProducto", "ReporteAbastecimiento", new { id = compra.IdIngresoInsumo, tipo = "compra" })"
                                    class="btn btn-sm btn-outline-primary">
                                     Ver Detalles
                                 </a>
@@ -134,7 +134,7 @@
                             <td>@desecho.Cantidad @desecho.Unidad</td>
                             <td>@desecho.Motivo</td>
                             <td>
-                                <a href="@Url.Action("DetalleProducto", "ReporteInventario", new { id = desecho.IdDesechoInsumo, tipo = "desecho" })"
+                                <a href="@Url.Action("DetalleProducto", "ReporteAbastecimiento", new { id = desecho.IdDesechoInsumo, tipo = "desecho" })"
                                    class="btn btn-sm btn-outline-primary">
                                     Ver Detalles
                                 </a>
@@ -166,7 +166,7 @@
         const tipoMovimiento = $('#tipoMovimiento').val();
 
         $.ajax({
-            url: '@Url.Action("FiltrarReporte", "ReporteInventario")',
+            url: '@Url.Action("FiltrarReporte", "ReporteAbastecimiento")',
             type: 'GET',
             data: { fechaInicio: fechaInicio, fechaFin: fechaFin, tipoMovimiento: tipoMovimiento },
             success: function (response) {
@@ -186,7 +186,7 @@
                                 <td>${compra.Proveedor}</td>
                                 <td>${compra.Total}</td>
                                 <td>
-                                    <a href="/ReporteInventario/DetalleProducto?id=${compra.IdIngresoInsumo}&tipo=compra"
+                                    <a href="/ReporteAbastecimiento/DetalleProducto?id=${compra.IdIngresoInsumo}&tipo=compra"
                                        class="btn btn-sm btn-outline-primary">Ver Detalles</a>
                                 </td>
                             </tr>`
@@ -206,7 +206,7 @@
                                 <td>${desecho.Cantidad}</td>
                                 <td>${desecho.Motivo}</td>
                                 <td>
-                                    <a href="/ReporteInventario/DetalleProducto?id=${desecho.IdDesechoInsumo}&tipo=desecho"
+                                    <a href="/ReporteAbastecimiento/DetalleProducto?id=${desecho.IdDesechoInsumo}&tipo=desecho"
                                        class="btn btn-sm btn-outline-primary">Ver Detalles</a>
                                 </td>
                             </tr>`

@@ -29,7 +29,7 @@
 
 @* --- Formulario para Agregar Nuevo Horario --- *@
 <h4>Agregar Nuevo Horario</h4>
-@using (Html.BeginForm("AgregarHorario", "GestionEmpleados", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("AgregarHorario", "Empleados", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -127,7 +127,7 @@
                 <td>@(horario.Activo ? "Sí" : "No")</td>
                 <td>
                     @Html.ActionLink("Editar", "EditarHorario", new { idHorario = horario.IdHorario }, new { @class = "btn btn-warning btn-xs" })
-                    @using (Html.BeginForm("EliminarHorario", "GestionEmpleados", new { idHorario = horario.IdHorario, idUsuario = Model.IdUsuario }, FormMethod.Post, new { @style = "display:inline;" }))
+                    @using (Html.BeginForm("EliminarHorario", "Empleados", new { idHorario = horario.IdHorario, idUsuario = Model.IdUsuario }, FormMethod.Post, new { @style = "display:inline;" }))
                     {
                         @Html.AntiForgeryToken()
                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('¿Está seguro de que desea eliminar/desactivar este horario?');">Eliminar</button>

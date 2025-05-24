@@ -16,7 +16,7 @@
     <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
 }
 
-@using (Html.BeginForm("EditarHorario", "GestionEmpleados", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("EditarHorario", "Empleados", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -83,7 +83,7 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
-            @Html.ActionLink("Cancelar", "GestionEmpleados", new { idUsuario = Model.IdUsuario }, new { @class = "btn btn-default" })
+            @Html.ActionLink("Cancelar", "Empleados", new { idUsuario = Model.IdUsuario }, new { @class = "btn btn-default" })
         </div>
     </div>
 }

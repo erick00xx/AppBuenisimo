@@ -6,7 +6,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div class="container mt-4">
     <h2>Agregar Producto</h2>
-    @using (Html.BeginForm("AgregarProducto", "GestionCarta", FormMethod.Post))
+    @using (Html.BeginForm("AgregarProducto", "Carta", FormMethod.Post))
     {
         <div class="form-group">
             @Html.Label("Tipo de Producto")
@@ -53,7 +53,7 @@
                 $('#Categoria').append($('<option>').text('Cargando...').attr('disabled', true));
 
                 if (idTipo) {
-                    $.getJSON('@Url.Action("ObtenerCategoriasPorTipo", "GestionCarta")', { idTipoProducto: idTipo }, function (data) {
+                    $.getJSON('@Url.Action("ObtenerCategoriasPorTipo", "Carta")', { idTipoProducto: idTipo }, function (data) {
                         console.log("Categorías recibidas:", data);
 
                         $('#Categoria').empty();
