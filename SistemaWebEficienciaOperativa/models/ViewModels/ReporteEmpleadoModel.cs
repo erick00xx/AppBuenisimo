@@ -48,6 +48,9 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
     {
         public DateTime Fecha { get; set; }
         public TimeSpan HoraEntrada { get; set; }
+        public string Tipo { get; set; }
+        public string TipoTardanza { get; set; }
+
         public TimeSpan? DiferenciaTardanza { get; set; } // Ej: +30 minutos
     }
 

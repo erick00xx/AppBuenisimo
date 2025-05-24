@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SistemaWebEficienciaOperativa.Utils;
 
 namespace SistemaWebEficienciaOperativa.Services
 {
@@ -22,62 +21,39 @@ namespace SistemaWebEficienciaOperativa.Services
             var fechaInicioQuincena = GetFechaInicioQuincena(quincena, mes, anio);
             var fechaFinQuincena = GetFechaFinQuincena(quincena, mes, anio);
 
-            // Obtener empleados con sus asistencias en el rango de fechas
+            var asistencias = _dbContext.tbAsistencias
+                .Where(a => a.fecha >= fechaInicioQuincena && a.fecha <= fechaFinQuincena)
+                .ToList();
+
             var empleados = _dbContext.tbUsuarios
-                .Where(e => e.idRol != 1) // Excluir administradores
-                .Select(e => new
+                .Where(e => e.idRol != 1)
+                .ToList()
+                .Select(e =>
                 {
-                    e.idUsuario,
-                    e.nombre,
-                    e.apellido,
-                    e.tbRoles.nombreRol,
-                    e.tbAsistencias
-                })
-                .ToList() // Trae los datos a memoria
-                .Select(e => new EmpleadoDTO
-                {
-                    IdEmpleado = e.idUsuario,
-                    NombreCompleto = e.nombre + " " + e.apellido,
-                    Puesto = e.nombreRol,
-
-                    // Contar tardanzas (idObservacionAsistencia == 2)
-                    Tardanzas = e.tbAsistencias.Count(a =>
-                        a.fecha >= fechaInicioQuincena &&
-                        a.fecha <= fechaFinQuincena &&
-                        a.idObservacionAsistencia == 2),
-
-                    // Contar faltas (idObservacionAsistencia == 4)
-                    Faltas = e.tbAsistencias.Count(a =>
-                        a.fecha >= fechaInicioQuincena &&
-                        a.fecha <= fechaFinQuincena &&
-                        a.idObservacionAsistencia == 4),
-
-                    // Calcular pago quincenal (ejemplo básico)
-                    PagoQuincenal = CalcularPagoQuincenal(e.idUsuario, fechaInicioQuincena, fechaFinQuincena),
-
-                    // Manejar estado del empleado (si no hay columna 'estado', puedes hacerlo desde otra forma)
-                    Estado = e.tbAsistencias.Any(a =>
-                        a.fecha >= fechaInicioQuincena &&
-                        a.fecha <= fechaFinQuincena &&
-                        a.idObservacionAsistencia == 5)
-                        ? "Vacaciones"
-                        : "Activo"
+                    decimal pago = CalcularPagoPorHoras(e.idUsuario, fechaInicioQuincena, fechaFinQuincena);
+                    return new EmpleadoDTO
+                    {
+                        IdEmpleado = e.idUsuario,
+                        NombreCompleto = e.nombre + " " + e.apellido,
+                        Puesto = e.tbRoles.nombreRol,
+                        Tardanzas = asistencias.Count(a => a.idUsuario == e.idUsuario &&
+                            (a.idObservacionAsistencia == 2 || a.idObservacionAsistencia == 3)),
+                        Faltas = asistencias.Count(a => a.idUsuario == e.idUsuario &&
+                            (a.idObservacionAsistencia == 7 || a.idObservacionAsistencia == 8)),
+                        PagoQuincenal = pago,
+                        Estado = asistencias.Any(a => a.idUsuario == e.idUsuario && a.idObservacionAsistencia == 10) ? "Vacaciones" : "Activo"
+                    };
                 }).ToList();
-
-            var totalEmpleados = empleados.Count;
-            var tardanzasTotales = empleados.Sum(e => e.Tardanzas);
-            var faltasTotales = empleados.Sum(e => e.Faltas);
-            var nominaTotal = empleados.Sum(e => e.PagoQuincenal);
 
             return new ReporteEmpleadoModel
             {
                 Quincena = quincena,
                 Mes = mes,
                 Anio = anio,
-                TotalEmpleados = totalEmpleados,
-                TardanzasTotales = tardanzasTotales,
-                FaltasTotales = faltasTotales,
-                NominaTotal = nominaTotal,
+                TotalEmpleados = empleados.Count,
+                TardanzasTotales = empleados.Sum(e => e.Tardanzas),
+                FaltasTotales = empleados.Sum(e => e.Faltas),
+                NominaTotal = empleados.Sum(e => e.PagoQuincenal),
                 Empleados = empleados
             };
         }
@@ -110,124 +86,88 @@ namespace SistemaWebEficienciaOperativa.Services
                 case "Octubre": return 10;
                 case "Noviembre": return 11;
                 case "Diciembre": return 12;
-                default: return TimeProvider.Now.Month;
+                default: return DateTime.Now.Month;
             }
         }
 
-
-        private decimal CalcularPagoQuincenal(int idEmpleado, DateTime fechaInicioQuincena, DateTime fechaFinQuincena)
+        private decimal CalcularPagoPorHoras(int idEmpleado, DateTime fechaInicio, DateTime fechaFin)
         {
-            // Ejemplo básico: salario base - descuentos + bonificaciones
-            const decimal salarioBase = 3000m; // Mensual
-            decimal diasTrabajados = _dbContext.tbAsistencias
-                .Count(a => a.idUsuario == idEmpleado &&
-                            a.fecha >= fechaInicioQuincena &&
-                            a.fecha <= fechaFinQuincena &&
-                            a.idObservacionAsistencia == 1); // 1 = Asistencia normal
+            var horario = _dbContext.tbHorarios
+                .FirstOrDefault(h => h.idUsuario == idEmpleado && h.activo == true &&
+                                     h.fechaInicioVigencia <= fechaFin &&
+                                     (h.fechaFinVigencia == null || h.fechaFinVigencia >= fechaInicio));
 
-            decimal pagoDiario = salarioBase / 30;
-            decimal pagoQuincenal = diasTrabajados * pagoDiario;
+            if (horario == null) return 0;
 
-            // Aplicar descuento por faltas
-            decimal faltas = _dbContext.tbAsistencias.Count(a =>
-                a.idUsuario == idEmpleado &&
-                a.fecha >= fechaInicioQuincena &&
-                a.fecha <= fechaFinQuincena &&
-                a.idObservacionAsistencia == 4); // 4 = Falta injustificada
+            var asistencias = _dbContext.tbAsistencias
+                .Where(a => a.idUsuario == idEmpleado && a.fecha >= fechaInicio && a.fecha <= fechaFin &&
+                            a.horaEntrada.HasValue && a.horaSalida.HasValue)
+                .ToList();
 
-            pagoQuincenal -= faltas * (salarioBase / 30 * 2); // Ejemplo: cada falta cuesta 2 días
-
-            return Math.Round(pagoQuincenal, 2);
+            double horas = asistencias.Sum(a => (a.horaSalida.Value - a.horaEntrada.Value).TotalHours);
+            return Math.Round((decimal)horas * horario.pagoPorHora, 2);
         }
 
-        public DetalleEmpleadoModalDTO ObtenerDetalleEmpleado(int idEmpleado, DateTime fechaInicioQuincena, DateTime fechaFinQuincena)
+        public DetalleEmpleadoModalDTO ObtenerDetalleEmpleado(int idEmpleado, DateTime fechaInicio, DateTime fechaFin)
         {
             var empleado = _dbContext.tbUsuarios.Find(idEmpleado);
             if (empleado == null) return null;
 
+            var horario = _dbContext.tbHorarios
+                .FirstOrDefault(h => h.idUsuario == idEmpleado && h.activo == true &&
+                                     h.fechaInicioVigencia <= fechaFin &&
+                                     (h.fechaFinVigencia == null || h.fechaFinVigencia >= fechaInicio));
+
             var asistencias = _dbContext.tbAsistencias
-                .Where(a => a.idUsuario == idEmpleado &&
-                            a.fecha >= fechaInicioQuincena &&
-                            a.fecha <= fechaFinQuincena)
+                .Where(a => a.idUsuario == idEmpleado && a.fecha >= fechaInicio && a.fecha <= fechaFin)
                 .ToList();
 
-            var listaTardanzas = new List<TardanzaDTO>();
-            var listaFaltas = new List<FaltaDTO>();
+            var listaTardanzas = asistencias
+                .Where(a => (a.idObservacionAsistencia == 2 || a.idObservacionAsistencia == 3) && a.horaEntrada.HasValue)
+                .Select(a => new TardanzaDTO
+                {
+                    Fecha = a.fecha,
+                    HoraEntrada = a.horaEntrada.Value.TimeOfDay,
+                    DiferenciaTardanza = TimeSpan.FromMinutes(a.minutosTardanza ?? 0),
+                    TipoTardanza = a.idObservacionAsistencia == 2 ? "Leve" : "Significativa"
+                }).ToList();
 
-            foreach (var a in asistencias)
+            var listaFaltas = asistencias
+                .Where(a => a.idObservacionAsistencia == 7 || a.idObservacionAsistencia == 8)
+                .Select(a => new FaltaDTO
+                {
+                    Fecha = a.fecha,
+                    Motivo = a.idObservacionAsistencia == 7 ? "Falta Justificada" : "Falta Injustificada"
+                }).ToList();
+
+            double horas = asistencias
+                .Where(a => a.horaEntrada.HasValue && a.horaSalida.HasValue)
+                .Sum(a => (a.horaSalida.Value - a.horaEntrada.Value).TotalHours);
+
+            decimal pagoPorHora = horario?.pagoPorHora ?? 0;
+            decimal sueldoBase = Math.Round((decimal)horas * pagoPorHora, 2);
+
+            var desglose = new List<PagoConceptoDTO>
             {
-                if (a.idObservacionAsistencia == 2 && a.horaEntrada.HasValue)
+                new PagoConceptoDTO
                 {
-                    // Tardanza: si llegó tarde
-                    var horaLaboralEsperada = new TimeSpan(9, 0, 0); // 9:00 AM
-                    var diferencia = a.horaEntrada.Value.TimeOfDay - horaLaboralEsperada;
-
-                    if (diferencia > TimeSpan.Zero)
-                    {
-                        listaTardanzas.Add(new TardanzaDTO
-                        {
-                            Fecha = a.fecha,
-                            HoraEntrada = a.horaEntrada.Value.TimeOfDay,
-                            DiferenciaTardanza = diferencia
-                        });
-                    }
+                    Concepto = "Pago por horas trabajadas",
+                    Valor = sueldoBase,
+                    Tipo = "Ingreso"
                 }
-
-                if (a.idObservacionAsistencia == 4 || a.idObservacionAsistencia == 5)
-                {
-                    // Falta justificada o injustificada
-                    string motivo = a.idObservacionAsistencia == 4 ? "Falta Justificada" : "Falta Injustificada";
-
-                    listaFaltas.Add(new FaltaDTO
-                    {
-                        Fecha = a.fecha,
-                        Motivo = motivo
-                    });
-                }
-            }
-
-            decimal sueldoBase = 600m;
-            decimal descuentoPorTardanza = 10m;
-            decimal descuentoPorFalta = 30m;
-
-            decimal totalDescuentos =
-                listaTardanzas.Count * descuentoPorTardanza +
-                listaFaltas.Count * descuentoPorFalta;
-
-            decimal sueldoNeto = Math.Max(sueldoBase - totalDescuentos, 0);
-
-            var desglosePago = new List<PagoConceptoDTO>
-    {
-        new PagoConceptoDTO
-        {
-            Concepto = "Salario Base Quincenal",
-            Valor = sueldoBase,
-            Tipo = "Ingreso"
-        },
-        new PagoConceptoDTO
-        {
-            Concepto = $"Descuento por Tardanzas ({listaTardanzas.Count} días)",
-            Valor = -descuentoPorTardanza * listaTardanzas.Count(),
-            Tipo = "Descuento"
-        },
-        new PagoConceptoDTO
-        {
-            Concepto = $"Descuento por Faltas ({listaFaltas.Count} días)",
-            Valor = -descuentoPorFalta * listaFaltas.Count(),
-            Tipo = "Descuento"
-        }
-    };
+            };
 
             return new DetalleEmpleadoModalDTO
             {
-                Nombre = $"{empleado.nombre} {empleado.apellido}",
+                Nombre = empleado.nombre + " " + empleado.apellido,
                 Puesto = empleado.tbRoles.nombreRol,
                 SalarioBaseQuincenal = sueldoBase,
                 Tardanzas = listaTardanzas,
                 Faltas = listaFaltas,
-                DesglosePago = desglosePago,
-                SueldoNeto = sueldoNeto
+                DesglosePago = desglose,
+                SueldoNeto = sueldoBase
             };
         }
+
     }
 }

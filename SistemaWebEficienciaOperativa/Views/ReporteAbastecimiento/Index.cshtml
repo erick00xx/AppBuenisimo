@@ -50,7 +50,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Compras esta semana</h6>
                     <h3 id="comprasEstaSemana">@Model.ComprasEstaSemana</h3>
-                    <p>+@Model.VariacionCompras vs semana anterior</p>
+                    <p>@(Model.VariacionCompras >= 0 ? "+" : "")@Model.VariacionCompras% vs semana anterior (@Model.ComprasSemanaAnterior)</p>
                 </div>
             </div>
         </div>
@@ -59,20 +59,21 @@
                 <div class="card-body">
                     <h6 class="card-title">Desechos esta semana</h6>
                     <h3 id="desechosEstaSemana">@Model.DesechosEstaSemana</h3>
-                    <p>-@Model.VariacionDesechos vs semana anterior</p>
+                    <p>@(Model.VariacionDesechos >= 0 ? "+" : "")@Model.VariacionDesechos% vs semana anterior (@Model.DesechosSemanaAnterior)</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card bg-warning text-dark h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Inversión total</h6>
-                    <h3 id="inversionTotal">S/. @Model.InversionTotal.ToString("N2")</h3>
-                    <p>@Model.PorcentajePresupuesto% del presupuesto mensual</p>
+                    <h6 class="card-title">% Desechos sobre compras</h6>
+                    <h3>@Model.PorcentajeDesechosSobreCompras.ToString("N2")%</h3>
+                    <p>Esta semana</p>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Últimas Compras -->
     <div class="mb-4">
@@ -85,7 +86,6 @@
                         <th>Insumo</th>
                         <th>Cantidad</th>
                         <th>Proveedor</th>
-                        <th>Total</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -97,7 +97,6 @@
                             <td>@compra.NombreInsumo</td>
                             <td>@compra.Cantidad @compra.Unidad</td>
                             <td>@compra.Proveedor</td>
-                            <td>S/. @compra.Total.ToString("N2")</td>
                             <td>
                                 <a href="@Url.Action("DetalleProducto", "ReporteAbastecimiento", new { id = compra.IdIngresoInsumo, tipo = "compra" })"
                                    class="btn btn-sm btn-outline-primary">
@@ -158,6 +157,8 @@
         const fechaInicio = $('#fechaInicial').val();
         const fechaFin = $('#fechaFinal').val();
 
+
+
         if (!fechaInicio || !fechaFin) {
             alert("Por favor, selecciona ambas fechas.");
             return;
@@ -184,7 +185,6 @@
                                 <td>${compra.NombreInsumo}</td>
                                 <td>${compra.Cantidad}</td>
                                 <td>${compra.Proveedor}</td>
-                                <td>${compra.Total}</td>
                                 <td>
                                     <a href="/ReporteAbastecimiento/DetalleProducto?id=${compra.IdIngresoInsumo}&tipo=compra"
                                        class="btn btn-sm btn-outline-primary">Ver Detalles</a>
@@ -219,7 +219,6 @@
                 // Actualizar estadísticas
                 $('#comprasEstaSemana').text(response.ComprasEstaSemana);
                 $('#desechosEstaSemana').text(response.DesechosEstaSemana);
-                $('#inversionTotal').text('S/. ' + response.InversionTotal);
             },
             error: function (xhr, status, error) {
                 console.error("Error en la solicitud:");

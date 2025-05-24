@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Models.ViewModels;
 using static SistemaWebEficienciaOperativa.Services.ReporteAbastecimientoService;
 using SistemaWebEficienciaOperativa.Utils;
+using System.Globalization;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
@@ -28,21 +29,19 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 TipoMovimiento = "todos"
             };
 
-            // Generar estadísticas
+            // Solo una llamada a estadísticas (3 valores)
             _inventarioService.GenerarEstadisticas(
                 TimeProvider.Now,
-                out int comprasEstaSemana,
-                out int desechosEstaSemana,
-                out decimal inversionTotal);
+                out int comprasActual,
+                out int desechosActual,
+                out decimal porcentajeDesecho);
 
-            viewModel.ComprasEstaSemana = comprasEstaSemana;
-            viewModel.DesechosEstaSemana = desechosEstaSemana;
-            viewModel.InversionTotal = inversionTotal;
-            viewModel.PorcentajePresupuesto = 15;
+            viewModel.ComprasEstaSemana = comprasActual;
+            viewModel.DesechosEstaSemana = desechosActual;
+            viewModel.PorcentajeDesechosSobreCompras = porcentajeDesecho;
 
-            // Obtener detalles
-            viewModel.UltimasCompras = _inventarioService.ObtenerUltimasCompras(5);
-            viewModel.UltimosDesechos = _inventarioService.ObtenerUltimosDesechos(5);
+            viewModel.UltimasCompras = _inventarioService.ObtenerTodasLasCompras();
+            viewModel.UltimosDesechos = _inventarioService.ObtenerTodosLosDesechos();
 
             return View(viewModel);
         }
@@ -50,19 +49,12 @@ namespace SistemaWebEficienciaOperativa.Controllers
         [HttpGet]
         public ActionResult DetalleProducto(int id, string tipo)
         {
-            var model = new DetalleProductoModel
-            {
-                Tipo = tipo
-            };
+            var model = new DetalleProductoModel { Tipo = tipo };
 
             if (tipo == "compra")
-            {
                 model.Producto = _inventarioService.ObtenerUltimaCompraPorId(id);
-            }
             else if (tipo == "desecho")
-            {
                 model.Producto = _inventarioService.ObtenerUltimoDesechoPorId(id);
-            }
 
             return View("~/Views/ReporteAbastecimiento/DetalleProducto.cshtml", model);
         }
@@ -72,44 +64,41 @@ namespace SistemaWebEficienciaOperativa.Controllers
         {
             try
             {
-                // Parsear fechas
-                var format = "dd/MM/yyyy";
-                var provider = new System.Globalization.CultureInfo("es-ES");
+                var format = "yyyy-MM-dd";
+                var provider = System.Globalization.CultureInfo.InvariantCulture;
 
-                if (!DateTime.TryParseExact(fechaInicio, format, provider, System.Globalization.DateTimeStyles.None, out DateTime inicio))
-                {
+                if (!DateTime.TryParseExact(fechaInicio, format, provider, DateTimeStyles.None, out DateTime inicio))
                     return Json(new { error = "Fecha inicial inválida." }, JsonRequestBehavior.AllowGet);
-                }
 
-                if (!DateTime.TryParseExact(fechaFin, format, provider, System.Globalization.DateTimeStyles.None, out DateTime fin))
-                {
+                if (!DateTime.TryParseExact(fechaFin, format, provider, DateTimeStyles.None, out DateTime fin))
                     return Json(new { error = "Fecha final inválida." }, JsonRequestBehavior.AllowGet);
-                }
 
-                List<CompraDTO> comprasFiltradas = new List<CompraDTO>();
-                List<DesechoDTO> desechosFiltrados = new List<DesechoDTO>();
+                var finInclusive = fin.AddDays(1); // Para que incluya todo el día final
 
-                if (tipoMovimiento == "todos" || tipoMovimiento == "compras")
-                {
-                    comprasFiltradas = _inventarioService.FiltrarComprasPorFecha(inicio, fin);
-                }
+                var compras = (tipoMovimiento == "todos" || tipoMovimiento == "compras")
+                    ? _inventarioService.FiltrarComprasPorFecha(inicio, finInclusive)
+                    : new List<CompraDTO>();
 
-                if (tipoMovimiento == "todos" || tipoMovimiento == "desechos")
-                {
-                    desechosFiltrados = _inventarioService.FiltrarDesechosPorFecha(inicio, fin);
-                }
+                var desechos = (tipoMovimiento == "todos" || tipoMovimiento == "desechos")
+                    ? _inventarioService.FiltrarDesechosPorFecha(inicio, finInclusive)
+                    : new List<DesechoDTO>();
 
-                var comprasJson = comprasFiltradas.Select(c => new
+
+                // Calcular % desechos sobre compras
+                decimal totalComprado = compras.Sum(c => c.Cantidad);
+                decimal totalDesechado = desechos.Sum(d => d.Cantidad);
+                decimal porcentaje = (totalComprado > 0) ? Math.Round((totalDesechado / totalComprado) * 100, 2) : 0;
+
+                var comprasJson = compras.Select(c => new
                 {
                     c.IdIngresoInsumo,
                     Fecha = c.FechaCompra.ToString("yyyy-MM-dd"),
                     c.NombreInsumo,
                     Cantidad = $"{c.Cantidad} {c.Unidad}",
-                    c.Proveedor,
-                    Total = $"S/. {c.Total:N2}"
+                    c.Proveedor
                 });
 
-                var desechosJson = desechosFiltrados.Select(d => new
+                var desechosJson = desechos.Select(d => new
                 {
                     d.IdDesechoInsumo,
                     Fecha = d.FechaDesecho.ToString("yyyy-MM-dd"),
@@ -122,9 +111,9 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 {
                     Compras = comprasJson,
                     Desechos = desechosJson,
-                    ComprasEstaSemana = comprasFiltradas.Count,
-                    DesechosEstaSemana = desechosFiltrados.Count,
-                    InversionTotal = comprasFiltradas.Sum(x => x.Total).ToString("N2")
+                    ComprasEstaSemana = compras.Count,
+                    DesechosEstaSemana = desechos.Count,
+                    PorcentajeDesechosSobreCompras = porcentaje
                 }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -132,7 +121,6 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
     }
 }

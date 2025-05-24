@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Models;
+using SistemaWebEficienciaOperativa.Services;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
     public class AbastecimientoController : Controller
     {
+        private readonly DB_BUENISIMOEntities db = new DB_BUENISIMOEntities();
+        private readonly ProductoServices _productoService = new ProductoServices();
+
         // GET: Abastecimiento
         public ActionResult Index()
         {
@@ -22,43 +26,60 @@ namespace SistemaWebEficienciaOperativa.Controllers
 
         public ActionResult RegistrarCompra()
         {
-            ViewBag.Insumos = new SelectList(db.tbInsumos, "idInsumo", "nombre");
+            ViewBag.Insumos = new SelectList(db.tbInsumos.OrderBy(i => i.nombre), "idInsumo", "nombre");
             ViewBag.Unidades = new SelectList(db.tbUnidades, "idUnidad", "nombre");
             ViewBag.Proveedores = new SelectList(db.tbProveedores, "idProveedor", "nombreEmpresa");
-            ViewBag.Sucursales = new SelectList(db.tbSucursales, "idSucursal", "nombre"); // asegúrate que tbSucursales está en EF
+            ViewBag.Sucursales = new SelectList(db.tbSucursales, "idSucursal", "nombre");
 
             return View();
         }
+
         [HttpPost]
         public ActionResult RegistrarCompra(tbIngresosInsumos model)
         {
             if (ModelState.IsValid)
             {
-                try
+                var existeRegistro = db.tbIngresosInsumos.Any(i =>
+                    i.idInsumo == model.idInsumo &&
+                    i.idUnidad == model.idUnidad &&
+                    i.idProveedor == model.idProveedor &&
+                    i.idSucursal == model.idSucursal &&
+                    i.fechaCompra == model.fechaCompra &&
+                    i.cantidad == model.cantidad);
+
+                if (existeRegistro)
                 {
-                    db.tbIngresosInsumos.Add(model);
-                    db.SaveChanges();
-                    return RedirectToAction("UltimosMovimientos");
+                    ModelState.AddModelError("", "Ya existe un registro con los mismos datos.");
                 }
-                catch (Exception ex)
+                else
                 {
-                    ModelState.AddModelError("", "Error al guardar: " + ex.Message);
+                    try
+                    {
+                        db.tbIngresosInsumos.Add(model);
+                        db.SaveChanges();
+                        return RedirectToAction("UltimosMovimientos");
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Error al guardar: " + ex.Message);
+                    }
                 }
             }
 
-            ViewBag.Insumos = new SelectList(db.tbInsumos, "idInsumo", "nombre", model.idInsumo);
+            ViewBag.Insumos = new SelectList(db.tbInsumos.OrderBy(i => i.nombre), "idInsumo", "nombre", model.idInsumo);
             ViewBag.Unidades = new SelectList(db.tbUnidades, "idUnidad", "abreviatura", model.idUnidad);
             ViewBag.Proveedores = new SelectList(db.tbProveedores, "idProveedor", "nombreEmpresa", model.idProveedor);
             ViewBag.Sucursales = new SelectList(db.tbSucursales, "idSucursal", "nombre", model.idSucursal);
 
             return View(model);
         }
+
         public ActionResult RegistrarDesecho()
         {
-            ViewBag.Insumos = new SelectList(db.tbInsumos, "idInsumo", "nombre");
+            ViewBag.Insumos = new SelectList(db.tbInsumos.OrderBy(i => i.nombre), "idInsumo", "nombre");
             ViewBag.Unidades = new SelectList(db.tbUnidades, "idUnidad", "abreviatura");
             ViewBag.Sucursales = new SelectList(db.tbSucursales, "idSucursal", "nombre");
-            ViewBag.Ingresos = new SelectList(db.tbIngresosInsumos, "idIngresoInsumo", "lote"); // puedes personalizar la vista
+            ViewBag.Ingresos = new SelectList(db.tbIngresosInsumos, "idIngresoInsumo", "lote");
 
             return View();
         }
@@ -80,15 +101,13 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 }
             }
 
-            ViewBag.Insumos = new SelectList(db.tbInsumos, "idInsumo", "nombre", model.idInsumo);
+            ViewBag.Insumos = new SelectList(db.tbInsumos.OrderBy(i => i.nombre), "idInsumo", "nombre", model.idInsumo);
             ViewBag.Unidades = new SelectList(db.tbUnidades, "idUnidad", "abreviatura", model.idUnidad);
             ViewBag.Sucursales = new SelectList(db.tbSucursales, "idSucursal", "nombre", model.idSucursal);
             ViewBag.Ingresos = new SelectList(db.tbIngresosInsumos, "idIngresoInsumo", "lote", model.idIngresoInsumo);
 
             return View(model);
         }
-
-        private readonly DB_BUENISIMOEntities db = new DB_BUENISIMOEntities();
 
         public ActionResult UltimosMovimientos()
         {
@@ -131,5 +150,37 @@ namespace SistemaWebEficienciaOperativa.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public ActionResult RegistrarComprasExcel()
+        {
+            ViewBag.MensajeFormato = "El archivo Excel debe contener las columnas: Insumo, Cantidad, Unidad, Proveedor, Sucursal, Fecha";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RegistrarComprasExcel(HttpPostedFileBase archivoExcel)
+        {
+            if (archivoExcel != null && archivoExcel.ContentLength > 0)
+            {
+                var errores = _productoService.CargarProductosDesdeExcel(archivoExcel);
+
+                if (errores.Count == 0)
+                {
+                    TempData["Exito"] = "Productos registrados exitosamente.";
+                    return RedirectToAction("UltimosMovimientos");
+                }
+                else
+                {
+                    ViewBag.Errores = errores;
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Debe seleccionar un archivo válido.");
+            }
+
+            ViewBag.MensajeFormato = "El archivo Excel debe contener las columnas: Insumo, Cantidad, Unidad, Proveedor, Sucursal, Fecha";
+            return View();
+        }
     }
 }

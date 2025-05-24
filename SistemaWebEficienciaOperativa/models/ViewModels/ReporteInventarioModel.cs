@@ -17,8 +17,13 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
         public int VariacionCompras { get; set; }
         public int DesechosEstaSemana { get; set; }
         public int VariacionDesechos { get; set; }
-        public decimal InversionTotal { get; set; }
+        public int ComprasSemanaAnterior { get; set; }
+        public int DesechosSemanaAnterior { get; set; }
+
+        public decimal PromedioInsumosPorCompraSemana { get; set; }
+        public decimal PorcentajeDesechosSobreCompras { get; set; }
         public decimal PorcentajePresupuesto { get; set; }
+
 
         // Detalles
         public List<CompraDTO> UltimasCompras { get; set; }

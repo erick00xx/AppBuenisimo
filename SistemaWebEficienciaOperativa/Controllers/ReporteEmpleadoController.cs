@@ -1,9 +1,7 @@
 ﻿using SistemaWebEficienciaOperativa.Models.ViewModels;
 using SistemaWebEficienciaOperativa.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SistemaWebEficienciaOperativa.Controllers
@@ -23,11 +21,10 @@ namespace SistemaWebEficienciaOperativa.Controllers
             {
                 Quincena = "Segunda quincena",
                 Mes = "Mayo",
-                Anio = 2024
+                Anio = 2025
             };
 
             viewModel = _empleadoService.GenerarReporte(viewModel.Quincena, viewModel.Mes, viewModel.Anio);
-
             return View(viewModel);
         }
 
@@ -51,7 +48,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
                         e.Puesto,
                         e.Tardanzas,
                         e.Faltas,
-                        e.PagoQuincenal,
+                        PagoQuincenal = e.PagoQuincenal.ToString("N2"),
                         e.Estado
                     })
                 }, JsonRequestBehavior.AllowGet);
@@ -62,21 +59,29 @@ namespace SistemaWebEficienciaOperativa.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult DetallePagoQuincenal(int idEmpleado, string quincena, string mes, int anio)
         {
-            var fechaInicioQuincena = _empleadoService.GetFechaInicioQuincena(quincena, mes, anio);
-            var fechaFinQuincena = _empleadoService.GetFechaFinQuincena(quincena, mes, anio);
-
-            var detalle = _empleadoService.ObtenerDetalleEmpleado(idEmpleado, fechaInicioQuincena, fechaFinQuincena);
-
-            if (detalle == null)
+            try
             {
-                return View("Error");
+                var fechaInicioQuincena = _empleadoService.GetFechaInicioQuincena(quincena, mes, anio);
+                var fechaFinQuincena = _empleadoService.GetFechaFinQuincena(quincena, mes, anio);
+
+                var detalle = _empleadoService.ObtenerDetalleEmpleado(idEmpleado, fechaInicioQuincena, fechaFinQuincena);
+
+                if (detalle == null)
+                {
+                    TempData["Error"] = "Empleado no encontrado o sin registros en la quincena seleccionada.";
+                    return RedirectToAction("Index");
+                }
+
+                return View(detalle);
             }
-
-            return View(detalle);
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error al generar el detalle del pago: " + ex.Message;
+                return RedirectToAction("Index");
+            }
         }
-
-
     }
 }

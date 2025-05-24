@@ -29,17 +29,18 @@
                                 <tr>
                                     <th>Fecha</th>
                                     <th>Hora Entrada</th>
-                                    <th>Tardanza</th>
+                                    <th>Tipo de Tardanza</th>
+                                    <th>Retraso</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var t in Model.Tardanzas)
                                 {
                                     <tr>
-                                        <td>@t.Fecha.ToShortDateString()</td>
+                                        <td>@t.Fecha.ToString("dd/MM/yyyy")</td>
                                         <td>@t.HoraEntrada.ToString(@"hh\:mm")</td>
+                                        <td>@t.TipoTardanza</td>
                                         <td>@("+" + t.DiferenciaTardanza?.ToString(@"hh\:mm"))</td>
-
                                     </tr>
                                 }
                             </tbody>
@@ -47,7 +48,7 @@
                     }
                     else
                     {
-                        <p class="text-muted">No tiene tardanzas.</p>
+                        <p class="text-muted">No tiene tardanzas registradas.</p>
                     }
 
                     <!-- Faltas -->
@@ -65,7 +66,7 @@
                                 @foreach (var f in Model.Faltas)
                                 {
                                     <tr>
-                                        <td>@f.Fecha.ToShortDateString()</td>
+                                        <td>@f.Fecha.ToString("dd/MM/yyyy")</td>
                                         <td>@f.Motivo</td>
                                     </tr>
                                 }
@@ -74,30 +75,27 @@
                     }
                     else
                     {
-                        <p class="text-muted">No tiene faltas.</p>
+                        <p class="text-muted">No tiene faltas registradas.</p>
                     }
 
-                    <!-- Desglose de pago -->
-                    <h5>Desglose del Pago Quincenal</h5>
+                    <!-- Pago Quincenal -->
+                    <h5>Pago Quincenal</h5>
                     <table class="table table-striped mt-3">
                         <thead class="table-dark">
                             <tr>
                                 <th>Concepto</th>
-                                <th>Valor</th>
+                                <th>Monto</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var concepto in Model.DesglosePago)
-                            {
-                                <tr>
-                                    <td>@concepto.Concepto</td>
-                                    <td>@(concepto.Tipo == "Descuento" ? "-" : "")S/. @concepto.Valor.ToString("N2")</td>
-                                </tr>
-                            }
-                        <tr class="table-success">
-                            <td><strong>Sueldo Neto</strong></td>
-                            <td><strong>S/. @Model.SueldoNeto.ToString("N2")</strong></td>
-                        </tr>
+                            <tr>
+                                <td>Pago por horas trabajadas</td>
+                                <td>S/. @Model.SalarioBaseQuincenal.ToString("N2")</td>
+                            </tr>
+                            <tr class="table-success">
+                                <td><strong>Total Neto a Pagar</strong></td>
+                                <td><strong>S/. @Model.SueldoNeto.ToString("N2")</strong></td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -107,6 +105,7 @@
                             Volver al Informe
                         </a>
                     </div>
+
                 </div>
             </div>
         </div>
