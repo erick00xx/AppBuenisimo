@@ -9,10 +9,10 @@ using SistemaWebEficienciaOperativa.Services;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
-    public class GestionCartaController : Controller
+    public class CartaController : Controller
     {
         ProductoServices productoServices = new ProductoServices();
-        // GET: GestionCarta
+        // GET: Carta
         public ActionResult Index()
         {
 

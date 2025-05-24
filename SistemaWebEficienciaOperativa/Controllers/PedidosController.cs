@@ -1,4 +1,4 @@
-﻿// SistemaWebEficienciaOperativa.Controllers/GestionPedidosController.cs
+﻿// SistemaWebEficienciaOperativa.Controllers/PedidosController.cs
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -11,7 +11,7 @@ using System.Diagnostics; // Para .Include si lo usas directamente en el control
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
-    public class GestionPedidosController : Controller
+    public class PedidosController : Controller
     {
         private readonly PedidoService _pedidoService = new PedidoService();
         private readonly DB_BUENISIMOEntities _dbContext = new DB_BUENISIMOEntities(); // Si necesitas acceso directo
@@ -30,7 +30,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
             return 1;
         }
 
-        // GET: GestionPedidos (Vista de Pedidos Activos)
+        // GET: Pedidos (Vista de Pedidos Activos)
         public ActionResult Index()
         {
             int idSucursal = ObtenerIdSucursalActual();
@@ -38,7 +38,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
             return View(pedidosActivos);
         }
 
-        // GET: GestionPedidos/NuevoPedido
+        // GET: Pedidos/NuevoPedido
         public ActionResult NuevoPedido()
         {
             int idSucursal = ObtenerIdSucursalActual();
@@ -47,7 +47,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
             return View();
         }
 
-        // POST: GestionPedidos/CrearPedidoPost
+        // POST: Pedidos/CrearPedidoPost
         [HttpPost]
         public ActionResult CrearPedidoPost(CrearPedidoInputViewModel model)
         {
@@ -77,7 +77,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
             }
         }
 
-        // GET: GestionPedidos/DetallesPedido/5
+        // GET: Pedidos/DetallesPedido/5
         public ActionResult DetallesPedido(int id)
         {
             var pedido = _pedidoService.ObtenerPedidoPorId(id);
@@ -100,7 +100,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
             return View(pedido);
         }
 
-        // POST: GestionPedidos/ActualizarPedidoPost
+        // POST: Pedidos/ActualizarPedidoPost
         [HttpPost]
         public ActionResult ActualizarPedidoPost(ActualizarPedidoInputViewModel model)
         {
@@ -136,7 +136,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
         }
 
 
-        // GET: GestionPedidos/Buscar (Esta acción ya la tienes y es reutilizable)
+        // GET: Pedidos/Buscar (Esta acción ya la tienes y es reutilizable)
         public JsonResult Buscar(string criterio)
         {
             if (string.IsNullOrWhiteSpace(criterio))

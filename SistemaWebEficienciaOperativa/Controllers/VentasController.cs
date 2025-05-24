@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
-    public class GestionVentasController : Controller
+    public class VentasController : Controller
     {
-        // GET: GestionVentas
+        // GET: Ventas
         public ActionResult Index()
         {
             return View();

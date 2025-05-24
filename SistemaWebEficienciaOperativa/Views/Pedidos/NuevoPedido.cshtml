@@ -20,7 +20,7 @@
 <h2>Nuevo Pedido</h2>
 <br />
 <div>
-    @Html.ActionLink("Volver a Pedidos Activos", "Index", "GestionPedidos", null, new { @class = "btn btn-outline-secondary mb-3" })
+    @Html.ActionLink("Volver a Pedidos Activos", "Index", "Pedidos", null, new { @class = "btn btn-outline-secondary mb-3" })
 </div>
 
 <div class="row">
@@ -80,7 +80,7 @@
                 }
 
                 $.ajax({
-                    url: '@Url.Action("Buscar", "GestionPedidos")',
+                    url: '@Url.Action("Buscar", "Pedidos")',
                     type: 'GET',
                     data: { criterio: criterio },
                     success: function (data) {
@@ -228,7 +228,7 @@
                 $(this).prop('disabled', true).text('Procesando...');
 
                 $.ajax({
-                    url: '@Url.Action("CrearPedidoPost", "GestionPedidos")',
+                    url: '@Url.Action("CrearPedidoPost", "Pedidos")',
                     type: 'POST',
                     contentType: 'application/json', // IMPORTANTE para enviar JSON
                     data: JSON.stringify(pedidoData),

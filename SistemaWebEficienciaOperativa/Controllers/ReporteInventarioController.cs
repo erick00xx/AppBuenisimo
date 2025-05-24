@@ -5,23 +5,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SistemaWebEficienciaOperativa.Models.ViewModels;
-using static SistemaWebEficienciaOperativa.Services.ReporteInventarioService;
+using static SistemaWebEficienciaOperativa.Services.ReporteAbastecimientoService;
 using SistemaWebEficienciaOperativa.Utils;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
-    public class ReporteInventarioController : Controller
+    public class ReporteAbastecimientoController : Controller
     {
         private readonly InventarioService _inventarioService;
 
-        public ReporteInventarioController()
+        public ReporteAbastecimientoController()
         {
             _inventarioService = new InventarioService();
         }
 
         public ActionResult Index()
         {
-            var viewModel = new ReporteInventarioModel
+            var viewModel = new ReporteAbastecimientoModel
             {
                 FechaInicio = TimeProvider.Now.AddDays(-7),
                 FechaFin = TimeProvider.Now,
@@ -64,7 +64,7 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 model.Producto = _inventarioService.ObtenerUltimoDesechoPorId(id);
             }
 
-            return View("~/Views/ReporteInventario/DetalleProducto.cshtml", model);
+            return View("~/Views/ReporteAbastecimiento/DetalleProducto.cshtml", model);
         }
 
         [HttpGet]

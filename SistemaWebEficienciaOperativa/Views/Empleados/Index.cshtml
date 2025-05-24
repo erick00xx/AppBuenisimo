@@ -26,7 +26,7 @@
                     <td>@Html.DisplayFor(modelItem => item.Dni)</td>
                     <td>@Html.DisplayFor(modelItem => item.Rol)</td>
                     <td>
-                        @Html.ActionLink("Administrar Horarios", "Horarios", new { idUsuario = item.IdUsuario }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Administrar Horarios", "Horarios","Horarios", new { idUsuario = item.IdUsuario }, new { @class = "btn btn-info btn-sm" })
                         @Html.ActionLink("Editar", "Editar", new { idUsuario = item.IdUsuario }, new { @class = "btn btn-info btn-sm" })
                         @* Aquí podrías agregar más acciones como Editar Usuario, etc. *@
                     </td>

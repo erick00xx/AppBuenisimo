@@ -59,9 +59,13 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
         [Required]
         public int IdUsuario { get; set; } // Se asignará automáticamente
 
-        [Required(ErrorMessage = "El día de la semana es obligatorio.")]
-        [Display(Name = "Día de la Semana")]
-        public byte DiaSemana { get; set; } // 0-6
+        // Esta propiedad se usará internamente al pasar al servicio para un solo día.
+        // No necesita atributos de validación aquí si DiasSeleccionados se valida en el controlador.
+        public byte DiaSemana { get; set; } // 0-6, para la lógica de guardado de un día individual
+
+        [Display(Name = "Días de la Semana")]
+        // La validación para asegurar que al menos un día es seleccionado se hará en el controlador.
+        public List<string> DiasSeleccionados { get; set; } // Para los checkboxes. Los valores serán "0", "1", "2", etc.
 
         [Required(ErrorMessage = "La hora de entrada es obligatoria.")]
         [Display(Name = "Hora de Entrada")]
@@ -83,7 +87,7 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
         [Display(Name = "Inicio Vigencia")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime FechaInicioVigencia { get; set; } = TimeProvider.Today;
+        public DateTime FechaInicioVigencia { get; set; } = TimeProvider.Today; // Asegúrate que TimeProvider.Today está disponible y configurado. Si no, usa DateTime.Today
 
         [Display(Name = "Fin Vigencia (Opcional)")]
         [DataType(DataType.Date)]
@@ -92,11 +96,14 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
 
         public bool Activo { get; set; } = true;
 
-        public SelectList DiasSemanaOptions { get; set; }
+        public SelectList DiasSemanaOptions { get; private set; } // Hacerlo private set para que solo se inicialice en el constructor
         public string NombreUsuario { get; set; } // Para mostrar en el formulario a quién se asigna
 
         public HorarioFormViewModel()
         {
+            DiasSeleccionados = new List<string>(); // Inicializar la lista
+            FechaInicioVigencia = TimeProvider.Today; // O DateTime.Today
+            Activo = true;
             DiasSemanaOptions = new SelectList(
                 new[]
                 {
@@ -106,7 +113,7 @@ namespace SistemaWebEficienciaOperativa.Models.ViewModels
                     new { Value = "4", Text = "Jueves" },
                     new { Value = "5", Text = "Viernes" },
                     new { Value = "6", Text = "Sábado" },
-                    new { Value = "0", Text = "Domingo" },
+                    new { Value = "0", Text = "Domingo" }, // Asegúrate que el valor 0 para Domingo es consistente con tu DB y lógica.
                 }, "Value", "Text");
         }
     }

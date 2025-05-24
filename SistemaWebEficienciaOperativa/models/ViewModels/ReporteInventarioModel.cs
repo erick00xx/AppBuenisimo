@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SistemaWebEficienciaOperativa.Models.ViewModels
 {
-    public class ReporteInventarioModel
+    public class ReporteAbastecimientoModel
     {
         // Filtros
         public DateTime FechaInicio { get; set; }

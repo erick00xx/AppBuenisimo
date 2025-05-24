@@ -7,15 +7,15 @@ using SistemaWebEficienciaOperativa.Models;
 
 namespace SistemaWebEficienciaOperativa.Controllers
 {
-    public class GestionInventarioController : Controller
+    public class AbastecimientoController : Controller
     {
-        // GET: GestionInventario
+        // GET: Abastecimiento
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ReporteInventario()
+        public ActionResult ReporteAbastecimiento()
         {
             return View();
         }

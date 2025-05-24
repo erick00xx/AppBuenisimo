@@ -10,7 +10,7 @@ using System.Web.Configuration;
 
 namespace SistemaWebEficienciaOperativa.Services
 {
-    public class ReporteInventarioService
+    public class ReporteAbastecimientoService
     {
         public class InventarioService
         {

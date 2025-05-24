@@ -49,11 +49,9 @@ namespace SistemaWebEficienciaOperativa.Controllers // Asegúrate que el namespa
         {
             if (!ObtenerIdUsuarioActual(out int idUsuarioActual))
             {
-                Debug.WriteLine("Session idUsuario: " + Session["idUsuario"]);
-                TempData["ErrorMessage"] = "Sesión expirada o no válida. Por favor, inicie sesión de nuevo.";
+                Debug.WriteLine("!ObtenerIdUsuarioActual: Session idUsuario: " + Session["idUsuario"]);
                 return RedirectToAction("Index", "Autenticacion"); // Redirige al login
             }
-
             var viewModel = _asistenciaService.PrepararViewModelMarcacion(idUsuarioActual);
             if (viewModel.SucursalesDisponibles == null || !viewModel.SucursalesDisponibles.Any())
             {

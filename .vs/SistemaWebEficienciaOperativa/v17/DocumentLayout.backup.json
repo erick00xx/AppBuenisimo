@@ -1,62 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\reporteinventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\reporteinventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\services\\horarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\horarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\gestionventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestionventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\services\\empleadoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\empleadoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\gestionpedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestionpedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\gestioninventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestioninventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestionempleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\marcarasistenciaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\marcarasistenciaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\gestioncartacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestioncartacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\horarioempleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\horarioempleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\gestionarnotascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\gestionarnotascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\utils\\timeprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\utils\\timeprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\horarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\horarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\el buenoi buenisimo\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\utils\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\utils\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\asistencia\\marcar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\asistencia\\marcar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionpedidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionpedidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\asistenciacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\gestionempleados\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\views\\horarios\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\horarios\\horarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\sistemawebeficienciaoperativa\\models\\viewmodels\\horarioempleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\models\\viewmodels\\horarioempleados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,189 +62,173 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HorarioService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\HorarioService.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\HorarioService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\HorarioService.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\HorarioService.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAASwK4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:33:58.176Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HorarioEmpleados.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAASwFQAAABaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:33:21.226Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PedidoService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAADgv0AAAAAoAAAAAAAAAA==",
+              "Title": "ReporteInventarioController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteInventarioController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\ReporteInventarioController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\ReporteInventarioController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\ReporteInventarioController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAwwFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:22:05.023Z",
+              "WhenOpened": "2025-05-24T06:04:59.966Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UsuarioDTO.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\UsuarioDTO.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\UsuarioDTO.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\UsuarioDTO.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\UsuarioDTO.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAEwBoAAAAtAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "GestionVentasController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionVentasController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionVentasController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionVentasController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionVentasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:25:44.27Z",
+              "WhenOpened": "2025-05-24T06:04:44.719Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EmpleadoService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\EmpleadoService.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAADgv3AAAAA3AAAAAAAAAA==",
+              "Title": "GestionPedidosController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionPedidosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:25:37.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MarcarAsistenciaViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\MarcarAsistenciaViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:16:42.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TimeProvider.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Utils\\TimeProvider.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Utils\\TimeProvider.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Utils\\TimeProvider.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Utils\\TimeProvider.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:15:28.341Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PasswordHasher.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Utils\\PasswordHasher.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Utils\\PasswordHasher.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Utils\\PasswordHasher.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Utils\\PasswordHasher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:31:20.819Z",
+              "WhenOpened": "2025-05-24T06:04:30.472Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AsistenciaService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\AsistenciaService.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAArwD4AAAAwAAAAAAAAAA==",
+              "Title": "GestionInventarioController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionInventarioController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionInventarioController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionInventarioController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionInventarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T04:09:49Z",
+              "WhenOpened": "2025-05-24T06:04:14.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GestionCartaController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionCartaController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionCartaController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionCartaController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionCartaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T06:03:47.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GestionarNotasController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionarNotasController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionarNotasController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionarNotasController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionarNotasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T06:03:31.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Horarios\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Horarios\\Index.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-23T04:59:11.046Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T12:51:48.166Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AsistenciaController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAANAAAAAAAAAA==",
+              "Title": "HorariosController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
+              "ViewState": "AgIAAPQAAAAAAAAAAADwvwsBAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T12:48:32.964Z",
+              "WhenOpened": "2025-05-23T04:55:33.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionPedidos\\Index.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAA/AAAAAAAAAA==",
+              "Title": "Horarios.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Horarios\\Horarios.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Horarios.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Horarios\\Horarios.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Horarios\\Horarios.cshtml",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAmwJMAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T12:43:25.843Z",
+              "WhenOpened": "2025-05-23T04:55:03.329Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HorarioEmpleados.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\models\\ViewModels\\HorarioEmpleados.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAswDUAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T04:53:58.025Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Marcar.cshtml",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Asistencia\\Marcar.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\GestionEmpleados\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T09:50:39.155Z",
+              "WhenOpened": "2025-05-23T04:52:32.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GestionEmpleadosController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\GestionEmpleadosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T04:47:33.948Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "HorariosController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
-              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\el buenoi buenisimo\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
-              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\HorariosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA2AAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "AsistenciaController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\AsistenciaController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAiwDQAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T08:26:41.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T05:35:01.685Z"
             }
           ]
         }

@@ -6,7 +6,7 @@
 <h2>Pedidos Activos</h2>
 <br />
 <div>
-    @Html.ActionLink("Nuevo Pedido", "NuevoPedido", "GestionPedidos", null, new { @class = "btn btn-dark" })
+    @Html.ActionLink("Nuevo Pedido", "NuevoPedido", "Pedidos", null, new { @class = "btn btn-dark" })
 </div>
 <br />
 @if (!Model.Any())
@@ -31,7 +31,7 @@ else
                     Total: @(m.total?.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("es-PE"))) <br />
                     Usuario: @(m.tbUsuarios?.nombre ?? "N/A") @(m.tbUsuarios?.apellido ?? "")
                 </p>
-                @Html.ActionLink("Ver Detalles", "DetallesPedido", "GestionPedidos", new { id = m.idPedido }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Ver Detalles", "DetallesPedido", "Pedidos", new { id = m.idPedido }, new { @class = "btn btn-primary" })
             </div>
             <div class="card-footer text-muted">
                 Registrado: @(m.fechaPedido?.ToString("g"))
