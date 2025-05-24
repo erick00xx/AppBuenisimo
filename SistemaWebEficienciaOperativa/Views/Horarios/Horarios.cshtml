@@ -133,7 +133,7 @@
                 <td>@(horario.Activo ? "Sí" : "No")</td>
                 <td>
                     @Html.ActionLink("Editar", "EditarHorario", "Horarios", new { idHorario = horario.IdHorario }, new { @class = "btn btn-warning btn-xs" })
-                    @using (Html.BeginForm("EliminarHorario", "Empleados", new { idHorario = horario.IdHorario, idUsuario = Model.IdUsuario }, FormMethod.Post, new { @style = "display:inline;" }))
+                    @using (Html.BeginForm("EliminarHorario", "Horarios", new { idHorario = horario.IdHorario, idUsuario = Model.IdUsuario }, FormMethod.Post, new { @style = "display:inline;" }))
                     {
                         @Html.AntiForgeryToken()
                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('¿Está seguro de que desea eliminar/desactivar este horario?');">Eliminar</button>
