@@ -1,17 +1,45 @@
 ﻿@model List<SistemaWebEficienciaOperativa.Models.tbPedidos>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pedidos Activos";
+    // Para obtener el nombre de la sucursal actual (opcional, pero útil)
+    var sucursalActualNombre = "";
+    if (ViewBag.SucursalesDisponibles != null)
+    {
+        var selectedSucursal = ((SelectList)ViewBag.SucursalesDisponibles).Items
+            .OfType<SistemaWebEficienciaOperativa.Models.tbSucursales>() // Ajusta el tipo si es diferente
+            .FirstOrDefault(s => s.idSucursal == (int)ViewBag.IdSucursalActual);
+        if (selectedSucursal != null)
+        {
+            sucursalActualNombre = selectedSucursal.nombre;
+        }
+    }
 }
 
-<h2>Pedidos Activos</h2>
-<br />
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Pedidos Activos @(string.IsNullOrEmpty(sucursalActualNombre) ? "" : "- Sucursal: " + sucursalActualNombre)</h2>
+    <div>
+        @using (Html.BeginForm("CambiarSucursal", "Pedidos", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group mr-2">
+                <label for="idSucursalSeleccionada" class="mr-2">Seleccionar Sucursal:</label>
+                @Html.DropDownList("idSucursalSeleccionada", (SelectList)ViewBag.SucursalesDisponibles, new { @class = "form-control form-control-sm", onchange = "this.form.submit();" })
+            </div>
+            @* El botón es opcional si onchange submit funciona, pero puede ser un fallback *@
+            @* <button type="submit" class="btn btn-sm btn-info">Cambiar</button> *@
+        }
+    </div>
+</div>
+
+
 <div>
     @Html.ActionLink("Nuevo Pedido", "NuevoPedido", "Pedidos", null, new { @class = "btn btn-dark" })
 </div>
 <br />
+
 @if (!Model.Any())
 {
-    <div class="alert alert-info">No hay pedidos activos en este momento.</div>
+    <div class="alert alert-info">No hay pedidos activos en @(string.IsNullOrEmpty(sucursalActualNombre) ? "esta sucursal" : "la sucursal " + sucursalActualNombre) en este momento.</div>
 }
 else
 {
@@ -19,17 +47,18 @@ else
     {
         <div class="card mb-3">
             <div class="card-header">
-                Mesa: <strong>@m.tbMesas.codMesa</strong> - Estado: <span class="badge bg-danger">@m.tbEstadosPedidos.estado</span>
+                Mesa: <strong>@m.tbMesas.codMesa</strong> - Estado: <span class="badge bg-info text-dark">@m.tbEstadosPedidos.estado</span>
+                @* bg-danger es muy fuerte, considera bg-info o bg-warning *@
             </div>
             <div class="card-body">
                 <h5 class="card-title">Pedido #@m.idPedido</h5>
-                @if (m.idEstadoPedido == 1)
+                @if (m.idEstadoPedido == 1) // Asumiendo que 1 es "Pendiente" o "Nuevo"
                 {
-                    <p class="card-text text-danger font-weight-bold">¡Nuevo Pedido!</p>
+                    <p class="card-text text-warning font-weight-bold">¡Nuevo Pedido!</p>
                 }
                 <p class="card-text">
                     Total: @(m.total?.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("es-PE"))) <br />
-                    Usuario: @(m.tbUsuarios?.nombre ?? "N/A") @(m.tbUsuarios?.apellido ?? "")
+                    Empleado: @(m.tbUsuarios?.nombre ?? "N/A") @(m.tbUsuarios?.apellido ?? "")
                 </p>
                 @Html.ActionLink("Ver Detalles", "DetallesPedido", "Pedidos", new { id = m.idPedido }, new { @class = "btn btn-primary" })
             </div>

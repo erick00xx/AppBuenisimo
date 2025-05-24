@@ -18,25 +18,45 @@ namespace SistemaWebEficienciaOperativa.Controllers
         private readonly PedidoService _pedidoService = new PedidoService();
         private readonly DB_BUENISIMOEntities _dbContext = new DB_BUENISIMOEntities(); // Si necesitas acceso directo
 
-        // Asumimos que obtienes esto de la sesión o autenticación
-        // Por ahora, lo dejamos hardcodeado para pruebas
-        private int ObtenerIdSucursalActual() { return 1; /* TODO: Implementar lógica real */ }
+        private const string SESSION_ID_SUCURSAL = "IdSucursalSeleccionada";
+        private const int DEFAULT_ID_SUCURSAL = 1; // Sucursal por defecto si ninguna está seleccionada
+
+        private int ObtenerIdSucursalActual()
+        {
+            if (Session[SESSION_ID_SUCURSAL] != null && int.TryParse(Session[SESSION_ID_SUCURSAL].ToString(), out int idSucursal))
+            {
+                return idSucursal;
+            }
+            // Si no hay nada en sesión, o no es un int válido, establece y devuelve la por defecto
+            Session[SESSION_ID_SUCURSAL] = DEFAULT_ID_SUCURSAL;
+            return DEFAULT_ID_SUCURSAL;
+        }
+        private void EstablecerIdSucursalActual(int idSucursal)
+        {
+            Session[SESSION_ID_SUCURSAL] = idSucursal;
+        }
+
         private int ObtenerIdUsuarioActual()
         {
-            Debug.WriteLine(Session["idUsuario"]);
-            if (Session["idUsuario"] != null)
+            // Tu lógica actual para obtener el usuario
+            if (Session["idUsuario"] != null && int.TryParse(Session["idUsuario"].ToString(), out int idUsuario))
             {
-                Debug.WriteLine(Session["idUsuario"]);
-                return (int)Session["idUsuario"]; // No hay sesión o el idUsuario no está en la sesión
+                return idUsuario;
             }
-            return 1;
+            return 1; // Usuario por defecto para pruebas
         }
 
         // GET: Pedidos (Vista de Pedidos Activos)
         public ActionResult Index()
         {
-            int idSucursal = ObtenerIdSucursalActual();
-            var pedidosActivos = _pedidoService.ListarPedidosActivos(idSucursal);
+            int idSucursalActual = ObtenerIdSucursalActual();
+            var pedidosActivos = _pedidoService.ListarPedidosActivos(idSucursalActual);
+
+            // Obtener todas las sucursales para el dropdown
+            var todasLasSucursales = _pedidoService.ListarTodasLasSucursales();
+            ViewBag.SucursalesDisponibles = new SelectList(todasLasSucursales, "idSucursal", "nombre", idSucursalActual);
+            ViewBag.IdSucursalActual = idSucursalActual; // Para mostrar el nombre de la sucursal actual si se desea
+
             return View(pedidosActivos);
         }
 
@@ -208,6 +228,13 @@ namespace SistemaWebEficienciaOperativa.Controllers
                 })
                 .ToList();
             return Json(agregados, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult CambiarSucursal(int idSucursalSeleccionada)
+        {
+            EstablecerIdSucursalActual(idSucursalSeleccionada);
+            return RedirectToAction("Index"); // Redirige al Index, que ahora usará la nueva sucursal de la sesión
         }
     }
 }

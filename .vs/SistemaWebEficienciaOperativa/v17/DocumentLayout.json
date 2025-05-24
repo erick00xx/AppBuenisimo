@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\views\\pedidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\views\\pedidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|c:\\users\\usuario\\source\\repos\\donde toy trabajando hoy jueves por la noche\\sistemawebeficienciaoperativa\\sistemawebeficienciaoperativa\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa.csproj|solutionrelative:sistemawebeficienciaoperativa\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,11 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Pedidos\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Pedidos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Pedidos\\Index.cshtml",
+              "RelativeToolTip": "SistemaWebEficienciaOperativa\\Views\\Pedidos\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-24T09:35:55.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "DB.edmx [Diagram1]",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\DB.edmx",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\DB.edmx",
@@ -49,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DetallesPedido.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Pedidos\\DetallesPedido.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Pedidos\\DetallesPedido.cshtml",
@@ -61,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "NuevoPedido.cshtml",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Views\\Pedidos\\NuevoPedido.cshtml",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Views\\Pedidos\\NuevoPedido.cshtml",
@@ -73,19 +90,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "PedidoService.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
               "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Services\\PedidoService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAiwCEAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T07:31:51.675Z"
+              "WhenOpened": "2025-05-24T07:31:51.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DetallePedidoViewModel.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\models\\ViewModels\\DetallePedidoViewModel.cs",
@@ -97,13 +115,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "PedidosController.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\PedidosController.cs",
               "RelativeDocumentMoniker": "SistemaWebEficienciaOperativa\\Controllers\\PedidosController.cs",
               "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\donde toy trabajando hoy jueves por la noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\Controllers\\PedidosController.cs",
               "RelativeToolTip": "SistemaWebEficienciaOperativa\\Controllers\\PedidosController.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAUwM4AAABKAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAkwD0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T06:04:30.472Z",
               "EditorCaption": ""

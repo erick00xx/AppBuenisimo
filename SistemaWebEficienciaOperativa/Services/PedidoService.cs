@@ -14,6 +14,21 @@ namespace SistemaWebEficienciaOperativa.Services
     {
         private readonly List<int> ESTADOS_PEDIDO_ACTIVO = new List<int> { 1, 2, 3, 4 };
 
+        public List<tbSucursales> ListarTodasLasSucursales()
+        {
+            using (var _dbContext = new DB_BUENISIMOEntities())
+            {
+                try
+                {
+                    return _dbContext.tbSucursales.OrderBy(s => s.nombre).ToList();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Trace.WriteLine("Error en ListarTodasLasSucursales: " + ex.ToString());
+                    return new List<tbSucursales>();
+                }
+            }
+        }
         public List<tbPedidos> ListarPedidosActivos(int idSucursal)
         {
             using (var _dbContext = new DB_BUENISIMOEntities())
