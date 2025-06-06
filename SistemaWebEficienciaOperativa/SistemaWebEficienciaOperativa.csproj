@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AsistenciaController.cs" />
     <Compile Include="Controllers\AutenticacionController.cs" />
+    <Compile Include="Controllers\ChatBotController.cs" />
     <Compile Include="Controllers\NotasController.cs" />
     <Compile Include="Controllers\CartaController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
@@ -303,6 +304,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\appbuenisimo - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\appbuenisimo - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\lab01ecb - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\lab01ecb - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -392,6 +395,7 @@
     <Content Include="Views\Ventas\AgregarEditar.cshtml" />
     <Content Include="Views\Ventas\Ver.cshtml" />
     <Content Include="Views\Abastecimiento\RegistrarComprasExcel.cshtml" />
+    <Content Include="Views\ChatBot\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

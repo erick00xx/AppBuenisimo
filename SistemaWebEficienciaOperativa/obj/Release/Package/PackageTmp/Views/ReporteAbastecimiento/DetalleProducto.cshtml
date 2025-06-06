@@ -1,135 +1,46 @@
-﻿@model SistemaWebEficienciaOperativa.Models.ViewModels.DetalleProductoModel
+﻿@if (Model.Tipo == "compra")
+{
+    var compra = Model.Producto as SistemaWebEficienciaOperativa.Models.ViewModels.CompraDTO;
+    var diasTranscurridos = (DateTime.Now - compra.FechaCompra).Days;
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    <div class="card shadow-sm border-0 mb-4 animate__animated animate__fadeIn">
+        <div class="card-header bg-success text-white text-center">
+            <h4 class="mb-0">
+                <i class="bi bi-cart-check-fill me-2"></i>Reporte Detallado de Abastecimiento
+            </h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-borderless table-sm">
+                <tr>
+                    <th>ID:</th>
+                    <td>@compra.IdIngresoInsumo</td>
+                </tr>
+                <tr>
+                    <th>Fecha de Compra:</th>
+                    <td>@compra.FechaCompra.ToLongDateString() (<strong>@diasTranscurridos días atrás</strong>)</td>
+                </tr>
+                <tr>
+                    <th>Insumo:</th>
+                    <td>@compra.NombreInsumo</td>
+                </tr>
+                <tr>
+                    <th>Cantidad:</th>
+                    <td>@compra.Cantidad @compra.Unidad</td>
+                </tr>
+                <tr>
+                    <th>Proveedor:</th>
+                    <td>@compra.Proveedor</td>
+                </tr>
+            </table>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css " rel="stylesheet">
-
-<div class="container-fluid mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            @if (Model.Tipo == "compra")
-            {
-                var compra = Model.Producto as SistemaWebEficienciaOperativa.Models.ViewModels.CompraDTO;
-
-                <div class="card shadow-sm border-0 mb-4 animate__animated animate__fadeIn">
-                    <div class="card-header bg-success text-white text-center">
-                        <h4 class="mb-0"><i class="bi bi-cart-check-fill me-2"></i>Detalles de Compra</h4>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-borderless table-sm">
-                            <tr>
-                                <th style="width: 30%">ID:</th>
-                                <td>@compra.IdIngresoInsumo</td>
-                            </tr>
-                            <tr>
-                                <th>Fecha:</th>
-                                <td>@compra.FechaCompra.ToShortDateString()</td>
-                            </tr>
-                            <tr>
-                                <th>Insumo:</th>
-                                <td>@compra.NombreInsumo</td>
-                            </tr>
-                            <tr>
-                                <th>Cantidad:</th>
-                                <td>@compra.Cantidad @compra.Unidad</td>
-                            </tr>
-                            <tr>
-                                <th>Proveedor:</th>
-                                <td>@compra.Proveedor</td>
-                            </tr>
-                            <tr>
-                                <th>Total:</th>
-                                <td><strong>S/. @compra.Total.ToString("N2")</strong></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="card-footer text-end">
-                        <a href="@Url.Action("Index", "ReporteAbastecimiento")" class="btn btn-outline-secondary btn-sm">
-                            <i class="bi bi-arrow-left-circle me-1"></i>Volver al Reporte
-                        </a>
-                    </div>
-                </div>
-            }
-            else if (Model.Tipo == "desecho")
-            {
-                var desecho = Model.Producto as SistemaWebEficienciaOperativa.Models.ViewModels.DesechoDTO;
-
-                <div class="card shadow-sm border-0 mb-4 animate__animated animate__fadeIn">
-                    <div class="card-header bg-danger text-white text-center">
-                        <h4 class="mb-0"><i class="bi bi-trash-fill me-2"></i>Detalles de Desecho</h4>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-borderless table-sm">
-                            <tr>
-                                <th style="width: 30%">ID:</th>
-                                <td>@desecho.IdDesechoInsumo</td>
-                            </tr>
-                            <tr>
-                                <th>Fecha:</th>
-                                <td>@desecho.FechaDesecho.ToShortDateString()</td>
-                            </tr>
-                            <tr>
-                                <th>Insumo:</th>
-                                <td>@desecho.NombreInsumo</td>
-                            </tr>
-                            <tr>
-                                <th>Cantidad:</th>
-                                <td>@desecho.Cantidad @desecho.Unidad</td>
-                            </tr>
-                            <tr>
-                                <th>Motivo:</th>
-                                <td>@desecho.Motivo</td>
-                            </tr>
-                            <tr>
-                                <th>Observaciones:</th>
-                                <td>@desecho.Observaciones</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="card-footer text-end">
-                        <a href="@Url.Action("Index", "ReporteAbastecimiento")" class="btn btn-outline-secondary btn-sm">
-                            <i class="bi bi-arrow-left-circle me-1"></i>Volver al Reporte
-                        </a>
-                    </div>
-                </div>
-            }
+            <div class="alert alert-info mt-3" role="alert">
+                Esta compra se realizó hace <strong>@diasTranscurridos días</strong>. Se recomienda verificar la vigencia del lote y el inventario físico correspondiente.
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="@Url.Action("Index", "ReporteAbastecimiento")" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left-circle me-1"></i>Volver al Reporte
+            </a>
         </div>
     </div>
-</div>
-
-
-<style>
-    .card-header i {
-        font-size: 1.2rem;
-    }
-
-    .card-body table th {
-        vertical-align: top;
-        width: 30%;
-    }
-
-    .table-borderless th,
-    .table-borderless td {
-        border-top: none !important;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-
-    .card {
-        border-radius: 0.5rem;
-    }
-
-    .shadow-sm {
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-    }
-
-    .text-muted {
-        color: #6c757d !important;
-    }
-
-    body {
-        background-color: #f8f9fa;
-    }
-</style>
+}

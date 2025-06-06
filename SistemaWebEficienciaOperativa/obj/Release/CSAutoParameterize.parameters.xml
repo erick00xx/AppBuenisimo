@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="DB_BUENISIMOEntities-Web.config Connection String" description="DB_BUENISIMOEntities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Models.DB.csdl|res://*/Models.DB.ssdl|res://*/Models.DB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=161.132.47.155;initial catalog=DB_BUENISIMO;persist security info=True;user id=sa;password=Upt2024Upt2024;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\USUARIO\\source\\repos\\donde\ toy\ trabajando\ hoy\ jueves\ por\ la\ noche\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DB_BUENISIMOEntities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\USUARIO\\source\\repos\\diseñando\ mobile\\SistemaWebEficienciaOperativa\\SistemaWebEficienciaOperativa\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DB_BUENISIMOEntities']/@connectionString" />
   </parameter>
 </parameters>
