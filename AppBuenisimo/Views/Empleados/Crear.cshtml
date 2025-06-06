@@ -1,0 +1,63 @@
+﻿@model AppBuenisimo.Models.tbUsuarios
+@*@model AppBuenisimo.Models.UsuarioDTO*@
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h2>Crear</h2>
+
+@using (Html.BeginForm("Crear", "Empleados", FormMethod.Post))
+{
+    <span class="text text-warning">@ViewBag.Message</span>
+    <div class="mb-3">
+        <label for="Nombre" class="form-label">Nombre</label>
+        @Html.TextBoxFor(model => model.nombre, new { @class = "form-control", placeholder = "Ingrese el nombre" })
+    </div>
+
+    <div class="mb-3">
+        <label for="Apellido" class="form-label">Apellido</label>
+        @Html.TextBoxFor(model => model.apellido, new { @class = "form-control", placeholder = "Ingrese el apellido" })
+    </div>
+
+    <div class="mb-3">
+        <label for="Dni" class="form-label">DNI</label>
+        @Html.TextBoxFor(model => model.dni, new { @class = "form-control", placeholder = "Ingrese el DNI" })
+    </div>
+
+    <div class="mb-3">
+        <label for="CorreoElectronico" class="form-label">Correo Electrónico</label>
+        @Html.TextBoxFor(model => model.correoElectronico, new { @class = "form-control", type = "email", placeholder = "Ingrese el correo electrónico" })
+    </div>
+
+    <div class="mb-3">
+        <label for="Contrasena" class="form-label">Contraseña</label>
+        <div class="input-group">
+            @Html.PasswordFor(model => model.contrasena, new { @class = "form-control", placeholder = "Cree una contraseña" })
+            <button class="btn btn-outline-secondary" type="button" id="showNewPasswordBtn">
+                <i class="bi bi-eye"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Activo" class="form-label">Estado</label>
+        @Html.DropDownListFor(model => model.activo, new List<SelectListItem> {
+            new SelectListItem { Text = "Activo", Value = "true", Selected = true },
+            new SelectListItem { Text = "Inactivo", Value = "false" }
+        }, new { @class = "form-select" })
+    </div>
+
+    <div class="mb-3">
+        <label for="IdRol" class="form-label">Rol</label>
+        @Html.DropDownListFor(model => model.idRol, new List<SelectListItem> {
+            new SelectListItem { Text = "Administrador", Value = "1" },
+            new SelectListItem { Text = "Encargado", Value = "2" },
+            new SelectListItem { Text = "Empleado", Value = "3", Selected = true }
+        }, new { @class = "form-select" })
+    </div>
+
+    <div class="modal-footer">
+        <a href="@Url.Action("Index", "Empleados")" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+}

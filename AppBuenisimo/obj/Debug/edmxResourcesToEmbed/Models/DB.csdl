@@ -1,0 +1,808 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_BUENISIMOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbAgregados">
+    <Key>
+      <PropertyRef Name="idAgregado" />
+    </Key>
+    <Property Name="idAgregado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="precio" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+    <NavigationProperty Name="tbDetallePedido" Relationship="Self.FK__tbDetalle__idAgr__07C12930" FromRole="tbAgregados" ToRole="tbDetallePedido" />
+    <NavigationProperty Name="tbDetallePedido1" Relationship="Self.FK__tbDetalle__idAgr__08B54D69" FromRole="tbAgregados" ToRole="tbDetallePedido" />
+    <NavigationProperty Name="tbDetallePedido2" Relationship="Self.FK__tbDetalle__idAgr__09A971A2" FromRole="tbAgregados" ToRole="tbDetallePedido" />
+  </EntityType>
+  <EntityType Name="tbAsistencias">
+    <Key>
+      <PropertyRef Name="idAsistencia" />
+    </Key>
+    <Property Name="idAsistencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <Property Name="idSucursal" Type="Int32" Nullable="false" />
+    <Property Name="idObservacionAsistencia" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="horaEntrada" Type="DateTime" Precision="3" />
+    <Property Name="horaSalida" Type="DateTime" Precision="3" />
+    <Property Name="minutosTardanza" Type="Int32" />
+    <Property Name="idHorarioAplicado" Type="Int32" />
+    <Property Name="comentariosAdicionales" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbHorarios" Relationship="Self.FK_tbAsistencias_tbHorarios_idHorarioAplicado" FromRole="tbAsistencias" ToRole="tbHorarios" />
+    <NavigationProperty Name="tbObservacionesAsistencias" Relationship="Self.FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia" FromRole="tbAsistencias" ToRole="tbObservacionesAsistencias" />
+    <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbAsistencias_tbSucursales_idSucursal" FromRole="tbAsistencias" ToRole="tbSucursales" />
+    <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbAsistencias_tbUsuarios_idUsuario" FromRole="tbAsistencias" ToRole="tbUsuarios" />
+  </EntityType>
+  <EntityType Name="tbCategorias">
+    <Key>
+      <PropertyRef Name="idCategoria" />
+    </Key>
+    <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idTipoProducto" Type="Int32" />
+    <NavigationProperty Name="tbTiposProductos" Relationship="Self.FK_tbCategorias_tbTiposProductos_idTipoProducto" FromRole="tbCategorias" ToRole="tbTiposProductos" />
+    <NavigationProperty Name="tbProductos" Relationship="Self.FK_tbProductos_tbCategorias_idCategoria" FromRole="tbCategorias" ToRole="tbProductos" />
+  </EntityType>
+  <EntityType Name="tbDesechosInsumos">
+    <Key>
+      <PropertyRef Name="idDesechoInsumo" />
+    </Key>
+    <Property Name="idDesechoInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSucursal" Type="Int32" />
+    <Property Name="idInsumo" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idUnidad" Type="Int32" Nullable="false" />
+    <Property Name="fechaDesecho" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idIngresoInsumo" Type="Int32" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="Self.FK_tbDesechosInsumos_tbIngresosInsumos_idIngresoInsumo" FromRole="tbDesechosInsumos" ToRole="tbIngresosInsumos" />
+    <NavigationProperty Name="tbInsumos" Relationship="Self.FK_tbDesechosInsumos_tbInsumos_idInsumo" FromRole="tbDesechosInsumos" ToRole="tbInsumos" />
+    <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbDesechosInsumos_tbSucursales_idSucursal" FromRole="tbDesechosInsumos" ToRole="tbSucursales" />
+    <NavigationProperty Name="tbUnidades" Relationship="Self.FK_tbDesechosInsumos_tbUnidades_idUnidad" FromRole="tbDesechosInsumos" ToRole="tbUnidades" />
+  </EntityType>
+  <EntityType Name="tbDetallePedido">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPedido" Type="Int32" />
+    <Property Name="idPrecio" Type="Int32" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="subtotal" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="idAgregado1" Type="Int32" />
+    <Property Name="idAgregado2" Type="Int32" />
+    <Property Name="idAgregado3" Type="Int32" />
+    <Property Name="tipoLeche" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="tipoAzucar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cantidadHielo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbAgregados" Relationship="Self.FK__tbDetalle__idAgr__07C12930" FromRole="tbDetallePedido" ToRole="tbAgregados" />
+    <NavigationProperty Name="tbAgregados1" Relationship="Self.FK__tbDetalle__idAgr__08B54D69" FromRole="tbDetallePedido" ToRole="tbAgregados" />
+    <NavigationProperty Name="tbAgregados2" Relationship="Self.FK__tbDetalle__idAgr__09A971A2" FromRole="tbDetallePedido" ToRole="tbAgregados" />
+    <NavigationProperty Name="tbPedidos" Relationship="Self.FK_tbDetallePedido_tbPedidos_idPedido" FromRole="tbDetallePedido" ToRole="tbPedidos" />
+    <NavigationProperty Name="tbPrecios" Relationship="Self.FK_tbDetallePedido_tbPrecios_idPrecio" FromRole="tbDetallePedido" ToRole="tbPrecios" />
+  </EntityType>
+  <EntityType Name="tbEstadosPedidos">
+    <Key>
+      <PropertyRef Name="idEstadoPedido" />
+    </Key>
+    <Property Name="idEstadoPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbPedidos" Relationship="Self.FK_tbPedidos_tbEstadosPedidos_idEstadoPedido" FromRole="tbEstadosPedidos" ToRole="tbPedidos" />
+  </EntityType>
+  <EntityType Name="tbHorarios">
+    <Key>
+      <PropertyRef Name="idHorario" />
+    </Key>
+    <Property Name="idHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <Property Name="diaSemana" Type="Byte" Nullable="false" />
+    <Property Name="horaEntrada" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="horaSalida" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="pagoPorHora" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="fechaInicioVigencia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaFinVigencia" Type="DateTime" Precision="0" />
+    <Property Name="activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbAsistencias" Relationship="Self.FK_tbAsistencias_tbHorarios_idHorarioAplicado" FromRole="tbHorarios" ToRole="tbAsistencias" />
+    <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbHorarios_tbUsuarios_idUsuario" FromRole="tbHorarios" ToRole="tbUsuarios" />
+  </EntityType>
+  <EntityType Name="tbIngresosInsumos">
+    <Key>
+      <PropertyRef Name="idIngresoInsumo" />
+    </Key>
+    <Property Name="idIngresoInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSucursal" Type="Int32" />
+    <Property Name="idInsumo" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idUnidad" Type="Int32" Nullable="false" />
+    <Property Name="fechaCompra" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="idProveedor" Type="Int32" />
+    <Property Name="lote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="Self.FK_tbDesechosInsumos_tbIngresosInsumos_idIngresoInsumo" FromRole="tbIngresosInsumos" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbInsumos" Relationship="Self.FK_tbIngresosInsumos_tbInsumos_idInsumo" FromRole="tbIngresosInsumos" ToRole="tbInsumos" />
+    <NavigationProperty Name="tbProveedores" Relationship="Self.FK_tbIngresosInsumos_tbProveedores_idProveedor" FromRole="tbIngresosInsumos" ToRole="tbProveedores" />
+    <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbIngresosInsumos_tbSucursales_idSucursal" FromRole="tbIngresosInsumos" ToRole="tbSucursales" />
+    <NavigationProperty Name="tbUnidades" Relationship="Self.FK_tbIngresosInsumos_tbUnidades_idUnidad" FromRole="tbIngresosInsumos" ToRole="tbUnidades" />
+  </EntityType>
+  <EntityType Name="tbInsumos">
+    <Key>
+      <PropertyRef Name="idInsumo" />
+    </Key>
+    <Property Name="idInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idUnidad" Type="Int32" Nullable="false" />
+    <Property Name="tipoInsumo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="Self.FK_tbDesechosInsumos_tbInsumos_idInsumo" FromRole="tbInsumos" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="Self.FK_tbIngresosInsumos_tbInsumos_idInsumo" FromRole="tbInsumos" ToRole="tbIngresosInsumos" />
+    <NavigationProperty Name="tbUnidades" Relationship="Self.FK_tbInsumos_tbUnidades_idUnidad" FromRole="tbInsumos" ToRole="tbUnidades" />
+  </EntityType>
+  <EntityType Name="tbMedidas">
+    <Key>
+      <PropertyRef Name="idMedida" />
+    </Key>
+    <Property Name="idMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTipoMedida" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbTiposMedidas" Relationship="Self.FK_tbMedidas_tbTiposMedidas_idTipoMedida" FromRole="tbMedidas" ToRole="tbTiposMedidas" />
+    <NavigationProperty Name="tbPrecios" Relationship="Self.FK_tbPrecios_tbMedidas_IdMedida" FromRole="tbMedidas" ToRole="tbPrecios" />
+  </EntityType>
+  <EntityType Name="tbMesas">
+    <Key>
+      <PropertyRef Name="codMesa" />
+    </Key>
+    <Property Name="codMesa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idSucursal" Type="Int32" />
+    <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbMesas_tbSucursales_idSucursal" FromRole="tbMesas" ToRole="tbSucursales" />
+    <NavigationProperty Name="tbPedidos" Relationship="Self.FK_tbPedidos_tbMesas_codMesa" FromRole="tbMesas" ToRole="tbPedidos" />
+  </EntityType>
+  <EntityType Name="tbObservacionesAsistencias">
+    <Key>
+      <PropertyRef Name="idObservacionAsistencia" />
+    </Key>
+    <Property Name="idObservacionAsistencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbAsistencias" Relationship="Self.FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia" FromRole="tbObservacionesAsistencias" ToRole="tbAsistencias" />
+  </EntityType>
+  <EntityType Name="tbPedidos">
+    <Key>
+      <PropertyRef Name="idPedido" />
+    </Key>
+    <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codMesa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="fechaPedido" Type="DateTime" Precision="3" />
+    <Property Name="idUsuario" Type="Int32" />
+    <Property Name="total" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="idEstadoPedido" Type="Int32" />
+    <Property Name="idSucursal" Type="Int32" />
+    <NavigationProperty Name="tbDetallePedido" Relationship="Self.FK_tbDetallePedido_tbPedidos_idPedido" FromRole="tbPedidos" ToRole="tbDetallePedido" />
+    <NavigationProperty Name="tbEstadosPedidos" Relationship="Self.FK_tbPedidos_tbEstadosPedidos_idEstadoPedido" FromRole="tbPedidos" ToRole="tbEstadosPedidos" />
+    <NavigationProperty Name="tbMesas" Relationship="Self.FK_tbPedidos_tbMesas_codMesa" FromRole="tbPedidos" ToRole="tbMesas" />
+    <NavigationProperty Name="tbSucursales" Relationship="Self.FK__tbPedidos__idSuc__0A9D95DB" FromRole="tbPedidos" ToRole="tbSucursales" />
+    <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbPedidos_tbUsuarios_idUsuario" FromRole="tbPedidos" ToRole="tbUsuarios" />
+  </EntityType>
+  <EntityType Name="tbPrecios">
+    <Key>
+      <PropertyRef Name="IdPrecio" />
+    </Key>
+    <Property Name="IdPrecio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+    <NavigationProperty Name="tbDetallePedido" Relationship="Self.FK_tbDetallePedido_tbPrecios_idPrecio" FromRole="tbPrecios" ToRole="tbDetallePedido" />
+    <NavigationProperty Name="tbMedidas" Relationship="Self.FK_tbPrecios_tbMedidas_IdMedida" FromRole="tbPrecios" ToRole="tbMedidas" />
+    <NavigationProperty Name="tbProductos" Relationship="Self.FK_tbPrecios_tbProductos_IdProducto" FromRole="tbPrecios" ToRole="tbProductos" />
+  </EntityType>
+  <EntityType Name="tbProductos">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idCategoria" Type="Int32" />
+    <Property Name="idTipoMedida" Type="Int32" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbCategorias" Relationship="Self.FK_tbProductos_tbCategorias_idCategoria" FromRole="tbProductos" ToRole="tbCategorias" />
+    <NavigationProperty Name="tbPrecios" Relationship="Self.FK_tbPrecios_tbProductos_IdProducto" FromRole="tbProductos" ToRole="tbPrecios" />
+    <NavigationProperty Name="tbTiposMedidas" Relationship="Self.FK_tbProductos_tbTiposMedidas_idTipoMedida" FromRole="tbProductos" ToRole="tbTiposMedidas" />
+  </EntityType>
+  <EntityType Name="tbProveedores">
+    <Key>
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="idProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEmpresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="Self.FK_tbIngresosInsumos_tbProveedores_idProveedor" FromRole="tbProveedores" ToRole="tbIngresosInsumos" />
+  </EntityType>
+  <EntityType Name="tbRoles">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreRol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbUsuarios_tbRoles_idRol" FromRole="tbRoles" ToRole="tbUsuarios" />
+  </EntityType>
+  <EntityType Name="tbSucursales">
+    <Key>
+      <PropertyRef Name="idSucursal" />
+    </Key>
+    <Property Name="idSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbAsistencias" Relationship="Self.FK_tbAsistencias_tbSucursales_idSucursal" FromRole="tbSucursales" ToRole="tbAsistencias" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="Self.FK_tbDesechosInsumos_tbSucursales_idSucursal" FromRole="tbSucursales" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="Self.FK_tbIngresosInsumos_tbSucursales_idSucursal" FromRole="tbSucursales" ToRole="tbIngresosInsumos" />
+    <NavigationProperty Name="tbMesas" Relationship="Self.FK_tbMesas_tbSucursales_idSucursal" FromRole="tbSucursales" ToRole="tbMesas" />
+    <NavigationProperty Name="tbPedidos" Relationship="Self.FK__tbPedidos__idSuc__0A9D95DB" FromRole="tbSucursales" ToRole="tbPedidos" />
+  </EntityType>
+  <EntityType Name="tbTiposMedidas">
+    <Key>
+      <PropertyRef Name="idTipoMedida" />
+    </Key>
+    <Property Name="idTipoMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbMedidas" Relationship="Self.FK_tbMedidas_tbTiposMedidas_idTipoMedida" FromRole="tbTiposMedidas" ToRole="tbMedidas" />
+    <NavigationProperty Name="tbProductos" Relationship="Self.FK_tbProductos_tbTiposMedidas_idTipoMedida" FromRole="tbTiposMedidas" ToRole="tbProductos" />
+  </EntityType>
+  <EntityType Name="tbTiposProductos">
+    <Key>
+      <PropertyRef Name="idTipoProducto" />
+    </Key>
+    <Property Name="idTipoProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbCategorias" Relationship="Self.FK_tbCategorias_tbTiposProductos_idTipoProducto" FromRole="tbTiposProductos" ToRole="tbCategorias" />
+  </EntityType>
+  <EntityType Name="tbUnidades">
+    <Key>
+      <PropertyRef Name="idUnidad" />
+    </Key>
+    <Property Name="idUnidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="abreviatura" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbDesechosInsumos" Relationship="Self.FK_tbDesechosInsumos_tbUnidades_idUnidad" FromRole="tbUnidades" ToRole="tbDesechosInsumos" />
+    <NavigationProperty Name="tbIngresosInsumos" Relationship="Self.FK_tbIngresosInsumos_tbUnidades_idUnidad" FromRole="tbUnidades" ToRole="tbIngresosInsumos" />
+    <NavigationProperty Name="tbInsumos" Relationship="Self.FK_tbInsumos_tbUnidades_idUnidad" FromRole="tbUnidades" ToRole="tbInsumos" />
+  </EntityType>
+  <EntityType Name="tbUsuarios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="correoElectronico" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="activo" Type="Boolean" />
+    <Property Name="dni" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbAsistencias" Relationship="Self.FK_tbAsistencias_tbUsuarios_idUsuario" FromRole="tbUsuarios" ToRole="tbAsistencias" />
+    <NavigationProperty Name="tbHorarios" Relationship="Self.FK_tbHorarios_tbUsuarios_idUsuario" FromRole="tbUsuarios" ToRole="tbHorarios" />
+    <NavigationProperty Name="tbPedidos" Relationship="Self.FK_tbPedidos_tbUsuarios_idUsuario" FromRole="tbUsuarios" ToRole="tbPedidos" />
+    <NavigationProperty Name="tbRoles" Relationship="Self.FK_tbUsuarios_tbRoles_idRol" FromRole="tbUsuarios" ToRole="tbRoles" />
+  </EntityType>
+  <Association Name="FK__tbDetalle__idAgr__07C12930">
+    <End Role="tbAgregados" Type="Self.tbAgregados" Multiplicity="0..1" />
+    <End Role="tbDetallePedido" Type="Self.tbDetallePedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAgregados">
+        <PropertyRef Name="idAgregado" />
+      </Principal>
+      <Dependent Role="tbDetallePedido">
+        <PropertyRef Name="idAgregado1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDetalle__idAgr__08B54D69">
+    <End Role="tbAgregados" Type="Self.tbAgregados" Multiplicity="0..1" />
+    <End Role="tbDetallePedido" Type="Self.tbDetallePedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAgregados">
+        <PropertyRef Name="idAgregado" />
+      </Principal>
+      <Dependent Role="tbDetallePedido">
+        <PropertyRef Name="idAgregado2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDetalle__idAgr__09A971A2">
+    <End Role="tbAgregados" Type="Self.tbAgregados" Multiplicity="0..1" />
+    <End Role="tbDetallePedido" Type="Self.tbDetallePedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAgregados">
+        <PropertyRef Name="idAgregado" />
+      </Principal>
+      <Dependent Role="tbDetallePedido">
+        <PropertyRef Name="idAgregado3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbAsistencias_tbHorarios_idHorarioAplicado">
+    <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="0..1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbHorarios">
+        <PropertyRef Name="idHorario" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idHorarioAplicado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia">
+    <End Role="tbObservacionesAsistencias" Type="Self.tbObservacionesAsistencias" Multiplicity="1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbObservacionesAsistencias">
+        <PropertyRef Name="idObservacionAsistencia" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idObservacionAsistencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbAsistencias_tbSucursales_idSucursal">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbAsistencias_tbUsuarios_idUsuario">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbAsistencias" Type="Self.tbAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tbAsistencias">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbCategorias_tbTiposProductos_idTipoProducto">
+    <End Role="tbTiposProductos" Type="Self.tbTiposProductos" Multiplicity="0..1" />
+    <End Role="tbCategorias" Type="Self.tbCategorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTiposProductos">
+        <PropertyRef Name="idTipoProducto" />
+      </Principal>
+      <Dependent Role="tbCategorias">
+        <PropertyRef Name="idTipoProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbProductos_tbCategorias_idCategoria">
+    <End Role="tbCategorias" Type="Self.tbCategorias" Multiplicity="0..1" />
+    <End Role="tbProductos" Type="Self.tbProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCategorias">
+        <PropertyRef Name="idCategoria" />
+      </Principal>
+      <Dependent Role="tbProductos">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbDesechosInsumos_tbIngresosInsumos_idIngresoInsumo">
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="0..1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbIngresosInsumos">
+        <PropertyRef Name="idIngresoInsumo" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idIngresoInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbDesechosInsumos_tbInsumos_idInsumo">
+    <End Role="tbInsumos" Type="Self.tbInsumos" Multiplicity="1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbDesechosInsumos_tbSucursales_idSucursal">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="0..1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbDesechosInsumos_tbUnidades_idUnidad">
+    <End Role="tbUnidades" Type="Self.tbUnidades" Multiplicity="1" />
+    <End Role="tbDesechosInsumos" Type="Self.tbDesechosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbDesechosInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbDetallePedido_tbPedidos_idPedido">
+    <End Role="tbPedidos" Type="Self.tbPedidos" Multiplicity="0..1" />
+    <End Role="tbDetallePedido" Type="Self.tbDetallePedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPedidos">
+        <PropertyRef Name="idPedido" />
+      </Principal>
+      <Dependent Role="tbDetallePedido">
+        <PropertyRef Name="idPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbDetallePedido_tbPrecios_idPrecio">
+    <End Role="tbPrecios" Type="Self.tbPrecios" Multiplicity="0..1" />
+    <End Role="tbDetallePedido" Type="Self.tbDetallePedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPrecios">
+        <PropertyRef Name="IdPrecio" />
+      </Principal>
+      <Dependent Role="tbDetallePedido">
+        <PropertyRef Name="idPrecio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbPedidos_tbEstadosPedidos_idEstadoPedido">
+    <End Role="tbEstadosPedidos" Type="Self.tbEstadosPedidos" Multiplicity="0..1" />
+    <End Role="tbPedidos" Type="Self.tbPedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEstadosPedidos">
+        <PropertyRef Name="idEstadoPedido" />
+      </Principal>
+      <Dependent Role="tbPedidos">
+        <PropertyRef Name="idEstadoPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbHorarios_tbUsuarios_idUsuario">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbHorarios" Type="Self.tbHorarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tbHorarios">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbIngresosInsumos_tbInsumos_idInsumo">
+    <End Role="tbInsumos" Type="Self.tbInsumos" Multiplicity="1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbIngresosInsumos_tbProveedores_idProveedor">
+    <End Role="tbProveedores" Type="Self.tbProveedores" Multiplicity="0..1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProveedores">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbIngresosInsumos_tbSucursales_idSucursal">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="0..1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbIngresosInsumos_tbUnidades_idUnidad">
+    <End Role="tbUnidades" Type="Self.tbUnidades" Multiplicity="1" />
+    <End Role="tbIngresosInsumos" Type="Self.tbIngresosInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbIngresosInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbInsumos_tbUnidades_idUnidad">
+    <End Role="tbUnidades" Type="Self.tbUnidades" Multiplicity="1" />
+    <End Role="tbInsumos" Type="Self.tbInsumos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUnidades">
+        <PropertyRef Name="idUnidad" />
+      </Principal>
+      <Dependent Role="tbInsumos">
+        <PropertyRef Name="idUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbMedidas_tbTiposMedidas_idTipoMedida">
+    <End Role="tbTiposMedidas" Type="Self.tbTiposMedidas" Multiplicity="0..1" />
+    <End Role="tbMedidas" Type="Self.tbMedidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTiposMedidas">
+        <PropertyRef Name="idTipoMedida" />
+      </Principal>
+      <Dependent Role="tbMedidas">
+        <PropertyRef Name="idTipoMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbPrecios_tbMedidas_IdMedida">
+    <End Role="tbMedidas" Type="Self.tbMedidas" Multiplicity="0..1" />
+    <End Role="tbPrecios" Type="Self.tbPrecios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbMedidas">
+        <PropertyRef Name="idMedida" />
+      </Principal>
+      <Dependent Role="tbPrecios">
+        <PropertyRef Name="IdMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbMesas_tbSucursales_idSucursal">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="0..1" />
+    <End Role="tbMesas" Type="Self.tbMesas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbMesas">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbPedidos_tbMesas_codMesa">
+    <End Role="tbMesas" Type="Self.tbMesas" Multiplicity="0..1" />
+    <End Role="tbPedidos" Type="Self.tbPedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbMesas">
+        <PropertyRef Name="codMesa" />
+      </Principal>
+      <Dependent Role="tbPedidos">
+        <PropertyRef Name="codMesa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbPedidos__idSuc__0A9D95DB">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="0..1" />
+    <End Role="tbPedidos" Type="Self.tbPedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbPedidos">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbPedidos_tbUsuarios_idUsuario">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+    <End Role="tbPedidos" Type="Self.tbPedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tbPedidos">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbPrecios_tbProductos_IdProducto">
+    <End Role="tbProductos" Type="Self.tbProductos" Multiplicity="0..1" />
+    <End Role="tbPrecios" Type="Self.tbPrecios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbProductos">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="tbPrecios">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbProductos_tbTiposMedidas_idTipoMedida">
+    <End Role="tbTiposMedidas" Type="Self.tbTiposMedidas" Multiplicity="0..1" />
+    <End Role="tbProductos" Type="Self.tbProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTiposMedidas">
+        <PropertyRef Name="idTipoMedida" />
+      </Principal>
+      <Dependent Role="tbProductos">
+        <PropertyRef Name="idTipoMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbUsuarios_tbRoles_idRol">
+    <End Role="tbRoles" Type="Self.tbRoles" Multiplicity="1" />
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbRoles">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="tbUsuarios">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_BUENISIMOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbAgregados" EntityType="Self.tbAgregados" />
+    <EntitySet Name="tbAsistencias" EntityType="Self.tbAsistencias" />
+    <EntitySet Name="tbCategorias" EntityType="Self.tbCategorias" />
+    <EntitySet Name="tbDesechosInsumos" EntityType="Self.tbDesechosInsumos" />
+    <EntitySet Name="tbDetallePedido" EntityType="Self.tbDetallePedido" />
+    <EntitySet Name="tbEstadosPedidos" EntityType="Self.tbEstadosPedidos" />
+    <EntitySet Name="tbHorarios" EntityType="Self.tbHorarios" />
+    <EntitySet Name="tbIngresosInsumos" EntityType="Self.tbIngresosInsumos" />
+    <EntitySet Name="tbInsumos" EntityType="Self.tbInsumos" />
+    <EntitySet Name="tbMedidas" EntityType="Self.tbMedidas" />
+    <EntitySet Name="tbMesas" EntityType="Self.tbMesas" />
+    <EntitySet Name="tbObservacionesAsistencias" EntityType="Self.tbObservacionesAsistencias" />
+    <EntitySet Name="tbPedidos" EntityType="Self.tbPedidos" />
+    <EntitySet Name="tbPrecios" EntityType="Self.tbPrecios" />
+    <EntitySet Name="tbProductos" EntityType="Self.tbProductos" />
+    <EntitySet Name="tbProveedores" EntityType="Self.tbProveedores" />
+    <EntitySet Name="tbRoles" EntityType="Self.tbRoles" />
+    <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" />
+    <EntitySet Name="tbTiposMedidas" EntityType="Self.tbTiposMedidas" />
+    <EntitySet Name="tbTiposProductos" EntityType="Self.tbTiposProductos" />
+    <EntitySet Name="tbUnidades" EntityType="Self.tbUnidades" />
+    <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
+    <AssociationSet Name="FK__tbDetalle__idAgr__07C12930" Association="Self.FK__tbDetalle__idAgr__07C12930">
+      <End Role="tbAgregados" EntitySet="tbAgregados" />
+      <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDetalle__idAgr__08B54D69" Association="Self.FK__tbDetalle__idAgr__08B54D69">
+      <End Role="tbAgregados" EntitySet="tbAgregados" />
+      <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDetalle__idAgr__09A971A2" Association="Self.FK__tbDetalle__idAgr__09A971A2">
+      <End Role="tbAgregados" EntitySet="tbAgregados" />
+      <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbAsistencias_tbHorarios_idHorarioAplicado" Association="Self.FK_tbAsistencias_tbHorarios_idHorarioAplicado">
+      <End Role="tbHorarios" EntitySet="tbHorarios" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia" Association="Self.FK_tbAsistencias_tbObservacionesAsistencias_idObservacionAsistencia">
+      <End Role="tbObservacionesAsistencias" EntitySet="tbObservacionesAsistencias" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbAsistencias_tbSucursales_idSucursal" Association="Self.FK_tbAsistencias_tbSucursales_idSucursal">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbAsistencias_tbUsuarios_idUsuario" Association="Self.FK_tbAsistencias_tbUsuarios_idUsuario">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbAsistencias" EntitySet="tbAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbCategorias_tbTiposProductos_idTipoProducto" Association="Self.FK_tbCategorias_tbTiposProductos_idTipoProducto">
+      <End Role="tbTiposProductos" EntitySet="tbTiposProductos" />
+      <End Role="tbCategorias" EntitySet="tbCategorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbProductos_tbCategorias_idCategoria" Association="Self.FK_tbProductos_tbCategorias_idCategoria">
+      <End Role="tbCategorias" EntitySet="tbCategorias" />
+      <End Role="tbProductos" EntitySet="tbProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbDesechosInsumos_tbIngresosInsumos_idIngresoInsumo" Association="Self.FK_tbDesechosInsumos_tbIngresosInsumos_idIngresoInsumo">
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbDesechosInsumos_tbInsumos_idInsumo" Association="Self.FK_tbDesechosInsumos_tbInsumos_idInsumo">
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbDesechosInsumos_tbSucursales_idSucursal" Association="Self.FK_tbDesechosInsumos_tbSucursales_idSucursal">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbDesechosInsumos_tbUnidades_idUnidad" Association="Self.FK_tbDesechosInsumos_tbUnidades_idUnidad">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbDesechosInsumos" EntitySet="tbDesechosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbDetallePedido_tbPedidos_idPedido" Association="Self.FK_tbDetallePedido_tbPedidos_idPedido">
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+      <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbDetallePedido_tbPrecios_idPrecio" Association="Self.FK_tbDetallePedido_tbPrecios_idPrecio">
+      <End Role="tbPrecios" EntitySet="tbPrecios" />
+      <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbPedidos_tbEstadosPedidos_idEstadoPedido" Association="Self.FK_tbPedidos_tbEstadosPedidos_idEstadoPedido">
+      <End Role="tbEstadosPedidos" EntitySet="tbEstadosPedidos" />
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbHorarios_tbUsuarios_idUsuario" Association="Self.FK_tbHorarios_tbUsuarios_idUsuario">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbHorarios" EntitySet="tbHorarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbIngresosInsumos_tbInsumos_idInsumo" Association="Self.FK_tbIngresosInsumos_tbInsumos_idInsumo">
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbIngresosInsumos_tbProveedores_idProveedor" Association="Self.FK_tbIngresosInsumos_tbProveedores_idProveedor">
+      <End Role="tbProveedores" EntitySet="tbProveedores" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbIngresosInsumos_tbSucursales_idSucursal" Association="Self.FK_tbIngresosInsumos_tbSucursales_idSucursal">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbIngresosInsumos_tbUnidades_idUnidad" Association="Self.FK_tbIngresosInsumos_tbUnidades_idUnidad">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbIngresosInsumos" EntitySet="tbIngresosInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbInsumos_tbUnidades_idUnidad" Association="Self.FK_tbInsumos_tbUnidades_idUnidad">
+      <End Role="tbUnidades" EntitySet="tbUnidades" />
+      <End Role="tbInsumos" EntitySet="tbInsumos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbMedidas_tbTiposMedidas_idTipoMedida" Association="Self.FK_tbMedidas_tbTiposMedidas_idTipoMedida">
+      <End Role="tbTiposMedidas" EntitySet="tbTiposMedidas" />
+      <End Role="tbMedidas" EntitySet="tbMedidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbPrecios_tbMedidas_IdMedida" Association="Self.FK_tbPrecios_tbMedidas_IdMedida">
+      <End Role="tbMedidas" EntitySet="tbMedidas" />
+      <End Role="tbPrecios" EntitySet="tbPrecios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbMesas_tbSucursales_idSucursal" Association="Self.FK_tbMesas_tbSucursales_idSucursal">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbMesas" EntitySet="tbMesas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbPedidos_tbMesas_codMesa" Association="Self.FK_tbPedidos_tbMesas_codMesa">
+      <End Role="tbMesas" EntitySet="tbMesas" />
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbPedidos__idSuc__0A9D95DB" Association="Self.FK__tbPedidos__idSuc__0A9D95DB">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbPedidos_tbUsuarios_idUsuario" Association="Self.FK_tbPedidos_tbUsuarios_idUsuario">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbPrecios_tbProductos_IdProducto" Association="Self.FK_tbPrecios_tbProductos_IdProducto">
+      <End Role="tbProductos" EntitySet="tbProductos" />
+      <End Role="tbPrecios" EntitySet="tbPrecios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbProductos_tbTiposMedidas_idTipoMedida" Association="Self.FK_tbProductos_tbTiposMedidas_idTipoMedida">
+      <End Role="tbTiposMedidas" EntitySet="tbTiposMedidas" />
+      <End Role="tbProductos" EntitySet="tbProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbUsuarios_tbRoles_idRol" Association="Self.FK_tbUsuarios_tbRoles_idRol">
+      <End Role="tbRoles" EntitySet="tbRoles" />
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

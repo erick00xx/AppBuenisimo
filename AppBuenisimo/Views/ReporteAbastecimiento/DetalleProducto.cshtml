@@ -1,0 +1,46 @@
+﻿@if (Model.Tipo == "compra")
+{
+    var compra = Model.Producto as AppBuenisimo.Models.ViewModels.CompraDTO;
+    var diasTranscurridos = (DateTime.Now - compra.FechaCompra).Days;
+
+    <div class="card shadow-sm border-0 mb-4 animate__animated animate__fadeIn">
+        <div class="card-header bg-success text-white text-center">
+            <h4 class="mb-0">
+                <i class="bi bi-cart-check-fill me-2"></i>Reporte Detallado de Abastecimiento
+            </h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-borderless table-sm">
+                <tr>
+                    <th>ID:</th>
+                    <td>@compra.IdIngresoInsumo</td>
+                </tr>
+                <tr>
+                    <th>Fecha de Compra:</th>
+                    <td>@compra.FechaCompra.ToLongDateString() (<strong>@diasTranscurridos días atrás</strong>)</td>
+                </tr>
+                <tr>
+                    <th>Insumo:</th>
+                    <td>@compra.NombreInsumo</td>
+                </tr>
+                <tr>
+                    <th>Cantidad:</th>
+                    <td>@compra.Cantidad @compra.Unidad</td>
+                </tr>
+                <tr>
+                    <th>Proveedor:</th>
+                    <td>@compra.Proveedor</td>
+                </tr>
+            </table>
+
+            <div class="alert alert-info mt-3" role="alert">
+                Esta compra se realizó hace <strong>@diasTranscurridos días</strong>. Se recomienda verificar la vigencia del lote y el inventario físico correspondiente.
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="@Url.Action("Index", "ReporteAbastecimiento")" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left-circle me-1"></i>Volver al Reporte
+            </a>
+        </div>
+    </div>
+}
