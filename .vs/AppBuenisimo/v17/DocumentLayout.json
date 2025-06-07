@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\test_pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\test_pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\test_registro_asistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,7 +27,7 @@
       "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\test_autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo\\utils\\timeprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\appbuenisimo\\utils\\timeprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\utils\\timeprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -54,8 +58,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PedidoService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\PedidoService.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\PedidoService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\PedidoService.cs",
+              "RelativeToolTip": "AppBuenisimo\\Services\\PedidoService.cs",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAIwAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T16:51:14.381Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -64,27 +81,27 @@
               "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Pedidos.cs",
               "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Pedidos.cs",
               "RelativeToolTip": "AppBuenisimo.Tests\\Test_Pedidos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAgwJEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-07T16:40:32.486Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AsistenciaService.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\AsistenciaService.cs",
               "RelativeDocumentMoniker": "AppBuenisimo\\Services\\AsistenciaService.cs",
               "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\AsistenciaService.cs",
               "RelativeToolTip": "AppBuenisimo\\Services\\AsistenciaService.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAmwE0AAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAmwE8AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-07T15:57:14.306Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TimeProvider.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Utils\\TimeProvider.cs",
               "RelativeDocumentMoniker": "AppBuenisimo\\Utils\\TimeProvider.cs",
@@ -92,12 +109,11 @@
               "RelativeToolTip": "AppBuenisimo\\Utils\\TimeProvider.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:00:58.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T15:00:58.118Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MockDbSetHelper.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Helpers\\MockDbSetHelper.cs",
               "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Helpers\\MockDbSetHelper.cs",
@@ -105,12 +121,11 @@
               "RelativeToolTip": "AppBuenisimo.Tests\\Helpers\\MockDbSetHelper.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAA2wDUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T14:51:45.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T14:51:45.136Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Test_Registro_Asistencia.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Registro_Asistencia.cs",
               "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Registro_Asistencia.cs",
@@ -118,12 +133,11 @@
               "RelativeToolTip": "AppBuenisimo.Tests\\Test_Registro_Asistencia.cs",
               "ViewState": "AgIAAHkAAAAAAAAAAAAkwIMAAABqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T14:40:00.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T14:40:00.036Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UsuarioRepositoryMock.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
               "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
@@ -131,12 +145,11 @@
               "RelativeToolTip": "AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:58:18.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:58:18.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "AppBuenisimo\\Repositories\\UsuarioRepository.cs",
@@ -144,12 +157,11 @@
               "RelativeToolTip": "AppBuenisimo\\Repositories\\UsuarioRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:50:03.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:50:03.999Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "LoginService.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\LoginService.cs",
               "RelativeDocumentMoniker": "AppBuenisimo\\Services\\LoginService.cs",
@@ -157,12 +169,11 @@
               "RelativeToolTip": "AppBuenisimo\\Services\\LoginService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:40:37.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:40:37.843Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Test_Autenticacion.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Autenticacion.cs",
               "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Autenticacion.cs",
@@ -170,12 +181,11 @@
               "RelativeToolTip": "AppBuenisimo.Tests\\Test_Autenticacion.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:49:13.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:49:13.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "IUsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
               "RelativeDocumentMoniker": "AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
@@ -183,12 +193,11 @@
               "RelativeToolTip": "AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:48:15.451Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-07T06:48:15.451Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "AutenticacionController.cs",
               "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AutenticacionController.cs",
               "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
@@ -196,8 +205,7 @@
               "RelativeToolTip": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:28:51.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-06T19:28:51.341Z"
             }
           ]
         }

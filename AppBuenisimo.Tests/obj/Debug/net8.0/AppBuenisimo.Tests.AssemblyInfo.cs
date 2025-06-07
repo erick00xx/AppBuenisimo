@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppBuenisimo.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9babd3b9541b7b864d7a3222b9b62bde58c6ae74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bde3b957a1acb1060810948f9599df66b4f0db32")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppBuenisimo.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppBuenisimo.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
