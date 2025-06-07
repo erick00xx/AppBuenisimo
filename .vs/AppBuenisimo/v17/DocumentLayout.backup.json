@@ -1,22 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\dise\u00F1ando mobile\\sistemawebeficienciaoperativa\\appbuenisimo\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\cu_01_autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\cu_01_autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\dise\u00F1ando mobile\\sistemawebeficienciaoperativa\\appbuenisimo\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\appbuenisimo\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\mocks\\usuariorepositorymock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\mocks\\usuariorepositorymock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\appbuenisimo\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\appbuenisimo\\controllers\\abastecimientocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\abastecimientocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\tests\\sistemawebeficienciaoperativa\\appbuenisimo\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,57 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DB.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\DB.edmx",
-              "RelativeDocumentMoniker": "AppBuenisimo\\models\\DB.edmx",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\DB.edmx [Diagram1]",
-              "RelativeToolTip": "AppBuenisimo\\models\\DB.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2025-06-06T19:47:16.853Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Web.config",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Web.config",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Web.config",
-              "RelativeToolTip": "AppBuenisimo\\Web.config",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAwE0AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-06-06T19:34:53.247Z",
+              "DocumentIndex": 2,
+              "Title": "UsuarioRepositoryMock.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
+              "RelativeToolTip": "AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T06:58:18.72Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AutenticacionController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "RelativeToolTip": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAcwDYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UsuarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\UsuarioRepository.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Repositories\\UsuarioRepository.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\UsuarioRepository.cs",
+              "RelativeToolTip": "AppBuenisimo\\Repositories\\UsuarioRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:28:51.341Z",
+              "WhenOpened": "2025-06-07T06:50:03.999Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AbastecimientoController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\dise\u00F1ando mobile\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "RelativeToolTip": "AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwA8AAAAeAAAAAAAAAA==",
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\LoginService.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\LoginService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\LoginService.cs",
+              "RelativeToolTip": "AppBuenisimo\\Services\\LoginService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:25:38.71Z",
+              "WhenOpened": "2025-06-07T06:40:37.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CU_01_AUTENTICACION.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\CU_01_AUTENTICACION.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\CU_01_AUTENTICACION.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\CU_01_AUTENTICACION.cs",
+              "RelativeToolTip": "AppBuenisimo.Tests\\CU_01_AUTENTICACION.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T06:49:13.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUsuarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
+              "RelativeToolTip": "AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T06:48:15.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AutenticacionController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AutenticacionController.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AutenticacionController.cs",
+              "RelativeToolTip": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T19:28:51.341Z",
               "EditorCaption": ""
             }
           ]

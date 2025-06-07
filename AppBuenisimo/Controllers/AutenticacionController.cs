@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AppBuenisimo.Models;
+using AppBuenisimo.Repositories;
 using AppBuenisimo.Services;
 
 namespace AppBuenisimo.Controllers
@@ -16,7 +17,8 @@ namespace AppBuenisimo.Controllers
 
         public AutenticacionController()
         {
-            _loginService = new LoginService();
+            var repo = new UsuarioRepository();
+            _loginService = new LoginService(repo);
         }
         // GET: Autenticacion
         public ActionResult Index()

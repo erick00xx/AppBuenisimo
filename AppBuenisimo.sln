@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBuenisimo", "AppBuenisimo\AppBuenisimo.csproj", "{B77E83A4-2AA1-4AD6-9316-F8E936284F75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBuenisimo.Tests", "AppBuenisimo.Tests\AppBuenisimo.Tests.csproj", "{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B77E83A4-2AA1-4AD6-9316-F8E936284F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B77E83A4-2AA1-4AD6-9316-F8E936284F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B77E83A4-2AA1-4AD6-9316-F8E936284F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
