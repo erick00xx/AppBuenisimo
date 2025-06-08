@@ -22,6 +22,12 @@ namespace AppBuenisimo.Services
             _dbContext = new DB_BUENISIMOEntities();
         }
 
+        // Constructor adicional para pruebas unitarias
+        public ProductoServices(DB_BUENISIMOEntities context)
+        {
+            _dbContext = context;
+        }
+
         // SESION DE AGREGAR PRODUCTOS NUEVOS
         public List<tbTiposProductos> TiposProductos()
         {

@@ -2978,23 +2978,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USUARIO\\.nuget\\packages\\": {},
+    "C:\\Users\\locals\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj",
       "projectName": "AppBuenisimo.Tests",
-      "projectPath": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj",
-      "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\obj\\",
+      "projectPath": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj",
+      "packagesPath": "C:\\Users\\locals\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\locals\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3009,8 +3009,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\AppBuenisimo.csproj": {
-              "projectPath": "C:\\Users\\USUARIO\\source\\repos\\tests\\SistemaWebEficienciaOperativa\\AppBuenisimo\\AppBuenisimo.csproj"
+            "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\AppBuenisimo.csproj": {
+              "projectPath": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\AppBuenisimo.csproj"
             }
           }
         }

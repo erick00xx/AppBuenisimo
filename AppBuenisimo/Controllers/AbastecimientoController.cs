@@ -13,7 +13,7 @@ namespace AppBuenisimo.Controllers
         private readonly DB_BUENISIMOEntities db = new DB_BUENISIMOEntities();
         private readonly ProductoServices _productoService = new ProductoServices();
 
-        // GET: Abastecimiento
+        // GET: Abastecimiento 
         public ActionResult Index()
         {
             return View();

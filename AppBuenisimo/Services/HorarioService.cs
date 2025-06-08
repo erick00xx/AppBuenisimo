@@ -1,180 +1,157 @@
-﻿// En una carpeta Services
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.Entity; // Para Include
-using AppBuenisimo.Models; // Asumiendo que aquí están tus entidades EF (DB_BUENISIMOEntities, tbUsuario, tbHorario)
+using System.Data.Entity;
+using AppBuenisimo.Models;
 using AppBuenisimo.Models.ViewModels;
-using AppBuenisimo.Utils; // Para los ViewModels
+using AppBuenisimo.Utils;
 
 namespace AppBuenisimo.Services
 {
-    
-
     public class HorarioService
     {
+        private readonly DB_BUENISIMOEntities _context;
+
+        // ✅ Constructor para inyección (por pruebas u otros controladores)
+        public HorarioService(DB_BUENISIMOEntities context = null)
+        {
+            _context = context;
+        }
+
+        // ✅ Método auxiliar para usar contexto interno o el inyectado
+        private DB_BUENISIMOEntities GetContext() => _context ?? new DB_BUENISIMOEntities();
+
         public List<GestionEmpleadoIndexViewModel> ObtenerTodosLosUsuariosParaGestion()
         {
-            using (var _dbContext = new DB_BUENISIMOEntities())
-            {
-                return _dbContext.tbUsuarios
-                    .Include(u => u.tbRoles) // Incluir el rol para mostrar su nombre
-                    .Where(u => u.activo == true) // Opcional: solo usuarios activos
-                    .Select(u => new GestionEmpleadoIndexViewModel
-                    {
-                        IdUsuario = u.idUsuario,
-                        NombreCompleto = u.nombre + " " + u.apellido,
-                        CorreoElectronico = u.correoElectronico,
-                        Dni = u.dni,
-                        Rol = u.tbRoles != null ? u.tbRoles.nombreRol : "Sin rol"
-                    })
-                    .OrderBy(u => u.NombreCompleto)
-                    .ToList();
-            }
+            var ctx = GetContext();
+            return ctx.tbUsuarios
+                .Include(u => u.tbRoles)
+                .Where(u => u.activo == true)
+                .Select(u => new GestionEmpleadoIndexViewModel
+                {
+                    IdUsuario = u.idUsuario,
+                    NombreCompleto = u.nombre + " " + u.apellido,
+                    CorreoElectronico = u.correoElectronico,
+                    Dni = u.dni,
+                    Rol = u.tbRoles != null ? u.tbRoles.nombreRol : "Sin rol"
+                })
+                .OrderBy(u => u.NombreCompleto)
+                .ToList();
         }
 
         public tbUsuarios ObtenerUsuarioPorId(int idUsuario)
         {
-            using (var _dbContext = new DB_BUENISIMOEntities())
-            {
-                return _dbContext.tbUsuarios.Find(idUsuario);
-            }
+            var ctx = GetContext();
+            return ctx.tbUsuarios.Find(idUsuario);
         }
+
         public List<HorarioDetalleViewModel> ObtenerHorariosPorUsuario(int idUsuario)
         {
-            using (var _dbContext = new DB_BUENISIMOEntities())
-            {
-                return _dbContext.tbHorarios
-                    .Where(h => h.idUsuario == idUsuario)
-                    .OrderByDescending(h => h.fechaInicioVigencia) // Más recientes primero
-                    .ThenBy(h => h.diaSemana)
-                    .Select(h => new HorarioDetalleViewModel
-                    {
-                        IdHorario = h.idHorario,
-                        DiaSemanaValor = h.diaSemana,
-                        // Esto se puede mejorar con un helper o mapeo más elegante
-                        DiaSemanaTexto = h.diaSemana == 0 ? "Domingo" :
-                                         h.diaSemana == 1 ? "Lunes" :
-                                         h.diaSemana == 2 ? "Martes" :
-                                         h.diaSemana == 3 ? "Miércoles" :
-                                         h.diaSemana == 4 ? "Jueves" :
-                                         h.diaSemana == 5 ? "Viernes" : "Sábado",
-                        HoraEntrada = h.horaEntrada,
-                        HoraSalida = h.horaSalida,
-                        PagoPorHora = h.pagoPorHora,
-                        FechaInicioVigencia = h.fechaInicioVigencia,
-                        FechaFinVigencia = h.fechaFinVigencia,
-                        Activo = h.activo
-                    })
-                    .ToList();
-            }
+            var ctx = GetContext();
+            return ctx.tbHorarios
+                .Where(h => h.idUsuario == idUsuario)
+                .OrderByDescending(h => h.fechaInicioVigencia)
+                .ThenBy(h => h.diaSemana)
+                .Select(h => new HorarioDetalleViewModel
+                {
+                    IdHorario = h.idHorario,
+                    DiaSemanaValor = h.diaSemana,
+                    DiaSemanaTexto = h.diaSemana == 0 ? "Domingo" :
+                                     h.diaSemana == 1 ? "Lunes" :
+                                     h.diaSemana == 2 ? "Martes" :
+                                     h.diaSemana == 3 ? "Miércoles" :
+                                     h.diaSemana == 4 ? "Jueves" :
+                                     h.diaSemana == 5 ? "Viernes" : "Sábado",
+                    HoraEntrada = h.horaEntrada,
+                    HoraSalida = h.horaSalida,
+                    PagoPorHora = h.pagoPorHora,
+                    FechaInicioVigencia = h.fechaInicioVigencia,
+                    FechaFinVigencia = h.fechaFinVigencia,
+                    Activo = h.activo
+                })
+                .ToList();
         }
 
         public tbHorarios ObtenerHorarioPorId(int idHorario)
         {
-            using (var _dbContext = new DB_BUENISIMOEntities())
-            {
-                return _dbContext.tbHorarios.Find(idHorario);
-            }
+            var ctx = GetContext();
+            return ctx.tbHorarios.Find(idHorario);
         }
 
         public bool AgregarHorario(HorarioFormViewModel model)
         {
-            using (var _dbContext = new DB_BUENISIMOEntities())
+            var ctx = GetContext();
+
+            if (model.Activo)
             {
-                // Lógica de validación adicional (ej. solapamientos) podría ir aquí
-                // Por ejemplo, antes de agregar un nuevo horario activo para un día,
-                // podrías desactivar (poner fechaFinVigencia o activo=false)
-                // cualquier otro horario activo para ese mismo usuario y día.
+                var horariosPreviosActivos = ctx.tbHorarios
+                    .Where(h => h.idUsuario == model.IdUsuario &&
+                                h.diaSemana == model.DiaSemana &&
+                                h.activo == true &&
+                                (h.fechaFinVigencia == null || h.fechaFinVigencia >= model.FechaInicioVigencia))
+                    .ToList();
 
-                // Desactivar horarios previos para el mismo día y usuario si este es activo
-                if (model.Activo)
+                foreach (var horarioPrevio in horariosPreviosActivos)
                 {
-                    var horariosPreviosActivos = _dbContext.tbHorarios
-                        .Where(h => h.idUsuario == model.IdUsuario &&
-                                    h.diaSemana == model.DiaSemana &&
-                                    h.activo == true &&
-                                    (h.fechaFinVigencia == null || h.fechaFinVigencia >= model.FechaInicioVigencia))
-                        .ToList();
-
-                    foreach (var horarioPrevio in horariosPreviosActivos)
+                    if (horarioPrevio.fechaInicioVigencia < model.FechaInicioVigencia)
                     {
-                        if (horarioPrevio.fechaInicioVigencia < model.FechaInicioVigencia)
-                        {
-                            // Si el nuevo horario empieza después, acortamos el viejo
-                            horarioPrevio.fechaFinVigencia = model.FechaInicioVigencia.AddDays(-1);
-                            if (horarioPrevio.fechaFinVigencia < horarioPrevio.fechaInicioVigencia)
-                            {
-                                horarioPrevio.activo = false; // O lo marcamos inactivo si el rango es inválido
-                            }
-                        }
-                        else // Si el nuevo horario solapa o es el mismo inicio, desactivamos el viejo
-                        {
+                        horarioPrevio.fechaFinVigencia = model.FechaInicioVigencia.AddDays(-1);
+                        if (horarioPrevio.fechaFinVigencia < horarioPrevio.fechaInicioVigencia)
                             horarioPrevio.activo = false;
-                        }
-
+                    }
+                    else
+                    {
+                        horarioPrevio.activo = false;
                     }
                 }
-
-
-                var nuevoHorario = new tbHorarios
-                {
-                    idUsuario = model.IdUsuario,
-                    diaSemana = model.DiaSemana,
-                    horaEntrada = model.HoraEntrada,
-                    horaSalida = model.HoraSalida,
-                    pagoPorHora = model.PagoPorHora,
-                    fechaInicioVigencia = model.FechaInicioVigencia,
-                    fechaFinVigencia = model.FechaFinVigencia,
-                    activo = model.Activo
-                };
-
-                _dbContext.tbHorarios.Add(nuevoHorario);
-                return _dbContext.SaveChanges() > 0;
             }
+
+            var nuevoHorario = new tbHorarios
+            {
+                idUsuario = model.IdUsuario,
+                diaSemana = model.DiaSemana,
+                horaEntrada = model.HoraEntrada,
+                horaSalida = model.HoraSalida,
+                pagoPorHora = model.PagoPorHora,
+                fechaInicioVigencia = model.FechaInicioVigencia,
+                fechaFinVigencia = model.FechaFinVigencia,
+                activo = model.Activo
+            };
+
+            ctx.tbHorarios.Add(nuevoHorario);
+            return ctx.SaveChanges() > 0;
         }
 
         public bool ActualizarHorario(HorarioFormViewModel model)
         {
-            using (var _dbContext = new DB_BUENISIMOEntities())
-            {
-                var horarioExistente = _dbContext.tbHorarios.Find(model.IdHorario);
-                if (horarioExistente == null) return false;
+            var ctx = GetContext();
+            var horarioExistente = ctx.tbHorarios.Find(model.IdHorario);
+            if (horarioExistente == null) return false;
 
-                horarioExistente.diaSemana = model.DiaSemana;
-                horarioExistente.horaEntrada = model.HoraEntrada;
-                horarioExistente.horaSalida = model.HoraSalida;
-                horarioExistente.pagoPorHora = model.PagoPorHora;
-                horarioExistente.fechaInicioVigencia = model.FechaInicioVigencia;
-                horarioExistente.fechaFinVigencia = model.FechaFinVigencia;
-                horarioExistente.activo = model.Activo;
-                // No modificar idUsuario aquí
+            horarioExistente.diaSemana = model.DiaSemana;
+            horarioExistente.horaEntrada = model.HoraEntrada;
+            horarioExistente.horaSalida = model.HoraSalida;
+            horarioExistente.pagoPorHora = model.PagoPorHora;
+            horarioExistente.fechaInicioVigencia = model.FechaInicioVigencia;
+            horarioExistente.fechaFinVigencia = model.FechaFinVigencia;
+            horarioExistente.activo = model.Activo;
 
-                _dbContext.Entry(horarioExistente).State = EntityState.Modified;
-                return _dbContext.SaveChanges() > 0;
-            }
+            ctx.Entry(horarioExistente).State = EntityState.Modified;
+            return ctx.SaveChanges() > 0;
         }
 
-        public bool EliminarHorario(int idHorario) // O podría ser DesactivarHorario
+        public bool EliminarHorario(int idHorario)
         {
-            using (var _dbContext = new DB_BUENISIMOEntities())
-            {
-                var horario = _dbContext.tbHorarios.Find(idHorario);
-                if (horario == null) return false;
+            var ctx = GetContext();
+            var horario = ctx.tbHorarios.Find(idHorario);
+            if (horario == null) return false;
 
-                // Opción 1: Borrado físico
-                // _dbContext.tbHorarios.Remove(horario);
+            horario.activo = false;
+            if (horario.fechaFinVigencia == null || horario.fechaFinVigencia > TimeProvider.Today)
+                horario.fechaFinVigencia = TimeProvider.Today.AddDays(-1);
 
-                // Opción 2: Borrado lógico (recomendado si tienes 'activo' y 'fechaFinVigencia')
-                horario.activo = false;
-                if (horario.fechaFinVigencia == null || horario.fechaFinVigencia > TimeProvider.Today)
-                {
-                    horario.fechaFinVigencia = TimeProvider.Today.AddDays(-1); // Marcar como finalizado ayer
-                }
-                _dbContext.Entry(horario).State = EntityState.Modified;
-
-                return _dbContext.SaveChanges() > 0;
-            }
+            ctx.Entry(horario).State = EntityState.Modified;
+            return ctx.SaveChanges() > 0;
         }
     }
 }
