@@ -1,0 +1,86 @@
+﻿@model AppBuenisimo.Models.ViewModels.VentaDetalleViewModel
+@{
+    ViewBag.Title = "Detalles de la Venta #" + Model.IdVenta;
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<p>
+    @Html.ActionLink("Volver al Listado", "Index", null, new { @class = "btn btn-outline-secondary" })
+</p>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>Datos Generales</strong>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Fecha de Venta:</dt>
+            <dd class="col-sm-9">@Model.FechaVenta.ToString("dd/MM/yyyy HH:mm:ss")</dd>
+
+            <dt class="col-sm-3">Mesa:</dt>
+            <dd class="col-sm-9">@Model.CodMesa</dd>
+
+            <dt class="col-sm-3">Total:</dt>
+            <dd class="col-sm-9">S/ @Model.Total.ToString("F2")</dd>
+
+            <dt class="col-sm-3">Atendido por:</dt>
+            <dd class="col-sm-9">@Model.NombreUsuarioVenta</dd>
+
+            <dt class="col-sm-3">Método de Pago:</dt>
+            <dd class="col-sm-9">@Model.MetodoPago</dd>
+        </dl>
+    </div>
+</div>
+
+@if (Model.FueModificada)
+{
+    <div class="card border-warning mb-3">
+        <div class="card-header bg-warning text-white">
+            <strong><i class="fas fa-exclamation-triangle"></i> Auditoría de Modificación</strong>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Modificado por:</dt>
+                <dd class="col-sm-9">@Model.NombreUsuarioModificacion</dd>
+                <dt class="col-sm-3">Fecha de Modificación:</dt>
+                <dd class="col-sm-9">@(Model.FechaModificacion?.ToString("dd/MM/yyyy HH:mm:ss"))</dd>
+                <dt class="col-sm-3">Motivo:</dt>
+                <dd class="col-sm-9">@Model.MotivoModificacion</dd>
+            </dl>
+        </div>
+    </div>
+}
+
+<div class="card">
+    <div class="card-header">
+        <strong>Detalle de Productos Vendidos</strong>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Agregados</th>
+                        <th class="text-center">Cant.</th>
+                        <th class="text-right">Precio Unit.</th>
+                        <th class="text-right">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.DetallesVenta)
+                    {
+                        <tr>
+                            <td>@item.descripcionProducto</td>
+                            <td>@item.descripcionAgregados</td>
+                            <td class="text-center">@item.cantidad</td>
+                            <td class="text-right">S/ @item.precioUnitario.ToString("F2")</td>
+                            <td class="text-right">S/ @item.subtotal.ToString("F2")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

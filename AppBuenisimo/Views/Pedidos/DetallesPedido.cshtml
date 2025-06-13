@@ -97,7 +97,8 @@
     <div class="col-md-8">
         <h4>Detalle del Pedido</h4>
         <div id="carrito-compras" class="table-responsive">
-            <table class="table table-sm"> <!-- Quitado table-striped para mejor legibilidad con opciones -->
+            <table class="table table-sm">
+                <!-- Quitado table-striped para mejor legibilidad con opciones -->
                 <thead class="thead-light">
                     <tr>
                         <th>Producto y Opciones</th>
@@ -120,11 +121,48 @@
                 </tfoot>
             </table>
         </div>
-        <button id="btnGuardarCambios" class="btn btn-success btn-lg float-right mt-3">
-            <i class="fas fa-save"></i> Guardar Cambios
-        </button>
+        <!-- BOTONES DE ACCIÓN -->
+        <div class="d-flex justify-content-end mt-3">
+            <button id="btnCulminarVenta" class="btn btn-primary btn-lg mr-2"
+                    @* Deshabilitar si el pedido ya está culminado (estado 5) *@
+                    @(Model.idEstadoPedido == 5 ? "disabled" : "")>
+                <i class="fas fa-check-circle"></i> Culminar Venta
+            </button>
+
+            <button id="btnGuardarCambios" class="btn btn-success btn-lg">
+                <i class="fas fa-save"></i> Guardar Cambios
+            </button>
+        </div>
+        @*<button id="btnGuardarCambios" class="btn btn-success btn-lg float-right mt-3">
+                <i class="fas fa-save"></i> Guardar Cambios
+            </button>*@
+    </div>
+    <!-- MODAL PARA SELECCIONAR MÉTODO DE PAGO -->
+    <div class="modal fade" id="modalMetodoPago" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Seleccionar Método de Pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Por favor, seleccione cómo se pagó este pedido.</p>
+                    <div class="form-group">
+                        <label for="selectMetodoPago">Método de Pago:</label>
+                        @Html.DropDownList("idMetodoPagoModal", (SelectList)ViewBag.MetodosPago, new { @class = "form-control", id = "selectMetodoPago" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnConfirmarCulminacion" class="btn btn-primary">Confirmar y Generar Venta</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <!-- Modal para buscar Agregados (copiado de NuevoPedido.cshtml) -->
 <div class="modal fade" id="modalBuscarAgregados" tabindex="-1" role="dialog" aria-labelledby="modalBuscarAgregadosLabel" aria-hidden="true">
@@ -235,7 +273,56 @@
             }
             renderizarCarrito(); // Renderizar una vez inicializado
         }
+        // --- FLUJO PARA CULMINAR VENTA ---
 
+        // 1. Abrir el modal de pago al hacer clic en el botón "Culminar Venta"
+        $('#btnCulminarVenta').on('click', function () {
+            // Primero, verificamos si hay cambios sin guardar. Es una buena práctica.
+            // Esto es opcional y se puede implementar más a fondo si se desea.
+            // Por ahora, asumimos que si se quiere culminar, se debe guardar primero o los cambios se perderán.
+            alert("ADVERTENCIA: Si ha realizado cambios en el pedido, estos no se guardarán. La venta se generará con los últimos datos guardados. Para incluir cambios, use 'Guardar Cambios' primero.");
+
+            // Abrimos el modal
+            $('#modalMetodoPago').modal('show');
+        });
+
+        // 2. Manejar la confirmación desde el modal
+        $('#btnConfirmarCulminacion').on('click', function () {
+            const idPedidoVal = parseInt($('#idPedido').val());
+            const idMetodoPagoVal = parseInt($('#selectMetodoPago').val());
+
+            if (!idMetodoPagoVal) {
+                alert('Por favor, seleccione un método de pago.');
+                return;
+            }
+
+            const btn = $(this);
+            btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Procesando...');
+
+            $.ajax({
+                url: '@Url.Action("Culminar", "Pedidos")', // APUNTA AL NUEVO CONTROLADOR/ACCIÓN
+                type: 'POST',
+                // Ojo: los datos van como form-data, no como JSON
+                data: {
+                    idPedido: idPedidoVal,
+                    idMetodoPago: idMetodoPagoVal
+                },
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                        window.location.href = response.redirectTo;
+                    } else {
+                        alert('Error: ' + response.message);
+                        btn.prop('disabled', false).html('Confirmar y Generar Venta');
+                    }
+                },
+                error: function (err) {
+                    console.error("Error al culminar la venta: ", err);
+                    alert('Ocurrió un error de comunicación al culminar la venta.');
+                    btn.prop('disabled', false).html('Confirmar y Generar Venta');
+                }
+            });
+        });
         // --- BÚSQUEDA DE PRODUCTOS --- (Igual que en NuevoPedido.cshtml)
         $('#busquedaProducto').on('keyup', function () {
             let criterio = $(this).val();

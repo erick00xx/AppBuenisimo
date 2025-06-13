@@ -119,7 +119,7 @@ namespace AppBuenisimo.Controllers
             ViewBag.EstadosPedido = new SelectList(
                 _pedidoService.ListarEstadosPedido(),
                 "idEstadoPedido", "estado", pedido.idEstadoPedido);
-
+            ViewBag.MetodosPago = new SelectList(_dbContext.tbMetodosPago.ToList(), "idMetodoPago", "nombre");
             // --- LÓGICA MEJORADA PARA ViewBag.TodosAgregadosJson ---
             string jsonAgregados = "[]"; // Default a un array JSON vacío
             try
@@ -235,6 +235,40 @@ namespace AppBuenisimo.Controllers
         {
             EstablecerIdSucursalActual(idSucursalSeleccionada);
             return RedirectToAction("Index"); // Redirige al Index, que ahora usará la nueva sucursal de la sesión
+        }
+        // POST: /Ventas/Culminar
+        [HttpPost]
+        public ActionResult Culminar(int idPedido, int idMetodoPago)
+        {
+            if (idPedido <= 0 || idMetodoPago <= 0)
+            {
+                return Json(new { success = false, message = "Datos inválidos." });
+            }
+
+            try
+            {
+                bool culminado = _pedidoService.CulminarPedidoComoVenta(idPedido, idMetodoPago);
+                if (culminado)
+                {
+                    return Json(new { success = true, message = "¡Venta generada exitosamente!", redirectTo = Url.Action("Index", "Pedidos") });
+                }
+                else
+                {
+                    // Este caso es poco probable si el servicio lanza la excepción, pero es una salvaguarda.
+                    return Json(new { success = false, message = "No se pudo culminar la venta." });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Capturamos el error relanzado por el servicio para dar un feedback más útil.
+                // Por ejemplo, el error de "UNIQUE constraint" si se intenta culminar dos veces.
+                string userMessage = "Ocurrió un error al generar la venta. Es posible que este pedido ya haya sido culminado.";
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("UNIQUE KEY"))
+                {
+                    userMessage = "Error: Este pedido ya ha sido registrado como una venta.";
+                }
+                return Json(new { success = false, message = userMessage });
+            }
         }
     }
 }

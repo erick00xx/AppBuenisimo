@@ -12,6 +12,8 @@ namespace AppBuenisimo.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DB_BUENISIMOEntities : DbContext
     {
@@ -28,14 +30,17 @@ namespace AppBuenisimo.Models
         public virtual DbSet<tbAgregados> tbAgregados { get; set; }
         public virtual DbSet<tbAsistencias> tbAsistencias { get; set; }
         public virtual DbSet<tbCategorias> tbCategorias { get; set; }
+        public virtual DbSet<tbClientes> tbClientes { get; set; }
         public virtual DbSet<tbDesechosInsumos> tbDesechosInsumos { get; set; }
         public virtual DbSet<tbDetallePedido> tbDetallePedido { get; set; }
+        public virtual DbSet<tbDetalleVenta> tbDetalleVenta { get; set; }
         public virtual DbSet<tbEstadosPedidos> tbEstadosPedidos { get; set; }
         public virtual DbSet<tbHorarios> tbHorarios { get; set; }
         public virtual DbSet<tbIngresosInsumos> tbIngresosInsumos { get; set; }
         public virtual DbSet<tbInsumos> tbInsumos { get; set; }
         public virtual DbSet<tbMedidas> tbMedidas { get; set; }
         public virtual DbSet<tbMesas> tbMesas { get; set; }
+        public virtual DbSet<tbMetodosPago> tbMetodosPago { get; set; }
         public virtual DbSet<tbObservacionesAsistencias> tbObservacionesAsistencias { get; set; }
         public virtual DbSet<tbPedidos> tbPedidos { get; set; }
         public virtual DbSet<tbPrecios> tbPrecios { get; set; }
@@ -47,5 +52,19 @@ namespace AppBuenisimo.Models
         public virtual DbSet<tbTiposProductos> tbTiposProductos { get; set; }
         public virtual DbSet<tbUnidades> tbUnidades { get; set; }
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<tbVentas> tbVentas { get; set; }
+    
+        public virtual int sp_CulminarPedidoYGenerarVenta(Nullable<int> idPedidoACulminar, Nullable<int> idMetodoPago)
+        {
+            var idPedidoACulminarParameter = idPedidoACulminar.HasValue ?
+                new ObjectParameter("idPedidoACulminar", idPedidoACulminar) :
+                new ObjectParameter("idPedidoACulminar", typeof(int));
+    
+            var idMetodoPagoParameter = idMetodoPago.HasValue ?
+                new ObjectParameter("idMetodoPago", idMetodoPago) :
+                new ObjectParameter("idMetodoPago", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CulminarPedidoYGenerarVenta", idPedidoACulminarParameter, idMetodoPagoParameter);
+        }
     }
 }

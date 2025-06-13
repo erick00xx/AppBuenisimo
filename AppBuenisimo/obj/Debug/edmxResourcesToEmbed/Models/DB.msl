@@ -4,247 +4,303 @@
     <EntitySetMapping Name="tbAgregados">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbAgregados">
         <MappingFragment StoreEntitySet="tbAgregados">
-          <ScalarProperty Name="idAgregado" ColumnName="idAgregado" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idAgregado" ColumnName="idAgregado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbAsistencias">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbAsistencias">
         <MappingFragment StoreEntitySet="tbAsistencias">
-          <ScalarProperty Name="idAsistencia" ColumnName="idAsistencia" />
-          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
-          <ScalarProperty Name="idObservacionAsistencia" ColumnName="idObservacionAsistencia" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-          <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
-          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
-          <ScalarProperty Name="minutosTardanza" ColumnName="minutosTardanza" />
-          <ScalarProperty Name="idHorarioAplicado" ColumnName="idHorarioAplicado" />
           <ScalarProperty Name="comentariosAdicionales" ColumnName="comentariosAdicionales" />
+          <ScalarProperty Name="idHorarioAplicado" ColumnName="idHorarioAplicado" />
+          <ScalarProperty Name="minutosTardanza" ColumnName="minutosTardanza" />
+          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+          <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idObservacionAsistencia" ColumnName="idObservacionAsistencia" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idAsistencia" ColumnName="idAsistencia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbCategorias">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbCategorias">
         <MappingFragment StoreEntitySet="tbCategorias">
-          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbClientes">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbClientes">
+        <MappingFragment StoreEntitySet="tbClientes">
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="idGoogle" ColumnName="idGoogle" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbDesechosInsumos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbDesechosInsumos">
         <MappingFragment StoreEntitySet="tbDesechosInsumos">
-          <ScalarProperty Name="idDesechoInsumo" ColumnName="idDesechoInsumo" />
-          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
-          <ScalarProperty Name="idInsumo" ColumnName="idInsumo" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
-          <ScalarProperty Name="fechaDesecho" ColumnName="fechaDesecho" />
-          <ScalarProperty Name="motivo" ColumnName="motivo" />
-          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
           <ScalarProperty Name="idIngresoInsumo" ColumnName="idIngresoInsumo" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="fechaDesecho" ColumnName="fechaDesecho" />
+          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idInsumo" ColumnName="idInsumo" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="idDesechoInsumo" ColumnName="idDesechoInsumo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbDetallePedido">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbDetallePedido">
         <MappingFragment StoreEntitySet="tbDetallePedido">
-          <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
-          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
-          <ScalarProperty Name="idPrecio" ColumnName="idPrecio" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
-          <ScalarProperty Name="idAgregado1" ColumnName="idAgregado1" />
-          <ScalarProperty Name="idAgregado2" ColumnName="idAgregado2" />
-          <ScalarProperty Name="idAgregado3" ColumnName="idAgregado3" />
-          <ScalarProperty Name="tipoLeche" ColumnName="tipoLeche" />
-          <ScalarProperty Name="tipoAzucar" ColumnName="tipoAzucar" />
           <ScalarProperty Name="cantidadHielo" ColumnName="cantidadHielo" />
+          <ScalarProperty Name="tipoAzucar" ColumnName="tipoAzucar" />
+          <ScalarProperty Name="tipoLeche" ColumnName="tipoLeche" />
+          <ScalarProperty Name="idAgregado3" ColumnName="idAgregado3" />
+          <ScalarProperty Name="idAgregado2" ColumnName="idAgregado2" />
+          <ScalarProperty Name="idAgregado1" ColumnName="idAgregado1" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idPrecio" ColumnName="idPrecio" />
+          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+          <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbDetalleVenta">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbDetalleVenta">
+        <MappingFragment StoreEntitySet="tbDetalleVenta">
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="cantidadHielo" ColumnName="cantidadHielo" />
+          <ScalarProperty Name="tipoAzucar" ColumnName="tipoAzucar" />
+          <ScalarProperty Name="tipoLeche" ColumnName="tipoLeche" />
+          <ScalarProperty Name="precioTotalAgregados" ColumnName="precioTotalAgregados" />
+          <ScalarProperty Name="descripcionAgregados" ColumnName="descripcionAgregados" />
+          <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="descripcionProducto" ColumnName="descripcionProducto" />
+          <ScalarProperty Name="idProductoOriginal" ColumnName="idProductoOriginal" />
+          <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+          <ScalarProperty Name="idDetalleVenta" ColumnName="idDetalleVenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbEstadosPedidos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbEstadosPedidos">
         <MappingFragment StoreEntitySet="tbEstadosPedidos">
-          <ScalarProperty Name="idEstadoPedido" ColumnName="idEstadoPedido" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idEstadoPedido" ColumnName="idEstadoPedido" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbHorarios">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbHorarios">
         <MappingFragment StoreEntitySet="tbHorarios">
-          <ScalarProperty Name="idHorario" ColumnName="idHorario" />
-          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-          <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
-          <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
-          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
-          <ScalarProperty Name="pagoPorHora" ColumnName="pagoPorHora" />
-          <ScalarProperty Name="fechaInicioVigencia" ColumnName="fechaInicioVigencia" />
-          <ScalarProperty Name="fechaFinVigencia" ColumnName="fechaFinVigencia" />
           <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fechaFinVigencia" ColumnName="fechaFinVigencia" />
+          <ScalarProperty Name="fechaInicioVigencia" ColumnName="fechaInicioVigencia" />
+          <ScalarProperty Name="pagoPorHora" ColumnName="pagoPorHora" />
+          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+          <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
+          <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idHorario" ColumnName="idHorario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbIngresosInsumos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbIngresosInsumos">
         <MappingFragment StoreEntitySet="tbIngresosInsumos">
-          <ScalarProperty Name="idIngresoInsumo" ColumnName="idIngresoInsumo" />
-          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
-          <ScalarProperty Name="idInsumo" ColumnName="idInsumo" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
-          <ScalarProperty Name="fechaCompra" ColumnName="fechaCompra" />
-          <ScalarProperty Name="fechaVencimiento" ColumnName="fechaVencimiento" />
-          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
-          <ScalarProperty Name="lote" ColumnName="lote" />
           <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="lote" ColumnName="lote" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="fechaVencimiento" ColumnName="fechaVencimiento" />
+          <ScalarProperty Name="fechaCompra" ColumnName="fechaCompra" />
+          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idInsumo" ColumnName="idInsumo" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="idIngresoInsumo" ColumnName="idIngresoInsumo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbInsumos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbInsumos">
         <MappingFragment StoreEntitySet="tbInsumos">
-          <ScalarProperty Name="idInsumo" ColumnName="idInsumo" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
-          <ScalarProperty Name="tipoInsumo" ColumnName="tipoInsumo" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipoInsumo" ColumnName="tipoInsumo" />
+          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idInsumo" ColumnName="idInsumo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbMedidas">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbMedidas">
         <MappingFragment StoreEntitySet="tbMedidas">
-          <ScalarProperty Name="idMedida" ColumnName="idMedida" />
-          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
+          <ScalarProperty Name="idMedida" ColumnName="idMedida" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbMesas">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbMesas">
         <MappingFragment StoreEntitySet="tbMesas">
-          <ScalarProperty Name="codMesa" ColumnName="codMesa" />
           <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="codMesa" ColumnName="codMesa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbMetodosPago">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbMetodosPago">
+        <MappingFragment StoreEntitySet="tbMetodosPago">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbObservacionesAsistencias">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbObservacionesAsistencias">
         <MappingFragment StoreEntitySet="tbObservacionesAsistencias">
-          <ScalarProperty Name="idObservacionAsistencia" ColumnName="idObservacionAsistencia" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idObservacionAsistencia" ColumnName="idObservacionAsistencia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbPedidos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbPedidos">
         <MappingFragment StoreEntitySet="tbPedidos">
-          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
-          <ScalarProperty Name="codMesa" ColumnName="codMesa" />
-          <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
-          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="idEstadoPedido" ColumnName="idEstadoPedido" />
           <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="idEstadoPedido" ColumnName="idEstadoPedido" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+          <ScalarProperty Name="codMesa" ColumnName="codMesa" />
+          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbPrecios">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbPrecios">
         <MappingFragment StoreEntitySet="tbPrecios">
-          <ScalarProperty Name="IdPrecio" ColumnName="IdPrecio" />
-          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-          <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
           <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdPrecio" ColumnName="IdPrecio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbProductos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbProductos">
         <MappingFragment StoreEntitySet="tbProductos">
-          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbProveedores">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbProveedores">
         <MappingFragment StoreEntitySet="tbProveedores">
-          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
-          <ScalarProperty Name="nombreEmpresa" ColumnName="nombreEmpresa" />
-          <ScalarProperty Name="contacto" ColumnName="contacto" />
-          <ScalarProperty Name="telefono" ColumnName="telefono" />
           <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="contacto" ColumnName="contacto" />
+          <ScalarProperty Name="nombreEmpresa" ColumnName="nombreEmpresa" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbRoles">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbRoles">
         <MappingFragment StoreEntitySet="tbRoles">
-          <ScalarProperty Name="idRol" ColumnName="idRol" />
           <ScalarProperty Name="nombreRol" ColumnName="nombreRol" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbSucursales">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbSucursales">
         <MappingFragment StoreEntitySet="tbSucursales">
-          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbTiposMedidas">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbTiposMedidas">
         <MappingFragment StoreEntitySet="tbTiposMedidas">
-          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idTipoMedida" ColumnName="idTipoMedida" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbTiposProductos">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbTiposProductos">
         <MappingFragment StoreEntitySet="tbTiposProductos">
-          <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbUnidades">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbUnidades">
         <MappingFragment StoreEntitySet="tbUnidades">
-          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="tipo" ColumnName="tipo" />
           <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idUnidad" ColumnName="idUnidad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbUsuarios">
       <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbUsuarios">
         <MappingFragment StoreEntitySet="tbUsuarios">
-          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-          <ScalarProperty Name="idRol" ColumnName="idRol" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="apellido" ColumnName="apellido" />
-          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
-          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-          <ScalarProperty Name="activo" ColumnName="activo" />
           <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbVentas">
+      <EntityTypeMapping TypeName="DB_BUENISIMOModel.tbVentas">
+        <MappingFragment StoreEntitySet="tbVentas">
+          <ScalarProperty Name="motivoModificacion" ColumnName="motivoModificacion" />
+          <ScalarProperty Name="idUsuarioModificacion" ColumnName="idUsuarioModificacion" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="fueModificada" ColumnName="fueModificada" />
+          <ScalarProperty Name="idMetodoPago" ColumnName="idMetodoPago" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="fechaVenta" ColumnName="fechaVenta" />
+          <ScalarProperty Name="idUsuarioVenta" ColumnName="idUsuarioVenta" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="codMesa" ColumnName="codMesa" />
+          <ScalarProperty Name="idPedidoOriginal" ColumnName="idPedidoOriginal" />
+          <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CulminarPedidoYGenerarVenta" FunctionName="DB_BUENISIMOModel.Store.sp_CulminarPedidoYGenerarVenta" />
   </EntityContainerMapping>
 </Mapping>

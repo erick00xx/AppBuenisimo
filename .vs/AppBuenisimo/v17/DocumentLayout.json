@@ -1,90 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\test_registro_asistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\test_registro_asistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\test_pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\test_pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\test_autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\test_autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\test_horario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\test_horario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\horarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\horarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\horarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\helpers\\mockdbsethelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\helpers\\mockdbsethelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\ventasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\ventasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\test_abastecimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\test_abastecimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\controllers\\abastecimientocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\abastecimientocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\reporteinventarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\reporteinventarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\appbuenisimo\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\asistenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\models\\tbventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\models\\tbventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\appbuenisimo\\utils\\timeprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\utils\\timeprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\views\\ventas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\views\\ventas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|c:\\users\\locals\\desktop\\nueva carpeta\\sistemawebeficienciaoperativa\\appbuenisimo.tests\\mocks\\usuariorepositorymock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA15E10-C322-480D-8BC4-9ADE3ADA8D20}|AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj|solutionrelative:appbuenisimo.tests\\mocks\\usuariorepositorymock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\views\\reporteempleado\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\views\\reporteempleado\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\appbuenisimo\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\appbuenisimo\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\autenticacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\views\\ventas\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\views\\ventas\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\appbuenisimo\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\views\\ventas\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\views\\ventas\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\appbuenisimo\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\services\\ventasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\services\\ventasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\models\\db.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\models\\viewmodels\\ventasviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\models\\viewmodels\\ventasviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|c:\\users\\usuario\\source\\repos\\olvida el login\\sistemawebeficienciaoperativa\\appbuenisimo\\views\\pedidos\\detallespedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B77E83A4-2AA1-4AD6-9316-F8E936284F75}|AppBuenisimo\\AppBuenisimo.csproj|solutionrelative:appbuenisimo\\views\\pedidos\\detallespedido.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,277 +62,175 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 9,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Test_Horario.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Horario.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Horario.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Horario.cs",
-              "RelativeToolTip": "AppBuenisimo.Tests\\Test_Horario.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAUwLgAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T22:39:26.339Z",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\ReporteEmpleado\\Index.cshtml",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Views\\ReporteEmpleado\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\ReporteEmpleado\\Index.cshtml",
+              "RelativeToolTip": "AppBuenisimo\\Views\\ReporteEmpleado\\Index.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAHIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T02:58:58.874Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HorarioService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\HorarioService.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\HorarioService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\HorarioService.cs",
-              "RelativeToolTip": "AppBuenisimo\\Services\\HorarioService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBIAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "tbVentas.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\tbVentas.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\models\\tbVentas.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\tbVentas.cs",
+              "RelativeToolTip": "AppBuenisimo\\models\\tbVentas.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAmwCgAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T22:37:47.782Z",
+              "WhenOpened": "2025-06-13T01:53:50.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Editar.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Ventas\\Editar.cshtml",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Views\\Ventas\\Editar.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Ventas\\Editar.cshtml",
+              "RelativeToolTip": "AppBuenisimo\\Views\\Ventas\\Editar.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB8AAACHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T01:42:04.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Detalles.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Ventas\\Detalles.cshtml",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Views\\Ventas\\Detalles.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Ventas\\Detalles.cshtml",
+              "RelativeToolTip": "AppBuenisimo\\Views\\Ventas\\Detalles.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAQwC8AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T01:41:39.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Ventas\\Index.cshtml",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Views\\Ventas\\Index.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Ventas\\Index.cshtml",
+              "RelativeToolTip": "AppBuenisimo\\Views\\Ventas\\Index.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T01:41:15.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VentasController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\VentasController.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\VentasController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\VentasController.cs",
+              "RelativeToolTip": "AppBuenisimo\\Controllers\\VentasController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAmwEwAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T01:41:05.156Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "VentasService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\VentasService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\VentasService.cs",
               "RelativeDocumentMoniker": "AppBuenisimo\\Services\\VentasService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\VentasService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\VentasService.cs",
               "RelativeToolTip": "AppBuenisimo\\Services\\VentasService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAmwEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:59:40.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProductoService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\ProductoService.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\ProductoService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\ProductoService.cs",
-              "RelativeToolTip": "AppBuenisimo\\Services\\ProductoService.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAAwMYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:58:51.637Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Test_Abastecimiento.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Abastecimiento.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Abastecimiento.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Abastecimiento.cs",
-              "RelativeToolTip": "AppBuenisimo.Tests\\Test_Abastecimiento.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:34:47.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Test_Registro_Asistencia.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Registro_Asistencia.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Registro_Asistencia.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Registro_Asistencia.cs",
-              "RelativeToolTip": "AppBuenisimo.Tests\\Test_Registro_Asistencia.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAUwJ0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T14:40:00.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MockDbSetHelper.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Helpers\\MockDbSetHelper.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Helpers\\MockDbSetHelper.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Helpers\\MockDbSetHelper.cs",
-              "RelativeToolTip": "AppBuenisimo.Tests\\Helpers\\MockDbSetHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T14:51:45.136Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Test_Autenticacion.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Autenticacion.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Autenticacion.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Autenticacion.cs",
-              "RelativeToolTip": "AppBuenisimo.Tests\\Test_Autenticacion.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAxwHAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:49:13.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Test_Pedidos.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Pedidos.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Test_Pedidos.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Test_Pedidos.cs",
-              "RelativeToolTip": "AppBuenisimo.Tests\\Test_Pedidos.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAQwK4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T16:40:32.486Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HorariosController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\HorariosController.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\HorariosController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\HorariosController.cs",
-              "RelativeToolTip": "AppBuenisimo\\Controllers\\HorariosController.cs",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAQwBkBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T23:02:12.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "VentasController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\VentasController.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\VentasController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\VentasController.cs",
-              "RelativeToolTip": "AppBuenisimo\\Controllers\\VentasController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T23:04:28.695Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ReporteInventarioService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\ReporteInventarioService.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\ReporteInventarioService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\ReporteInventarioService.cs",
-              "RelativeToolTip": "AppBuenisimo\\Services\\ReporteInventarioService.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:59:32.839Z",
+              "WhenOpened": "2025-06-13T01:30:34.782Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "AbastecimientoController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "RelativeToolTip": "AppBuenisimo\\Controllers\\AbastecimientoController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKwAAAARAAAAAAAAAA==",
+              "Title": "VentasViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\ViewModels\\VentasViewModel.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\models\\ViewModels\\VentasViewModel.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\ViewModels\\VentasViewModel.cs",
+              "RelativeToolTip": "AppBuenisimo\\models\\ViewModels\\VentasViewModel.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA4wB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:28:12.294Z",
+              "WhenOpened": "2025-06-13T01:37:56.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DB.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\DB.edmx",
+              "RelativeDocumentMoniker": "AppBuenisimo\\models\\DB.edmx",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\models\\DB.edmx [Diagram1]",
+              "RelativeToolTip": "AppBuenisimo\\models\\DB.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-06-13T00:25:42.413Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PedidoService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\PedidoService.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\PedidoService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\PedidoService.cs",
+              "RelativeToolTip": "AppBuenisimo\\Services\\PedidoService.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAvwI4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:16:28.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PedidosController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\PedidosController.cs",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\PedidosController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\PedidosController.cs",
+              "RelativeToolTip": "AppBuenisimo\\Controllers\\PedidosController.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAIA7wHcAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:16:17.509Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "PedidoService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\PedidoService.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\PedidoService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\PedidoService.cs",
-              "RelativeToolTip": "AppBuenisimo\\Services\\PedidoService.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowPcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T16:51:14.381Z",
+              "Title": "DetallesPedido.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Pedidos\\DetallesPedido.cshtml",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Views\\Pedidos\\DetallesPedido.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Pedidos\\DetallesPedido.cshtml",
+              "RelativeToolTip": "AppBuenisimo\\Views\\Pedidos\\DetallesPedido.cshtml",
+              "ViewState": "AgIAACMBAAAAAAAAAAAAACwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T00:16:07.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AsistenciaService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\AsistenciaService.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\AsistenciaService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\AsistenciaService.cs",
-              "RelativeToolTip": "AppBuenisimo\\Services\\AsistenciaService.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAmwE8AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:57:14.306Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "TimeProvider.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Utils\\TimeProvider.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Utils\\TimeProvider.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Utils\\TimeProvider.cs",
-              "RelativeToolTip": "AppBuenisimo\\Utils\\TimeProvider.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T15:00:58.118Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "UsuarioRepositoryMock.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
-              "RelativeToolTip": "AppBuenisimo.Tests\\Mocks\\UsuarioRepositoryMock.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:58:18.72Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\UsuarioRepository.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Repositories\\UsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\UsuarioRepository.cs",
-              "RelativeToolTip": "AppBuenisimo\\Repositories\\UsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:50:03.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "LoginService.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\LoginService.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Services\\LoginService.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Services\\LoginService.cs",
-              "RelativeToolTip": "AppBuenisimo\\Services\\LoginService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:40:37.843Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IUsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
-              "RelativeToolTip": "AppBuenisimo\\Repositories\\IUsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T06:48:15.451Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AutenticacionController.cs",
-              "DocumentMoniker": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "RelativeDocumentMoniker": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "ToolTip": "C:\\Users\\locals\\Desktop\\Nueva carpeta\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "RelativeToolTip": "AppBuenisimo\\Controllers\\AutenticacionController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T19:28:51.341Z"
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "AppBuenisimo\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "AppBuenisimo\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-12T21:14:46.396Z",
+              "EditorCaption": ""
             }
           ]
         }

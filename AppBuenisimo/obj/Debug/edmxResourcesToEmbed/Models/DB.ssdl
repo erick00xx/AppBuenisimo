@@ -32,6 +32,16 @@
     <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="idTipoProducto" Type="int" />
   </EntityType>
+  <EntityType Name="tbClientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idGoogle" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="correo" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="nombreCompleto" Type="nvarchar" MaxLength="200" />
+    <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="tbDesechosInsumos">
     <Key>
       <PropertyRef Name="idDesechoInsumo" />
@@ -61,6 +71,23 @@
     <Property Name="tipoLeche" Type="varchar" MaxLength="20" />
     <Property Name="tipoAzucar" Type="varchar" MaxLength="20" />
     <Property Name="cantidadHielo" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbDetalleVenta">
+    <Key>
+      <PropertyRef Name="idDetalleVenta" />
+    </Key>
+    <Property Name="idDetalleVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idVenta" Type="int" Nullable="false" />
+    <Property Name="idProductoOriginal" Type="int" />
+    <Property Name="descripcionProducto" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="precioUnitario" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="descripcionAgregados" Type="nvarchar" MaxLength="200" />
+    <Property Name="precioTotalAgregados" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="tipoLeche" Type="varchar" MaxLength="20" />
+    <Property Name="tipoAzucar" Type="varchar" MaxLength="20" />
+    <Property Name="cantidadHielo" Type="varchar" MaxLength="20" />
+    <Property Name="subtotal" Type="decimal" Precision="8" Scale="2" Nullable="false" />
   </EntityType>
   <EntityType Name="tbEstadosPedidos">
     <Key>
@@ -122,6 +149,13 @@
     </Key>
     <Property Name="codMesa" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="idSucursal" Type="int" />
+  </EntityType>
+  <EntityType Name="tbMetodosPago">
+    <Key>
+      <PropertyRef Name="idMetodoPago" />
+    </Key>
+    <Property Name="idMetodoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="tbObservacionesAsistencias">
     <Key>
@@ -222,6 +256,23 @@
     <Property Name="fechaRegistro" Type="datetime" />
     <Property Name="activo" Type="bit" />
     <Property Name="dni" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbVentas">
+    <Key>
+      <PropertyRef Name="idVenta" />
+    </Key>
+    <Property Name="idVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idPedidoOriginal" Type="int" />
+    <Property Name="codMesa" Type="nvarchar" MaxLength="20" />
+    <Property Name="idSucursal" Type="int" Nullable="false" />
+    <Property Name="idUsuarioVenta" Type="int" Nullable="false" />
+    <Property Name="fechaVenta" Type="datetime" Nullable="false" />
+    <Property Name="total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="idMetodoPago" Type="int" />
+    <Property Name="fueModificada" Type="bit" Nullable="false" />
+    <Property Name="fechaModificacion" Type="datetime" />
+    <Property Name="idUsuarioModificacion" Type="int" />
+    <Property Name="motivoModificacion" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <Association Name="FK__tbDetalle__idAgr__07C12930">
     <End Role="tbAgregados" Type="Self.tbAgregados" Multiplicity="0..1" />
@@ -400,6 +451,20 @@
       </Principal>
       <Dependent Role="tbDetallePedido">
         <PropertyRef Name="idPrecio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbDetalleVenta_tbVentas">
+    <End Role="tbVentas" Type="Self.tbVentas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbDetalleVenta" Type="Self.tbDetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbVentas">
+        <PropertyRef Name="idVenta" />
+      </Principal>
+      <Dependent Role="tbDetalleVenta">
+        <PropertyRef Name="idVenta" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -595,18 +660,85 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbVentas_tbMetodosPago">
+    <End Role="tbMetodosPago" Type="Self.tbMetodosPago" Multiplicity="0..1" />
+    <End Role="tbVentas" Type="Self.tbVentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbMetodosPago">
+        <PropertyRef Name="idMetodoPago" />
+      </Principal>
+      <Dependent Role="tbVentas">
+        <PropertyRef Name="idMetodoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbVentas_tbPedidos">
+    <End Role="tbPedidos" Type="Self.tbPedidos" Multiplicity="0..1" />
+    <End Role="tbVentas" Type="Self.tbVentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPedidos">
+        <PropertyRef Name="idPedido" />
+      </Principal>
+      <Dependent Role="tbVentas">
+        <PropertyRef Name="idPedidoOriginal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbVentas_tbSucursales">
+    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="1" />
+    <End Role="tbVentas" Type="Self.tbVentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="tbVentas">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbVentas_tbUsuarios_Modificacion">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+    <End Role="tbVentas" Type="Self.tbVentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tbVentas">
+        <PropertyRef Name="idUsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbVentas_tbUsuarios_Venta">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbVentas" Type="Self.tbVentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tbVentas">
+        <PropertyRef Name="idUsuarioVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_CulminarPedidoYGenerarVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPedidoACulminar" Type="int" Mode="In" />
+    <Parameter Name="idMetodoPago" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="DB_BUENISIMOModelStoreContainer">
     <EntitySet Name="tbAgregados" EntityType="Self.tbAgregados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAsistencias" EntityType="Self.tbAsistencias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbCategorias" EntityType="Self.tbCategorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbClientes" EntityType="Self.tbClientes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbDesechosInsumos" EntityType="Self.tbDesechosInsumos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbDetallePedido" EntityType="Self.tbDetallePedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbDetalleVenta" EntityType="Self.tbDetalleVenta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbEstadosPedidos" EntityType="Self.tbEstadosPedidos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbHorarios" EntityType="Self.tbHorarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbIngresosInsumos" EntityType="Self.tbIngresosInsumos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbInsumos" EntityType="Self.tbInsumos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbMedidas" EntityType="Self.tbMedidas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbMesas" EntityType="Self.tbMesas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbMetodosPago" EntityType="Self.tbMetodosPago" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbObservacionesAsistencias" EntityType="Self.tbObservacionesAsistencias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbPedidos" EntityType="Self.tbPedidos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbPrecios" EntityType="Self.tbPrecios" Schema="dbo" store:Type="Tables" />
@@ -618,6 +750,7 @@
     <EntitySet Name="tbTiposProductos" EntityType="Self.tbTiposProductos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUnidades" EntityType="Self.tbUnidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbVentas" EntityType="Self.tbVentas" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__tbDetalle__idAgr__07C12930" Association="Self.FK__tbDetalle__idAgr__07C12930">
       <End Role="tbAgregados" EntitySet="tbAgregados" />
       <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
@@ -677,6 +810,10 @@
     <AssociationSet Name="FK_tbDetallePedido_tbPrecios_idPrecio" Association="Self.FK_tbDetallePedido_tbPrecios_idPrecio">
       <End Role="tbPrecios" EntitySet="tbPrecios" />
       <End Role="tbDetallePedido" EntitySet="tbDetallePedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbDetalleVenta_tbVentas" Association="Self.FK_tbDetalleVenta_tbVentas">
+      <End Role="tbVentas" EntitySet="tbVentas" />
+      <End Role="tbDetalleVenta" EntitySet="tbDetalleVenta" />
     </AssociationSet>
     <AssociationSet Name="FK_tbHorarios_tbUsuarios_idUsuario" Association="Self.FK_tbHorarios_tbUsuarios_idUsuario">
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
@@ -741,6 +878,26 @@
     <AssociationSet Name="FK_tbUsuarios_tbRoles_idRol" Association="Self.FK_tbUsuarios_tbRoles_idRol">
       <End Role="tbRoles" EntitySet="tbRoles" />
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbVentas_tbMetodosPago" Association="Self.FK_tbVentas_tbMetodosPago">
+      <End Role="tbMetodosPago" EntitySet="tbMetodosPago" />
+      <End Role="tbVentas" EntitySet="tbVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbVentas_tbPedidos" Association="Self.FK_tbVentas_tbPedidos">
+      <End Role="tbPedidos" EntitySet="tbPedidos" />
+      <End Role="tbVentas" EntitySet="tbVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbVentas_tbSucursales" Association="Self.FK_tbVentas_tbSucursales">
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+      <End Role="tbVentas" EntitySet="tbVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbVentas_tbUsuarios_Modificacion" Association="Self.FK_tbVentas_tbUsuarios_Modificacion">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbVentas" EntitySet="tbVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbVentas_tbUsuarios_Venta" Association="Self.FK_tbVentas_tbUsuarios_Venta">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbVentas" EntitySet="tbVentas" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

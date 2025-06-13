@@ -305,15 +305,181 @@ FOREIGN KEY (idEstadoPedido) REFERENCES tbEstadosPedidos(idEstadoPedido);
 
 
 
+--=================================================================
+-- TABLAS PARA GESTIÓN DE VENTAS
+--=================================================================
+
+-- Tabla para los métodos de pago (Opcional pero muy recomendada)
+CREATE TABLE [tbMetodosPago] (
+    [idMetodoPago] INT IDENTITY(1,1) NOT NULL,
+    [nombre] NVARCHAR(50) NOT NULL,
+    PRIMARY KEY ([idMetodoPago]),
+    UNIQUE ([nombre])
+);
+GO
+
+-- Datos iniciales para métodos de pago
+INSERT INTO [tbMetodosPago] ([nombre]) VALUES
+('Efectivo'),
+('Tarjeta de Crédito/Débito'),
+('Yape'),
+('Plin');
+GO
+
+
+-- Tabla principal de Ventas (Cabecera)
+-- Aquí se guarda una copia de la información del pedido cuando se culmina.
+CREATE TABLE [tbVentas] (
+    [idVenta] INT IDENTITY(1,1) NOT NULL,
+    [idPedidoOriginal] INT NULL,              -- FK al pedido original para trazabilidad.
+    [codMesa] NVARCHAR(20) NULL,
+    [idSucursal] INT NOT NULL,
+    [idUsuarioVenta] INT NOT NULL,            -- Usuario que registró la venta (puede ser el mismo del pedido).
+    [fechaVenta] DATETIME NOT NULL DEFAULT GETDATE(), -- Fecha y hora en que se concretó la venta.
+    [total] DECIMAL(10,2) NOT NULL,
+    [idMetodoPago] INT NULL,
+
+    -- Campos para Auditoría de modificaciones
+    [fueModificada] BIT NOT NULL DEFAULT 0,
+    [fechaModificacion] DATETIME NULL,
+    [idUsuarioModificacion] INT NULL,         -- Quien modificó la venta.
+    [motivoModificacion] NVARCHAR(255) NULL,
+
+    PRIMARY KEY ([idVenta]),
+    CONSTRAINT [FK_tbVentas_tbPedidos] FOREIGN KEY ([idPedidoOriginal]) REFERENCES [tbPedidos]([idPedido]),
+    CONSTRAINT [FK_tbVentas_tbSucursales] FOREIGN KEY ([idSucursal]) REFERENCES [tbSucursales]([idSucursal]),
+    CONSTRAINT [FK_tbVentas_tbUsuarios_Venta] FOREIGN KEY ([idUsuarioVenta]) REFERENCES [tbUsuarios]([idUsuario]),
+    CONSTRAINT [FK_tbVentas_tbMetodosPago] FOREIGN KEY ([idMetodoPago]) REFERENCES [tbMetodosPago]([idMetodoPago]),
+    CONSTRAINT [FK_tbVentas_tbUsuarios_Modificacion] FOREIGN KEY ([idUsuarioModificacion]) REFERENCES [tbUsuarios]([idUsuario]),
+    -- Para asegurar que un pedido no se convierta en venta más de una vez
+    UNIQUE ([idPedidoOriginal])
+);
+GO
+
+
+-- Tabla de Detalle de Venta
+-- Es CRUCIAL para guardar los detalles tal como estaban en el momento de la venta.
+CREATE TABLE [tbDetalleVenta] (
+    [idDetalleVenta] INT IDENTITY(1,1) NOT NULL,
+    [idVenta] INT NOT NULL,
+
+    -- Datos 'congelados' del producto
+    [idProductoOriginal] INT NULL,          -- Referencia al producto, puede ser nulo si el producto se borra.
+    [descripcionProducto] NVARCHAR(100) NOT NULL, -- El nombre del producto en ese momento.
+    [cantidad] INT NOT NULL,
+    [precioUnitario] DECIMAL(6,2) NOT NULL, -- El precio unitario en ese momento.
+
+    -- Datos 'congelados' de los agregados
+    [descripcionAgregados] NVARCHAR(200) NULL, -- Ej: "Leche, Caramelo, Escn. Vainilla"
+    [precioTotalAgregados] DECIMAL(6,2) NOT NULL DEFAULT 0, -- La suma del precio de todos los agregados.
+
+    -- Datos 'congelados' de otras personalizaciones
+    [tipoLeche] VARCHAR(20) NULL,
+    [tipoAzucar] VARCHAR(20) NULL,
+    [cantidadHielo] VARCHAR(20) NULL,
+
+    [subtotal] DECIMAL(8,2) NOT NULL,
+
+    PRIMARY KEY ([idDetalleVenta]),
+    CONSTRAINT [FK_tbDetalleVenta_tbVentas] FOREIGN KEY ([idVenta]) REFERENCES [tbVentas]([idVenta]) ON DELETE CASCADE
+);
+GO
+
+
+
+CREATE PROCEDURE sp_CulminarPedidoYGenerarVenta
+    @idPedidoACulminar INT,
+    @idMetodoPago INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Verificamos que el pedido exista y no esté ya culminado
+    IF NOT EXISTS (SELECT 1 FROM tbPedidos WHERE idPedido = @idPedidoACulminar AND idEstadoPedido <> 5)
+    BEGIN
+        -- Lanzamos un error que la aplicación puede capturar
+        RAISERROR('El pedido no existe o ya ha sido culminado.', 16, 1);
+        RETURN;
+    END
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        -- 1. Actualizamos el estado del pedido a 'Culminado'
+        UPDATE tbPedidos
+        SET idEstadoPedido = 5
+        WHERE idPedido = @idPedidoACulminar;
+
+        -- 2. Insertamos la cabecera de la venta, ahora con el método de pago correcto
+        INSERT INTO tbVentas (idPedidoOriginal, codMesa, idSucursal, idUsuarioVenta, total, idMetodoPago)
+        SELECT
+            p.idPedido, p.codMesa, p.idSucursal, p.idUsuario, p.total, @idMetodoPago
+        FROM
+            tbPedidos p
+        WHERE
+            p.idPedido = @idPedidoACulminar;
+
+        DECLARE @NuevaVentaID INT = SCOPE_IDENTITY();
+
+        -- 3. Insertamos los detalles de la venta (la lógica de "congelar" los datos)
+        INSERT INTO tbDetalleVenta (
+            idVenta, idProductoOriginal, descripcionProducto, cantidad, precioUnitario,
+            descripcionAgregados, precioTotalAgregados,
+            tipoLeche, tipoAzucar, cantidadHielo, subtotal
+        )
+        SELECT
+            @NuevaVentaID,
+            prod.idProducto,
+            prod.nombre AS descripcionProducto,
+            dp.cantidad,
+            pre.Precio AS precioUnitario,
+            ISNULL(ag1.nombre, '') + IIF(ag2.nombre IS NULL, '', ', ' + ag2.nombre) + IIF(ag3.nombre IS NULL, '', ', ' + ag3.nombre),
+            ISNULL(ag1.precio, 0) + ISNULL(ag2.precio, 0) + ISNULL(ag3.precio, 0),
+            dp.tipoLeche, dp.tipoAzucar, dp.cantidadHielo, dp.subtotal
+        FROM
+            tbDetallePedido dp
+        JOIN tbPrecios pre ON dp.idPrecio = pre.IdPrecio
+        JOIN tbProductos prod ON pre.IdProducto = prod.idProducto
+        LEFT JOIN tbAgregados ag1 ON dp.idAgregado1 = ag1.idAgregado
+        LEFT JOIN tbAgregados ag2 ON dp.idAgregado2 = ag2.idAgregado
+        LEFT JOIN tbAgregados ag3 ON dp.idAgregado3 = ag3.idAgregado
+        WHERE
+            dp.idPedido = @idPedidoACulminar;
+
+        COMMIT TRANSACTION;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        -- Re-lanzamos el error para que la aplicación se entere de que algo salió mal
+        THROW;
+    END CATCH
+END
+GO
+
+
+-- Ejecuta el SP
+EXEC sp_CulminarPedidoYGenerarVenta @idPedidoACulminar = 34, @idMetodoPago = 1;
 
 
 
 
+-- Encontrar ventas cuyo usuario ya no existe
+SELECT * 
+FROM tbVentas v
+LEFT JOIN tbUsuarios u ON v.idUsuarioVenta = u.idUsuario
+WHERE u.idUsuario IS NULL;
 
+-- Encontrar ventas cuya sucursal ya no existe
+SELECT *
+FROM tbVentas v
+LEFT JOIN tbSucursales s ON v.idSucursal = s.idSucursal
+WHERE s.idSucursal IS NULL;
 
-
-
-
+-- Encontrar ventas cuyo usuario de modificación ya no existe
+SELECT * 
+FROM tbVentas v
+LEFT JOIN tbUsuarios u ON v.idUsuarioModificacion = u.idUsuario
+WHERE v.idUsuarioModificacion IS NOT NULL AND u.idUsuario IS NULL;
 
 
 

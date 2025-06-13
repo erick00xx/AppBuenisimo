@@ -1,59 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AppBuenisimo.Models;
+﻿// VentasController.cs (Completamente reescrito)
+using AppBuenisimo.Models.ViewModels;
 using AppBuenisimo.Services;
+using System;
+using System.Web.Mvc;
 
-namespace AppBuenisimo.Controllers
+public class VentasController : Controller
 {
-    public class VentasController : Controller
+    // Idealmente, inyectarías la dependencia, pero seguimos tu patrón actual.
+    private readonly VentasService _ventasService = new VentasService();
+
+    // GET: /Ventas/ o /Ventas/Index
+    public ActionResult Index()
     {
-        private readonly VentasService _ventasService = new VentasService();
-        private readonly EmpleadoService _empleadosService = new EmpleadoService();
-        private readonly HorarioService _horarioService = new HorarioService();
-        // GET: Ventas
-        public ActionResult Index()
+        var model = _ventasService.ListarVentas();
+        return View(model);
+    }
+
+    // GET: /Ventas/Detalles/5
+    public ActionResult Detalles(int id)
+    {
+        var model = _ventasService.ObtenerVentaParaEditar(id);
+        if (model == null)
         {
-            return View(_ventasService.ListarVentas());
+            return HttpNotFound();
+        }
+        return View(model);
+    }
+
+    // GET: /Ventas/Editar/5
+    public ActionResult Editar(int id)
+    {
+        // Solo roles específicos deberían poder editar, aquí puedes añadir esa lógica.
+        // if (Session["idRol"] != 1) return RedirectToAction("AccesoDenegado");
+
+        var model = _ventasService.ObtenerVentaParaEditar(id);
+        if (model == null)
+        {
+            return HttpNotFound();
+        }
+        return View(model);
+    }
+
+    // POST: /Ventas/Editar/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Editar(VentaDetalleViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            // Si el modelo no es válido, recargamos la vista con los errores.
+            // Necesitamos recargar los detalles que no se postean.
+            var ventaOriginal = _ventasService.ObtenerVentaParaEditar(model.IdVenta);
+            model.DetallesVenta = ventaOriginal.DetallesVenta; // Recargar detalles
+            return View(model);
         }
 
-        public ActionResult Ver(int idPedido)
+        try
         {
-            return View(_ventasService.Obtener(idPedido));
-        }
-
-        public ActionResult AgregarEditar(int idPedido = 0)
-        {
-            ViewBag.tbUsuarios = _horarioService.ObtenerTodosLosUsuariosParaGestion();
-            //ViewBag.tbMesas = _empleadosService.ListarMesas();
-            //ViewBag.tbSucursales = _empleadosService.ListarSucursales();
-
-            return View(
-                idPedido == 0 ? new tbPedidos()
-                : _ventasService.Obtener(idPedido)
-                );
-        }
-
-        public ActionResult Guardar(tbPedidos pedido)
-        {
-            if (ModelState.IsValid)
+            // Obtener el ID del usuario de la sesión para la auditoría
+            if (Session["idUsuario"] == null)
             {
-                _ventasService.Guardar(pedido);
-                return Redirect("~/Ventas"); //retornar a listar
+                ModelState.AddModelError("", "Tu sesión ha expirado. Por favor, inicia sesión de nuevo.");
+                return View(model);
+            }
+            int idUsuarioActual = (int)Session["idUsuario"];
+
+            bool guardado = _ventasService.GuardarCambiosVenta(model, idUsuarioActual);
+
+            if (guardado)
+            {
+                TempData["SuccessMessage"] = "¡Venta actualizada correctamente!";
+                return RedirectToAction("Index");
             }
             else
             {
-                return View("~/Views/Ventas/AgregarEditar.cshtml");
+                ModelState.AddModelError("", "No se pudo guardar la venta. Inténtalo de nuevo.");
             }
         }
-
-
-
-        public ActionResult ReporteVentas()
+        catch (Exception ex)
         {
-            return View();
+            // Loguear error (ex)
+            ModelState.AddModelError("", "Ocurrió un error inesperado al guardar la venta.");
         }
+
+        var ventaOriginalFallida = _ventasService.ObtenerVentaParaEditar(model.IdVenta);
+        model.DetallesVenta = ventaOriginalFallida.DetallesVenta; // Recargar detalles en caso de error
+        return View(model);
     }
 }

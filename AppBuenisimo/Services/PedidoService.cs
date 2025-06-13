@@ -129,7 +129,10 @@ namespace AppBuenisimo.Services
 
         public List<tbEstadosPedidos> ListarEstadosPedido()
         {
-            return _dbContext.tbEstadosPedidos.OrderBy(e => e.idEstadoPedido).ToList();
+            return _dbContext.tbEstadosPedidos
+                             .Where(e => e.idEstadoPedido != 5)
+                             .OrderBy(e => e.idEstadoPedido)
+                             .ToList();
         }
 
         public bool ActualizarPedido(ActualizarPedidoInputViewModel model, int idUsuarioActual)
@@ -177,6 +180,29 @@ namespace AppBuenisimo.Services
                     Debug.WriteLine($"Error al actualizar pedido: {ex.Message}");
                     return false;
                 }
+            }
+        }
+        public bool CulminarPedidoComoVenta(int idPedido, int idMetodoPago)
+        {
+            try
+            {
+                // El SP ahora es la única fuente de verdad para esta operación.
+                // No necesitamos una transacción explícita aquí porque el SP ya la gestiona internamente.
+                var paramPedidoId = new System.Data.SqlClient.SqlParameter("@idPedidoACulminar", idPedido);
+                var paramMetodoPagoId = new System.Data.SqlClient.SqlParameter("@idMetodoPago", idMetodoPago);
+
+                _dbContext.Database.ExecuteSqlCommand("EXEC sp_CulminarPedidoYGenerarVenta @idPedidoACulminar, @idMetodoPago",
+                    paramPedidoId,
+                    paramMetodoPagoId);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Loguea el error real para depuración.
+                System.Diagnostics.Debug.WriteLine($"Error al ejecutar sp_CulminarPedidoYGenerarVenta: {ex.Message}");
+                // Puedes lanzar la excepción para que el controlador la maneje y devuelva un mensaje más específico.
+                throw;
             }
         }
 

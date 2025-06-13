@@ -20,6 +20,8 @@ namespace AppBuenisimo.Models
             this.tbAsistencias = new HashSet<tbAsistencias>();
             this.tbHorarios = new HashSet<tbHorarios>();
             this.tbPedidos = new HashSet<tbPedidos>();
+            this.tbVentas = new HashSet<tbVentas>();
+            this.tbVentas1 = new HashSet<tbVentas>();
         }
     
         public int idUsuario { get; set; }
@@ -39,5 +41,9 @@ namespace AppBuenisimo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbPedidos> tbPedidos { get; set; }
         public virtual tbRoles tbRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbVentas> tbVentas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbVentas> tbVentas1 { get; set; }
     }
 }
