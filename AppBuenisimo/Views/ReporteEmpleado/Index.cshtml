@@ -4,9 +4,8 @@
     ViewBag.Title = "Reporte de Empleados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!-- Estilos -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Agrega esto en la cabecera para Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="container-fluid py-4">
     <h1 class="text-center mb-4">Reporte de Empleados</h1>
@@ -14,27 +13,22 @@
     <!-- Filtros -->
     <div class="card shadow-sm mb-4">
         <div class="card-body">
-            <h5 class="card-title">Filtrar Datos</h5>
             <form id="filtroForm">
                 <div class="row g-3">
                     <div class="col-md-3">
-                        <label for="quincena" class="form-label">Quincena</label>
+                        <label for="quincena">Quincena</label>
                         <select class="form-select" id="quincena" name="quincena">
-                            <option value="Primera quincena">Primera quincena (1-15 del mes)</option>
-                            <option value="Segunda quincena">Segunda quincena (16-fin de mes)</option>
+                            <option value="Primera quincena">Primera quincena</option>
+                            <option value="Segunda quincena">Segunda quincena</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label for="mes" class="form-label">Mes</label>
-                        <!-- inicializamos siempre con el mes actual -->
-                        <input type="month" class="form-control" id="mes" name="mes"
-                               value="@DateTime.Now.ToString("MM")" />
+                        <label for="mes">Mes</label>
+                        <input type="month" class="form-control" id="mes" name="mes" value="@DateTime.Now.ToString("yyyy-MM")" />
                     </div>
                     <div class="col-md-3">
-                        <label for="anio" class="form-label">Año</label>
-                        <!-- inicializamos siempre con el año actual -->
-                        <input type="number" class="form-control" id="anio" name="anio"
-                               value="@DateTime.Now.Year" />
+                        <label for="anio">Año</label>
+                        <input type="number" class="form-control" id="anio" name="anio" value="@DateTime.Now.Year" />
                     </div>
                     <div class="col-md-3 d-flex align-items-end">
                         <button type="submit" class="btn btn-primary w-100">
@@ -46,54 +40,41 @@
         </div>
     </div>
 
-    <!-- Estadísticas -->
-    <div class="row mb-4 text-center">
-        <div class="col-md-3">
-            <div class="card bg-success text-white h-100">
-                <div class="card-body">
-                    <h6 class="card-title">Total empleados</h6>
-                    <h3 id="totalEmpleados">@Model.TotalEmpleados</h3>
-                    <p>Distribución por puestos no disponible</p>
+    <!-- Métricas -->
+    <div class="row text-center mb-4">
+        <div class="col-md-3"><div class="card bg-success text-white"><div class="card-body"><h6>Total empleados</h6><h3 id="totalEmpleados">@Model.TotalEmpleados</h3></div></div></div>
+        <div class="col-md-3"><div class="card bg-warning text-dark"><div class="card-body"><h6>Tardanzas</h6><h3 id="tardanzasTotales">@Model.TardanzasTotales</h3></div></div></div>
+        <div class="col-md-3"><div class="card bg-danger text-white"><div class="card-body"><h6>Faltas</h6><h3 id="faltasTotales">@Model.FaltasTotales</h3></div></div></div>
+        <div class="col-md-3"><div class="card bg-info text-dark"><div class="card-body"><h6>Nómina total</h6><h3 id="nominaTotal">S/. @Model.NominaTotal.ToString("N2")</h3></div></div></div>
+    </div>
+
+    <!-- Gráficos avanzados -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h6 class="mb-3">Estado del Personal</h6>
+                <div style="height: 220px">
+                    <canvas id="chartEstadoPersonal"></canvas>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-warning text-dark h-100">
-                <div class="card-body">
-                    <h6 class="card-title">Tardanzas</h6>
-                    <h3 id="tardanzasTotales">@Model.TardanzasTotales</h3>
-                    <p>Incluye tardanzas leves y significativas</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card bg-danger text-white h-100">
-                <div class="card-body">
-                    <h6 class="card-title">Faltas</h6>
-                    <h3 id="faltasTotales">@Model.FaltasTotales</h3>
-                    <p>Comparativo no disponible</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card bg-info text-dark h-100">
-                <div class="card-body">
-                    <h6 class="card-title">Nómina total</h6>
-                    <h3 id="nominaTotal">S/. @Model.NominaTotal.ToString("N2")</h3>
-                    <p>Comparativo no disponible</p>
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h6 class="mb-3">Horas Trabajadas por Empleado</h6>
+                <div style="height: 250px">
+                    <canvas id="chartHorasTrabajadas"></canvas>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Lista de empleados -->
-    <div class="mb-4">
-        <h5 class="mb-3">Lista de empleados</h5>
-        <div class="table-responsive">
-            <table class="table table-hover align-middle">
+    <!-- Tabla de empleados -->
+    <div class="card shadow-sm">
+        <div class="card-body table-responsive">
+            <table class="table table-hover">
                 <thead class="table-light">
                     <tr>
-                        <th>#</th>
+                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Puesto</th>
                         <th>Tardanzas</th>
@@ -111,16 +92,10 @@
                             <td>@emp.Puesto</td>
                             <td>@emp.Tardanzas</td>
                             <td>@emp.Faltas</td>
+                            <td><span class="badge bg-success">@emp.Estado</span></td>
                             <td>
-                                <span class="badge bg-success">@emp.Estado</span>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("DetallePagoQuincenal", "ReporteEmpleado",
-                                            new { idEmpleado = emp.IdEmpleado, quincena = Model.Quincena,
-                                                  mes = Model.Mes, anio = Model.Anio })"
-                                   class="btn btn-sm btn-outline-primary">
-                                    Ver Detalle
-                                </a>
+                                <a href="@Url.Action("DetallePagoQuincenal", "ReporteEmpleado", new { idEmpleado = emp.IdEmpleado, quincena = Model.Quincena, mes = Model.Mes, anio = Model.Anio })"
+                                   class="btn btn-sm btn-outline-primary">Ver Detalle</a>
                             </td>
                         </tr>
                     }
@@ -130,53 +105,53 @@
     </div>
 </div>
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $('#filtroForm').on('submit', function (e) {
-        e.preventDefault();
-        const formData = $(this).serialize();
+    const estadoData = @Html.Raw(Json.Encode(
+        Model.Empleados.GroupBy(e => e.Estado).Select(g => new {
+            Estado = g.Key,
+            Cantidad = g.Count()
+        })
+    ));
 
-        $.ajax({
-            url: '@Url.Action("FiltrarReporte", "ReporteEmpleado")',
-            type: 'GET',
-            data: formData,
-            success: function (response) {
-                $('#tablaEmpleados').empty();
+    const horasData = @Html.Raw(Json.Encode(
+        Model.Empleados.Where(e => e.HorasTrabajadas > 0).Select(e => new {
+            Nombre = e.NombreCompleto,
+            Horas = e.HorasTrabajadas
+        })
+    ));
 
-                if (!response.Empleados || response.Empleados.length === 0) {
-                    $('#tablaEmpleados').append(
-                      '<tr><td colspan="7" class="text-center">No hay datos</td></tr>'
-                    );
-                } else {
-                    response.Empleados.forEach(function (empleado) {
-                        $('#tablaEmpleados').append(`
-                            <tr>
-                                <td>${empleado.IdEmpleado}</td>
-                                <td>${empleado.NombreCompleto}</td>
-                                <td>${empleado.Puesto}</td>
-                                <td>${empleado.Tardanzas}</td>
-                                <td>${empleado.Faltas}</td>
-                                <td><span class="badge bg-success">${empleado.Estado}</span></td>
-                                <td>
-                                    <a href="@Url.Action("DetallePagoQuincenal", "ReporteEmpleado")?idEmpleado=${empleado.IdEmpleado}&quincena=${$('#quincena').val()}&mes=${$('#mes').val()}&anio=${$('#anio').val()}"
-                                       class="btn btn-sm btn-outline-primary">
-                                        Ver Detalle
-                                    </a>
-                                </td>
-                            </tr>`);
-                    });
-                }
-
-                $('#totalEmpleados').text(response.TotalEmpleados);
-                $('#tardanzasTotales').text(response.TardanzasTotales);
-                $('#faltasTotales').text(response.FaltasTotales);
-                $('#nominaTotal').text('S/. ' + Number(response.NominaTotal).toFixed(2));
-            },
-            error: function (xhr) {
-                console.error("Error en la solicitud:", xhr);
-                alert("Error al filtrar datos. Intente nuevamente.");
+    new Chart(document.getElementById('chartEstadoPersonal').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: estadoData.map(e => e.Estado),
+            datasets: [{
+                data: estadoData.map(e => e.Cantidad),
+                backgroundColor: ['#198754', '#ffc107', '#dc3545']
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { position: 'bottom' }
             }
-        });
+        }
+    });
+
+    new Chart(document.getElementById('chartHorasTrabajadas').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: horasData.map(e => e.Nombre),
+            datasets: [{
+                label: 'Horas',
+                data: horasData.map(e => e.Horas),
+                backgroundColor: '#0dcaf0'
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { beginAtZero: true }
+            }
+        }
     });
 </script>

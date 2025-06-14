@@ -101,11 +101,22 @@ namespace AppBuenisimo.Services
 
             var asistencias = _dbContext.tbAsistencias
                 .Where(a => a.idUsuario == idEmpleado && a.fecha >= fechaInicio && a.fecha <= fechaFin &&
-                            a.horaEntrada.HasValue && a.horaSalida.HasValue)
+                            a.horaEntrada.HasValue)
                 .ToList();
 
-            double horas = asistencias.Sum(a => (a.horaSalida.Value - a.horaEntrada.Value).TotalHours);
-            return Math.Round((decimal)horas * horario.pagoPorHora, 2);
+            double totalHoras = 0;
+            foreach (var a in asistencias)
+            {
+                TimeSpan horaInicio = a.horaEntrada.Value.TimeOfDay;
+                TimeSpan horaFin = a.horaSalida.HasValue ? a.horaSalida.Value.TimeOfDay : horario.horaSalida;
+                if (horaFin > horario.horaSalida) horaFin = horario.horaSalida;
+                if (horaInicio < horario.horaEntrada) horaInicio = horario.horaEntrada;
+
+                if (horaFin > horaInicio)
+                    totalHoras += (horaFin - horaInicio).TotalHours;
+            }
+
+            return Math.Round((decimal)totalHoras * horario.pagoPorHora, 2);
         }
 
         public DetalleEmpleadoModalDTO ObtenerDetalleEmpleado(int idEmpleado, DateTime fechaInicio, DateTime fechaFin)
@@ -122,6 +133,39 @@ namespace AppBuenisimo.Services
                 .Where(a => a.idUsuario == idEmpleado && a.fecha >= fechaInicio && a.fecha <= fechaFin)
                 .ToList();
 
+            var listaAsistencias = asistencias
+                .Where(a => a.horaEntrada.HasValue)
+                .Select(a =>
+                {
+                    TimeSpan horaEntradaHorario = horario?.horaEntrada ?? new TimeSpan(9, 0, 0);
+                    TimeSpan horaSalidaHorario = horario?.horaSalida ?? new TimeSpan(18, 0, 0);
+
+                    TimeSpan horaInicio = a.horaEntrada.Value.TimeOfDay;
+                    TimeSpan horaFin = a.horaSalida.HasValue ? a.horaSalida.Value.TimeOfDay : horaSalidaHorario;
+
+                    if (horaFin > horaSalidaHorario) horaFin = horaSalidaHorario;
+                    if (horaInicio < horaEntradaHorario) horaInicio = horaEntradaHorario;
+
+                    double horasTrabajadas = horaFin > horaInicio ? (horaFin - horaInicio).TotalHours : 0;
+
+                    decimal pagoPorHora = horario?.pagoPorHora ?? 5;
+                    decimal pagoDia = Math.Round((decimal)horasTrabajadas * pagoPorHora, 2);
+
+                    int minutosTarde = (int)Math.Max(0, (horaInicio - horaEntradaHorario).TotalMinutes);
+                    decimal descuento = Math.Round(((decimal)minutosTarde / 60) * pagoPorHora, 2);
+
+                    return new AsistenciaDTO
+                    {
+                        Fecha = a.fecha,
+                        HoraEntrada = horaInicio,
+                        HoraSalida = horaFin,
+                        HorasTrabajadas = horasTrabajadas,
+                        PagoDelDia = pagoDia,
+                        MinutosTardanza = minutosTarde,
+                        Descuento = descuento
+                    };
+                }).ToList();
+
             var listaTardanzas = asistencias
                 .Where(a => (a.idObservacionAsistencia == 2 || a.idObservacionAsistencia == 3) && a.horaEntrada.HasValue)
                 .Select(a => new TardanzaDTO
@@ -133,19 +177,15 @@ namespace AppBuenisimo.Services
                 }).ToList();
 
             var listaFaltas = asistencias
-                .Where(a => a.idObservacionAsistencia == 7 || a.idObservacionAsistencia == 8)
+                .Where(a => a.idObservacionAsistencia == 7 || a.idObservacionAsistencia == 8 || (!a.horaEntrada.HasValue && !a.horaSalida.HasValue))
                 .Select(a => new FaltaDTO
                 {
                     Fecha = a.fecha,
-                    Motivo = a.idObservacionAsistencia == 7 ? "Falta Justificada" : "Falta Injustificada"
+                    Motivo = (!a.horaEntrada.HasValue && !a.horaSalida.HasValue) ? "Falta por inasistencia total" : (a.idObservacionAsistencia == 7 ? "Falta Justificada" : "Falta Injustificada")
                 }).ToList();
 
-            double horas = asistencias
-                .Where(a => a.horaEntrada.HasValue && a.horaSalida.HasValue)
-                .Sum(a => (a.horaSalida.Value - a.horaEntrada.Value).TotalHours);
-
-            decimal pagoPorHora = horario?.pagoPorHora ?? 0;
-            decimal sueldoBase = Math.Round((decimal)horas * pagoPorHora, 2);
+            double totalHoras = listaAsistencias.Sum(a => a.HorasTrabajadas);
+            decimal sueldoBase = Math.Round((decimal)totalHoras * (horario?.pagoPorHora ?? 5), 2);
 
             var desglose = new List<PagoConceptoDTO>
             {
@@ -165,9 +205,10 @@ namespace AppBuenisimo.Services
                 Tardanzas = listaTardanzas,
                 Faltas = listaFaltas,
                 DesglosePago = desglose,
-                SueldoNeto = sueldoBase
+                SueldoNeto = sueldoBase,
+                Asistencias = listaAsistencias,
+                HorarioAsignado = horario != null ? string.Format("{0:hh\\:mm} - {1:hh\\:mm}", horario.horaEntrada, horario.horaSalida) : "No asignado"
             };
         }
-
     }
 }

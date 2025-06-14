@@ -7,7 +7,7 @@
 
 <div class="container-fluid py-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white text-center">
                     <h4 class="mb-0">Detalles de @Model.Nombre</h4>
@@ -17,12 +17,19 @@
                     <!-- Información general -->
                     <div class="mb-4">
                         <p><strong>Puesto:</strong> @Model.Puesto</p>
-                        <p><strong>Salario Base Quincenal:</strong> S/. @Model.SalarioBaseQuincenal.ToString("N2")</p>
+                        <p>
+                            <strong>Salario Base Quincenal:</strong>
+                            @{
+                                var horasPorDia = TimeSpan.Parse(Model.HorarioAsignado.Split('-')[1].Trim()).TotalHours - TimeSpan.Parse(Model.HorarioAsignado.Split('-')[0].Trim()).TotalHours;
+                                var salarioBase = horasPorDia * 15 * 5; // 15 días y 5 soles/hora
+                            }
+                            S/. @salarioBase.ToString("N2")
+                        </p>                        <p><strong>Horario Asignado:</strong> @Model.HorarioAsignado</p>
                     </div>
 
                     <!-- Tardanzas -->
                     <h5>Tardanzas</h5>
-                    @if (Model.Tardanzas != null && Model.Tardanzas.Count > 0)
+                    @if (Model.Tardanzas?.Count > 0)
                     {
                         <table class="table table-bordered table-hover mb-4">
                             <thead class="table-light">
@@ -40,7 +47,7 @@
                                         <td>@t.Fecha.ToString("dd/MM/yyyy")</td>
                                         <td>@t.HoraEntrada.ToString(@"hh\:mm")</td>
                                         <td>@t.TipoTardanza</td>
-                                        <td>@("+" + t.DiferenciaTardanza?.ToString(@"hh\:mm"))</td>
+                                        <td>+@(t.DiferenciaTardanza.HasValue ? t.DiferenciaTardanza.Value.ToString(@"hh\:mm") : "00:00")</td>
                                     </tr>
                                 }
                             </tbody>
@@ -53,7 +60,7 @@
 
                     <!-- Faltas -->
                     <h5>Faltas</h5>
-                    @if (Model.Faltas != null && Model.Faltas.Count > 0)
+                    @if (Model.Faltas?.Count > 0)
                     {
                         <table class="table table-bordered table-hover mb-4">
                             <thead class="table-light">
@@ -78,8 +85,49 @@
                         <p class="text-muted">No tiene faltas registradas.</p>
                     }
 
+                    <!-- Asistencias Detalladas -->
+                    <h5>Detalle de Asistencias Diarias</h5>
+                    @if (Model.Asistencias?.Count > 0)
+                    {
+                        <table class="table table-bordered table-hover mb-4">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Hora Entrada</th>
+                                    <th>Hora Salida (máximo según horario)</th>
+                                    <th>Minutos de Tardanza</th>
+                                    <th>Horas Trabajadas</th>
+                                    <th>Pago del Día</th>
+                                    <th>Descuento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var a in Model.Asistencias)
+                                {
+                                    var horaFin = TimeSpan.Parse(Model.HorarioAsignado.Split('-')[1].Trim());
+                                    var horaSalidaReal = a.HoraSalida.HasValue ? a.HoraSalida.Value : horaFin;
+                                    var horaSalidaMostrada = horaSalidaReal < horaFin ? horaSalidaReal : horaFin;
+
+                                    <tr>
+                                        <td>@a.Fecha.ToString("dd/MM/yyyy")</td>
+                                        <td>@a.HoraEntrada.ToString(@"hh\:mm")</td>
+                                        <td>@horaSalidaMostrada.ToString("hh\\:mm")</td>
+                                        <td>@a.MinutosTardanza</td>
+                                        <td>@a.HorasTrabajadas.ToString("F2")</td>
+                                        <td>S/. @a.PagoDelDia.ToString("N2")</td>
+                                        <td>S/. @a.Descuento.ToString("N2")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No tiene asistencias registradas.</p>
+                    }
+
                     <!-- Pago Quincenal -->
-                    <h5>Pago Quincenal</h5>
+                    <h5>Resumen de Pago Quincenal</h5>
                     <table class="table table-striped mt-3">
                         <thead class="table-dark">
                             <tr>
@@ -88,11 +136,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Pago por horas trabajadas</td>
-                                <td>S/. @Model.SalarioBaseQuincenal.ToString("N2")</td>
+                            <tr class="table-danger">
+                                <td>Descuentos estimados</td>
+                                <td>S/. @Model.Asistencias.Sum(a => a.Descuento).ToString("N2")</td>
                             </tr>
-                            <tr class="table-success">
+                            <tr class="table-primary">
                                 <td><strong>Total Neto a Pagar</strong></td>
                                 <td><strong>S/. @Model.SueldoNeto.ToString("N2")</strong></td>
                             </tr>

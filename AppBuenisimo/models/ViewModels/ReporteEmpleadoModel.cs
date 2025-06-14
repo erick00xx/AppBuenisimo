@@ -31,6 +31,8 @@ namespace AppBuenisimo.Models.ViewModels
         public int Faltas { get; set; }
         public decimal PagoQuincenal { get; set; }
         public string Estado { get; set; } = "Activo";
+        public double HorasTrabajadas { get; set; }
+
     }
 
     public class DetalleEmpleadoModalDTO
@@ -42,6 +44,11 @@ namespace AppBuenisimo.Models.ViewModels
         public List<FaltaDTO> Faltas { get; set; } = new List<FaltaDTO>();
         public List<PagoConceptoDTO> DesglosePago { get; set; } = new List<PagoConceptoDTO>();
         public decimal SueldoNeto { get; set; } // Agrega esta propiedad
+        public List<AsistenciaDTO> Asistencias { get; set; } = new List<AsistenciaDTO>();
+        public string HorarioAsignado { get; set; }
+
+
+
     }
 
     public class TardanzaDTO
@@ -65,6 +72,17 @@ namespace AppBuenisimo.Models.ViewModels
         public string Concepto { get; set; }
         public decimal Valor { get; set; }
         public string Tipo { get; set; } // Ingreso / Descuento
+    }
+
+    public class AsistenciaDTO
+    {
+        public DateTime Fecha { get; set; }
+        public TimeSpan HoraEntrada { get; set; }
+        public TimeSpan? HoraSalida { get; set; }
+        public double HorasTrabajadas { get; set; }
+        public decimal PagoDelDia { get; set; }
+        public int MinutosTardanza { get; set; }
+        public decimal Descuento { get; set; }
     }
 
 }
