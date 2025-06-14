@@ -160,6 +160,7 @@
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\AbastecimientoController.cs" />
     <Compile Include="Controllers\PedidosController.cs" />
+    <Compile Include="Controllers\ReportesVentasController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorariosController.cs" />
@@ -268,6 +269,8 @@
     <Compile Include="Models\ViewModels\HorarioEmpleados.cs" />
     <Compile Include="Models\ViewModels\ReporteEmpleadoModel.cs" />
     <Compile Include="Models\ViewModels\ReporteInventarioModel.cs" />
+    <Compile Include="Models\ViewModels\ReporteVentasViewModelExtend.cs" />
+    <Compile Include="Models\ViewModels\ReporteVentaViewModels.cs" />
     <Compile Include="Models\ViewModels\UsuarioDTO.cs" />
     <Compile Include="Models\ViewModels\DetallePedidoViewModel.cs" />
     <Compile Include="Models\ViewModels\ReporteAsistenciaEmpleadoViewModel.cs" />
@@ -280,6 +283,7 @@
     <Compile Include="Services\HorarioService.cs" />
     <Compile Include="Services\EmpleadoService.cs" />
     <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\ReporteVentaService.cs" />
     <Compile Include="Services\VentasService.cs" />
     <Compile Include="Utils\PasswordHasher.cs" />
     <Compile Include="Services\PedidoService.cs" />
@@ -333,8 +337,6 @@
     <Content Include="libman.json" />
     <None Include="Properties\PublishProfiles\appbuenisimo - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\appbuenisimo - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\lab01ecb - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\lab01ecb - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -427,6 +429,7 @@
     <Content Include="Views\ChatBot\Index.cshtml" />
     <Content Include="Views\Ventas\Detalles.cshtml" />
     <Content Include="Views\Ventas\Editar.cshtml" />
+    <Content Include="Views\ReportesVentas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

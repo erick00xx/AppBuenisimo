@@ -1,0 +1,68 @@
+﻿@model AppBuenisimo.Models.tbUsuarios
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login - Buenísimo</title>
+
+    <!-- Bootstrap CSS local -->
+    <link href="~/source/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+<body class="bg-dark text-white">
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg rounded-4" style="width: 100%; max-width: 400px;">
+            <div class="card-header bg-white text-center border-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#6c757d" class="bi bi-cup-hot" viewBox="0 0 16 16">
+                    <path d="..." />
+                </svg>
+                <h3 class="mt-2 mb-0">Buenísimo</h3>
+                <p class="text-muted small">Sistema de gestión</p>
+            </div>
+
+            <div class="card-body p-4">
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <div>@ViewBag.Error</div>
+                    </div>
+                }
+
+                @using (Html.BeginForm("Login", "Autenticacion", FormMethod.Post))
+                {
+                    <div class="form-floating mb-3">
+                        @Html.TextBoxFor(m => m.dni, new { @class = "form-control", placeholder = "DNI", required = "required", id = "dni" })
+                        <label for="dni">DNI</label>
+                        @Html.ValidationMessageFor(m => m.dni, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        @Html.PasswordFor(m => m.contrasena, new { @class = "form-control", placeholder = "Contraseña", required = "required", id = "contrasena" })
+                        <label for="contrasena">Contraseña</label>
+                        @Html.ValidationMessageFor(m => m.contrasena, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-box-arrow-in-right me-2"></i> Iniciar sesión
+                    </button>
+                }
+            </div>
+
+            <div class="card-footer bg-white border-0 text-center small text-muted">
+                &copy; 2025 Buenísimo - Todos los derechos reservados
+            </div>
+        </div>
+    </div>
+
+    <script src="~/source/js/jquery-3.7.0.min.js"></script>
+    <script src="~/source/js/bootstrap.bundle.min.js"></script>
+    <script src="~/source/js/jquery.validate.min.js"></script>
+    <script src="~/source/js/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

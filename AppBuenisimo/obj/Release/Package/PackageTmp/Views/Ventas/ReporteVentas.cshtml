@@ -1,0 +1,357 @@
+﻿
+@{
+    ViewBag.Title = "ReporteVentas";
+}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <style>
+        .card-stat {
+            border-left: 4px solid #0d6efd;
+            transition: all 0.3s;
+        }
+
+            .card-stat:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .badge-estado {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+
+        .badge-completado {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .badge-pendiente {
+            background-color: #fff3cd;
+            color: #664d03;
+        }
+
+        .badge-cancelado {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+
+        .table-responsive {
+            max-height: 500px;
+        }
+
+        .venta-highlight {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid py-4">
+        <h1 class="text-center mb-4"><i class="bi bi-graph-up"></i> Reporte de Ventas</h1>
+
+        <!-- Filtros -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-funnel"></i> Filtros</h5>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha inicial</label>
+                        <input type="date" class="form-control" id="fechaInicio">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha final</label>
+                        <input type="date" class="form-control" id="fechaFin">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Estado</label>
+                        <select class="form-select" id="estadoVenta">
+                            <option selected value="todos">Todos</option>
+                            <option value="completado">Completado</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Tipo de venta</label>
+                        <select class="form-select" id="tipoVenta">
+                            <option selected value="todos">Todos</option>
+                            <option value="local">Local</option>
+                            <option value="domicilio">Domicilio</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-end mt-2">
+                        <button class="btn btn-primary me-2" onclick="aplicarFiltros()">
+                            <i class="bi bi-filter"></i> Aplicar Filtros
+                        </button>
+                        <button class="btn btn-success" onclick="exportarExcel()">
+                            <i class="bi bi-file-earmark-excel"></i> Exportar a Excel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card card-stat h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Ventas totales</h5>
+                        <h2 class="mb-0">24</h2>
+                        <p class="text-success mb-0"><small>+5 vs semana anterior</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-stat h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Ingresos totales</h5>
+                        <h2 class="mb-0">S/ 3,450.00</h2>
+                        <p class="text-primary mb-0"><small>18% más que semana anterior</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-stat h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Ticket promedio</h5>
+                        <h2 class="mb-0">S/ 143.75</h2>
+                        <p class="text-warning mb-0"><small>-2% vs semana anterior</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-stat h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Producto más vendido</h5>
+                        <h2 class="mb-0">Café Americano</h2>
+                        <p class="text-info mb-0"><small>32 unidades</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico de ventas (simulado con Bootstrap) -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="bi bi-bar-chart"></i> Tendencia de ventas</h4>
+                <select class="form-select w-auto" id="rangoGrafico">
+                    <option value="dia">Por día</option>
+                    <option value="semana" selected>Por semana</option>
+                    <option value="mes">Por mes</option>
+                </select>
+            </div>
+            <div class="card-body">
+                <div class="bg-light p-4 text-center border rounded">
+                    <p class="text-muted mb-0"><i>(Área para gráfico de ventas)</i></p>
+                    <p class="text-muted">Ventas por día de la semana actual</p>
+                    <div class="d-flex justify-content-around mt-3">
+                        <div class="text-center">
+                            <div class="bg-primary text-white p-2 rounded">L<br>S/ 420</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white p-2 rounded">M<br>S/ 580</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white p-2 rounded">M<br>S/ 620</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white p-2 rounded">J<br>S/ 510</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white p-2 rounded">V<br>S/ 750</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white p-2 rounded">S<br>S/ 920</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-primary text-white p-2 rounded">D<br>S/ 650</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de ventas -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="bi bi-receipt"></i> Detalle de ventas</h4>
+                <div class="input-group w-auto">
+                    <input type="text" class="form-control" placeholder="Buscar..." id="buscarVenta">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th># Factura</th>
+                                <th>Fecha/Hora</th>
+                                <th>Cliente</th>
+                                <th>Tipo</th>
+                                <th>Productos</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="venta-highlight">
+                                <td>FAC-00125</td>
+                                <td>2024-05-15 14:30</td>
+                                <td>Juan Pérez</td>
+                                <td><span class="badge bg-info">Local</span></td>
+                                <td>3 productos</td>
+                                <td>S/ 185.00</td>
+                                <td><span class="badge badge-estado badge-completado">Completado</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary" title="Reimprimir">
+                                        <i class="bi bi-printer"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FAC-00124</td>
+                                <td>2024-05-15 13:15</td>
+                                <td>María Gómez</td>
+                                <td><span class="badge bg-warning text-dark">Domicilio</span></td>
+                                <td>5 productos</td>
+                                <td>S/ 320.50</td>
+                                <td><span class="badge badge-estado badge-pendiente">Pendiente</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success" title="Marcar como completado">
+                                        <i class="bi bi-check-circle"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FAC-00123</td>
+                                <td>2024-05-14 19:45</td>
+                                <td>Carlos Rojas</td>
+                                <td><span class="badge bg-info">Local</span></td>
+                                <td>2 productos</td>
+                                <td>S/ 95.00</td>
+                                <td><span class="badge badge-estado badge-completado">Completado</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary" title="Reimprimir">
+                                        <i class="bi bi-printer"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FAC-00122</td>
+                                <td>2024-05-14 18:20</td>
+                                <td>Ana Martínez</td>
+                                <td><span class="badge bg-warning text-dark">Domicilio</span></td>
+                                <td>4 productos</td>
+                                <td>S/ 275.00</td>
+                                <td><span class="badge badge-estado badge-cancelado">Cancelado</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1" title="Ver detalles">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" title="Eliminar registro">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer bg-white">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery local -->
+    <script src="~/source/js/jquery-3.7.0.min.js"></script>
+
+    <!-- Bootstrap JS local -->
+    <script src="~/source/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function aplicarFiltros() {
+            const fechaInicio = $('#fechaInicio').val();
+            const fechaFin = $('#fechaFin').val();
+            const estado = $('#estadoVenta').val();
+            const tipo = $('#tipoVenta').val();
+
+            // Aquí iría la lógica para filtrar los datos
+            alert(`Filtrando por: ${fechaInicio} a ${fechaFin}, Estado: ${estado}, Tipo: ${tipo}`);
+
+            // Simulación de filtrado (en una implementación real sería una llamada AJAX)
+            $('tbody tr').show();
+
+            if(estado !== 'todos') {
+                $('tbody tr').each(function() {
+                    const estadoFila = $(this).find('.badge-estado').text().toLowerCase();
+                    if(estadoFila !== estado) {
+                        $(this).hide();
+                    }
+                });
+            }
+
+            if(tipo !== 'todos') {
+                $('tbody tr').each(function() {
+                    const tipoFila = $(this).find('td:nth-child(4) .badge').text().toLowerCase();
+                    if(tipoFila !== tipo) {
+                        $(this).hide();
+                    }
+                });
+            }
+        }
+
+        function exportarExcel() {
+            alert('Exportando datos a Excel...');
+            // Aquí iría la lógica para exportar a Excel
+        }
+
+        // Inicialización con datos de la semana actual
+        $(document).ready(function() {
+            const hoy = new Date();
+            const inicioSemana = new Date(hoy.setDate(hoy.getDate() - hoy.getDay()));
+
+            $('#fechaInicio').val(inicioSemana.toISOString().split('T')[0]);
+            $('#fechaFin').val(new Date().toISOString().split('T')[0]);
+        });
+    </script>
+</body>
+</html>
+

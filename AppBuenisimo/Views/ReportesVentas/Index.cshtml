@@ -1,0 +1,1205 @@
+﻿@model AppBuenisimo.Models.ViewModels.DashboardReportesViewModelExtended
+@{
+    ViewBag.Title = "Dashboard de Reportes de Ventas";
+}
+
+<!-- CSS personalizado mejorado -->
+<style>
+    .dashboard-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding: 25px;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+        border: 1px solid #e9ecef;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .metric-card {
+        text-align: center;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+    }
+
+    .metric-card.success {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    }
+
+    .metric-card.warning {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .metric-card.info {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .metric-value {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .metric-label {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.9;
+        font-weight: 600;
+    }
+
+    .metric-change {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.2);
+        display: inline-block;
+    }
+
+    .chart-container {
+        position: relative;
+        height: 350px;
+        margin: 20px 0;
+    }
+
+    .chart-container.small {
+        height: 280px;
+    }
+
+    .chart-container.large {
+        height: 400px;
+    }
+
+    .filters-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        border-radius: 15px;
+    }
+
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .table-responsive {
+        max-height: 450px;
+        overflow-y: auto;
+        border-radius: 10px;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table thead th {
+        background: #f8f9fa;
+        border-top: none;
+        font-weight: 600;
+        color: #495057;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .btn-filter {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 12px 25px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-filter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        color: white;
+    }
+
+    .section-title {
+        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-title i {
+        color: #667eea;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .stat-item {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    .stat-label {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+        .metric-value {
+            font-size: 2.2rem;
+        }
+
+        .chart-container {
+            height: 280px;
+        }
+
+        .dashboard-card {
+            padding: 20px;
+        }
+
+        .filters-section {
+            padding: 20px;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="section-title mb-4">
+                <i class="fas fa-chart-line"></i> Dashboard de Reportes de Ventas
+            </h2>
+        </div>
+    </div>
+
+    <!-- Sección de Filtros Mejorada -->
+    <div class="filters-section">
+        <form id="filtrosForm">
+            <div class="row align-items-end">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <label for="fechaInicio" class="form-label fw-bold">
+                        <i class="fas fa-calendar-alt"></i> Fecha Inicio
+                    </label>
+                    @Html.TextBoxFor(m => m.Filtros.FechaInicio, new
+                    {
+                        @class = "form-control",
+                        @type = "date",
+                        @id = "fechaInicio"
+                    })
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <label for="fechaFin" class="form-label fw-bold">
+                        <i class="fas fa-calendar-alt"></i> Fecha Fin
+                    </label>
+                    @Html.TextBoxFor(m => m.Filtros.FechaFin, new
+                    {
+                        @class = "form-control",
+                        @type = "date",
+                        @id = "fechaFin"
+                    })
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <label for="sucursal" class="form-label fw-bold">
+                        <i class="fas fa-store"></i> Sucursal
+                    </label>
+                    @Html.DropDownListFor(m => m.Filtros.IdSucursal,
+                        new SelectList(Model.Sucursales, "IdSucursal", "Nombre"),
+                        "Todas las sucursales",
+                        new { @class = "form-control", @id = "sucursal" })
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <button type="button" id="aplicarFiltros" class="btn btn-filter w-100">
+                        <i class="fas fa-filter"></i> Aplicar Filtros
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="aplicarFiltroRapido(7)">
+                            Últimos 7 días
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="aplicarFiltroRapido(30)">
+                            Últimos 30 días
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="aplicarFiltroRapido(90)">
+                            Últimos 3 meses
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="limpiarFiltros()">
+                            <i class="fas fa-times"></i> Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Métricas Principales Mejoradas -->
+    <div class="row" id="metricas-principales">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="metric-card">
+                <div class="metric-value" id="totalVentas">
+                    S/ @Model.ResumenVentas.TotalVentas.ToString("N2")
+                </div>
+                <div class="metric-label">Total Ventas</div>
+                <div class="metric-change">
+                    <i class="fas fa-arrow-@(Model.ResumenVentas.CrecimientoVsAnterior >= 0 ? "up" : "down")"></i>
+                    <span id="crecimientoVentas">@Model.ResumenVentas.CrecimientoVsAnterior.ToString("N1")%</span> vs anterior
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="metric-card success">
+                <div class="metric-value" id="cantidadVentas">
+                    @Model.ResumenVentas.CantidadVentas
+                </div>
+                <div class="metric-label">Transacciones</div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="metric-card warning">
+                <div class="metric-value" id="promedioVenta">
+                    S/ @Model.ResumenVentas.PromedioVenta.ToString("N2")
+                </div>
+                <div class="metric-label">Ticket Promedio</div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="metric-card info">
+                <div class="metric-value" id="sucursalTop">
+                    @(Model.VentasPorSucursal.FirstOrDefault()?.NombreSucursal ?? "N/A")
+                </div>
+                <div class="metric-label">Sucursal Líder</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estadísticas Avanzadas -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-chart-bar"></i> Estadísticas Avanzadas
+                </h5>
+                <div class="stats-grid" id="estadisticasAvanzadas">
+                    <div class="stat-item">
+                        <div class="stat-value">S/ @Model.EstadisticasAvanzadas.VentaMinima.ToString("N2")</div>
+                        <div class="stat-label">Venta Mínima</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">S/ @Model.EstadisticasAvanzadas.VentaMaxima.ToString("N2")</div>
+                        <div class="stat-label">Venta Máxima</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">S/ @Model.EstadisticasAvanzadas.MedianaVenta.ToString("N2")</div>
+                        <div class="stat-label">Mediana</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">S/ @Model.EstadisticasAvanzadas.DesviacionEstandar.ToString("N2")</div>
+                        <div class="stat-label">Desviación Estándar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gráficos Principales -->
+    <div class="row">
+        <!-- Ventas por Hora -->
+        <div class="col-lg-6 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-clock"></i> Ventas por Hora del Día
+                </h5>
+                <div class="chart-container">
+                    <canvas id="ventasPorHoraChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ventas por Día de la Semana -->
+        <div class="col-lg-6 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-calendar-week"></i> Ventas por Día de la Semana
+                </h5>
+                <div class="chart-container">
+                    <canvas id="ventasPorDiaChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventas por Mes -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-calendar"></i> Tendencia de Ventas por Mes
+                </h5>
+                <div class="chart-container large">
+                    <canvas id="ventasPorMesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Top Productos -->
+        <div class="col-lg-6 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-trophy"></i> Top 10 Productos Más Vendidos
+                </h5>
+                <div class="chart-container">
+                    <canvas id="topProductosChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Métodos de Pago -->
+        <div class="col-lg-6 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-credit-card"></i> Distribución Métodos de Pago
+                </h5>
+                <div class="chart-container small">
+                    <canvas id="metodosPagoChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rendimiento por Sucursal Mejorado -->
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-store"></i> Rendimiento por Sucursal
+                </h5>
+                <div class="chart-container">
+                    <canvas id="ventasPorSucursalChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-clock"></i> Horarios Pico por Sucursal
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="tablaHorariosPico">
+                        <thead>
+                            <tr>
+                                <th>Sucursal</th>
+                                <th>Hora Pico</th>
+                                <th>Ventas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var horario in Model.HorariosPicoPorSucursal)
+                            {
+                                <tr>
+                                    <td>@horario.NombreSucursal</td>
+                                    <td>@horario.HoraPico:00</td>
+                                    <td>S/ @horario.VentasEnHoraPico.ToString("N2")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tablas Detalladas -->
+    <div class="row">
+        <!-- Top Categorías -->
+        <div class="col-lg-6 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-tags"></i> Categorías Más Vendidas
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="tablaTopCategorias">
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Cantidad</th>
+                                <th>Total Ventas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var categoria in Model.TopCategorias)
+                            {
+                                <tr>
+                                    <td>@categoria.NombreCategoria</td>
+                                    <td>@categoria.CantidadVendida</td>
+                                    <td>S/ @categoria.TotalVentas.ToString("N2")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Análisis de Precios -->
+        <div class="col-lg-6 mb-4">
+            <div class="dashboard-card">
+                <h5 class="section-title">
+                    <i class="fas fa-dollar-sign"></i> Análisis de Precios por Producto
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="tablaAnalisisPrecios">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Min</th>
+                                <th>Max</th>
+                                <th>Promedio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var precio in Model.AnalisisPrecios.Take(10))
+                            {
+                                <tr>
+                                    <td>@precio.NombreProducto</td>
+                                    <td>S/ @precio.PrecioMinimo.ToString("N2")</td>
+                                    <td>S/ @precio.PrecioMaximo.ToString("N2")</td>
+                                    <td>S/ @precio.PrecioPromedio.ToString("N2")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts mejorados -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Variables globales para los gráficos
+    let charts = {};
+
+    // Datos iniciales del modelo
+    const initialData = {
+        ventasPorHora: @Html.Raw(Json.Encode(Model.VentasPorHora)),
+        ventasPorDia: @Html.Raw(Json.Encode(Model.VentasPorDia)),
+        ventasPorMes: @Html.Raw(Json.Encode(Model.VentasPorMes)),
+        topProductos: @Html.Raw(Json.Encode(Model.TopProductos)),
+        topCategorias: @Html.Raw(Json.Encode(Model.TopCategorias)),
+        ventasPorSucursal: @Html.Raw(Json.Encode(Model.VentasPorSucursal)),
+        horariosPicoPorSucursal: @Html.Raw(Json.Encode(Model.HorariosPicoPorSucursal)),
+        metodosPago: @Html.Raw(Json.Encode(Model.MetodosPago)),
+        analisisPrecios: @Html.Raw(Json.Encode(Model.AnalisisPrecios)),
+        estadisticasAvanzadas: @Html.Raw(Json.Encode(Model.EstadisticasAvanzadas))
+    };
+
+    // Configuración de colores mejorada
+    const colors = {
+        primary: '#667eea',
+        success: '#11998e',
+        warning: '#f093fb',
+        danger: '#e74c3c',
+        info: '#4facfe',
+        purple: '#9b59b6',
+        orange: '#fd7e14',
+        teal: '#20c997'
+    };
+
+    const gradients = {
+        primary: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        success: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+        warning: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        info: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+    };
+
+    const colorPalette = [
+        '#667eea', '#11998e', '#f093fb', '#4facfe',
+        '#fd7e14', '#20c997', '#9b59b6', '#e74c3c',
+        '#6f42c1', '#e83e8c', '#17a2b8', '#28a745'
+    ];
+
+    // Inicializar gráficos al cargar la página
+    $(document).ready(function() {
+        initializeCharts();
+        setupEventHandlers();
+        configurarFechasPorDefecto();
+    });
+
+    function initializeCharts() {
+        createVentasPorHoraChart();
+        createVentasPorDiaChart();
+        createVentasPorMesChart();
+        createTopProductosChart();
+        createMetodosPagoChart();
+        createVentasPorSucursalChart();
+    }
+
+    function createVentasPorHoraChart() {
+        const ctx = document.getElementById('ventasPorHoraChart').getContext('2d');
+        const data = initialData.ventasPorHora;
+
+        charts.ventasPorHora = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.map(d => d.Hora + ':00'),
+                datasets: [{
+                    label: 'Total Ventas (S/)',
+                    data: data.map(d => d.TotalVentas),
+                    borderColor: colors.primary,
+                    backgroundColor: colors.primary + '20',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: colors.primary,
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'S/ ' + value.toFixed(2);
+                            }
+                        },
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createVentasPorDiaChart() {
+        const ctx = document.getElementById('ventasPorDiaChart').getContext('2d');
+        const data = initialData.ventasPorDia;
+
+        charts.ventasPorDia = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.map(d => d.NombreDia),
+                datasets: [{
+                    label: 'Total Ventas (S/)',
+                    data: data.map(d => d.TotalVentas),
+                    backgroundColor: colorPalette.slice(0, data.length),
+                    borderRadius: 8,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'S/ ' + value.toFixed(2);
+                            }
+                        },
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createVentasPorMesChart() {
+        const ctx = document.getElementById('ventasPorMesChart').getContext('2d');
+        const data = initialData.ventasPorMes;
+
+        charts.ventasPorMes = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.map(d => d.NombreMes + ' ' + d.Año),
+                datasets: [
+                    {
+                        label: 'Total Ventas (S/)',
+                        data: data.map(d => d.TotalVentas),
+                        borderColor: colors.primary,
+                        backgroundColor: colors.primary + '20',
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: colors.primary,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    },
+                    {
+                        label: 'Cantidad Ventas',
+                        data: data.map(d => d.CantidadVentas),
+                        borderColor: colors.success,
+                        backgroundColor: colors.success + '20',
+                        tension: 0.4,
+                        fill: false,
+                        pointBackgroundColor: colors.success,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'S/ ' + value.toFixed(2);
+                            }
+                        },
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        beginAtZero: true,
+                        grid: {
+                            drawOnChartArea: false,
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createTopProductosChart() {
+        const ctx = document.getElementById('topProductosChart').getContext('2d');
+        const data = initialData.topProductos.slice(0, 8);
+
+        charts.topProductos = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.map(d => d.NombreProducto.length > 25 ?
+                    d.NombreProducto.substring(0, 25) + '...' : d.NombreProducto),
+                datasets: [{
+                    label: 'Cantidad Vendida',
+                    data: data.map(d => d.CantidadVendida),
+                    backgroundColor: colorPalette.slice(0, data.length),
+                    borderRadius: 5,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y', // <-- esto lo hace horizontal
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createMetodosPagoChart() {
+        const ctx = document.getElementById('metodosPagoChart').getContext('2d');
+        const data = initialData.metodosPago;
+
+        charts.metodosPago = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: data.map(d => d.NombreMetodo),
+                datasets: [{
+                    data: data.map(d => d.TotalVentas),
+                    backgroundColor: colorPalette.slice(0, data.length),
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const percentage = data[context.dataIndex].Porcentaje;
+                                return context.label + ': S/ ' + context.parsed.toFixed(2) +
+                                       ' (' + percentage.toFixed(1) + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createVentasPorSucursalChart() {
+        const ctx = document.getElementById('ventasPorSucursalChart').getContext('2d');
+        const data = initialData.ventasPorSucursal;
+
+        charts.ventasPorSucursal = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.map(d => d.NombreSucursal),
+                datasets: [
+                    {
+                        label: 'Total Ventas (S/)',
+                        data: data.map(d => d.TotalVentas),
+                        backgroundColor: colors.primary,
+                        yAxisID: 'y',
+                        borderRadius: 8,
+                        borderSkipped: false
+                    },
+                    {
+                        label: 'Cantidad Ventas',
+                        data: data.map(d => d.CantidadVentas),
+                        backgroundColor: colors.success,
+                        yAxisID: 'y1',
+                        borderRadius: 8,
+                        borderSkipped: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'S/ ' + value.toFixed(2);
+                            }
+                        },
+                        grid: {
+                            color: '#f0f0f0'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        beginAtZero: true,
+                        grid: {
+                            drawOnChartArea: false,
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function setupEventHandlers() {
+        // Aplicar filtros
+        $('#aplicarFiltros').click(function() {
+            aplicarFiltros();
+        });
+
+        // Aplicar filtros al cambiar fechas (con debounce)
+        let timeoutId;
+        $('#fechaInicio, #fechaFin, #sucursal').change(function() {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(aplicarFiltros, 500);
+        });
+    }
+
+    function aplicarFiltros() {
+        const filtros = {
+            FechaInicio: $('#fechaInicio').val() || null,
+            FechaFin: $('#fechaFin').val() || null,
+            IdSucursal: $('#sucursal').val() || null
+        };
+
+        // Validar fechas
+        if (filtros.FechaInicio && filtros.FechaFin &&
+            new Date(filtros.FechaInicio) > new Date(filtros.FechaFin)) {
+            alert('La fecha de inicio no puede ser mayor que la fecha de fin');
+            return;
+        }
+
+        // Mostrar loading
+        showLoading();
+
+        $.ajax({
+            url: '@Url.Action("ActualizarDashboard", "ReportesVentas")',
+            type: 'POST',
+            data: filtros,
+            success: function(response) {
+                if (response.success) {
+                    updateDashboard(response.data);
+                } else {
+                    alert('Error: ' + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error AJAX:', error);
+                alert('Error al actualizar el dashboard. Por favor, intente nuevamente.');
+            },
+            complete: function() {
+                hideLoading();
+            }
+        });
+    }
+
+    function updateDashboard(data) {
+        // Actualizar métricas principales
+        $('#totalVentas').text('S/ ' + data.resumenVentas.TotalVentas.toFixed(2));
+        $('#cantidadVentas').text(data.resumenVentas.CantidadVentas);
+        $('#promedioVenta').text('S/ ' + data.resumenVentas.PromedioVenta.toFixed(2));
+        $('#sucursalTop').text(data.ventasPorSucursal.length > 0 ?
+            data.ventasPorSucursal[0].NombreSucursal : 'N/A');
+        $('#crecimientoVentas').text(data.resumenVentas.CrecimientoVsAnterior.toFixed(1) + '%');
+
+        // Actualizar estadísticas avanzadas
+        updateEstadisticasAvanzadas(data.estadisticasAvanzadas);
+
+        // Actualizar gráficos
+        updateChart('ventasPorHora', data.ventasPorHora);
+        updateChart('ventasPorDia', data.ventasPorDia);
+        updateChart('ventasPorMes', data.ventasPorMes);
+        updateChart('topProductos', data.topProductos);
+        updateChart('metodosPago', data.metodosPago);
+        updateChart('ventasPorSucursal', data.ventasPorSucursal);
+
+        // Actualizar tablas
+        updateTopCategoriasTable(data.topCategorias);
+        updateAnalisisPreciosTable(data.analisisPrecios);
+        updateHorariosPicoTable(data.horariosPicoPorSucursal);
+    }
+
+    function updateEstadisticasAvanzadas(stats) {
+        const container = $('#estadisticasAvanzadas');
+        container.html(`
+            <div class="stat-item">
+                <div class="stat-value">S/ ${stats.VentaMinima.toFixed(2)}</div>
+                <div class="stat-label">Venta Mínima</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">S/ ${stats.VentaMaxima.toFixed(2)}</div>
+                <div class="stat-label">Venta Máxima</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">S/ ${stats.MedianaVenta.toFixed(2)}</div>
+                <div class="stat-label">Mediana</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">S/ ${stats.DesviacionEstandar.toFixed(2)}</div>
+                <div class="stat-label">Desviación Estándar</div>
+            </div>
+        `);
+    }
+
+    function updateChart(chartName, newData) {
+        const chart = charts[chartName];
+        if (!chart) return;
+
+        switch(chartName) {
+            case 'ventasPorHora':
+                chart.data.labels = newData.map(d => d.Hora + ':00');
+                chart.data.datasets[0].data = newData.map(d => d.TotalVentas);
+                break;
+            case 'ventasPorDia':
+                chart.data.labels = newData.map(d => d.NombreDia);
+                chart.data.datasets[0].data = newData.map(d => d.TotalVentas);
+                break;
+            case 'ventasPorMes':
+                chart.data.labels = newData.map(d => d.NombreMes + ' ' + d.Año);
+                chart.data.datasets[0].data = newData.map(d => d.TotalVentas);
+                chart.data.datasets[1].data = newData.map(d => d.CantidadVentas);
+                break;
+            case 'topProductos':
+                const topProducts = newData.slice(0, 8);
+                chart.data.labels = topProducts.map(d => d.NombreProducto.length > 25 ?
+                    d.NombreProducto.substring(0, 25) + '...' : d.NombreProducto);
+                chart.data.datasets[0].data = topProducts.map(d => d.CantidadVendida);
+                break;
+            case 'metodosPago':
+                chart.data.labels = newData.map(d => d.NombreMetodo);
+                chart.data.datasets[0].data = newData.map(d => d.TotalVentas);
+                break;
+            case 'ventasPorSucursal':
+                chart.data.labels = newData.map(d => d.NombreSucursal);
+                chart.data.datasets[0].data = newData.map(d => d.TotalVentas);
+                chart.data.datasets[1].data = newData.map(d => d.CantidadVentas);
+                break;
+        }
+
+        chart.update('active');
+    }
+
+    function updateTopCategoriasTable(data) {
+        const tbody = $('#tablaTopCategorias tbody');
+        tbody.empty();
+
+        data.forEach(function(categoria) {
+            tbody.append(`
+                <tr>
+                    <td><strong>${categoria.NombreCategoria}</strong></td>
+                    <td><span class="badge bg-primary">${categoria.CantidadVendida}</span></td>
+                    <td><strong>S/ ${categoria.TotalVentas.toFixed(2)}</strong></td>
+                </tr>
+            `);
+        });
+    }
+
+    function updateAnalisisPreciosTable(data) {
+        const tbody = $('#tablaAnalisisPrecios tbody');
+        tbody.empty();
+
+        data.slice(0, 10).forEach(function(precio) {
+            tbody.append(`
+                <tr>
+                    <td><strong>${precio.NombreProducto}</strong></td>
+                    <td>S/ ${precio.PrecioMinimo.toFixed(2)}</td>
+                    <td>S/ ${precio.PrecioMaximo.toFixed(2)}</td>
+                    <td><strong>S/ ${precio.PrecioPromedio.toFixed(2)}</strong></td>
+                </tr>
+            `);
+        });
+    }
+
+    function updateHorariosPicoTable(data) {
+        const tbody = $('#tablaHorariosPico tbody');
+        tbody.empty();
+
+        data.forEach(function(horario) {
+            tbody.append(`
+                <tr>
+                    <td><strong>${horario.NombreSucursal}</strong></td>
+                    <td><span class="badge bg-warning">${horario.HoraPico}:00</span></td>
+                    <td><strong>S/ ${horario.VentasEnHoraPico.toFixed(2)}</strong></td>
+                </tr>
+            `);
+        });
+    }
+
+    function showLoading() {
+        $('.dashboard-card').each(function() {
+            if (!$(this).find('.loading-overlay').length) {
+                $(this).append('<div class="loading-overlay"><div class="spinner"></div></div>');
+            }
+        });
+    }
+
+    function hideLoading() {
+        $('.loading-overlay').remove();
+    }
+
+    // Funciones para filtros rápidos
+    function aplicarFiltroRapido(dias) {
+        const fechaFin = new Date();
+        const fechaInicio = new Date();
+        fechaInicio.setDate(fechaFin.getDate() - dias);
+
+        $('#fechaInicio').val(fechaInicio.toISOString().split('T')[0]);
+        $('#fechaFin').val(fechaFin.toISOString().split('T')[0]);
+
+        aplicarFiltros();
+    }
+
+    function limpiarFiltros() {
+        $('#fechaInicio').val('');
+        $('#fechaFin').val('');
+        $('#sucursal').val('');
+
+        configurarFechasPorDefecto();
+        aplicarFiltros();
+    }
+
+    function configurarFechasPorDefecto() {
+        if (!$('#fechaInicio').val()) {
+            const fechaInicio = new Date();
+            fechaInicio.setDate(fechaInicio.getDate() - 30);
+            $('#fechaInicio').val(fechaInicio.toISOString().split('T')[0]);
+        }
+
+        if (!$('#fechaFin').val()) {
+            const fechaFin = new Date();
+            $('#fechaFin').val(fechaFin.toISOString().split('T')[0]);
+        }
+    }
+
+    // Función para exportar datos (funcionalidad adicional)
+    function exportarDatos(formato) {
+        const filtros = {
+            FechaInicio: $('#fechaInicio').val() || null,
+            FechaFin: $('#fechaFin').val() || null,
+            IdSucursal: $('#sucursal').val() || null,
+            Formato: formato
+        };
+
+        // Crear formulario temporal para descarga
+        const form = $('<form>', {
+            'method': 'POST',
+            'action': '@Url.Action("ExportarDatos", "ReportesVentas")'
+        });
+
+        $.each(filtros, function(key, value) {
+            if (value !== null) {
+                form.append($('<input>', {
+                    'type': 'hidden',
+                    'name': key,
+                    'value': value
+                }));
+            }
+        });
+
+        $('body').append(form);
+        form.submit();
+        form.remove();
+    }
+
+    // Función para actualizar automáticamente cada 5 minutos
+    function iniciarActualizacionAutomatica() {
+        setInterval(function() {
+            if (document.visibilityState === 'visible') {
+                aplicarFiltros();
+            }
+        }, 300000); // 5 minutos
+    }
+
+    // Inicializar actualización automática
+    $(document).ready(function() {
+        iniciarActualizacionAutomatica();
+    });
+</script>
+
+<!-- Botones de exportación adicionales -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="dashboard-card">
+            <h5 class="section-title">
+                <i class="fas fa-download"></i> Exportar Datos
+            </h5>
+            <div class="d-flex gap-2 flex-wrap">
+                <button type="button" class="btn btn-outline-success" onclick="exportarDatos('excel')">
+                    <i class="fas fa-file-excel"></i> Exportar a Excel
+                </button>
+                <button type="button" class="btn btn-outline-danger" onclick="exportarDatos('pdf')">
+                    <i class="fas fa-file-pdf"></i> Exportar a PDF
+                </button>
+                <button type="button" class="btn btn-outline-info" onclick="window.print()">
+                    <i class="fas fa-print"></i> Imprimir Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

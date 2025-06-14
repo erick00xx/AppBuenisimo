@@ -1,0 +1,380 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Menú - Cafetería</title>
+    <!-- Bootstrap CSS -->
+    @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">*@
+    <!-- Bootstrap Icons -->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">*@
+    <style>
+        .category-card {
+            margin-bottom: 2rem;
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .category-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid rgba(0,0,0,.125);
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-inactive {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+
+        .table-actions a {
+            margin: 0 3px;
+            font-size: 1rem;
+        }
+
+        .price-col {
+            font-weight: 600;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3 mb-0">Gestión de Menú</h1>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarItemModal">
+                <i class="bi bi-plus-circle me-2"></i>Agregar Ítem
+            </button>
+        </div>
+
+        <!-- Sección de Cafés -->
+        <div class="card category-card">
+            <div class="card-header category-header">
+                <h2 class="h5 mb-0">Cafés</h2>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tamaño</th>
+                                <th class="text-end">Precio</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Espresso</td>
+                                <td>Pequeño</td>
+                                <td class="text-end price-col">S/. 2.00</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Americano</td>
+                                <td>Mediano</td>
+                                <td class="text-end price-col">S/. 2.50</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Café Latte</td>
+                                <td>Grande</td>
+                                <td class="text-end price-col">S/. 3.50</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Capuchino</td>
+                                <td>Mediano</td>
+                                <td class="text-end price-col">S/. 3.20</td>
+                                <td><span class="status-badge status-inactive">Inactivo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Habilitar"><i class="bi bi-eye"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Postres -->
+        <div class="card category-card">
+            <div class="card-header category-header">
+                <h2 class="h5 mb-0">Postres</h2>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Porción</th>
+                                <th class="text-end">Precio</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tarta de manzana</td>
+                                <td>1 rebanada</td>
+                                <td class="text-end price-col">S/. 2.80</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cheesecake</td>
+                                <td>1 rebanada</td>
+                                <td class="text-end price-col">S/. 3.00</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Brownie</td>
+                                <td>1 unidad</td>
+                                <td class="text-end price-col">S/. 2.50</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Croissant</td>
+                                <td>1 unidad</td>
+                                <td class="text-end price-col">S/. 2.20</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Bebidas Frías -->
+        <div class="card category-card">
+            <div class="card-header category-header">
+                <h2 class="h5 mb-0">Bebidas Frías</h2>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tamaño</th>
+                                <th class="text-end">Precio</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Limonada</td>
+                                <td>Grande</td>
+                                <td class="text-end price-col">S/. 2.50</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Té helado</td>
+                                <td>Mediano</td>
+                                <td class="text-end price-col">S/. 2.40</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Smoothie de fresa</td>
+                                <td>Grande</td>
+                                <td class="text-end price-col">S/. 3.80</td>
+                                <td><span class="status-badge status-active">Activo</span></td>
+                                <td class="table-actions">
+                                    <a href="#" class="text-success" data-bs-toggle="modal" data-bs-target="#editarItemModal" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="#" class="text-warning" title="Deshabilitar"><i class="bi bi-eye-slash"></i></a>
+                                    <a href="#" class="text-danger" title="Eliminar"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Agregar Ítem -->
+    <div class="modal fade" id="agregarItemModal" tabindex="-1" aria-labelledby="agregarItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarItemModalLabel"><i class="bi bi-plus-circle me-2"></i>Agregar Ítem al Menú</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="itemNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="itemNombre" placeholder="Ej: Espresso">
+                        </div>
+                        <div class="mb-3">
+                            <label for="itemTipo" class="form-label">Tipo</label>
+                            <select class="form-select" id="itemTipo">
+                                <option value="cafe">Café</option>
+                                <option value="postre">Postre</option>
+                                <option value="bebida">Bebida Fría</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="itemTamanio" class="form-label">Tamaño/Porción</label>
+                            <input type="text" class="form-control" id="itemTamanio" placeholder="Ej: Grande, 1 rebanada">
+                        </div>
+                        <div class="mb-3">
+                            <label for="itemPrecio" class="form-label">Precio (S/.)</label>
+                            <input type="number" step="0.01" class="form-control" id="itemPrecio" placeholder="Ej: 2.50">
+                        </div>
+                        <div class="mb-3">
+                            <label for="itemDetalles" class="form-label">Detalles (Opcional)</label>
+                            <textarea class="form-control" id="itemDetalles" rows="2" placeholder="Descripción del producto"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Ítem -->
+    <div class="modal fade" id="editarItemModal" tabindex="-1" aria-labelledby="editarItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarItemModalLabel"><i class="bi bi-pencil-square me-2"></i>Editar Ítem</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="editItemNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="editItemNombre" value="Espresso">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editItemTipo" class="form-label">Tipo</label>
+                            <select class="form-select" id="editItemTipo">
+                                <option value="cafe" selected>Bebida</option>
+                                <option value="postre">Postre</option>
+                                <option value="bebida">Bebida Fría</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editItemTamanio" class="form-label">Tamaño/Porción</label>
+                            <input type="text" class="form-control" id="editItemTamanio" value="Pequeño">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editItemPrecio" class="form-label">Precio (S/.)</label>
+                            <input type="number" step="0.01" class="form-control" id="editItemPrecio" value="2.00">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editItemDetalles" class="form-label">Detalles (Opcional)</label>
+                            <textarea class="form-control" id="editItemDetalles" rows="2">Bebida de café concentrado y fuerte</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editItemEstado" class="form-label">Estado</label>
+                            <select class="form-select" id="editItemEstado">
+                                <option value="active" selected>Activo</option>
+                                <option value="inactive">Inactivo</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Confirmación antes de eliminar
+        document.querySelectorAll('.table-actions a.text-danger').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (!confirm('¿Está seguro que desea eliminar este ítem del menú?')) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Confirmación antes de deshabilitar/habilitar
+        document.querySelectorAll('.table-actions a.text-warning').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const action = this.querySelector('i').classList.contains('bi-eye-slash') ? 'deshabilitar' : 'habilitar';
+                if (!confirm(`¿Está seguro que desea ${action} este ítem?`)) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

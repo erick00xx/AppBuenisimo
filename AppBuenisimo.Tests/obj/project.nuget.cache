@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1O/WauGVjl0=",
+  "dgSpecHash": "WjRo6djLrPc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\USUARIO\\source\\repos\\olvida el login\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj",
+  "projectFilePath": "C:\\Users\\USUARIO\\source\\repos\\prbando despliegue\\SistemaWebEficienciaOperativa\\AppBuenisimo.Tests\\AppBuenisimo.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
